@@ -5,170 +5,141 @@ import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-const chapters = [
-  { title: "Chapter 1: The Wake-Up Call", preview: "Why the rules weren't written for us — and why that's actually our greatest advantage." },
-  { title: "Chapter 2: Managing Your Money", preview: "The financial literacy crash course every woman needs but no one taught us in school." },
-  { title: "Chapter 3: Leading Without Permission", preview: "How to step into leadership roles before anyone offers them to you." },
-  { title: "Chapter 4: The Art of Saying No", preview: "Setting boundaries that protect your energy, time, and ambition." },
-  { title: "Chapter 5: Building Your Board", preview: "Curating the inner circle that will challenge, support, and elevate you." },
-  { title: "Chapter 6: Own Your Narrative", preview: "Taking control of your story — in the boardroom, online, and in your own mind." },
-];
+const BOOK_COVER = "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a0c0f9fd70df1d0b3f31f3.jpg";
 
-const reviews = [
-  { text: "This book is the mentor I wish I had 10 years ago. Aimee's honesty and strategy are the perfect combination.", author: "Christina M." },
-  { text: "I highlighted almost every page. This isn't just a book — it's a blueprint for building the life you deserve.", author: "Priya S." },
-  { text: "Raw, real, and actionable. Aimee doesn't sugarcoat anything, and that's exactly what we need right now.", author: "Lauren T." },
-];
+const Book = () => (
+  <div className="overflow-x-hidden">
+    <Navbar />
 
-const Book = () => {
-  return (
-    <div className="overflow-x-hidden">
-      <Navbar />
-
-      {/* Hero */}
-      <section className="pt-28 section-padding" style={{ background: "linear-gradient(180deg, hsl(340 40% 95%), hsl(270 30% 94%), hsl(35 50% 96%))" }}>
-        <div className="editorial-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div className="flex justify-center order-2 lg:order-1">
-              <div className="book-3d">
-                <div className="book-3d-inner w-64 md:w-72 aspect-[2/3] bg-gradient-to-br from-brand-pink/90 to-brand-hot-pink rounded-lg shadow-2xl flex flex-col items-center justify-center p-8 text-primary-foreground opacity-0 animate-scale-in">
-                  <p className="font-sans text-xs uppercase tracking-[0.3em] opacity-80 mb-4">A Book by</p>
-                  <h2 className="font-serif text-4xl md:text-5xl font-bold text-center leading-tight mb-4">
-                    THE<br /><em>MANAGE</em><br />HER
-                  </h2>
-                  <div className="w-14 h-px bg-primary-foreground/40 my-3" />
-                  <p className="font-sans text-sm opacity-80">Aimee Rickabus</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="order-1 lg:order-2">
-              <p className="font-sans text-sm uppercase tracking-[0.2em] text-brand-gold font-medium mb-4 animate-fade-in">
-                Now Available
-              </p>
-              <h1 className="font-serif text-5xl md:text-6xl font-bold mb-6 opacity-0 animate-fade-in-up">
-                Your blueprint for <em className="text-brand-pink">unapologetic success.</em>
-              </h1>
-              <p className="font-sans text-lg text-brand-warm-gray leading-relaxed mb-6 opacity-0 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
-                Part memoir, part manifesto — this is the guide for women who are ready to stop 
-                managing everyone else's expectations and start managing their own legacy.
-              </p>
-              <div className="flex items-center gap-2 mb-8 opacity-0 animate-fade-in-up" style={{ animationDelay: "300ms" }}>
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={18} className="text-brand-gold fill-brand-gold" />
-                ))}
-                <span className="font-sans text-sm text-muted-foreground ml-2">200+ five-star reviews</span>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: "400ms" }}>
-                <Button className="bg-brand-navy hover:bg-brand-navy/90 text-primary-foreground rounded-full px-8 py-6 font-sans text-sm shadow-lg">
-                  Order on Amazon →
-                </Button>
-                <Button variant="outline" className="border-brand-navy/20 text-brand-navy hover:bg-brand-navy/5 rounded-full px-8 py-6 font-sans text-sm">
-                  Barnes & Noble
-                </Button>
-              </div>
+    {/* Hero */}
+    <section className="py-20 md:py-28 px-6" style={{ background: "linear-gradient(160deg, hsl(340 50% 95%), hsl(260 40% 94%), hsl(38 55% 96%))" }}>
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="flex justify-center order-2 lg:order-1">
+          <div className="book-3d opacity-0 animate-scale-in">
+            <div className="book-3d-inner rounded-lg overflow-hidden">
+              <img src={BOOK_COVER} alt="The Manage Her™ Book" className="w-56 md:w-64 lg:w-72" loading="eager" />
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Chapter Preview */}
-      <section className="section-padding bg-card">
-        <div className="editorial-container max-w-3xl mx-auto">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="font-serif text-4xl md:text-5xl font-bold">
-                Inside the <em className="text-brand-pink">book</em>
-              </h2>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={200}>
-            <Accordion type="single" collapsible className="space-y-3">
-              {chapters.map((ch, i) => (
-                <AccordionItem key={i} value={`ch-${i}`} className="bg-background rounded-xl px-6 border border-border">
-                  <AccordionTrigger className="font-serif text-lg hover:no-underline py-5 hover:text-brand-pink">
-                    {ch.title}
-                  </AccordionTrigger>
-                  <AccordionContent className="font-sans text-brand-warm-gray pb-5 leading-relaxed">
-                    {ch.preview}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </ScrollReveal>
+        <div className="order-1 lg:order-2">
+          <p className="font-sans text-xs font-semibold uppercase tracking-[0.15em] text-brand-gold mb-4 animate-fade-in">The Book</p>
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.4rem] font-bold text-brand-navy leading-[1.1] mb-5 opacity-0 animate-fade-in-up" style={{ animationDelay: "150ms" }}>
+            Unveiling Invisible Labor & Sparking a <em className="text-brand-pink">Leadership Revolution</em>
+          </h1>
+          <p className="font-sans text-[15px] text-muted-foreground leading-relaxed mb-5 opacity-0 animate-fade-in-up" style={{ animationDelay: "250ms" }}>
+            The book that names what millions of women feel but can't articulate. From invisible labor to identity reclamation, this is the blueprint for women who are done shrinking and ready to lead.
+          </p>
+          <div className="flex flex-wrap gap-2 mb-7 opacity-0 animate-fade-in-up" style={{ animationDelay: "350ms" }}>
+            {["Invisible Labor Framework", "Leadership Identity", "Financial Independence", "Boundary Setting", "Self-Reclamation"].map((t) => (
+              <span key={t} className="font-sans text-[11px] font-medium bg-brand-blush text-brand-pink px-3 py-1.5 rounded-full">{t}</span>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-3 opacity-0 animate-fade-in-up" style={{ animationDelay: "450ms" }}>
+            <Button className="bg-brand-pink hover:bg-brand-pink/90 text-primary-foreground rounded-full px-7 h-11 font-sans text-sm font-medium shadow-lg shadow-brand-pink/20" asChild>
+              <a href="https://a.co/d/by5X0fV" target="_blank" rel="noopener noreferrer">Order on Amazon →</a>
+            </Button>
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Who It's For */}
-      <section className="section-padding" style={{ background: "linear-gradient(180deg, hsl(35 50% 96%), hsl(340 40% 96%))" }}>
-        <div className="editorial-container">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <h2 className="font-serif text-4xl md:text-5xl font-bold">
-                This book is for <em className="text-brand-pink">you</em> if…
-              </h2>
-            </div>
-          </ScrollReveal>
+    {/* What's inside */}
+    <section className="py-20 md:py-28 px-6 bg-background">
+      <div className="max-w-3xl mx-auto">
+        <ScrollReveal>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-brand-navy text-center mb-12">
+            What's <em className="text-brand-pink">Inside</em>
+          </h2>
+        </ScrollReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <ScrollReveal delay={150}>
+          <Accordion type="single" collapsible className="space-y-2.5">
             {[
-              { title: "The Corporate Climber", description: "You're ambitious, driven, and tired of playing by rules that weren't made for you." },
-              { title: "The Entrepreneur", description: "You're building something from scratch and need the real talk, not the highlight reel." },
-              { title: "The Working Mom", description: "You're managing everything and ready to stop surviving and start thriving." },
-              { title: "The Next-Gen Leader", description: "You're early in your career and want the playbook that took others decades to learn." },
-            ].map((p, i) => (
-              <ScrollReveal key={p.title} delay={i * 100}>
-                <div className="bg-card rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 group">
-                  <h3 className="font-serif text-xl font-bold mb-3 group-hover:text-brand-pink transition-colors">{p.title}</h3>
-                  <p className="font-sans text-brand-warm-gray leading-relaxed">{p.description}</p>
-                </div>
-              </ScrollReveal>
+              { title: "The Invisible Load", preview: "Why the rules weren't written for us — and why naming the invisible labor is the first step to reclaiming your power." },
+              { title: "Managing Your Money", preview: "The financial literacy crash course every woman needs. Wealth building, investing, pay equity — no jargon, just clarity." },
+              { title: "Leading Without Permission", preview: "How to step into leadership roles before anyone offers them to you. You don't need a title to lead." },
+              { title: "The Art of Boundaries", preview: "Setting boundaries that protect your energy, time, and ambition without the guilt trip." },
+              { title: "Building Your Board", preview: "Curating the inner circle that will challenge, support, and elevate you — your personal board of directors." },
+              { title: "Own Your Narrative", preview: "Taking control of your story — in the boardroom, online, and in your own mind. This is your leadership revolution." },
+            ].map((ch, i) => (
+              <AccordionItem key={i} value={`ch-${i}`} className="bg-card rounded-xl px-5 border border-border">
+                <AccordionTrigger className="font-serif text-lg hover:no-underline py-4 hover:text-brand-pink transition-colors text-brand-navy">
+                  {ch.title}
+                </AccordionTrigger>
+                <AccordionContent className="font-sans text-[15px] text-muted-foreground pb-4 leading-relaxed">
+                  {ch.preview}
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
+        </ScrollReveal>
+      </div>
+    </section>
+
+    {/* Who it's for */}
+    <section className="py-20 md:py-28 px-6" style={{ background: "linear-gradient(180deg, hsl(38 55% 97%), hsl(340 50% 96%))" }}>
+      <div className="max-w-4xl mx-auto">
+        <ScrollReveal>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-brand-navy text-center mb-14">
+            This book is for <em className="text-brand-pink">you</em> if…
+          </h2>
+        </ScrollReveal>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {[
+            { title: "The Corporate Climber", desc: "You're ambitious, driven, and tired of playing by rules that weren't made for you." },
+            { title: "The Working Mom", desc: "You're managing everything and ready to stop surviving and start thriving on your terms." },
+            { title: "The Entrepreneur", desc: "You're building something from scratch and need the real talk, not the highlight reel." },
+            { title: "The Next-Gen Leader", desc: "You're early in your career and want the playbook that took others decades to learn." },
+          ].map((p, i) => (
+            <ScrollReveal key={p.title} delay={i * 100}>
+              <div className="bg-background rounded-xl p-7 shadow-sm hover:shadow-md transition-all group h-full">
+                <h3 className="font-serif text-xl font-bold text-brand-navy mb-3 group-hover:text-brand-pink transition-colors">{p.title}</h3>
+                <p className="font-sans text-[15px] text-muted-foreground leading-relaxed">{p.desc}</p>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Reviews */}
-      <section className="section-padding bg-card">
-        <div className="editorial-container">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <h2 className="font-serif text-4xl md:text-5xl font-bold">
-                What readers are <em className="text-brand-pink">saying</em>
-              </h2>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {reviews.map((r, i) => (
-              <ScrollReveal key={r.author} delay={i * 150}>
-                <div className="bg-background rounded-2xl p-8 shadow-sm">
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(5)].map((_, j) => (
-                      <Star key={j} size={14} className="text-brand-gold fill-brand-gold" />
-                    ))}
-                  </div>
-                  <p className="font-serif text-lg italic leading-relaxed mb-6 text-brand-navy/80">"{r.text}"</p>
-                  <p className="font-sans text-sm text-muted-foreground">— {r.author}</p>
+    {/* Reviews */}
+    <section className="py-20 md:py-28 px-6 bg-background">
+      <div className="max-w-5xl mx-auto">
+        <ScrollReveal>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-brand-navy text-center mb-14">
+            What readers are <em className="text-brand-pink">saying</em>
+          </h2>
+        </ScrollReveal>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {[
+            { text: "I listened to the first episode on my commute and pulled over because I was crying. She put words to something I've felt for years.", author: "Sarah M." },
+            { text: "Finally someone who doesn't just tell women to 'lean in' — Aimee validates what we're already doing and shows us how to own it.", author: "Jessica R." },
+            { text: "Aimee speaks with the authority of a CEO and the heart of a mom who gets it. Every working mother needs this.", author: "Lauren T." },
+          ].map((r, i) => (
+            <ScrollReveal key={r.author} delay={i * 120}>
+              <div className="bg-card rounded-xl p-6 shadow-sm h-full flex flex-col">
+                <div className="flex gap-0.5 mb-3">
+                  {[...Array(5)].map((_, j) => <Star key={j} size={13} className="text-brand-gold fill-brand-gold" />)}
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal delay={400}>
-            <div className="text-center mt-16">
-              <Button className="bg-brand-navy hover:bg-brand-navy/90 text-primary-foreground rounded-full px-10 py-6 font-sans text-sm shadow-lg">
-                Get Your Copy Today →
-              </Button>
-            </div>
-          </ScrollReveal>
+                <p className="font-serif text-[15px] italic text-brand-navy/80 leading-relaxed flex-1 mb-4">"{r.text}"</p>
+                <p className="font-sans text-sm font-semibold text-brand-navy">— {r.author}</p>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
-      </section>
+        <ScrollReveal delay={400}>
+          <div className="text-center mt-12">
+            <Button className="bg-brand-pink hover:bg-brand-pink/90 text-primary-foreground rounded-full px-8 h-12 font-sans text-sm font-medium shadow-lg shadow-brand-pink/20" asChild>
+              <a href="https://a.co/d/by5X0fV" target="_blank" rel="noopener noreferrer">Order Your Copy →</a>
+            </Button>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
 
-      <Footer />
-    </div>
-  );
-};
+    <Footer />
+  </div>
+);
 
 export default Book;
