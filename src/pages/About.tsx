@@ -13,67 +13,62 @@ const timeline = [
 
 const About = () => {
   return (
-    <div className="bg-brand-dark text-brand-cream overflow-x-hidden">
+    <div className="overflow-x-hidden">
       <Navbar />
 
       {/* Hero */}
-      <section className="relative min-h-[70vh] flex items-end overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/60 to-brand-dark/30 z-10" />
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1400&h=800&fit=crop"
-            alt="Aimee Rickabus"
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </div>
-        <div className="relative z-20 section-padding pb-16 w-full">
-          <div className="editorial-container">
-            <p className="font-sans text-xs uppercase tracking-[0.3em] text-brand-gold mb-4 animate-fade-in">
-              Her Story
-            </p>
-            <h1 className="font-serif text-5xl md:text-7xl font-bold opacity-0 animate-fade-in-up">
-              Meet <span className="italic text-brand-gold">Aimee</span>
-            </h1>
+      <section className="pt-28 pb-16 section-padding" style={{ background: "linear-gradient(180deg, hsl(340 40% 95%), hsl(35 50% 96%))" }}>
+        <div className="editorial-container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div>
+              <p className="font-sans text-sm uppercase tracking-[0.2em] text-brand-pink font-medium mb-4 opacity-0 animate-fade-in">
+                My Story
+              </p>
+              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6 opacity-0 animate-fade-in-up">
+                Hi, I'm <em className="text-brand-pink">Aimee.</em>
+              </h1>
+              <p className="font-sans text-lg text-brand-warm-gray leading-relaxed mb-6 opacity-0 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+                My hunch is someone you trust mentioned my name, or you stumbled upon one of my episodes 
+                online. Whatever path you took, I'm really glad you're here. This site is full of 
+                incredible resources and ideas that can help you change your life (not kidding!).
+              </p>
+              <p className="font-sans text-brand-warm-gray leading-relaxed opacity-0 animate-fade-in-up" style={{ animationDelay: "300ms" }}>
+                I'm a former corporate warrior who swapped the 9-to-5 grind for a mission that 
+                matters: helping women take control of their careers, finances, and futures. Through 
+                my podcast, book, and community, I've had the privilege of walking alongside thousands 
+                of women on their journey to building something extraordinary.
+              </p>
+            </div>
+            <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: "400ms" }}>
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=750&fit=crop&crop=top"
+                alt="Aimee Rickabus"
+                className="w-full rounded-2xl shadow-xl"
+                loading="eager"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Intro */}
-      <section className="section-padding">
-        <div className="editorial-container max-w-4xl">
-          <ScrollReveal>
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 items-start">
-              <div className="border-l-2 border-brand-gold pl-6">
-                <p className="font-serif text-2xl italic text-brand-gold leading-relaxed">
-                  "I didn't wait for permission. I gave it to myself."
-                </p>
-              </div>
-              <div>
-                <p className="font-sans text-brand-cream/70 leading-relaxed mb-6">
-                  Aimee Rickabus is a mother, CEO, best-selling author, and the host of The Manage Her Podcast — 
-                  a platform dedicated to empowering women to take control of their careers, finances, and futures.
-                </p>
-                <p className="font-sans text-brand-cream/70 leading-relaxed">
-                  With a background in business leadership and a passion for financial literacy, Aimee brings 
-                  unfiltered conversations about what it really takes to succeed as a woman in today's world. 
-                  Her work has been featured in major publications and her podcast has amassed a loyal following 
-                  of ambitious women across the globe.
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
+      {/* Pull Quote */}
+      <section className="section-padding bg-brand-pink text-primary-foreground text-center">
+        <ScrollReveal>
+          <div className="editorial-container max-w-3xl mx-auto">
+            <p className="font-serif text-3xl md:text-4xl lg:text-5xl italic leading-snug">
+              "I didn't wait for permission. I gave it to myself."
+            </p>
+          </div>
+        </ScrollReveal>
       </section>
 
       {/* Journey Timeline */}
-      <section className="section-padding bg-brand-cream text-brand-dark">
-        <div className="editorial-container max-w-4xl">
+      <section className="section-padding bg-card">
+        <div className="editorial-container max-w-4xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <p className="font-sans text-xs uppercase tracking-[0.3em] text-brand-pink mb-4">The Journey</p>
               <h2 className="font-serif text-4xl md:text-5xl font-bold">
-                From Vision to <span className="italic">Movement</span>
+                From vision to <em className="text-brand-pink">movement</em>
               </h2>
             </div>
           </ScrollReveal>
@@ -81,15 +76,15 @@ const About = () => {
           <div className="space-y-12">
             {timeline.map((item, i) => (
               <ScrollReveal key={item.year} delay={i * 100}>
-                <div className="grid grid-cols-[80px_1fr] md:grid-cols-[120px_1fr] gap-6 items-start">
-                  <div className="text-right">
-                    <span className="font-serif text-sm md:text-base italic text-brand-pink font-semibold">
-                      {item.year}
-                    </span>
+                <div className="flex gap-6 md:gap-10">
+                  <div className="flex flex-col items-center">
+                    <div className="w-4 h-4 rounded-full bg-brand-pink shrink-0" />
+                    {i < timeline.length - 1 && <div className="w-px flex-1 bg-brand-pink/20 mt-2" />}
                   </div>
-                  <div className="border-l-2 border-brand-dark/10 pl-6">
+                  <div className="pb-8">
+                    <p className="font-sans text-sm text-brand-pink font-medium mb-1">{item.year}</p>
                     <h3 className="font-serif text-2xl font-bold mb-3">{item.title}</h3>
-                    <p className="font-sans text-brand-dark/70 leading-relaxed">{item.description}</p>
+                    <p className="font-sans text-brand-warm-gray leading-relaxed">{item.description}</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -99,12 +94,12 @@ const About = () => {
       </section>
 
       {/* Roles */}
-      <section className="section-padding">
+      <section className="section-padding" style={{ background: "linear-gradient(180deg, hsl(35 50% 96%), hsl(270 30% 94%))" }}>
         <div className="editorial-container">
           <ScrollReveal>
             <div className="text-center mb-16">
               <h2 className="font-serif text-4xl md:text-5xl font-bold">
-                Many Hats, <span className="italic text-brand-gold">One Mission</span>
+                Many hats, <em className="text-brand-pink">one mission</em>
               </h2>
             </div>
           </ScrollReveal>
@@ -117,10 +112,12 @@ const About = () => {
               { icon: Award, title: "Speaker", desc: "National stages & events" },
             ].map((role, i) => (
               <ScrollReveal key={role.title} delay={i * 100}>
-                <div className="text-center p-8 border border-brand-cream/10 hover:border-brand-gold/30 transition-all duration-500 group">
-                  <role.icon size={32} className="mx-auto text-brand-gold mb-4 group-hover:scale-110 transition-transform" />
+                <div className="bg-card text-center rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 group">
+                  <div className="w-14 h-14 rounded-full bg-brand-pink/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-pink/20 transition-colors">
+                    <role.icon size={24} className="text-brand-pink" />
+                  </div>
                   <h3 className="font-serif text-xl font-bold mb-2">{role.title}</h3>
-                  <p className="font-sans text-sm text-brand-cream/50">{role.desc}</p>
+                  <p className="font-sans text-sm text-muted-foreground">{role.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -129,16 +126,16 @@ const About = () => {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-gradient-to-r from-brand-dark via-[hsl(328,30%,12%)] to-brand-dark text-center">
+      <section className="section-padding bg-brand-blush text-center">
         <ScrollReveal>
           <div className="editorial-container max-w-2xl mx-auto">
             <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
-              Ready to <span className="italic text-brand-pink">Connect</span>?
+              Ready to <em className="text-brand-pink">connect</em>?
             </h2>
-            <p className="font-sans text-brand-cream/60 mb-8">
+            <p className="font-sans text-brand-warm-gray mb-8 leading-relaxed">
               Whether it's a speaking engagement, collaboration, or just a conversation — let's make it happen.
             </p>
-            <Button className="bg-brand-pink hover:bg-brand-pink/90 text-primary-foreground rounded-none px-10 py-6 font-sans uppercase tracking-widest text-xs" asChild>
+            <Button className="bg-brand-pink hover:bg-brand-pink/90 text-primary-foreground rounded-full px-10 py-6 font-sans text-sm shadow-lg shadow-brand-pink/20" asChild>
               <a href="/press">Get In Touch →</a>
             </Button>
           </div>
