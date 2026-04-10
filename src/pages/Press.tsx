@@ -6,159 +6,121 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Download, Mail, Mic, Users, TrendingUp, Heart } from "lucide-react";
 
-const speakingTopics = [
-  { icon: TrendingUp, title: "Financial Literacy for Women", description: "Actionable strategies for building wealth, investing wisely, and achieving financial independence." },
-  { icon: Users, title: "Women in Leadership", description: "Breaking barriers, leading with authenticity, and redefining what power looks like." },
-  { icon: Heart, title: "Owning Your Narrative", description: "Taking control of your personal brand, story, and legacy — unapologetically." },
-  { icon: Mic, title: "The Power of Podcasting", description: "Building a platform, growing an audience, and turning your voice into influence." },
-];
+const Press = () => (
+  <div className="overflow-x-hidden">
+    <Navbar />
 
-const mediaLogos = ["Forbes", "Inc.", "Entrepreneur", "Bloomberg", "HuffPost", "ABC News", "Fast Company", "Business Insider"];
+    {/* Hero */}
+    <section className="py-20 md:py-24 px-6" style={{ background: "linear-gradient(160deg, hsl(260 40% 94%), hsl(340 50% 95%), hsl(38 55% 96%))" }}>
+      <div className="max-w-3xl mx-auto text-center">
+        <p className="font-sans text-xs font-semibold uppercase tracking-[0.15em] text-brand-pink mb-4 animate-fade-in">Press & Speaking</p>
+        <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-brand-navy mb-5 opacity-0 animate-fade-in-up" style={{ animationDelay: "150ms" }}>
+          Let's <em className="text-brand-pink">Collaborate.</em>
+        </h1>
+        <p className="font-sans text-[15px] text-muted-foreground max-w-xl mx-auto leading-relaxed opacity-0 animate-fade-in-up" style={{ animationDelay: "300ms" }}>
+          Aimee is available for speaking engagements, media appearances, brand partnerships, and podcast guest features.
+        </p>
+      </div>
+    </section>
 
-const Press = () => {
-  return (
-    <div className="overflow-x-hidden">
-      <Navbar />
-
-      {/* Hero */}
-      <section className="pt-28 pb-16 section-padding" style={{ background: "linear-gradient(180deg, hsl(270 30% 94%), hsl(340 40% 95%), hsl(35 50% 96%))" }}>
-        <div className="editorial-container text-center max-w-3xl mx-auto">
-          <p className="font-sans text-sm uppercase tracking-[0.2em] text-brand-pink font-medium mb-4 animate-fade-in">
-            Press & Speaking
-          </p>
-          <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 opacity-0 animate-fade-in-up">
-            Let's <em className="text-brand-pink">collaborate.</em>
-          </h1>
-          <p className="font-sans text-lg text-brand-warm-gray mb-8 opacity-0 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
-            Aimee is available for speaking engagements, media appearances, 
-            brand partnerships, and podcast guest features.
-          </p>
-        </div>
-      </section>
-
-      {/* Speaking Topics */}
-      <section className="section-padding bg-card">
-        <div className="editorial-container">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <h2 className="font-serif text-4xl md:text-5xl font-bold">
-                Speaking <em className="text-brand-pink">topics</em>
-              </h2>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {speakingTopics.map((topic, i) => (
-              <ScrollReveal key={topic.title} delay={i * 100}>
-                <div className="bg-background rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 group">
-                  <div className="w-12 h-12 rounded-full bg-brand-pink/10 flex items-center justify-center mb-5 group-hover:bg-brand-pink/20 transition-colors">
-                    <topic.icon size={22} className="text-brand-pink" />
-                  </div>
-                  <h3 className="font-serif text-xl font-bold mb-3">{topic.title}</h3>
-                  <p className="font-sans text-brand-warm-gray leading-relaxed">{topic.description}</p>
+    {/* Topics */}
+    <section className="py-20 md:py-28 px-6 bg-background">
+      <div className="max-w-4xl mx-auto">
+        <ScrollReveal>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-brand-navy text-center mb-14">
+            Speaking <em className="text-brand-pink">Topics</em>
+          </h2>
+        </ScrollReveal>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {[
+            { icon: TrendingUp, title: "Financial Literacy for Women", desc: "Actionable strategies for building wealth, investing wisely, and achieving financial independence — no jargon, just clarity." },
+            { icon: Users, title: "Women in Leadership", desc: "Breaking barriers, leading with authenticity, and redefining what power looks like in the modern workplace." },
+            { icon: Heart, title: "Owning Your Narrative", desc: "Taking control of your personal brand, story, and legacy — unapologetically. From invisible labor to visible leadership." },
+            { icon: Mic, title: "The Power of Podcasting", desc: "Building a platform, growing an audience, and turning your voice into influence and impact." },
+          ].map((t, i) => (
+            <ScrollReveal key={t.title} delay={i * 100}>
+              <div className="bg-card rounded-xl p-7 shadow-sm hover:shadow-md transition-all group h-full">
+                <div className="w-11 h-11 rounded-full bg-brand-blush flex items-center justify-center mb-4 group-hover:bg-brand-pink/10 transition-colors">
+                  <t.icon size={20} className="text-brand-pink" />
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* As Seen In */}
-      <section className="section-padding" style={{ background: "linear-gradient(180deg, hsl(35 50% 96%), hsl(340 40% 96%))" }}>
-        <div className="editorial-container text-center">
-          <ScrollReveal>
-            <p className="font-sans text-sm uppercase tracking-[0.2em] text-brand-pink font-medium mb-8">
-              As Seen In
-            </p>
-          </ScrollReveal>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-            {mediaLogos.map((name, i) => (
-              <ScrollReveal key={name} delay={i * 60}>
-                <span className="font-serif text-xl md:text-2xl italic text-brand-navy/20 hover:text-brand-navy/40 transition-colors">
-                  {name}
-                </span>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Press Kit */}
-      <section className="section-padding bg-brand-pink text-primary-foreground">
-        <div className="editorial-container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <ScrollReveal>
-              <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6 !text-primary-foreground">
-                Press Kit
-              </h2>
-              <p className="font-sans opacity-80 leading-relaxed mb-8">
-                Download Aimee's official press kit including high-resolution headshots, 
-                brand assets, bio, and show information.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-primary-foreground text-brand-pink hover:bg-primary-foreground/90 rounded-full px-8 py-5 font-sans text-sm">
-                  <Download size={16} className="mr-2" />
-                  Download Press Kit
-                </Button>
-                <Button variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 rounded-full px-8 py-5 font-sans text-sm">
-                  <Download size={16} className="mr-2" />
-                  Headshots
-                </Button>
+                <h3 className="font-serif text-xl font-bold text-brand-navy mb-3">{t.title}</h3>
+                <p className="font-sans text-[15px] text-muted-foreground leading-relaxed">{t.desc}</p>
               </div>
             </ScrollReveal>
-
-            <ScrollReveal delay={200}>
-              <div className="grid grid-cols-2 gap-4">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="aspect-square bg-primary-foreground/10 rounded-xl flex items-center justify-center">
-                    <span className="font-sans text-xs opacity-40 uppercase tracking-widest">Photo {i}</span>
-                  </div>
-                ))}
-              </div>
-            </ScrollReveal>
-          </div>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Booking Form */}
-      <section className="section-padding bg-card">
-        <div className="editorial-container max-w-2xl mx-auto">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4">
-                Speaking <em className="text-brand-pink">inquiry</em>
-              </h2>
-              <p className="font-sans text-brand-warm-gray">
-                Fill out the form below and our team will get back to you within 48 hours.
-              </p>
+    {/* As Seen In */}
+    <section className="py-14 px-6" style={{ background: "linear-gradient(180deg, hsl(38 55% 97%), hsl(340 50% 96%))" }}>
+      <p className="font-sans text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-center text-muted-foreground/50 mb-6">As Seen In</p>
+      <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+        {["NAWBO", "Apple Podcasts", "Spotify", "Amazon Music", "YouTube"].map((n) => (
+          <span key={n} className="font-sans text-sm md:text-base font-semibold text-brand-navy/15 uppercase tracking-wide">{n}</span>
+        ))}
+      </div>
+    </section>
+
+    {/* Press Kit */}
+    <section className="bg-brand-pink py-16 md:py-20 px-6">
+      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <ScrollReveal>
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-foreground mb-4">Press Kit</h2>
+          <p className="font-sans text-primary-foreground/80 text-[15px] leading-relaxed mb-7">
+            Download Aimee's official press kit including high-resolution headshots, brand assets, bio, and show information.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Button className="bg-background text-brand-pink hover:bg-background/90 rounded-full px-6 h-11 font-sans text-sm font-medium">
+              <Download size={15} className="mr-2" /> Download Press Kit
+            </Button>
+            <Button variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 rounded-full px-6 h-11 font-sans text-sm font-medium">
+              <Download size={15} className="mr-2" /> Headshots
+            </Button>
+          </div>
+        </ScrollReveal>
+        <ScrollReveal delay={150}>
+          <div className="grid grid-cols-2 gap-3">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="aspect-square bg-primary-foreground/10 rounded-xl flex items-center justify-center">
+                <span className="font-sans text-[10px] text-primary-foreground/30 uppercase tracking-widest">Photo {i}</span>
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+
+    {/* Booking Form */}
+    <section className="py-20 md:py-28 px-6 bg-background">
+      <div className="max-w-xl mx-auto">
+        <ScrollReveal>
+          <div className="text-center mb-10">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-brand-navy mb-3">
+              Book <em className="text-brand-pink">Aimee</em>
+            </h2>
+            <p className="font-sans text-[15px] text-muted-foreground">Fill out the form and our team will respond within 48 hours.</p>
+          </div>
+        </ScrollReveal>
+        <ScrollReveal delay={150}>
+          <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Input placeholder="Your Name" className="rounded-full h-11 px-5 font-sans text-sm" />
+              <Input type="email" placeholder="Email Address" className="rounded-full h-11 px-5 font-sans text-sm" />
             </div>
-          </ScrollReveal>
+            <Input placeholder="Organization / Event Name" className="rounded-full h-11 px-5 font-sans text-sm" />
+            <Input placeholder="Event Date & Location" className="rounded-full h-11 px-5 font-sans text-sm" />
+            <Textarea placeholder="Tell us about your event and what you're looking for..." rows={5} className="rounded-xl font-sans text-sm resize-none px-5 py-3" />
+            <Button className="w-full bg-brand-pink hover:bg-brand-pink/90 text-primary-foreground rounded-full h-12 font-sans text-sm font-medium shadow-lg shadow-brand-pink/20">
+              <Mail size={15} className="mr-2" /> Submit Inquiry
+            </Button>
+          </form>
+        </ScrollReveal>
+      </div>
+    </section>
 
-          <ScrollReveal delay={200}>
-            <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <Input placeholder="Your Name" className="rounded-full h-12 font-sans text-sm px-5" />
-                <Input type="email" placeholder="Email Address" className="rounded-full h-12 font-sans text-sm px-5" />
-              </div>
-              <Input placeholder="Organization / Event Name" className="rounded-full h-12 font-sans text-sm px-5" />
-              <Input placeholder="Event Date & Location" className="rounded-full h-12 font-sans text-sm px-5" />
-              <Textarea
-                placeholder="Tell us about your event and what you're looking for..."
-                rows={5}
-                className="rounded-xl font-sans text-sm resize-none px-5 py-4"
-              />
-              <Button className="w-full bg-brand-pink hover:bg-brand-pink/90 text-primary-foreground rounded-full py-6 font-sans text-sm shadow-lg shadow-brand-pink/20">
-                <Mail size={16} className="mr-2" />
-                Submit Inquiry
-              </Button>
-            </form>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <Footer />
-    </div>
-  );
-};
+    <Footer />
+  </div>
+);
 
 export default Press;
