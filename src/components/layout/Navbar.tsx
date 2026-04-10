@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { label: "Home", path: "/" },
   { label: "About", path: "/about" },
   { label: "Podcast", path: "/podcast" },
   { label: "Book", path: "/book" },
@@ -13,44 +12,53 @@ const navLinks = [
 ];
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => setIsMobileOpen(false), [location]);
+  useEffect(() => setMobileOpen(false), [location]);
 
   return (
     <>
+      {/* Top announcement bar */}
+      <div className="bg-brand-pink text-primary-foreground text-center py-2.5 px-4 font-sans text-xs md:text-sm tracking-wide z-[60] relative">
+        🎙️ New episodes every week —{" "}
+        <a href="https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 font-medium hover:opacity-80">
+          Listen on Apple Podcasts →
+        </a>
+      </div>
+
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-          isScrolled
-            ? "bg-background/95 backdrop-blur-md shadow-sm py-3"
-            : "bg-transparent py-5"
+          "sticky top-0 left-0 right-0 z-50 transition-all duration-400",
+          scrolled
+            ? "bg-background/98 backdrop-blur-md shadow-sm"
+            : "bg-background"
         )}
       >
-        <div className="editorial-container flex items-center justify-between px-6 lg:px-12">
-          <Link to="/" className="group">
-            <span className="font-serif text-xl md:text-2xl font-bold tracking-wide text-brand-navy">
-              THE <span className="text-brand-pink italic">MANAGE</span>HER
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-10 h-16 md:h-[72px]">
+          <Link to="/" className="shrink-0">
+            <span className="font-serif text-xl md:text-2xl font-bold text-brand-navy tracking-tight">
+              The Manage<span className="text-brand-pink italic">Her</span>
+              <span className="text-brand-pink text-xs align-super">™</span>
             </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "font-sans text-sm tracking-wide transition-colors duration-300",
+                  "font-sans text-[13px] font-medium uppercase tracking-[0.08em] transition-colors",
                   location.pathname === link.path
-                    ? "text-brand-pink font-medium"
+                    ? "text-brand-pink"
                     : "text-brand-navy/70 hover:text-brand-pink"
                 )}
               >
@@ -58,7 +66,7 @@ const Navbar = () => {
               </Link>
             ))}
             <Button
-              className="bg-brand-pink hover:bg-brand-pink/90 text-primary-foreground font-sans text-sm px-6 rounded-full"
+              className="bg-brand-pink hover:bg-brand-pink/90 text-primary-foreground font-sans text-xs font-semibold uppercase tracking-[0.1em] px-6 h-10 rounded-full"
               asChild
             >
               <a href="#listen">Listen Now</a>
@@ -66,39 +74,39 @@ const Navbar = () => {
           </div>
 
           <button
-            onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="lg:hidden text-brand-navy z-50 relative"
-            aria-label="Toggle menu"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden text-brand-navy"
+            aria-label="Menu"
           >
-            {isMobileOpen ? <X size={28} /> : <Menu size={28} />}
+            {mobileOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile overlay */}
+      {/* Mobile */}
       <div
         className={cn(
-          "fixed inset-0 z-40 bg-background flex flex-col items-center justify-center transition-all duration-500 lg:hidden",
-          isMobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          "fixed inset-0 z-[55] bg-background flex flex-col items-center justify-center gap-5 transition-all duration-400 lg:hidden",
+          mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
+        <Link to="/" className={cn("font-serif text-3xl transition-all", mobileOpen && "opacity-100", location.pathname === "/" ? "text-brand-pink" : "text-brand-navy")}>
+          Home
+        </Link>
         {navLinks.map((link, i) => (
           <Link
             key={link.path}
             to={link.path}
             className={cn(
-              "font-serif text-3xl mb-6 transition-all duration-500",
-              isMobileOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
+              "font-serif text-3xl transition-all duration-400",
+              mobileOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3",
               location.pathname === link.path ? "text-brand-pink" : "text-brand-navy hover:text-brand-pink"
             )}
-            style={{ transitionDelay: isMobileOpen ? `${i * 80}ms` : "0ms" }}
+            style={{ transitionDelay: mobileOpen ? `${(i + 1) * 60}ms` : "0ms" }}
           >
             {link.label}
           </Link>
         ))}
-        <Button className="mt-8 bg-brand-pink hover:bg-brand-pink/90 text-primary-foreground font-sans text-sm px-10 py-6 rounded-full" asChild>
-          <a href="#listen">Listen Now</a>
-        </Button>
       </div>
     </>
   );
