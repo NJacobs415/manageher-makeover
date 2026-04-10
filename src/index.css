@@ -4,79 +4,85 @@
 
 @layer base {
   :root {
-    --background: 30 33% 97%;
-    --foreground: 0 0% 10%;
+    /* Warm, bright palette inspired by Amy/Marie/Jenna */
+    --background: 35 50% 98%;
+    --foreground: 240 10% 15%;
 
-    --card: 30 33% 97%;
-    --card-foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 15%;
 
-    --popover: 30 33% 97%;
-    --popover-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 15%;
 
-    --primary: 40 52% 58%;
+    --primary: 335 75% 55%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 328 81% 58%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 35 60% 95%;
+    --secondary-foreground: 240 10% 15%;
 
-    --muted: 30 20% 90%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 35 30% 93%;
+    --muted-foreground: 240 5% 45%;
 
-    --accent: 328 81% 58%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 42 80% 55%;
+    --accent-foreground: 240 10% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 30 15% 85%;
-    --input: 30 15% 85%;
-    --ring: 40 52% 58%;
+    --border: 35 20% 88%;
+    --input: 35 20% 88%;
+    --ring: 335 75% 55%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --brand-dark: 0 0% 10%;
-    --brand-gold: 40 52% 58%;
-    --brand-pink: 328 81% 58%;
-    --brand-cream: 30 33% 97%;
+    /* Brand tokens */
+    --brand-cream: 35 50% 96%;
+    --brand-blush: 340 40% 95%;
+    --brand-pink: 335 75% 55%;
+    --brand-hot-pink: 328 81% 58%;
+    --brand-gold: 42 80% 55%;
+    --brand-navy: 230 35% 18%;
+    --brand-warm-gray: 30 10% 40%;
+    --brand-lavender: 270 30% 92%;
 
-    --sidebar-background: 0 0% 10%;
-    --sidebar-foreground: 30 33% 97%;
-    --sidebar-primary: 40 52% 58%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 335 75% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 328 81% 58%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 40 52% 58%;
+    --sidebar-accent: 42 80% 55%;
+    --sidebar-accent-foreground: 240 10% 15%;
+    --sidebar-border: 35 20% 88%;
+    --sidebar-ring: 335 75% 55%;
   }
 
   .dark {
-    --background: 0 0% 10%;
-    --foreground: 30 33% 97%;
-
-    --card: 0 0% 13%;
-    --card-foreground: 30 33% 97%;
-
-    --popover: 0 0% 13%;
-    --popover-foreground: 30 33% 97%;
-
-    --primary: 40 52% 58%;
+    --background: 230 35% 12%;
+    --foreground: 35 50% 96%;
+    --card: 230 35% 15%;
+    --card-foreground: 35 50% 96%;
+    --popover: 230 35% 15%;
+    --popover-foreground: 35 50% 96%;
+    --primary: 335 75% 55%;
     --primary-foreground: 0 0% 100%;
-
-    --secondary: 328 81% 58%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 0 0% 18%;
-    --muted-foreground: 30 15% 65%;
-
-    --accent: 328 81% 58%;
+    --secondary: 230 20% 20%;
+    --secondary-foreground: 35 50% 96%;
+    --muted: 230 15% 22%;
+    --muted-foreground: 35 15% 65%;
+    --accent: 42 80% 55%;
     --accent-foreground: 0 0% 100%;
-
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
-    --ring: 40 52% 58%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 230 15% 22%;
+    --input: 230 15% 22%;
+    --ring: 335 75% 55%;
+    --sidebar-background: 230 35% 10%;
+    --sidebar-foreground: 35 50% 96%;
+    --sidebar-primary: 335 75% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 230 15% 18%;
+    --sidebar-accent-foreground: 35 50% 96%;
+    --sidebar-border: 230 15% 18%;
+    --sidebar-ring: 335 75% 55%;
   }
 }
 
@@ -91,30 +97,13 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
+    color: hsl(var(--brand-navy));
   }
 }
 
 @layer utilities {
-  .text-gradient-gold {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--brand-gold)), hsl(40 60% 70%));
-  }
-
-  .text-gradient-pink {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--brand-pink)), hsl(340 80% 70%));
-  }
-
-  .bg-brand-dark {
-    background-color: hsl(var(--brand-dark));
-  }
-
-  .bg-brand-cream {
-    background-color: hsl(var(--brand-cream));
-  }
-
   .section-padding {
-    @apply px-6 py-20 md:px-12 lg:px-20 lg:py-28;
+    @apply px-6 py-20 md:px-12 lg:px-20 xl:px-28 lg:py-28;
   }
 
   .editorial-container {
@@ -122,49 +111,27 @@
   }
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: hsl(var(--brand-dark));
-}
-
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--brand-gold) / 0.5);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--brand-gold));
-}
-
-/* Marquee animation */
+/* Marquee */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 25s linear infinite;
 }
 
-/* 3D book tilt */
+/* 3D book */
 .book-3d {
-  perspective: 1000px;
+  perspective: 1200px;
 }
-
 .book-3d-inner {
   transition: transform 0.6s ease;
   transform-style: preserve-3d;
 }
-
 .book-3d:hover .book-3d-inner {
-  transform: rotateY(-15deg) rotateX(5deg);
+  transform: rotateY(-12deg) rotateX(3deg);
 }
