@@ -3,13 +3,12 @@ import AnimatedCounter from "@/components/animations/AnimatedCounter";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { Play, ArrowDown, Star, Headphones, BookOpen, Mic, Users, TrendingUp, Heart } from "lucide-react";
+import { Play, ArrowDown, Star, Headphones, Mic, TrendingUp, Users, Heart } from "lucide-react";
 
 const episodes = [
   { title: "Breaking the Glass Ceiling in Corporate America", guest: "Dr. Sarah Mitchell", category: "Leadership", ep: "EP 32" },
   { title: "Building Generational Wealth as a Woman of Color", guest: "Jasmine Torres", category: "Finance", ep: "EP 31" },
   { title: "From Side Hustle to 7-Figure Empire", guest: "Michelle Chang", category: "Entrepreneurship", ep: "EP 30" },
-  { title: "The Art of Negotiation: Getting What You Deserve", guest: "Aimee Rickabus", category: "Empowerment", ep: "EP 29" },
 ];
 
 const testimonials = [
@@ -18,104 +17,102 @@ const testimonials = [
   { quote: "Aimee's authenticity and wisdom are unmatched. She doesn't just talk about empowerment — she lives it.", author: "Danielle K.", role: "Entrepreneur" },
 ];
 
-const pillars = [
-  { icon: TrendingUp, title: "Financial Literacy", description: "Master your money, build generational wealth, and create financial freedom on your own terms." },
-  { icon: Users, title: "Leadership", description: "Step into your power as a leader — in the boardroom, at home, and in your community." },
-  { icon: Heart, title: "Empowerment", description: "Own your narrative, embrace your journey, and inspire the women around you to do the same." },
-];
-
 const Index = () => {
   return (
-    <div className="bg-brand-dark text-brand-cream overflow-x-hidden">
+    <div className="overflow-x-hidden">
       <Navbar />
 
-      {/* ============ HERO ============ */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-dark via-brand-dark/80 to-brand-dark z-10" />
-
-        {/* Large background text — Jenna Kutcher style */}
-        <div className="absolute inset-0 flex items-center justify-center z-0 select-none pointer-events-none">
-          <span className="font-serif text-[12vw] md:text-[10vw] font-black text-brand-cream/[0.03] uppercase tracking-widest leading-none whitespace-nowrap">
-            MANAGEHER
-          </span>
-        </div>
-
-        {/* Hero content */}
-        <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
-          <div className="animate-fade-in" style={{ animationDelay: "200ms" }}>
-            <p className="font-sans text-xs md:text-sm uppercase tracking-[0.3em] text-brand-gold mb-6">
-              The Podcast for Women Who Lead
-            </p>
-          </div>
-
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-6 opacity-0 animate-fade-in-up">
-            THE{" "}
-            <span className="italic text-brand-gold">MANAGE</span>
-            <span>HER</span>
-          </h1>
-
-          <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: "400ms" }}>
-            <p className="font-serif text-xl md:text-2xl lg:text-3xl text-brand-cream/80 mb-4">
-              Empowering Women to <span className="italic text-brand-pink">Lead</span>,{" "}
-              <span className="italic text-brand-pink">Build Wealth</span>, &{" "}
-              <span className="italic text-brand-pink">Own Their Narrative</span>
-            </p>
-            <p className="font-sans text-sm text-brand-cream/50 max-w-lg mx-auto mb-10">
-              Hosted by Aimee Rickabus — Author, CEO, and advocate for women who refuse to settle.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-in-up" style={{ animationDelay: "600ms" }}>
-            <Button className="bg-brand-pink hover:bg-brand-pink/90 text-primary-foreground rounded-none px-10 py-6 font-sans uppercase tracking-widest text-xs group">
-              <Play size={16} className="mr-2 group-hover:scale-110 transition-transform" />
-              Listen Now
-            </Button>
-            <Button
-              variant="outline"
-              className="border-brand-gold/40 text-brand-gold hover:bg-brand-gold/10 rounded-none px-10 py-6 font-sans uppercase tracking-widest text-xs"
-            >
-              <BookOpen size={16} className="mr-2" />
-              Get the Book
-            </Button>
-          </div>
-
-          {/* Stats */}
-          <div className="flex justify-center gap-8 md:gap-16 mt-16 opacity-0 animate-fade-in-up" style={{ animationDelay: "800ms" }}>
-            {[
-              { value: 30, suffix: "+", label: "Episodes" },
-              { value: 5.0, suffix: "★", label: "Rating" },
-              { value: 50, suffix: "K+", label: "Downloads" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="font-serif text-3xl md:text-4xl font-bold text-brand-gold">
-                  <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-                </div>
-                <p className="font-sans text-xs uppercase tracking-widest text-brand-cream/50 mt-1">
-                  {stat.label}
+      {/* ===== HERO — Amy Porterfield style: bright, photo alongside text ===== */}
+      <section className="min-h-screen flex items-center relative overflow-hidden" style={{ background: "linear-gradient(135deg, hsl(340 40% 95%), hsl(35 50% 96%), hsl(270 30% 95%))" }}>
+        <div className="editorial-container w-full px-6 lg:px-12 pt-24 lg:pt-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-center min-h-screen">
+            {/* Left: Copy */}
+            <div className="max-w-xl z-10">
+              <div className="opacity-0 animate-fade-in" style={{ animationDelay: "200ms" }}>
+                <p className="font-sans text-sm uppercase tracking-[0.2em] text-brand-pink font-medium mb-6">
+                  The Podcast for Women Who Lead
                 </p>
               </div>
-            ))}
+
+              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6 opacity-0 animate-fade-in-up">
+                What <em className="text-brand-pink">really</em> empowers women to build the life they deserve.
+              </h1>
+
+              <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: "300ms" }}>
+                <p className="font-sans text-lg text-brand-warm-gray leading-relaxed mb-8 max-w-md">
+                  From proven strategies to raw, real conversations — I'll help you take control of your career, finances, and future.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: "500ms" }}>
+                <Button className="bg-brand-pink hover:bg-brand-pink/90 text-primary-foreground rounded-full px-8 py-6 font-sans text-sm group shadow-lg shadow-brand-pink/20">
+                  <Play size={16} className="mr-2 group-hover:scale-110 transition-transform" />
+                  Listen Now
+                </Button>
+                <Button
+                  variant="outline"
+                  className="border-brand-navy/20 text-brand-navy hover:bg-brand-navy/5 rounded-full px-8 py-6 font-sans text-sm"
+                  asChild
+                >
+                  <a href="/book">Get the Book</a>
+                </Button>
+              </div>
+            </div>
+
+            {/* Right: Hero Photo */}
+            <div className="relative flex justify-center lg:justify-end opacity-0 animate-fade-in-up" style={{ animationDelay: "400ms" }}>
+              <div className="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=800&fit=crop&crop=top"
+                  alt="Aimee Rickabus"
+                  className="w-80 md:w-96 lg:w-[28rem] h-auto object-cover rounded-2xl shadow-2xl"
+                  loading="eager"
+                />
+                {/* Floating stat card */}
+                <div className="absolute -bottom-4 -left-4 md:-left-8 bg-card rounded-xl shadow-lg p-4 md:p-5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-brand-pink/10 flex items-center justify-center">
+                      <Headphones size={18} className="text-brand-pink" />
+                    </div>
+                    <div>
+                      <p className="font-serif text-lg font-bold text-brand-navy">
+                        <AnimatedCounter target={50} suffix="K+" />
+                      </p>
+                      <p className="font-sans text-xs text-muted-foreground">Downloads</p>
+                    </div>
+                  </div>
+                </div>
+                {/* Floating rating card */}
+                <div className="absolute -top-4 -right-4 md:-right-8 bg-card rounded-xl shadow-lg p-4 md:p-5">
+                  <div className="flex items-center gap-1 mb-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={14} className="text-brand-gold fill-brand-gold" />
+                    ))}
+                  </div>
+                  <p className="font-sans text-xs text-muted-foreground">5.0 · 500+ reviews</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-float">
-          <ArrowDown size={20} className="text-brand-gold/60" />
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
+          <ArrowDown size={20} className="text-brand-pink/50" />
         </div>
       </section>
 
-      {/* ============ AS FEATURED IN ============ */}
-      <section className="py-12 border-y border-brand-cream/10 overflow-hidden">
-        <p className="font-sans text-xs uppercase tracking-[0.3em] text-center text-brand-cream/40 mb-8">
+      {/* ===== AS SEEN IN ===== */}
+      <section className="py-10 bg-card border-y border-border overflow-hidden">
+        <p className="font-sans text-xs uppercase tracking-[0.2em] text-center text-muted-foreground mb-6">
           As Featured In
         </p>
         <div className="flex animate-marquee whitespace-nowrap">
           {[...Array(2)].map((_, setIdx) => (
-            <div key={setIdx} className="flex gap-16 mx-8">
+            <div key={setIdx} className="flex gap-12 md:gap-16 mx-8 items-center">
               {["Forbes", "Inc.", "Entrepreneur", "Bloomberg", "Fast Company", "Business Insider", "HuffPost", "ABC News"].map(
                 (name) => (
-                  <span key={`${setIdx}-${name}`} className="font-serif text-xl md:text-2xl text-brand-cream/20 italic">
+                  <span key={`${setIdx}-${name}`} className="font-serif text-lg md:text-xl text-muted-foreground/40 italic select-none">
                     {name}
                   </span>
                 )
@@ -125,85 +122,81 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ============ MEET AIMEE ============ */}
-      <section className="section-padding">
+      {/* ===== MEET AIMEE — Warm, personal, like Marie/Amy ===== */}
+      <section className="section-padding bg-background">
         <div className="editorial-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <ScrollReveal animation="slide-in-left">
               <div className="relative">
-                <div className="aspect-[3/4] bg-gradient-to-br from-brand-gold/20 to-brand-pink/20 rounded-sm overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=800&fit=crop"
-                    alt="Aimee Rickabus"
-                    className="w-full h-full object-cover mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
-                    loading="lazy"
-                  />
-                </div>
-                {/* Floating quote card */}
-                <div className="absolute -bottom-6 -right-6 bg-brand-dark border border-brand-gold/30 p-6 max-w-xs hidden md:block">
-                  <p className="font-serif text-lg italic text-brand-gold leading-relaxed">
-                    "Every woman has the power to rewrite her own story."
-                  </p>
-                </div>
+                <img
+                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=700&fit=crop"
+                  alt="Aimee Rickabus"
+                  className="w-full rounded-2xl shadow-xl"
+                  loading="lazy"
+                />
               </div>
             </ScrollReveal>
 
             <ScrollReveal animation="slide-in-right" delay={200}>
-              <p className="font-sans text-xs uppercase tracking-[0.3em] text-brand-pink mb-4">
-                Meet Your Host
+              <p className="font-sans text-sm uppercase tracking-[0.2em] text-brand-pink font-medium mb-3">
+                Heya!
               </p>
               <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
-                Aimee <span className="italic text-brand-gold">Rickabus</span>
+                I'm <span className="italic text-brand-pink">Aimee.</span>
               </h2>
-              <p className="font-sans text-brand-cream/70 leading-relaxed mb-6">
-                Mother. CEO. Author. Podcast Host. Aimee Rickabus is on a mission to empower women 
-                to take control of their careers, finances, and futures. Through The Manage Her Podcast, 
-                she brings raw, unfiltered conversations with industry leaders, entrepreneurs, and 
-                change-makers who are reshaping what it means to be a woman in power.
+              <p className="font-sans text-brand-warm-gray leading-relaxed mb-5">
+                My hunch is someone you trust mentioned my name, or you stumbled upon one of my 
+                episodes online. Whatever path you took, I'm really glad you're here.
               </p>
-              <p className="font-sans text-brand-cream/70 leading-relaxed mb-8">
-                With her debut book and a rapidly growing community of ambitious women, Aimee is building 
-                more than a brand — she's building a movement.
+              <p className="font-sans text-brand-warm-gray leading-relaxed mb-5">
+                I'm a mother, CEO, author, and the host of The Manage Her Podcast. I went from 
+                the corporate grind to building a platform that's helped thousands of women take 
+                control of their careers, finances, and futures. No fluff, no fake hustle — just 
+                real strategies that actually work.
+              </p>
+              <p className="font-serif text-xl italic text-brand-pink leading-relaxed mb-8">
+                "Every woman has the power to rewrite her own story."
               </p>
               <Button
                 variant="outline"
-                className="border-brand-gold/40 text-brand-gold hover:bg-brand-gold/10 rounded-none px-8 py-5 font-sans uppercase tracking-widest text-xs"
+                className="border-brand-navy/20 text-brand-navy hover:bg-brand-navy/5 rounded-full px-8 py-5 font-sans text-sm"
                 asChild
               >
-                <a href="/about">Her Full Story →</a>
+                <a href="/about">Learn More About Me →</a>
               </Button>
             </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* ============ 3 PILLARS ============ */}
-      <section className="section-padding bg-brand-cream text-brand-dark">
+      {/* ===== WHAT I HELP WITH — Clean cards, warm feel ===== */}
+      <section className="section-padding" style={{ background: "linear-gradient(180deg, hsl(35 50% 96%), hsl(340 40% 96%))" }}>
         <div className="editorial-container">
           <ScrollReveal>
-            <div className="text-center mb-16">
-              <p className="font-sans text-xs uppercase tracking-[0.3em] text-brand-pink mb-4">
-                The Foundation
-              </p>
-              <h2 className="font-serif text-4xl md:text-5xl font-bold">
-                Three Pillars of <span className="italic">Empowerment</span>
+            <div className="text-center mb-16 max-w-2xl mx-auto">
+              <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4">
+                I help women turn their <em className="text-brand-pink">ambition</em> into action.
               </h2>
+              <p className="font-sans text-brand-warm-gray leading-relaxed">
+                Here you'll find tools, strategies, podcast episodes, and a book designed to help you 
+                take the next right step.
+              </p>
             </div>
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pillars.map((pillar, i) => (
+            {[
+              { icon: TrendingUp, title: "Financial Literacy", description: "Master your money, build generational wealth, and create financial freedom on your own terms. No jargon, just clarity." },
+              { icon: Users, title: "Leadership", description: "Step into your power as a leader — in the boardroom, at home, and in your community. It's time to take up space." },
+              { icon: Heart, title: "Empowerment", description: "Own your narrative, embrace your journey, and inspire the women around you to do the same. This is your era." },
+            ].map((pillar, i) => (
               <ScrollReveal key={pillar.title} delay={i * 150}>
-                <div className="group p-8 border border-brand-dark/10 hover:border-brand-pink/30 transition-all duration-500 hover:shadow-xl relative overflow-hidden">
-                  <div className="absolute top-4 right-4 font-serif text-6xl font-bold text-brand-dark/5 group-hover:text-brand-pink/10 transition-colors">
-                    0{i + 1}
+                <div className="bg-card rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 group text-center">
+                  <div className="w-14 h-14 rounded-full bg-brand-pink/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-pink/20 transition-colors">
+                    <pillar.icon size={24} className="text-brand-pink" />
                   </div>
-                  <pillar.icon
-                    size={32}
-                    className="text-brand-pink mb-6 group-hover:scale-110 transition-transform duration-300"
-                  />
                   <h3 className="font-serif text-2xl font-bold mb-4">{pillar.title}</h3>
-                  <p className="font-sans text-brand-dark/70 leading-relaxed">{pillar.description}</p>
+                  <p className="font-sans text-brand-warm-gray leading-relaxed">{pillar.description}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -211,22 +204,22 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ============ LATEST EPISODES ============ */}
-      <section id="listen" className="section-padding">
+      {/* ===== PODCAST EPISODES — Clean, bright ===== */}
+      <section id="listen" className="section-padding bg-card">
         <div className="editorial-container">
           <ScrollReveal>
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
               <div>
-                <p className="font-sans text-xs uppercase tracking-[0.3em] text-brand-gold mb-4">
-                  Latest Episodes
+                <p className="font-sans text-sm uppercase tracking-[0.2em] text-brand-pink font-medium mb-3">
+                  The Podcast
                 </p>
                 <h2 className="font-serif text-4xl md:text-5xl font-bold">
-                  Tune In & <span className="italic text-brand-pink">Turn Up</span>
+                  The Manage Her Show
                 </h2>
               </div>
               <Button
                 variant="outline"
-                className="border-brand-cream/20 text-brand-cream hover:bg-brand-cream/10 rounded-none mt-6 md:mt-0 font-sans uppercase tracking-widest text-xs"
+                className="border-brand-navy/20 text-brand-navy hover:bg-brand-navy/5 rounded-full mt-6 md:mt-0 font-sans text-sm"
                 asChild
               >
                 <a href="/podcast">All Episodes →</a>
@@ -234,27 +227,38 @@ const Index = () => {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Stats bar */}
+          <ScrollReveal>
+            <div className="flex flex-wrap gap-8 mb-12 pb-8 border-b border-border">
+              {[
+                { label: "Downloads", value: 50, suffix: "K+" },
+                { label: "Episodes", value: 30, suffix: "+" },
+                { label: "5-Star Reviews", value: 500, suffix: "+" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <p className="font-serif text-3xl md:text-4xl font-bold text-brand-pink">
+                    <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                  </p>
+                  <p className="font-sans text-xs uppercase tracking-widest text-muted-foreground mt-1">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          <div className="space-y-4">
             {episodes.map((ep, i) => (
               <ScrollReveal key={ep.ep} delay={i * 100}>
-                <div className="group border border-brand-cream/10 hover:border-brand-gold/30 p-6 transition-all duration-500 hover:bg-brand-cream/5 cursor-pointer">
-                  <div className="flex items-start justify-between mb-4">
-                    <span className="font-sans text-xs uppercase tracking-widest text-brand-gold">
-                      {ep.ep}
-                    </span>
-                    <span className="font-sans text-xs uppercase tracking-widest text-brand-pink">
-                      {ep.category}
-                    </span>
-                  </div>
-                  <h3 className="font-serif text-xl md:text-2xl font-semibold mb-3 group-hover:text-brand-gold transition-colors">
-                    {ep.title}
-                  </h3>
-                  <div className="flex items-center justify-between">
-                    <p className="font-sans text-sm text-brand-cream/50">
-                      with {ep.guest}
-                    </p>
-                    <div className="w-10 h-10 rounded-full border border-brand-pink/40 flex items-center justify-center group-hover:bg-brand-pink group-hover:border-brand-pink transition-all duration-300">
-                      <Play size={14} className="text-brand-pink group-hover:text-primary-foreground ml-0.5" />
+                <div className="group flex items-center justify-between p-6 rounded-xl hover:bg-brand-blush transition-all duration-300 cursor-pointer border border-transparent hover:border-brand-pink/10">
+                  <div className="flex items-center gap-5">
+                    <div className="w-12 h-12 rounded-full bg-brand-pink/10 flex items-center justify-center group-hover:bg-brand-pink transition-all duration-300 shrink-0">
+                      <Play size={16} className="text-brand-pink group-hover:text-primary-foreground ml-0.5" />
+                    </div>
+                    <div>
+                      <p className="font-sans text-xs text-brand-pink font-medium mb-1">{ep.ep} · {ep.category}</p>
+                      <h3 className="font-serif text-lg md:text-xl font-semibold group-hover:text-brand-pink transition-colors">
+                        {ep.title}
+                      </h3>
+                      <p className="font-sans text-sm text-muted-foreground mt-1">with {ep.guest}</p>
                     </div>
                   </div>
                 </div>
@@ -262,21 +266,17 @@ const Index = () => {
             ))}
           </div>
 
-          {/* Platform Links */}
-          <ScrollReveal delay={400}>
-            <div className="flex flex-wrap justify-center gap-6 mt-12 pt-12 border-t border-brand-cream/10">
+          {/* Platform links */}
+          <ScrollReveal delay={300}>
+            <div className="flex flex-wrap justify-center gap-6 mt-12 pt-8 border-t border-border">
               {[
                 { icon: Headphones, label: "Apple Podcasts" },
                 { icon: Mic, label: "Spotify" },
                 { icon: Play, label: "YouTube" },
-              ].map((platform) => (
-                <a
-                  key={platform.label}
-                  href="#"
-                  className="flex items-center gap-2 font-sans text-sm text-brand-cream/50 hover:text-brand-gold transition-colors group"
-                >
-                  <platform.icon size={18} className="group-hover:scale-110 transition-transform" />
-                  {platform.label}
+              ].map((p) => (
+                <a key={p.label} href="#" className="flex items-center gap-2 font-sans text-sm text-muted-foreground hover:text-brand-pink transition-colors group">
+                  <p.icon size={16} className="group-hover:scale-110 transition-transform" />
+                  {p.label}
                 </a>
               ))}
             </div>
@@ -284,70 +284,59 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ============ BOOK TEASER ============ */}
-      <section className="section-padding bg-gradient-to-br from-brand-dark via-[hsl(328,30%,12%)] to-brand-dark">
+      {/* ===== BOOK SECTION — Warm, editorial ===== */}
+      <section className="section-padding" style={{ background: "linear-gradient(180deg, hsl(340 40% 96%), hsl(270 30% 94%), hsl(35 50% 96%))" }}>
         <div className="editorial-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <ScrollReveal animation="scale-in">
               <div className="flex justify-center">
                 <div className="book-3d">
-                  <div className="book-3d-inner w-64 md:w-72 aspect-[2/3] bg-gradient-to-br from-brand-gold/30 via-brand-pink/20 to-brand-dark border border-brand-gold/20 shadow-2xl flex flex-col items-center justify-center p-8">
-                    <p className="font-sans text-xs uppercase tracking-[0.3em] text-brand-gold mb-4">
-                      The Book
-                    </p>
+                  <div className="book-3d-inner w-56 md:w-64 aspect-[2/3] bg-gradient-to-br from-brand-pink/90 to-brand-hot-pink rounded-lg shadow-2xl flex flex-col items-center justify-center p-8 text-primary-foreground">
+                    <p className="font-sans text-xs uppercase tracking-[0.3em] opacity-80 mb-4">The Book</p>
                     <h3 className="font-serif text-3xl md:text-4xl font-bold text-center leading-tight mb-3">
-                      THE<br />
-                      <span className="italic text-brand-gold">MANAGE</span>
-                      <span>HER</span>
+                      THE<br /><em>MANAGE</em><br />HER
                     </h3>
-                    <div className="w-12 h-px bg-brand-gold/40 my-4" />
-                    <p className="font-sans text-xs text-brand-cream/60 text-center">
-                      Aimee Rickabus
-                    </p>
+                    <div className="w-10 h-px bg-primary-foreground/40 my-3" />
+                    <p className="font-sans text-xs opacity-80">Aimee Rickabus</p>
                   </div>
                 </div>
               </div>
             </ScrollReveal>
 
             <ScrollReveal animation="slide-in-right" delay={200}>
-              <p className="font-sans text-xs uppercase tracking-[0.3em] text-brand-pink mb-4">
+              <p className="font-sans text-sm uppercase tracking-[0.2em] text-brand-gold font-medium mb-3">
                 Now Available
               </p>
               <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
-                The Book That's <span className="italic text-brand-gold">Changing the Game</span>
+                The book that's <em className="text-brand-pink">changing the game.</em>
               </h2>
-              <p className="font-sans text-brand-cream/70 leading-relaxed mb-6">
-                Part memoir, part manifesto — The Manage Her is the definitive guide for women who 
-                are ready to stop managing everyone else's expectations and start managing their own 
-                legacy. Packed with real stories, actionable strategies, and the unfiltered truth about 
-                what it takes to win.
+              <p className="font-sans text-brand-warm-gray leading-relaxed mb-6">
+                Part memoir, part manifesto — The Manage Her is the definitive guide for women 
+                who are ready to stop managing everyone else's expectations and start managing 
+                their own legacy. Packed with real stories, actionable strategies, and the 
+                unfiltered truth about what it takes to win.
               </p>
               <div className="flex items-center gap-2 mb-8">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} size={18} className="text-brand-gold fill-brand-gold" />
                 ))}
-                <span className="font-sans text-sm text-brand-cream/50 ml-2">
-                  "A must-read" — 200+ reviews
-                </span>
+                <span className="font-sans text-sm text-muted-foreground ml-2">"A must-read" — 200+ reviews</span>
               </div>
-              <Button className="bg-brand-gold hover:bg-brand-gold/90 text-brand-dark rounded-none px-10 py-6 font-sans uppercase tracking-widest text-xs font-semibold">
-                Get Your Copy →
+              <Button className="bg-brand-navy hover:bg-brand-navy/90 text-primary-foreground rounded-full px-8 py-6 font-sans text-sm shadow-lg" asChild>
+                <a href="/book">Get Your Copy →</a>
               </Button>
             </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* ============ TESTIMONIALS ============ */}
-      <section className="section-padding bg-brand-cream text-brand-dark">
+      {/* ===== TESTIMONIALS ===== */}
+      <section className="section-padding bg-card">
         <div className="editorial-container">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <p className="font-sans text-xs uppercase tracking-[0.3em] text-brand-pink mb-4">
-                What Women Are Saying
-              </p>
               <h2 className="font-serif text-4xl md:text-5xl font-bold">
-                Words That <span className="italic">Move Us</span>
+                What women are <em className="text-brand-pink">saying</em>
               </h2>
             </div>
           </ScrollReveal>
@@ -355,14 +344,18 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((t, i) => (
               <ScrollReveal key={t.author} delay={i * 150}>
-                <div className="p-8 border border-brand-dark/10 relative">
-                  <span className="font-serif text-6xl text-brand-pink/20 absolute top-4 left-6">"</span>
-                  <p className="font-serif text-lg italic leading-relaxed mb-6 mt-8 text-brand-dark/80">
-                    {t.quote}
+                <div className="bg-background rounded-2xl p-8 shadow-sm">
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} size={14} className="text-brand-gold fill-brand-gold" />
+                    ))}
+                  </div>
+                  <p className="font-serif text-lg italic leading-relaxed mb-6 text-brand-navy/80">
+                    "{t.quote}"
                   </p>
                   <div>
-                    <p className="font-sans text-sm font-semibold">{t.author}</p>
-                    <p className="font-sans text-xs text-brand-dark/50">{t.role}</p>
+                    <p className="font-sans text-sm font-semibold text-brand-navy">{t.author}</p>
+                    <p className="font-sans text-xs text-muted-foreground">{t.role}</p>
                   </div>
                 </div>
               </ScrollReveal>
