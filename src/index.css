@@ -55,21 +55,15 @@
 @layer base {
   * {
     @apply border-border;
-    cursor: none;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    cursor: none;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
   }
 }
 
-/* Restore cursor on touch devices */
-@media (hover: none) {
-  * { cursor: auto !important; }
-}
 
 html {
   scroll-behavior: smooth;
