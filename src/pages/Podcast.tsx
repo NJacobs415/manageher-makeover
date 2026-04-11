@@ -2,10 +2,10 @@ import { useState } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollReveal from "@/components/animations/ScrollReveal";
+import AnimatedCounter from "@/components/animations/AnimatedCounter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Play, Search } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const EP_PHOTO_1 = "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a0c0f913b8428032bfd3dc.jpg";
 const EP_PHOTO_2 = "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a0c0f995735c6c97483230.jpg";
@@ -16,13 +16,13 @@ const categories = ["All", "Empowerment", "Finance", "Entrepreneurship", "Leader
 
 const allEpisodes = [
   { img: EP_PHOTO_1, title: "The Invisible Load: Why Women Are Leading Without the Title", ep: 1, duration: "42 min", category: "Empowerment", desc: "You're managing a household, a career, everyone's emotions — it's time we named this brilliance for what it is: leadership.", featured: true },
-  { img: EP_PHOTO_2, title: "Money, Power & the Wage Gap Nobody Talks About", ep: 5, duration: "38 min", category: "Finance", desc: "Financial literacy isn't optional — it's freedom. Let's talk about wealth building, pay equity, and why every woman deserves a seat at the table." },
-  { img: EP_PHOTO_3, title: "Scaling a Business While Raising Humans", ep: 10, duration: "45 min", category: "Entrepreneurship", desc: "Ambition and motherhood aren't mutually exclusive. Here's how to build something extraordinary without losing yourself." },
-  { img: EP_PHOTO_4, title: "Setting Boundaries Without the Guilt Trip", ep: 15, duration: "36 min", category: "Empowerment", desc: "Why saying no is the most powerful leadership skill you'll ever develop — and how to stop apologizing for protecting your energy." },
-  { img: EP_PHOTO_1, title: "The Leadership Revolution Starts at Home", ep: 20, duration: "41 min", category: "Leadership", desc: "The boardroom isn't the only place leadership matters. How the skills you use at home translate to massive career impact." },
-  { img: EP_PHOTO_2, title: "Investing for Beginners: A No-BS Guide", ep: 22, duration: "44 min", category: "Finance", desc: "Stocks, real estate, retirement accounts — demystified. Everything I wish someone had told me about money 20 years ago." },
-  { img: EP_PHOTO_3, title: "When Ambition Feels Like Too Much", ep: 25, duration: "39 min", category: "Empowerment", desc: "Society tells us to dream big but stay small. Here's how to hold space for your ambition without the guilt spiral." },
-  { img: EP_PHOTO_4, title: "Building Your Board of Directors in Life", ep: 28, duration: "43 min", category: "Leadership", desc: "You need advocates, truth-tellers, and cheerleaders. How to curate the inner circle that will elevate you." },
+  { img: EP_PHOTO_2, title: "Money, Power & the Wage Gap Nobody Talks About", ep: 5, duration: "38 min", category: "Finance", desc: "Financial literacy isn't optional — it's freedom." },
+  { img: EP_PHOTO_3, title: "Scaling a Business While Raising Humans", ep: 10, duration: "45 min", category: "Entrepreneurship", desc: "Ambition and motherhood aren't mutually exclusive." },
+  { img: EP_PHOTO_4, title: "Setting Boundaries Without the Guilt Trip", ep: 15, duration: "36 min", category: "Empowerment", desc: "Why saying no is the most powerful leadership skill you'll ever develop." },
+  { img: EP_PHOTO_1, title: "The Leadership Revolution Starts at Home", ep: 20, duration: "41 min", category: "Leadership", desc: "How the skills you use at home translate to massive career impact." },
+  { img: EP_PHOTO_2, title: "Investing for Beginners: A No-BS Guide", ep: 22, duration: "44 min", category: "Finance", desc: "Stocks, real estate, retirement accounts — demystified." },
+  { img: EP_PHOTO_3, title: "When Ambition Feels Like Too Much", ep: 25, duration: "39 min", category: "Empowerment", desc: "Society tells us to dream big but stay small." },
+  { img: EP_PHOTO_4, title: "Building Your Board of Directors in Life", ep: 28, duration: "43 min", category: "Leadership", desc: "You need advocates, truth-tellers, and cheerleaders." },
 ];
 
 const Podcast = () => {
@@ -39,39 +39,62 @@ const Podcast = () => {
     <div className="overflow-x-hidden">
       <Navbar />
 
-      {/* Hero */}
-      <section className="py-20 md:py-24 px-6" style={{ background: "linear-gradient(160deg, hsl(260 40% 94%), hsl(340 50% 95%), hsl(38 55% 96%))" }}>
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.15em] text-brand-pink mb-4 animate-fade-in">The Podcast</p>
-          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-brand-navy mb-5 opacity-0 animate-fade-in-up">
-            The Manage<em className="text-brand-pink">Her</em>™ Show
-          </h1>
-          <p className="font-sans text-[15px] md:text-base text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed opacity-0 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
-            Real conversations about leadership, invisible labor, and building wealth — for women who are done asking permission and ready to lead.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3 opacity-0 animate-fade-in-up" style={{ animationDelay: "350ms" }}>
+      {/* Hero — Amy podcast style */}
+      <section className="bg-brand-ice py-20 md:py-28 px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 className="font-serif text-5xl md:text-6xl font-bold text-brand-pink mb-2 opacity-0 animate-fade-in-up">
+              The Manage Her™ Show
+            </h1>
+            <p className="font-serif text-xl md:text-2xl text-brand-navy/40 italic mb-6 opacity-0 animate-fade-in-up" style={{ animationDelay: "150ms" }}>
+              Getting real about what it takes.
+            </p>
+            <p className="font-sans text-[15px] text-muted-foreground leading-relaxed mb-4 opacity-0 animate-fade-in-up" style={{ animationDelay: "250ms" }}>
+              The Manage Her™ Show is a weekly conversation about <strong className="text-brand-navy">women's invisible leadership</strong> — from proven strategies to honest behind-the-scenes, all to help you lead boldly and unapologetically.
+            </p>
+
+            <div className="flex gap-10 mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: "350ms" }}>
+              <div>
+                <p className="font-serif text-4xl font-bold text-brand-gold"><AnimatedCounter target={30} suffix="+" /></p>
+                <p className="font-sans text-xs font-bold uppercase tracking-widest text-muted-foreground mt-1">Episodes</p>
+              </div>
+              <div>
+                <p className="font-serif text-4xl font-bold text-brand-gold">5.0 ★</p>
+                <p className="font-sans text-xs font-bold uppercase tracking-widest text-muted-foreground mt-1">Apple Rating</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: "400ms" }}>
             {[
-              { label: "Apple Podcasts", href: "https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475" },
-              { label: "Spotify", href: "https://open.spotify.com/show/03FuFRyzkaWhZkk5yxFePJ" },
-              { label: "YouTube", href: "https://www.youtube.com/@TheManageHer" },
+              { label: "Watch on YouTube", href: "https://www.youtube.com/@TheManageHer", icon: "▶" },
+              { label: "Listen on Apple", href: "https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475", icon: "🎧" },
+              { label: "Listen on Spotify", href: "https://open.spotify.com/show/03FuFRyzkaWhZkk5yxFePJ", icon: "🎵" },
             ].map((p) => (
-              <Button key={p.label} variant="outline" className="rounded-full px-5 h-10 font-sans text-xs font-semibold uppercase tracking-[0.08em] border-brand-navy/15 text-brand-navy hover:bg-brand-navy/5" asChild>
-                <a href={p.href} target="_blank" rel="noopener noreferrer">{p.label}</a>
-              </Button>
+              <a
+                key={p.label}
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 bg-background rounded-sm px-6 py-4 font-sans text-sm font-bold uppercase tracking-[0.1em] text-brand-navy hover:shadow-md transition-all border border-border hover:border-brand-pink/20 group"
+              >
+                <span className="text-xl group-hover:scale-110 transition-transform">{p.icon}</span>
+                {p.label}
+              </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="bg-background sticky top-[72px] z-30 border-b border-border px-6 py-4">
+      {/* Filters — sticky */}
+      <section className="bg-background sticky top-[68px] z-30 border-b border-border px-6 py-4">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-3 items-center justify-between">
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActive(cat)}
-                className={`font-sans text-xs font-medium px-4 py-2 rounded-full transition-all ${
+                className={`font-sans text-xs font-bold uppercase tracking-[0.08em] px-4 py-2 transition-all ${
                   active === cat ? "bg-brand-pink text-primary-foreground" : "text-muted-foreground hover:bg-muted"
                 }`}
               >
@@ -81,12 +104,12 @@ const Podcast = () => {
           </div>
           <div className="relative w-full md:w-56">
             <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground" />
-            <Input placeholder="Search episodes..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9 rounded-full h-9 font-sans text-sm" />
+            <Input placeholder="Search episodes..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9 h-9 font-sans text-sm" />
           </div>
         </div>
       </section>
 
-      {/* Grid */}
+      {/* Episode Grid */}
       <section className="py-12 md:py-16 px-6 bg-background">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {filtered.map((ep, i) => (
@@ -95,7 +118,7 @@ const Podcast = () => {
                 href="https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-brand-pink/10"
+                className="group block bg-card overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-border hover:border-brand-pink/20"
               >
                 <div className="relative aspect-square overflow-hidden">
                   <img src={ep.img} alt={ep.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
@@ -105,11 +128,11 @@ const Podcast = () => {
                     </div>
                   </div>
                   {ep.featured && (
-                    <span className="absolute top-2.5 left-2.5 bg-brand-pink text-primary-foreground font-sans text-[9px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full">Featured</span>
+                    <span className="absolute top-2.5 left-2.5 bg-brand-gold text-foreground font-sans text-[9px] font-bold uppercase tracking-wider px-2.5 py-1">Featured</span>
                   )}
                 </div>
                 <div className="p-4">
-                  <p className="font-sans text-[10px] text-muted-foreground mb-1.5">EP {String(ep.ep).padStart(2, "0")} · {ep.duration} · {ep.category}</p>
+                  <p className="font-sans text-[10px] text-muted-foreground mb-1.5 uppercase tracking-wide">EP {String(ep.ep).padStart(2, "0")} · {ep.duration} · {ep.category}</p>
                   <h3 className="font-serif text-[15px] font-bold text-brand-navy leading-snug group-hover:text-brand-pink transition-colors line-clamp-2">{ep.title}</h3>
                 </div>
               </a>

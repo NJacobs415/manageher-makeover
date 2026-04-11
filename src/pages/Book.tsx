@@ -11,32 +11,27 @@ const Book = () => (
   <div className="overflow-x-hidden">
     <Navbar />
 
-    {/* Hero */}
-    <section className="py-20 md:py-28 px-6" style={{ background: "linear-gradient(160deg, hsl(340 50% 95%), hsl(260 40% 94%), hsl(38 55% 96%))" }}>
+    {/* Hero — Amy-style clean layout */}
+    <section className="bg-brand-ice py-20 md:py-28 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div className="flex justify-center order-2 lg:order-1">
           <div className="book-3d opacity-0 animate-scale-in">
-            <div className="book-3d-inner rounded-lg overflow-hidden">
+            <div className="book-3d-inner overflow-hidden">
               <img src={BOOK_COVER} alt="The Manage Her™ Book" className="w-56 md:w-64 lg:w-72" loading="eager" />
             </div>
           </div>
         </div>
 
         <div className="order-1 lg:order-2">
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.15em] text-brand-gold mb-4 animate-fade-in">The Book</p>
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.4rem] font-bold text-brand-navy leading-[1.1] mb-5 opacity-0 animate-fade-in-up" style={{ animationDelay: "150ms" }}>
-            Unveiling Invisible Labor & Sparking a <em className="text-brand-pink">Leadership Revolution</em>
+          <p className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-brand-gold mb-4 animate-fade-in">The Book</p>
+          <h1 className="font-serif text-4xl md:text-5xl font-bold text-brand-pink leading-[1.1] mb-5 opacity-0 animate-fade-in-up" style={{ animationDelay: "150ms" }}>
+            Unveiling Invisible Labor & Sparking a Leadership Revolution
           </h1>
-          <p className="font-sans text-[15px] text-muted-foreground leading-relaxed mb-5 opacity-0 animate-fade-in-up" style={{ animationDelay: "250ms" }}>
+          <p className="font-sans text-[15px] text-muted-foreground leading-relaxed mb-6 opacity-0 animate-fade-in-up" style={{ animationDelay: "250ms" }}>
             The book that names what millions of women feel but can't articulate. From invisible labor to identity reclamation, this is the blueprint for women who are done shrinking and ready to lead.
           </p>
-          <div className="flex flex-wrap gap-2 mb-7 opacity-0 animate-fade-in-up" style={{ animationDelay: "350ms" }}>
-            {["Invisible Labor Framework", "Leadership Identity", "Financial Independence", "Boundary Setting", "Self-Reclamation"].map((t) => (
-              <span key={t} className="font-sans text-[11px] font-medium bg-brand-blush text-brand-pink px-3 py-1.5 rounded-full">{t}</span>
-            ))}
-          </div>
-          <div className="flex flex-wrap gap-3 opacity-0 animate-fade-in-up" style={{ animationDelay: "450ms" }}>
-            <Button className="bg-brand-pink hover:bg-brand-pink/90 text-primary-foreground rounded-full px-7 h-11 font-sans text-sm font-medium shadow-lg shadow-brand-pink/20" asChild>
+          <div className="flex flex-wrap gap-3 opacity-0 animate-fade-in-up" style={{ animationDelay: "350ms" }}>
+            <Button className="bg-brand-gold hover:bg-brand-gold/90 text-foreground px-7 h-11 font-sans text-sm font-bold uppercase tracking-[0.08em]" asChild>
               <a href="https://a.co/d/by5X0fV" target="_blank" rel="noopener noreferrer">Order on Amazon →</a>
             </Button>
           </div>
@@ -44,12 +39,12 @@ const Book = () => (
       </div>
     </section>
 
-    {/* What's inside */}
+    {/* What's Inside — clean accordion */}
     <section className="py-20 md:py-28 px-6 bg-background">
       <div className="max-w-3xl mx-auto">
         <ScrollReveal>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-brand-navy text-center mb-12">
-            What's <em className="text-brand-pink">Inside</em>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-brand-pink text-center mb-12">
+            What's Inside
           </h2>
         </ScrollReveal>
 
@@ -61,9 +56,9 @@ const Book = () => (
               { title: "Leading Without Permission", preview: "How to step into leadership roles before anyone offers them to you. You don't need a title to lead." },
               { title: "The Art of Boundaries", preview: "Setting boundaries that protect your energy, time, and ambition without the guilt trip." },
               { title: "Building Your Board", preview: "Curating the inner circle that will challenge, support, and elevate you — your personal board of directors." },
-              { title: "Own Your Narrative", preview: "Taking control of your story — in the boardroom, online, and in your own mind. This is your leadership revolution." },
+              { title: "Own Your Narrative", preview: "Taking control of your story — in the boardroom, online, and in your own mind." },
             ].map((ch, i) => (
-              <AccordionItem key={i} value={`ch-${i}`} className="bg-card rounded-xl px-5 border border-border">
+              <AccordionItem key={i} value={`ch-${i}`} className="bg-card px-5 border border-border">
                 <AccordionTrigger className="font-serif text-lg hover:no-underline py-4 hover:text-brand-pink transition-colors text-brand-navy">
                   {ch.title}
                 </AccordionTrigger>
@@ -78,11 +73,11 @@ const Book = () => (
     </section>
 
     {/* Who it's for */}
-    <section className="py-20 md:py-28 px-6" style={{ background: "linear-gradient(180deg, hsl(38 55% 97%), hsl(340 50% 96%))" }}>
+    <section className="py-20 md:py-28 px-6 bg-brand-ice">
       <div className="max-w-4xl mx-auto">
         <ScrollReveal>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-brand-navy text-center mb-14">
-            This book is for <em className="text-brand-pink">you</em> if…
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-brand-pink text-center mb-14">
+            This book is for you if…
           </h2>
         </ScrollReveal>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -93,7 +88,7 @@ const Book = () => (
             { title: "The Next-Gen Leader", desc: "You're early in your career and want the playbook that took others decades to learn." },
           ].map((p, i) => (
             <ScrollReveal key={p.title} delay={i * 100}>
-              <div className="bg-background rounded-xl p-7 shadow-sm hover:shadow-md transition-all group h-full">
+              <div className="bg-background p-7 shadow-sm hover:shadow-md transition-all group h-full border border-border">
                 <h3 className="font-serif text-xl font-bold text-brand-navy mb-3 group-hover:text-brand-pink transition-colors">{p.title}</h3>
                 <p className="font-sans text-[15px] text-muted-foreground leading-relaxed">{p.desc}</p>
               </div>
@@ -107,8 +102,8 @@ const Book = () => (
     <section className="py-20 md:py-28 px-6 bg-background">
       <div className="max-w-5xl mx-auto">
         <ScrollReveal>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-brand-navy text-center mb-14">
-            What readers are <em className="text-brand-pink">saying</em>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-brand-pink text-center mb-14">
+            What readers are saying
           </h2>
         </ScrollReveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -118,19 +113,19 @@ const Book = () => (
             { text: "Aimee speaks with the authority of a CEO and the heart of a mom who gets it. Every working mother needs this.", author: "Lauren T." },
           ].map((r, i) => (
             <ScrollReveal key={r.author} delay={i * 120}>
-              <div className="bg-card rounded-xl p-6 shadow-sm h-full flex flex-col">
+              <div className="bg-card p-6 shadow-sm h-full flex flex-col border border-border">
                 <div className="flex gap-0.5 mb-3">
                   {[...Array(5)].map((_, j) => <Star key={j} size={13} className="text-brand-gold fill-brand-gold" />)}
                 </div>
                 <p className="font-serif text-[15px] italic text-brand-navy/80 leading-relaxed flex-1 mb-4">"{r.text}"</p>
-                <p className="font-sans text-sm font-semibold text-brand-navy">— {r.author}</p>
+                <p className="font-sans text-sm font-bold text-brand-navy">— {r.author}</p>
               </div>
             </ScrollReveal>
           ))}
         </div>
         <ScrollReveal delay={400}>
           <div className="text-center mt-12">
-            <Button className="bg-brand-pink hover:bg-brand-pink/90 text-primary-foreground rounded-full px-8 h-12 font-sans text-sm font-medium shadow-lg shadow-brand-pink/20" asChild>
+            <Button className="bg-brand-gold hover:bg-brand-gold/90 text-foreground px-8 h-12 font-sans text-sm font-bold uppercase tracking-[0.08em]" asChild>
               <a href="https://a.co/d/by5X0fV" target="_blank" rel="noopener noreferrer">Order Your Copy →</a>
             </Button>
           </div>
