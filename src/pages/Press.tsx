@@ -857,64 +857,6 @@ const Press = () => {
         </div>
       </section>
 
-      {/* ═══════ NEWSLETTER ═══════ */}
-      <section
-        className="py-20 px-6"
-        style={{
-          background:
-            "linear-gradient(180deg, #111 0%, #0a0a0a 100%)",
-          borderTop: "1px solid rgba(235,24,135,0.06)",
-        }}
-      >
-        <div className="max-w-[600px] mx-auto text-center">
-          <TextReveal>
-            <p
-              className="font-sans text-[10px] uppercase tracking-[0.3em] mb-4"
-              style={{ color: "#c9a96e" }}
-            >
-              Join the Movement
-            </p>
-          </TextReveal>
-          <TextReveal delay={100}>
-            <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground leading-tight mb-4">
-              Leadership insights, delivered{" "}
-              <em className="text-brand-pink italic">weekly</em>.
-            </h2>
-          </TextReveal>
-          <FadeIn delay={200} y={20}>
-            <p
-              className="mb-8"
-              style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontStyle: "italic",
-                color: "#888",
-                fontSize: "1rem",
-              }}
-            >
-              Join 5,000+ women rethinking leadership, reclaiming their
-              time, and refusing to shrink.
-            </p>
-          </FadeIn>
-          {/* ▼ REPLACE: Swap with GHL form ▼ */}
-          <FadeIn delay={300} y={20}>
-            <div className="flex gap-3 max-w-[450px] mx-auto">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 font-sans text-[13px] px-5 py-3.5 bg-white/5 text-foreground border border-white/10 focus:border-brand-pink focus:outline-none transition-colors"
-                style={{ borderRadius: "50px" }}
-              />
-              <button
-                className="font-sans text-[11px] font-semibold uppercase tracking-[0.1em] px-6 py-3.5 bg-brand-pink text-white hover:bg-brand-pink/90 transition-colors cursor-pointer"
-                style={{ borderRadius: "50px" }}
-              >
-                Subscribe
-              </button>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
       <Footer />
 
       {/* Marquee animation */}
