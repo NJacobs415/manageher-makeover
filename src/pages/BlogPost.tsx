@@ -183,7 +183,7 @@ const BlogPost = () => {
         title={`${post.title} | The Manage Her® Podcast`}
         description={post.metaDescription || post.excerpt}
         image={post.thumbnail}
-        url={`https://www.themanageher.com/blog/${post.slug}`}
+        url={`https://themanageher.com/blog/${post.slug}`}
         type="article"
       />
       {/* Prose styles for dangerouslySetInnerHTML content */}

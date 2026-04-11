@@ -15,7 +15,7 @@ interface SEOProps {
   jsonLd?: Record<string, unknown>;
 }
 
-const SITE_URL = "https://www.themanageher.com";
+const SITE_URL = "https://themanageher.com";
 const DEFAULT_IMAGE = `${SITE_URL}/M_Logo_Pink.png`;
 
 const SEO = ({

@@ -48,7 +48,7 @@ const Blog = () => {
       <SEO
         title="Blog | The Manage Her®"
         description="Key takeaways, quotes, and insights from every episode of The Manage Her® Podcast."
-        url="https://www.themanageher.com/blog"
+        url="https://themanageher.com/blog"
       />
       <Navbar />
 

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /legal
 
-Sitemap: https://www.themanageher.com/sitemap.xml
+Sitemap: https://themanageher.com/sitemap.xml

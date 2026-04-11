@@ -62,7 +62,7 @@ const Book = () => {
       <SEO
         title="The Manage Her® Book"
         description="Unveiling Invisible Labor & Sparking a Leadership Revolution by Aimee Rickabus."
-        url="https://www.themanageher.com/book"
+        url="https://themanageher.com/book"
         type="book"
         image="https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png"
         jsonLd={{

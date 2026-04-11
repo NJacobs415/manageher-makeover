@@ -59,7 +59,7 @@ const About = () => {
       <SEO
         title="About Aimee Rickabus | The Manage Her®"
         description="CEO of a nine-figure tech company, bestselling author, podcast host, and mother of six."
-        url="https://www.themanageher.com/about"
+        url="https://themanageher.com/about"
       />
       <Navbar />
 

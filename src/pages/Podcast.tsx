@@ -64,12 +64,12 @@ const Podcast = () => {
       <SEO
         title="The Manage Her® Podcast"
         description="Real conversations on leadership, motherhood, financial literacy & purpose. New episodes every Monday."
-        url="https://www.themanageher.com/podcast"
+        url="https://themanageher.com/podcast"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "PodcastSeries",
           name: "The Manage Her Podcast",
-          url: "https://www.themanageher.com/podcast",
+          url: "https://themanageher.com/podcast",
           author: { "@type": "Person", name: "Aimee Rickabus" },
         }}
       />

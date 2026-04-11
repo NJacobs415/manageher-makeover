@@ -39,7 +39,7 @@ const Legal = () => {
       <SEO
         title="Privacy & Terms | The Manage Her®"
         description="Privacy policy and terms of service for The Manage Her®."
-        url="https://www.themanageher.com/legal"
+        url="https://themanageher.com/legal"
       />
       <Navbar />
 

@@ -48,7 +48,7 @@ The Manage Her® is a women's leadership movement and media brand founded by Aim
 - Gold: Gold gradient bg, dark text, gold glow (book/speaking CTAs)
 
 ## Key Links
-- Website: https://www.themanageher.com
+- Website: https://themanageher.com
 - YouTube: https://www.youtube.com/@TheManageHer
 - Instagram: https://www.instagram.com/themanageher/
 - TikTok: https://www.tiktok.com/@themanageher
