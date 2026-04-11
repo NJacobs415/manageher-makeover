@@ -32,7 +32,7 @@ She is the recipient of the NAWBO Orange County Remarkable Woman Award for Innov
 
 Aimee lives in Southern California with her husband Brenden, their six children — Julian, Gabriel, Daniel, Indy, Paul, and their youngest — and an entrepreneurial spirit inherited from her mother, who won the Ernst & Young Entrepreneur of the Year Award in 1988.
 
-For speaking inquiries, media appearances, and brand partnerships: info@themanageher.com | (310) 365-6368`;
+For speaking inquiries, media appearances, and brand partnerships: info@themanageher.com | (949) 868-0444`;
 
   return (
     <div className="overflow-x-hidden page-enter">
@@ -380,8 +380,8 @@ For speaking inquiries, media appearances, and brand partnerships: info@themanag
               <a href="mailto:info@themanageher.com" className="flex items-center gap-2 font-sans text-[14px] transition-colors hover:text-brand-pink" style={{ color: "#c9a96e" }}>
                 <Mail size={16} /> info@themanageher.com
               </a>
-              <a href="tel:+13103656368" className="flex items-center gap-2 font-sans text-[14px] transition-colors hover:text-brand-pink" style={{ color: "#c9a96e" }}>
-                <Phone size={16} /> (310) 365-6368
+              <a href="tel:+19498680444" className="flex items-center gap-2 font-sans text-[14px] transition-colors hover:text-brand-pink" style={{ color: "#c9a96e" }}>
+                <Phone size={16} /> (949) 868-0444
               </a>
             </div>
           </FadeIn>

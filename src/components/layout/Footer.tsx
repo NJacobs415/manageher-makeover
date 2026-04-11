@@ -230,11 +230,11 @@ const Footer = () => (
             info@themanageher.com
           </a>
           <a
-            href="tel:+13103656368"
+            href="tel:+19498680444"
             className="block font-sans text-sm transition-colors hover:text-white"
             style={{ color: "#888" }}
           >
-            (310) 365-6368
+            (949) 868-0444
           </a>
         </div>
       </div>
