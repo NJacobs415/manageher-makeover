@@ -18,13 +18,15 @@ const HorizontalScroll = ({ children, className }: HorizontalScrollProps) => {
 
     const onScroll = () => {
       const rect = container.getBoundingClientRect();
-      const viewH = window.innerHeight;
       const containerH = container.offsetHeight;
+      const stickyTravel = containerH - window.innerHeight;
 
-      if (rect.top < viewH && rect.bottom > 0) {
-        const progress = Math.max(0, Math.min(1, (viewH - rect.top) / (containerH + viewH)));
+      if (rect.top <= 0 && stickyTravel > 0) {
+        const progress = Math.max(0, Math.min(1, -rect.top / stickyTravel));
         const maxScroll = scrollContent.scrollWidth - window.innerWidth;
         setTranslateX(-progress * maxScroll);
+      } else if (rect.top > 0) {
+        setTranslateX(0);
       }
     };
 
