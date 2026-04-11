@@ -385,7 +385,14 @@ const Index = () => {
 
       {/* ═══════ BOOK — Editorial split with 3D ═══════ */}
       <section className="py-24 md:py-36 px-6 bg-background relative overflow-hidden">
-        <div className="max-w-[1400px] mx-auto">
+        {/* Parallax decorative elements */}
+        <Parallax speed={0.12} className="absolute -top-32 -left-20 w-[400px] opacity-[0.04] pointer-events-none select-none">
+          <img src={heroAccent} alt="" width={1024} height={1024} className="w-full" aria-hidden="true" />
+        </Parallax>
+        <Parallax speed={-0.08} className="absolute -bottom-24 -right-16 w-[300px] opacity-[0.06] pointer-events-none select-none rotate-180">
+          <img src={editorialAccent} alt="" width={800} height={800} className="w-full" aria-hidden="true" />
+        </Parallax>
+        <div className="max-w-[1400px] mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-5 relative">
               <span className="editorial-number text-[12rem] absolute -top-16 -right-8 select-none pointer-events-none z-0">
@@ -442,8 +449,19 @@ const Index = () => {
       </section>
 
       {/* ═══════ TESTIMONIALS — Centered editorial ═══════ */}
-      <section className="py-24 md:py-32 px-6 bg-foreground">
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="py-24 md:py-32 px-6 bg-foreground relative overflow-hidden">
+        {/* Parallax floating accents */}
+        <Parallax speed={0.15} className="absolute -top-20 -left-24 w-[350px] opacity-[0.03] pointer-events-none select-none">
+          <img src={editorialAccent} alt="" width={800} height={800} className="w-full" aria-hidden="true" />
+        </Parallax>
+        <Parallax speed={-0.1} className="absolute -bottom-16 -right-20 w-[280px] opacity-[0.04] pointer-events-none select-none rotate-45">
+          <img src={heroAccent} alt="" width={1024} height={1024} className="w-full" aria-hidden="true" />
+        </Parallax>
+        {/* Large parallax quotation mark */}
+        <Parallax speed={0.2} className="absolute top-12 left-8 pointer-events-none select-none">
+          <span className="font-serif text-[20rem] leading-none text-background/[0.03]">"</span>
+        </Parallax>
+        <div className="max-w-3xl mx-auto text-center relative z-10">
           <FadeIn>
             <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-background/30 mb-10">What Listeners Say</p>
 
