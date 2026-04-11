@@ -11,6 +11,7 @@ import { Play, Star, ArrowDown, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEpisodeCount } from "@/hooks/useEpisodeCount";
 import { useEpisodes } from "@/hooks/useEpisodes";
+import SEO from "@/components/SEO";
 
 // ─── Assets ───
 import podcastCover from "@/assets/podcast-cover.png";
@@ -135,6 +136,25 @@ const Index = () => {
 
   return (
     <div className="overflow-x-hidden page-enter">
+      <SEO
+        title="The Manage Her® — Redefining Women's Leadership"
+        description="Leadership movement for women — redefining how women lead in life, at home, and in business. Founded by Aimee Rickabus."
+        url="https://www.themanageher.com"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "The Manage Her",
+          url: "https://www.themanageher.com",
+          logo: "https://www.themanageher.com/M_Logo_Pink.png",
+          founder: { "@type": "Person", name: "Aimee Rickabus" },
+          sameAs: [
+            "https://www.instagram.com/themanageher/",
+            "https://www.youtube.com/@TheManageHer",
+            "https://www.tiktok.com/@themanageher",
+            "https://www.linkedin.com/company/themanageher",
+          ],
+        }}
+      />
       <CursorFollower />
       <Navbar />
 

@@ -9,6 +9,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import FadeIn from "@/components/animations/FadeIn";
 import TextReveal from "@/components/animations/TextReveal";
+import SEO from "@/components/SEO";
 import { ArrowRight } from "lucide-react";
 
 // Keyframes for floating particles. 3 distinct drift paths are reused across 6 particles
@@ -55,6 +56,10 @@ const NotFound = () => {
 
   return (
     <div className="overflow-x-hidden page-enter">
+      <SEO
+        title="Page Not Found | The Manage Her®"
+        description="The page you're looking for has wandered off. Explore our podcast, book, and blog instead."
+      />
       <style>{particleCss}</style>
       <Navbar />
 

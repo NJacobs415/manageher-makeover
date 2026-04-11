@@ -9,6 +9,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TextReveal from "@/components/animations/TextReveal";
 import FadeIn from "@/components/animations/FadeIn";
+import SEO from "@/components/SEO";
 
 const LAST_UPDATED = "April 2026";
 
@@ -35,6 +36,11 @@ const Legal = () => {
 
   return (
     <div className="overflow-x-hidden page-enter">
+      <SEO
+        title="Privacy & Terms | The Manage Her®"
+        description="Privacy policy and terms of service for The Manage Her®."
+        url="https://www.themanageher.com/legal"
+      />
       <Navbar />
 
       {/* ═══════ HERO — Dark ═══════ */}

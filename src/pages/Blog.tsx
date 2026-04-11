@@ -11,6 +11,7 @@ import FadeIn from "@/components/animations/FadeIn";
 import { ArrowRight, Play, Clock, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEpisodeCount } from "@/hooks/useEpisodeCount";
+import SEO from "@/components/SEO";
 
 interface BlogPostMeta {
   slug: string;
@@ -44,6 +45,11 @@ const Blog = () => {
 
   return (
     <div className="overflow-x-hidden page-enter">
+      <SEO
+        title="Blog | The Manage Her®"
+        description="Key takeaways, quotes, and insights from every episode of The Manage Her® Podcast."
+        url="https://www.themanageher.com/blog"
+      />
       <Navbar />
 
       {/* ═══════ HERO ═══════ */}

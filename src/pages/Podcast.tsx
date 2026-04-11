@@ -19,6 +19,7 @@ import cardGuests from "@/assets/card-guests.png";
 import cardActionable from "@/assets/card-actionable.png";
 import cardFinancial from "@/assets/card-financial.png";
 import cardConversations from "@/assets/card-conversations.png";
+import SEO from "@/components/SEO";
 
 // Hardcoded fallback for the featured "Latest Episode" card
 const fallbackLatest = {
@@ -60,6 +61,18 @@ const Podcast = () => {
 
   return (
     <div className="overflow-x-hidden page-enter">
+      <SEO
+        title="The Manage Her® Podcast"
+        description="Real conversations on leadership, motherhood, financial literacy & purpose. New episodes every Monday."
+        url="https://www.themanageher.com/podcast"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "PodcastSeries",
+          name: "The Manage Her Podcast",
+          url: "https://www.themanageher.com/podcast",
+          author: { "@type": "Person", name: "Aimee Rickabus" },
+        }}
+      />
       <Navbar />
 
       {/* ═══════ HERO — Split with podcast cover + Aimee behind the mic ═══════ */}

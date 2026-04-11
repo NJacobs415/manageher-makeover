@@ -6,6 +6,7 @@ import FadeIn from "@/components/animations/FadeIn";
 import Magnetic from "@/components/animations/Magnetic";
 import { ArrowRight, Heart, Star, BookOpen, Mic, Briefcase, Baby, Award } from "lucide-react";
 import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
 
 const AIMEE_PHOTO =
   "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a0c0f9fd70df73543f31f1.jpg";
@@ -55,6 +56,11 @@ const About = () => {
 
   return (
     <div className="overflow-x-hidden page-enter">
+      <SEO
+        title="About Aimee Rickabus | The Manage Her®"
+        description="CEO of a nine-figure tech company, bestselling author, podcast host, and mother of six."
+        url="https://www.themanageher.com/about"
+      />
       <Navbar />
 
       {/* ═══════ HERO — Personality first ═══════ */}

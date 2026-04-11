@@ -10,6 +10,7 @@ import Footer from "@/components/layout/Footer";
 import TextReveal from "@/components/animations/TextReveal";
 import FadeIn from "@/components/animations/FadeIn";
 import Magnetic from "@/components/animations/Magnetic";
+import SEO from "@/components/SEO";
 import {
   ArrowLeft,
   ArrowRight,
@@ -178,6 +179,13 @@ const BlogPost = () => {
 
   return (
     <>
+      <SEO
+        title={`${post.title} | The Manage Her® Podcast`}
+        description={post.metaDescription || post.excerpt}
+        image={post.thumbnail}
+        url={`https://www.themanageher.com/blog/${post.slug}`}
+        type="article"
+      />
       {/* Prose styles for dangerouslySetInnerHTML content */}
       <style>{proseCss}</style>
 

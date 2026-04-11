@@ -8,6 +8,7 @@ import Footer from "@/components/layout/Footer";
 import TextReveal from "@/components/animations/TextReveal";
 import FadeIn from "@/components/animations/FadeIn";
 import Magnetic from "@/components/animations/Magnetic";
+import SEO from "@/components/SEO";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -108,6 +109,11 @@ const Press = () => {
 
   return (
     <div className="overflow-x-hidden page-enter">
+      <SEO
+        title="Press & Speaking | The Manage Her®"
+        description="Book Aimee Rickabus to speak. Keynotes on women's leadership, invisible labor, and financial confidence."
+        url="https://www.themanageher.com/press"
+      />
       <Navbar />
 
       {/* ═══════ HERO — Full-width conference photo ═══════ */}

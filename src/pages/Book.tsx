@@ -7,6 +7,7 @@ import Magnetic from "@/components/animations/Magnetic";
 import { Star, ArrowRight, BookOpen, Headphones, Smartphone } from "lucide-react";
 import { Link } from "react-router-dom";
 import bookCover from "@/assets/book-cover.png";
+import SEO from "@/components/SEO";
 
 const BOOK_COVER_CDN =
   "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png";
@@ -58,6 +59,21 @@ const Book = () => {
 
   return (
     <div className="overflow-x-hidden page-enter">
+      <SEO
+        title="The Manage Her® Book"
+        description="Unveiling Invisible Labor & Sparking a Leadership Revolution by Aimee Rickabus."
+        url="https://www.themanageher.com/book"
+        type="book"
+        image="https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Book",
+          name: "The Manage Her: Unveiling Invisible Labor & Sparking a Leadership Revolution",
+          author: { "@type": "Person", name: "Aimee Rickabus" },
+          url: "https://a.co/d/by5X0fV",
+          image: "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png",
+        }}
+      />
       <Navbar />
 
       {/* ═══════ HERO — Real emotional hook from the book ═══════ */}
