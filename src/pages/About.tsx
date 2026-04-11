@@ -66,7 +66,7 @@ const About = () => {
                 <p className="font-sans text-[10px] uppercase tracking-[0.3em] mb-6" style={{ color: "#c9a96e" }}>Meet Aimee</p>
               </TextReveal>
               <TextReveal delay={200}>
-                <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[1.05] mb-6">
+                <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[1.15] mb-6">
                   I get it.<br /><em className="text-brand-pink italic">I've been there.</em>
                 </h1>
               </TextReveal>

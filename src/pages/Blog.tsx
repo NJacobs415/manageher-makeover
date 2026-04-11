@@ -57,7 +57,7 @@ const Blog = () => {
             <p className="font-sans text-[10px] uppercase tracking-[0.3em] mb-4" style={{ color: "#c9a96e" }}>The Blog</p>
           </TextReveal>
           <TextReveal delay={100}>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl font-bold text-foreground leading-[1.05] mb-6">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl font-bold text-foreground leading-[1.15] mb-6">
               Every episode,<br /><em className="text-brand-pink italic">unpacked</em>.
             </h1>
           </TextReveal>

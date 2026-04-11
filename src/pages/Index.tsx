@@ -195,7 +195,7 @@ const Index = () => {
               </TextReveal>
 
               <TextReveal delay={600}>
-                <h1 className="font-serif text-[3rem] md:text-[4.5rem] lg:text-[5.5rem] font-bold leading-[1.05] text-foreground mb-8">
+                <h1 className="font-serif text-[3rem] md:text-[4.5rem] lg:text-[5.5rem] font-bold leading-[1.15] text-foreground mb-8">
                   Where Motherhood
                   <br />
                   Meets <em className="text-brand-pink italic">Leadership</em>

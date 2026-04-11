@@ -77,7 +77,7 @@ const Podcast = () => {
                 </p>
               </TextReveal>
               <TextReveal delay={200}>
-                <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.05] mb-6">
+                <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.15] mb-6">
                   The conversations
                   <br />no one else is <em className="text-brand-pink italic">having</em>.
                 </h1>
