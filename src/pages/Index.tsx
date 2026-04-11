@@ -68,7 +68,7 @@ const Index = () => {
               </TextReveal>
 
               <TextReveal delay={600}>
-                <h1 className="font-serif text-[3rem] md:text-[4.5rem] lg:text-[5.5rem] font-bold leading-[0.95] text-foreground mb-8">
+                <h1 className="font-serif text-[3rem] md:text-[4.5rem] lg:text-[5.5rem] font-bold leading-[1.1] text-foreground mb-8">
                   You were<br />
                   never <em className="text-brand-pink italic">just</em><br />
                   a mom.

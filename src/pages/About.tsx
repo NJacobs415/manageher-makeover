@@ -28,7 +28,7 @@ const About = () => (
           <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-4">About Aimee</p>
         </TextReveal>
         <TextReveal delay={200}>
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-background leading-[0.95]">
+          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-background leading-[1.1]">
             I get it.<br /><em className="text-brand-pink italic">I've been there.</em>
           </h1>
         </TextReveal>

@@ -21,7 +21,7 @@ const Press = () => (
           <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-4">Press & Speaking</p>
         </TextReveal>
         <TextReveal delay={150}>
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[0.95] mb-6">
+          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[1.1] mb-6">
             Let's <em className="text-brand-pink italic">collaborate.</em>
           </h1>
         </TextReveal>

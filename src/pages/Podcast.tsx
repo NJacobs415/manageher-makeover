@@ -53,7 +53,7 @@ const Podcast = () => {
               <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-brand-pink mb-4">The Podcast</p>
             </TextReveal>
             <TextReveal delay={150}>
-              <h1 className="font-serif text-5xl md:text-7xl font-bold text-foreground leading-[0.95] mb-4">
+              <h1 className="font-serif text-5xl md:text-7xl font-bold text-foreground leading-[1.1] mb-4">
                 The Manage<em className="text-brand-pink italic">Her</em>™ Show
               </h1>
             </TextReveal>
