@@ -58,7 +58,7 @@ The Manage Her® is a women's leadership movement and media brand founded by Aim
 - Amazon Music: https://music.amazon.com/podcasts/91c217a5-4245-4b83-8d15-8edfdde06884/the-manage-her
 - Book: https://a.co/d/by5X0fV
 - Contact: info@themanageher.com
-- Phone: (310) 365-6368
+- Phone: (949) 868-0444
 
 ## Page Structure
 - **Homepage** (`src/pages/Index.tsx`) — Hero, stats, about, pillars, episodes, book, testimonials, newsletter
