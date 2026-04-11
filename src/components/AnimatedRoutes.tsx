@@ -6,6 +6,8 @@ import About from "@/pages/About";
 import Podcast from "@/pages/Podcast";
 import Book from "@/pages/Book";
 import Press from "@/pages/Press";
+import Blog from "@/pages/Blog";
+import BlogPost from "@/pages/BlogPost";
 import NotFound from "@/pages/NotFound";
 
 const AnimatedRoutes = () => {
@@ -18,6 +20,8 @@ const AnimatedRoutes = () => {
         <Route path="/about" element={<PageTransition><About /></PageTransition>} />
         <Route path="/podcast" element={<PageTransition><Podcast /></PageTransition>} />
         <Route path="/book" element={<PageTransition><Book /></PageTransition>} />
+        <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+        <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
         <Route path="/press" element={<PageTransition><Press /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
