@@ -1,6 +1,24 @@
 {
   "posts": [
     {
+      "slug": "holistic-motherhood-pregnancy-self-care-nervous-system-health-with-dr-laura-bray",
+      "title": "The Science-Backed Guide to Thriving Through Pregnancy and Early Motherhood",
+      "episodeNumber": 56,
+      "guestName": "Dr. Laura Brayton",
+      "publishedAt": "2026-04-06T12:01:11Z",
+      "duration": "39 min",
+      "thumbnail": "https://i.ytimg.com/vi/h6kSEVbmTnY/maxresdefault.jpg",
+      "excerpt": "Discover how to navigate pregnancy and early motherhood with science-backed strategies for nervous system regulation, holistic self-care, and sustainable wellness practices that actually work for busy moms.",
+      "topics": [
+        "Motherhood",
+        "Wellness",
+        "Self-Care",
+        "Health",
+        "Pregnancy"
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=h6kSEVbmTnY"
+    },
+    {
       "slug": "parenting-as-leadership-kristina-campos-on-playing-the-long-game",
       "title": "The Leadership Skills You Learn from Parenting That Will Transform Your Career",
       "episodeNumber": 55,
@@ -17,24 +35,6 @@
         "Strategic Thinking"
       ],
       "youtubeUrl": "https://www.youtube.com/watch?v=Z-ty9_lpuAQ"
-    },
-    {
-      "slug": "holistic-motherhood-pregnancy-self-care-nervous-system-health-with-dr-laura-bray",
-      "title": "Managing Motherhood: A Holistic Approach to Pregnancy and Self-Care for Working Women",
-      "episodeNumber": 56,
-      "guestName": "Dr. Laura Brayton",
-      "publishedAt": "2026-04-06T12:01:11Z",
-      "duration": "39 min",
-      "thumbnail": "https://i.ytimg.com/vi/h6kSEVbmTnY/maxresdefault.jpg",
-      "excerpt": "Ready to redefine what motherhood looks like on your terms? Dr. Laura Brayton breaks down how to prioritize your nervous system health during pregnancy and beyond, proving that self-care isn't selfish—it's strategic.",
-      "topics": [
-        "Motherhood",
-        "Wellness",
-        "Leadership",
-        "Boundaries",
-        "Identity"
-      ],
-      "youtubeUrl": "https://www.youtube.com/watch?v=h6kSEVbmTnY"
     }
   ]
 }
