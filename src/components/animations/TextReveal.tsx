@@ -29,7 +29,7 @@ const TextReveal = ({ children, className, delay = 0, direction = "up" }: TextRe
   const clipFrom = direction === "up" ? "inset(100% 0 0 0)" : direction === "left" ? "inset(0 100% 0 0)" : "inset(0 0 0 100%)";
 
   return (
-    <div ref={ref} className={cn("overflow-hidden", className)}>
+    <div ref={ref} className={cn(className)}>
       <div
         style={{
           clipPath: visible ? "inset(0 0 0 0)" : clipFrom,
