@@ -8,6 +8,7 @@ import Book from "@/pages/Book";
 import Press from "@/pages/Press";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
+import Legal from "@/pages/Legal";
 import NotFound from "@/pages/NotFound";
 
 const AnimatedRoutes = () => {
@@ -23,6 +24,7 @@ const AnimatedRoutes = () => {
         <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
         <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
         <Route path="/press" element={<PageTransition><Press /></PageTransition>} />
+        <Route path="/legal" element={<PageTransition><Legal /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>

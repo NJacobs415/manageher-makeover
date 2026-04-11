@@ -255,20 +255,31 @@ const Footer = () => (
             <span className="text-[8px] align-super">®</span> — Be Bold, Take
             Chances.
           </p>
-          <div className="flex gap-6">
-            <a
-              href="#"
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            <Link
+              to="/legal#privacy"
               className="font-sans text-[10px] tracking-wide transition-colors hover:text-white"
               style={{ color: "#555" }}
             >
-              Privacy
-            </a>
-            <a
-              href="#"
+              Privacy Policy
+            </Link>
+            <span style={{ color: "#333" }} aria-hidden="true">·</span>
+            <Link
+              to="/legal#terms"
               className="font-sans text-[10px] tracking-wide transition-colors hover:text-white"
               style={{ color: "#555" }}
             >
-              Terms
+              Terms of Service
+            </Link>
+            <span style={{ color: "#333" }} aria-hidden="true">·</span>
+            <a
+              href="https://dohodigital.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-sans text-[10px] tracking-wide transition-colors hover:text-white"
+              style={{ color: "#555" }}
+            >
+              Site Credit
             </a>
           </div>
         </div>
