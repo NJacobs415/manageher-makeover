@@ -76,7 +76,7 @@ const Podcast = () => {
       <Navbar />
 
       {/* ═══════ HERO — Split with podcast cover + Aimee behind the mic ═══════ */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden px-6" style={{ background: "#0a0a0a" }}>
+      <section className="relative min-h-[90vh] min-h-[90svh] flex items-center overflow-hidden px-6" style={{ background: "#0a0a0a" }}>
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(235,24,135,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(201,169,110,0.04) 0%, transparent 50%)" }} />
 
         <div className="max-w-[1300px] mx-auto relative z-10 w-full">

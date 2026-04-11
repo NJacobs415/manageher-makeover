@@ -117,7 +117,7 @@ const Press = () => {
       <Navbar />
 
       {/* ═══════ HERO — Full-width conference photo ═══════ */}
-      <section className="relative min-h-[85vh] flex items-end overflow-hidden">
+      <section className="relative min-h-[85vh] min-h-[85svh] flex items-end overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0">
           <img

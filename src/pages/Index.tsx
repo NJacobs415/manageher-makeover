@@ -161,7 +161,7 @@ const Index = () => {
       {/* ═══════════════════════════════════════════════
           HERO — Cinematic video background
           ═══════════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
+      <section className="relative min-h-screen min-h-[100svh] flex items-center overflow-hidden bg-background">
         {/* Video background */}
         <div className="absolute inset-0 z-0">
           <video

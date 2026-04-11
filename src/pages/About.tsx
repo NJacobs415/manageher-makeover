@@ -64,7 +64,7 @@ const About = () => {
       <Navbar />
 
       {/* ═══════ HERO — Personality first ═══════ */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden" style={{ background: "#0a0a0a" }}>
+      <section className="relative min-h-[90vh] min-h-[90svh] flex items-center overflow-hidden" style={{ background: "#0a0a0a" }}>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
             <div className="lg:col-span-7 py-20 lg:py-0 lg:pr-16">
@@ -72,7 +72,7 @@ const About = () => {
                 <p className="font-sans text-[10px] uppercase tracking-[0.3em] mb-6" style={{ color: "#c9a96e" }}>Meet Aimee</p>
               </TextReveal>
               <TextReveal delay={200}>
-                <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[1.15] mb-6">
+                <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.15] mb-6">
                   I get it.<br /><em className="text-brand-pink italic">I've been there.</em>
                 </h1>
               </TextReveal>

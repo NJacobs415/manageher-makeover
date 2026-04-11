@@ -77,7 +77,7 @@ const Book = () => {
       <Navbar />
 
       {/* ═══════ HERO — Real emotional hook from the book ═══════ */}
-      <section className="relative min-h-screen flex items-center overflow-hidden px-6" style={{ background: "#0a0a0a" }}>
+      <section className="relative min-h-screen min-h-[100svh] flex items-center overflow-hidden px-6" style={{ background: "#0a0a0a" }}>
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 20% 50%, rgba(201,169,110,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 30%, rgba(235,24,135,0.04) 0%, transparent 50%)" }} />
 
         <div className="max-w-[1300px] mx-auto relative z-10 w-full">
@@ -405,10 +405,10 @@ const Book = () => {
               </FadeIn>
             </div>
             <FadeIn delay={300} y={30}>
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
                 {[{ val: countdown.days, label: "Days" }, { val: countdown.hours, label: "Hours" }, { val: countdown.mins, label: "Minutes" }, { val: countdown.secs, label: "Seconds" }].map((u) => (
-                  <div key={u.label} className="text-center p-6" style={{ background: "#111", borderRadius: "20px", border: "1px solid rgba(201,169,110,0.1)" }}>
-                    <div className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-1" style={{ color: "#c9a96e" }}>{u.val}</div>
+                  <div key={u.label} className="text-center p-4 sm:p-6" style={{ background: "#111", borderRadius: "20px", border: "1px solid rgba(201,169,110,0.1)" }}>
+                    <div className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-1" style={{ color: "#c9a96e" }}>{u.val}</div>
                     <div className="font-sans text-[9px] uppercase tracking-[0.15em] text-muted-foreground">{u.label}</div>
                   </div>
                 ))}
