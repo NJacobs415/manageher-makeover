@@ -5,25 +5,25 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 228 25% 18%;
+    --foreground: 220 20% 16%;
 
     --card: 0 0% 100%;
-    --card-foreground: 228 25% 18%;
+    --card-foreground: 220 20% 16%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 228 25% 18%;
+    --popover-foreground: 220 20% 16%;
 
     --primary: 330 80% 52%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 38 55% 95%;
-    --secondary-foreground: 228 25% 18%;
+    --secondary: 340 40% 96%;
+    --secondary-foreground: 220 20% 16%;
 
     --muted: 220 14% 96%;
     --muted-foreground: 220 8% 46%;
 
-    --accent: 42 87% 55%;
-    --accent-foreground: 228 25% 18%;
+    --accent: 42 80% 53%;
+    --accent-foreground: 220 20% 16%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -33,52 +33,22 @@
     --ring: 330 80% 52%;
     --radius: 0.5rem;
 
-    /* Brand palette */
+    /* Brand palette — Amy Porterfield style adapted for ManageHer */
     --brand-pink: 330 80% 52%;
-    --brand-navy: 228 40% 16%;
-    --brand-gold: 42 87% 55%;
-    --brand-cream: 38 55% 97%;
+    --brand-navy: 220 40% 16%;
+    --brand-gold: 42 80% 53%;
+    --brand-cream: 340 40% 97%;
     --brand-blush: 340 50% 96%;
-    --brand-lavender: 260 40% 94%;
-    --brand-teal: 180 30% 94%;
+    --brand-ice: 340 30% 96%;
+    --brand-blue: 210 70% 48%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 330 80% 52%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 42 87% 55%;
-    --sidebar-accent-foreground: 228 25% 18%;
+    --sidebar-accent: 42 80% 53%;
+    --sidebar-accent-foreground: 220 20% 16%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 330 80% 52%;
-  }
-
-  .dark {
-    --background: 228 40% 10%;
-    --foreground: 38 55% 97%;
-    --card: 228 35% 14%;
-    --card-foreground: 38 55% 97%;
-    --popover: 228 35% 14%;
-    --popover-foreground: 38 55% 97%;
-    --primary: 330 80% 52%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 228 20% 20%;
-    --secondary-foreground: 38 55% 97%;
-    --muted: 228 15% 22%;
-    --muted-foreground: 220 10% 60%;
-    --accent: 42 87% 55%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 228 15% 22%;
-    --input: 228 15% 22%;
-    --ring: 330 80% 52%;
-    --sidebar-background: 228 40% 8%;
-    --sidebar-foreground: 38 55% 97%;
-    --sidebar-primary: 330 80% 52%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 228 15% 18%;
-    --sidebar-accent-foreground: 38 55% 97%;
-    --sidebar-border: 228 15% 18%;
     --sidebar-ring: 330 80% 52%;
   }
 }
@@ -105,7 +75,7 @@ html {
   100% { transform: translateX(-50%); }
 }
 .animate-marquee {
-  animation: marquee 20s linear infinite;
+  animation: marquee 25s linear infinite;
 }
 .animate-marquee:hover {
   animation-play-state: paused;
