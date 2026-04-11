@@ -1,130 +1,106 @@
 import { Link } from "react-router-dom";
 import { Instagram, Youtube, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import FadeIn from "@/components/animations/FadeIn";
 
 const Footer = () => (
   <footer>
-    {/* Newsletter CTA — cream background like Amy's */}
-    <section className="bg-brand-cream py-16 md:py-20 px-6">
-      <div className="max-w-2xl mx-auto text-center">
-        <h2 className="font-serif text-3xl md:text-4xl font-bold text-brand-navy mb-2">
-          Unlock Weekly Leadership Wins
+    {/* Editorial newsletter CTA */}
+    <section className="relative py-24 md:py-32 px-6 bg-foreground overflow-hidden">
+      {/* Background typography */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+        <span className="font-serif text-[20vw] font-bold text-background/[0.03] italic whitespace-nowrap">
+          ManageHer
+        </span>
+      </div>
+
+      <FadeIn className="relative z-10 max-w-lg mx-auto text-center">
+        <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-background/40 mb-4">Join the Movement</p>
+        <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-background leading-tight mb-4">
+          Leadership insights, delivered <em className="text-brand-pink">weekly.</em>
         </h2>
-        <p className="font-sans text-muted-foreground mb-8 text-[15px] leading-relaxed">
-          Smart strategies, honest behind-the-scenes, and resources you can't live without — delivered to your inbox every Tuesday.
+        <p className="font-sans text-sm text-background/50 mb-8 leading-relaxed">
+          No fluff. Just the strategies, stories, and permission slips you need to lead boldly.
         </p>
-        <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <div className="flex flex-col sm:flex-row gap-3">
           <Input
             type="email"
-            placeholder="Your email address"
-            className="h-12 px-5 font-sans text-sm flex-1 bg-background border-border"
+            placeholder="Your email"
+            className="h-12 px-5 font-sans text-sm flex-1 bg-background/10 border-background/20 text-background placeholder:text-background/30 focus:border-brand-pink"
           />
-          <Button className="bg-brand-gold hover:bg-brand-gold/90 text-foreground h-12 px-7 font-sans text-sm font-bold uppercase tracking-[0.08em] whitespace-nowrap">
-            I Want It!
-          </Button>
+          <button className="btn-glow bg-brand-pink text-primary-foreground h-12 px-8 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] hover:bg-brand-pink/90 transition-colors whitespace-nowrap">
+            Subscribe
+          </button>
         </div>
-      </div>
+      </FadeIn>
     </section>
 
-    {/* "Follow Me On Social" — Amy style */}
-    <section className="bg-brand-cream py-10 px-6 border-t border-border">
-      <div className="max-w-xs mx-auto text-center">
-        <p className="font-serif text-2xl text-brand-navy mb-1">Follow Me</p>
-        <p className="font-serif text-2xl text-brand-navy italic mb-4">On Social</p>
-        <a
-          href="https://www.instagram.com/themanageher/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 font-sans text-sm font-bold text-brand-pink border border-brand-pink rounded-full px-6 py-2.5 hover:bg-brand-pink hover:text-primary-foreground transition-colors uppercase tracking-[0.08em]"
-        >
-          <Instagram size={16} />
-          @themanageher
-        </a>
-      </div>
-    </section>
-
-    {/* Main footer — Amy-style pink background with columns */}
-    <div className="bg-brand-pink text-primary-foreground py-14 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-        {/* Brand */}
+    {/* Minimal footer */}
+    <div className="bg-foreground border-t border-background/10 py-12 px-6">
+      <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
         <div className="col-span-2 md:col-span-1">
-          <span className="font-sans text-sm font-bold tracking-[0.15em] uppercase">
-            The Manage Her™
+          <span className="font-serif text-lg text-background">
+            The Manage<em className="text-brand-pink">Her</em>™
           </span>
-          <p className="font-sans text-sm text-primary-foreground/70 mt-3 leading-relaxed max-w-xs">
-            I'm a CEO, author, mother of six, and host of The Manage Her™ Podcast. Welcome to the leadership revolution.
+          <p className="font-sans text-xs text-background/30 mt-3 leading-relaxed max-w-xs">
+            The leadership revolution starts here.
           </p>
-          <p className="font-sans text-xs font-bold uppercase tracking-widest mt-5 mb-3 text-primary-foreground/50">
-            Let's Be Friends
-          </p>
-          <div className="flex gap-3">
+          <div className="flex gap-4 mt-5">
             {[
               { icon: Instagram, href: "https://www.instagram.com/themanageher/" },
               { icon: Youtube, href: "https://www.youtube.com/@TheManageHer" },
               { icon: Mail, href: "mailto:info@themanageher.com" },
             ].map(({ icon: Icon, href }, i) => (
-              <a key={i} href={href} target="_blank" rel="noopener noreferrer" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                <Icon size={20} />
+              <a key={i} href={href} target="_blank" rel="noopener noreferrer" className="text-background/30 hover:text-brand-pink transition-colors">
+                <Icon size={18} />
               </a>
             ))}
           </div>
         </div>
 
-        {/* Navigate */}
         <div>
-          <p className="font-serif text-lg mb-3">Navigate</p>
+          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-background/30 mb-4">Navigate</p>
           {[
-            { label: "Home", path: "/" },
-            { label: "About Aimee", path: "/about" },
+            { label: "About", path: "/about" },
             { label: "Podcast", path: "/podcast" },
             { label: "Book", path: "/book" },
             { label: "Press & Speaking", path: "/press" },
           ].map((l) => (
-            <Link key={l.path} to={l.path} className="block font-sans text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors mb-2 uppercase tracking-wide">
+            <Link key={l.path} to={l.path} className="block font-sans text-sm text-background/50 hover:text-background transition-colors mb-2.5">
               {l.label}
             </Link>
           ))}
         </div>
 
-        {/* Listen */}
         <div>
-          <p className="font-serif text-lg mb-3">Listen</p>
+          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-background/30 mb-4">Listen</p>
           {[
             { label: "Apple Podcasts", href: "https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475" },
             { label: "Spotify", href: "https://open.spotify.com/show/03FuFRyzkaWhZkk5yxFePJ" },
             { label: "Amazon Music", href: "https://music.amazon.com/podcasts/91c217a5-4245-4b83-8d15-8edfdde06884/the-manage-her" },
             { label: "YouTube", href: "https://www.youtube.com/@TheManageHer" },
           ].map((l) => (
-            <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="block font-sans text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors mb-2 uppercase tracking-wide">
+            <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="block font-sans text-sm text-background/50 hover:text-background transition-colors mb-2.5">
               {l.label}
             </a>
           ))}
         </div>
 
-        {/* Book */}
         <div>
-          <p className="font-serif text-lg mb-3">The Book</p>
-          <p className="font-sans text-sm text-primary-foreground/70 leading-relaxed mb-4">
-            The Manage Her™ — Unveiling Invisible Labor & Sparking a Leadership Revolution
-          </p>
-          <a
-            href="https://a.co/d/by5X0fV"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block font-sans text-xs font-bold uppercase tracking-[0.1em] text-brand-gold hover:text-brand-gold/80 transition-colors"
-          >
-            Order on Amazon →
+          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-background/30 mb-4">Connect</p>
+          <a href="mailto:info@themanageher.com" className="font-sans text-sm text-background/50 hover:text-background transition-colors">
+            info@themanageher.com
           </a>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto border-t border-primary-foreground/20 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <p className="font-sans text-xs text-primary-foreground/40">© {new Date().getFullYear()} The Manage Her™. All rights reserved.</p>
-        <div className="flex gap-5">
-          <a href="#" className="font-sans text-xs text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors uppercase tracking-wide">Privacy Policy</a>
-          <a href="#" className="font-sans text-xs text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors uppercase tracking-wide">Terms</a>
-          <a href="#" className="font-sans text-xs text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors uppercase tracking-wide">Contact</a>
+      <div className="max-w-[1400px] mx-auto border-t border-background/10 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p className="font-sans text-[10px] text-background/20 tracking-wide">
+          © {new Date().getFullYear()} The Manage Her™
+        </p>
+        <div className="flex gap-6">
+          <a href="#" className="font-sans text-[10px] text-background/20 hover:text-background/50 transition-colors tracking-wide">Privacy</a>
+          <a href="#" className="font-sans text-[10px] text-background/20 hover:text-background/50 transition-colors tracking-wide">Terms</a>
         </div>
       </div>
     </div>
