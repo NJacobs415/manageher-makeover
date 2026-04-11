@@ -24,23 +24,67 @@ const PageLoader = () => {
 
   return (
     <div
-      className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-foreground"
       style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 10000,
+        backgroundColor: "#0a0a0a",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
         clipPath: done ? "inset(0 0 100% 0)" : "inset(0 0 0 0)",
         transition: "clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1)",
       }}
     >
-      <div className="text-center">
-        <p className="font-serif text-3xl md:text-5xl text-background tracking-tight mb-2">
-          The Manage<em className="text-brand-pink italic">Her</em>
-          <span className="text-brand-pink text-lg align-super">™</span>
-        </p>
-        <div className="w-48 h-px bg-background/20 mx-auto mt-6 overflow-hidden">
-          <div
-            className="h-full bg-brand-pink transition-all duration-200 ease-out"
-            style={{ width: `${Math.min(progress, 100)}%` }}
-          />
-        </div>
+      <img
+        src="/M_Logo_Pink.png"
+        alt=""
+        style={{
+          height: "50px",
+          width: "auto",
+          marginBottom: "20px",
+          borderRadius: "12px",
+        }}
+      />
+      <p
+        style={{
+          fontFamily: "'Playfair Display', Georgia, serif",
+          fontSize: "clamp(1.8rem, 4vw, 3rem)",
+          color: "#fafafa",
+          letterSpacing: "0.02em",
+          marginBottom: "8px",
+        }}
+      >
+        The Manage<em style={{ color: "#eb1887", fontStyle: "italic" }}>Her</em>
+        <span
+          style={{
+            fontSize: "0.45em",
+            verticalAlign: "super",
+            fontStyle: "normal",
+            color: "#eb1887",
+          }}
+        >
+          ®
+        </span>
+      </p>
+      <div
+        style={{
+          width: "180px",
+          height: "1px",
+          backgroundColor: "rgba(255,255,255,0.1)",
+          marginTop: "16px",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            height: "100%",
+            backgroundColor: "#eb1887",
+            width: `${Math.min(progress, 100)}%`,
+            transition: "width 0.2s ease-out",
+          }}
+        />
       </div>
     </div>
   );

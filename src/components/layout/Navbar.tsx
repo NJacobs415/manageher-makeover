@@ -43,35 +43,47 @@ const Navbar = () => {
         )}
       >
         <div className="max-w-[1400px] mx-auto flex items-center justify-between px-6 lg:px-12 h-20">
-          <Link to="/" className="shrink-0">
+          <Link to="/" className="shrink-0 flex items-center gap-2">
+            <img
+              src="/M_Logo_Pink.png"
+              alt=""
+              aria-hidden="true"
+              style={{
+                height: "24px",
+                width: "auto",
+                mixBlendMode: "screen",
+              }}
+            />
             <span className="font-serif text-xl md:text-2xl font-bold text-foreground tracking-tight">
               The Manage<em className="text-brand-pink">Her</em>
-              <span className="text-brand-pink text-[10px] align-super">™</span>
+              <span className="text-brand-pink text-[8px] align-super">®</span>
             </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <Magnetic key={link.path} strength={0.15}>
-                <Link
-                  to={link.path}
-                  className={cn(
-                    "link-reveal font-sans text-[12px] font-medium uppercase tracking-[0.15em] transition-colors",
-                    location.pathname === link.path
-                      ? "text-brand-pink"
-                      : "text-foreground/60 hover:text-foreground"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              </Magnetic>
-            ))}
-            <Magnetic strength={0.2}>
+          <div className="hidden lg:flex items-center">
+            <div className="flex items-center gap-12">
+              {navLinks.map((link) => (
+                <Magnetic key={link.path} strength={0.15} className="shrink-0 inline-flex">
+                  <Link
+                    to={link.path}
+                    className={cn(
+                      "link-reveal font-sans text-[12px] font-medium uppercase tracking-[0.15em] transition-colors whitespace-nowrap",
+                      location.pathname === link.path
+                        ? "text-brand-pink"
+                        : "text-foreground/60 hover:text-foreground"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                </Magnetic>
+              ))}
+            </div>
+            <Magnetic strength={0.15} className="shrink-0 inline-flex ml-10">
               <a
                 href="https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-glow bg-brand-pink text-primary-foreground font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-6 py-3 hover:bg-brand-pink/90 transition-colors"
+                className="btn-glow inline-flex items-center bg-brand-pink text-primary-foreground font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-6 py-3 hover:bg-brand-pink/90 transition-colors whitespace-nowrap"
               >
                 Listen Now
               </a>
@@ -95,6 +107,17 @@ const Navbar = () => {
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
+        <img
+          src="/M_Logo_Pink.png"
+          alt=""
+          aria-hidden="true"
+          style={{
+            height: "48px",
+            width: "auto",
+            mixBlendMode: "screen",
+          }}
+          className="mb-2"
+        />
         <Link
           to="/"
           className={cn("font-serif text-4xl transition-all", location.pathname === "/" ? "text-brand-pink" : "text-foreground")}

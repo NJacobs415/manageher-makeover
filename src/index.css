@@ -4,51 +4,62 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 20% 12%;
+    /* Dark editorial base — #0a0a0a background, #e0e0e0 body text */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 88%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 20% 12%;
+    /* Surface #111111 */
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 88%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 12%;
+    /* Surface alt #161616 */
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 88%;
 
-    --primary: 330 80% 52%;
+    /* Pink #eb1887 — primary accent */
+    --primary: 328 84% 51%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 340 40% 96%;
-    --secondary-foreground: 220 20% 12%;
+    --secondary: 0 0% 9%;
+    --secondary-foreground: 0 0% 88%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 8% 46%;
+    --muted: 0 0% 9%;
+    --muted-foreground: 0 0% 53%;
 
-    --accent: 42 80% 53%;
-    --accent-foreground: 220 20% 12%;
+    /* Gold #c9a96e — secondary accent */
+    --accent: 39 46% 61%;
+    --accent-foreground: 0 0% 4%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 330 80% 52%;
+    --border: 0 0% 15%;
+    --input: 0 0% 9%;
+    --ring: 328 84% 51%;
     --radius: 0.5rem;
 
     /* Brand palette */
-    --brand-pink: 330 80% 52%;
+    --brand-bg: 0 0% 4%;          /* #0a0a0a */
+    --brand-surface: 0 0% 7%;     /* #111111 */
+    --brand-surface-alt: 0 0% 9%; /* #161616 */
+    --brand-text: 0 0% 88%;       /* #e0e0e0 */
+    --brand-muted: 0 0% 53%;      /* #888888 */
+    --brand-pink: 328 84% 51%;    /* #eb1887 */
+    --brand-gold: 39 46% 61%;     /* #c9a96e */
+    --brand-cream: 30 33% 94%;    /* #f5f0eb */
+    --brand-white: 0 0% 98%;      /* #fafafa */
     --brand-navy: 220 40% 12%;
-    --brand-gold: 42 80% 53%;
-    --brand-cream: 38 50% 97%;
     --brand-blush: 340 50% 96%;
     --brand-ice: 340 25% 97%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 330 80% 52%;
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 88%;
+    --sidebar-primary: 328 84% 51%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 42 80% 53%;
-    --sidebar-accent-foreground: 220 20% 12%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 330 80% 52%;
+    --sidebar-accent: 39 46% 61%;
+    --sidebar-accent-foreground: 0 0% 4%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 328 84% 51%;
   }
 }
 
@@ -75,7 +86,7 @@ html {
   100% { transform: translateX(-50%); }
 }
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 40s linear infinite;
 }
 
 /* ─── 3D book ─── */
@@ -145,7 +156,8 @@ html {
 
 /* ─── Selection ─── */
 ::selection {
-  background: hsl(330 80% 52% / 0.15);
+  background: hsl(var(--brand-pink) / 0.25);
+  color: hsl(var(--brand-white));
 }
 
 /* ─── Smooth fade for page transitions ─── */
@@ -163,4 +175,13 @@ html {
   font-style: italic;
   line-height: 0.85;
   color: hsl(var(--brand-pink) / 0.06);
+}
+
+/* ─── Floating cover art ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: float 5s ease-in-out infinite;
 }

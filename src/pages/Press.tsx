@@ -13,23 +13,42 @@ const Press = () => (
     <CursorFollower />
     <Navbar />
 
-    {/* Hero */}
-    <section className="py-28 md:py-40 px-6 bg-brand-cream relative overflow-hidden">
+    {/* Hero — editorial speaker layout */}
+    <section className="py-28 md:py-36 px-6 bg-background relative overflow-hidden">
       <span className="editorial-number text-[15vw] absolute -bottom-[3vw] left-[-1vw] select-none pointer-events-none">Press</span>
-      <div className="relative z-10 max-w-3xl mx-auto text-center">
-        <TextReveal>
-          <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-4">Press & Speaking</p>
-        </TextReveal>
-        <TextReveal delay={150}>
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[1.1] mb-6">
-            Let's <em className="text-brand-pink italic">collaborate.</em>
-          </h1>
-        </TextReveal>
-        <FadeIn delay={400} y={20}>
-          <p className="font-sans text-[15px] text-muted-foreground max-w-md mx-auto leading-relaxed">
-            Aimee is available for speaking engagements, media appearances, brand partnerships, and podcast guest features.
-          </p>
-        </FadeIn>
+      <div className="relative z-10 max-w-[1400px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Text column */}
+          <div className="lg:col-span-7">
+            <TextReveal>
+              <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-4">Press & Speaking</p>
+            </TextReveal>
+            <TextReveal delay={150}>
+              <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[1.05] mb-6">
+                Let's <em className="text-brand-pink italic">collaborate.</em>
+              </h1>
+            </TextReveal>
+            <FadeIn delay={400} y={20}>
+              <p className="font-sans text-[15px] text-muted-foreground max-w-md leading-relaxed">
+                Aimee is available for speaking engagements, media appearances, brand partnerships, and podcast guest features.
+              </p>
+            </FadeIn>
+          </div>
+          {/* Speaker photo */}
+          <div className="lg:col-span-5 relative">
+            <FadeIn delay={300} scale={0.95}>
+              <div className="editorial-img relative">
+                <img
+                  src="/aimee-portrait-3.jpg"
+                  alt="Aimee Rickabus — Speaker & Host"
+                  className="w-full max-w-[480px] mx-auto object-cover aspect-[3/4]"
+                  style={{ borderRadius: "20px" }}
+                  loading="eager"
+                />
+              </div>
+            </FadeIn>
+          </div>
+        </div>
       </div>
     </section>
 
