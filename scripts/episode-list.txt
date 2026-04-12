@@ -1,0 +1,39 @@
+   #  | Date       | Dur    | Video ID    | Title
+-----------------------------------------------------------------------------------------
+#  1  | 2025-03-31 | 56 min | 2hbgru9Eu78 | Ep. 1: Neetu Sadhwani on Burnout, Bold Moves & Building Your Own Table
+#  2  | 2025-04-14 | 38 min | Tz6fwH9uMtE | Ep. 5: Kelly Abney on Grit, Growth & the Unseen Hustle of Women in Fitness
+#  3  | 2025-05-05 | 26 min | Tz8aQljU2iU | Ep. 8: From Breakdown to Breakthrough, The Real Story Behind My Leadership Journey
+#  4  | 2025-06-09 | 30 min | Gbv27RDjuGw | Ep. 13 Brooke Briggs on Creating Children’s Music, Meaningful Work & Motherhood
+#  5  | 2025-06-23 | 33 min | L1CuMRrL1lo | Ep. 15 Lindsay Buwalda on Reinvention, Resilience & Creating Bliss After Divorce
+#  6  | 2025-06-30 | 31 min | W3JO1OLhh7M | Ep. 16 Paige Johnson on Pilates, Partnership & Finding Her Mantra Through Motherhood
+#  7  | 2025-07-21 | 30 min | 0IGvmKlcmWk | Ep. 19 Burnout to Balance with Jessica Renee: Reclaiming Confidence and Purpose
+#  8  | 2025-07-28 | 32 min | WxuhR9i-d2A | Ep. 20 Heather Gerber on Community, Education & Leading with Heart
+#  9  | 2025-08-04 | 55 min | 1wBxCejTPKI | Ep. 21 The Future of Learning: Power Skills, Microlearning & AI with Ioanna Mantzouridou
+# 10  | 2025-08-25 | 41 min | GbRG7Sh7ILw | Ep. 24 How Alyssa Nolte Accidentally Built a Tech Company
+# 11  | 2025-09-08 | 45 min | 3-IEwpqSsUw | Ep. 26: Redesigning Dignity: How UNICORN Is Transforming Restroom Equity | The Manage Her Podcast
+# 12  | 2025-09-15 | 1h 05m | 4ICspFJ4GIg | Ep. 27: From NYC Burnout to Ethical Fashion Empire | Kathryn Letson of By The Sea Company
+# 13  | 2025-09-22 | 1h 25m | 1nsbOPCgVnI | Ep.28: Marriage, Masculinity & Mental Load: A Conversation with Bart Morse | The Manage Her Podcast
+# 14  | 2025-09-29 | 1h 10m | vEOjLY7o_D8 | Ep. 29: Parenting with Purpose: Pam Roy on Meaning, Legacy & Raising Resilient Kids
+# 15  | 2025-10-13 | 57 min | 9rGp2LZuqCg | Ep 31: Leadership Is a Behavior: Elizabeth Taylor on Burnout, Boundaries & Credit Confidence
+# 16  | 2025-10-20 | 1h 02m | 6bchW_vZF5s | Ep. 32: Executive Coaching & Motherhood: Amanda Jaggard on Culture, Commitments, and Raising Leaders
+# 17  | 2025-10-27 | 55 min | o6vTHqXybhY | Ep. 33: Reinvent Yourself at Any Age: Leadership, Culture & Community with Lyndsay Dowd
+# 18  | 2025-11-03 | 48 min | q3_Wj0pdh8U | Ep. 34:  Faith, Finance & the Freedom to Lead with Purpose | Spring Eatmon on The Manage Her Podcast
+# 19  | 2025-11-10 | 42 min | ySo__KAKp_w | Ep. 35: Reset Your Mitochondria for Energy, Longevity & Health | Kristina Kristen on 10,000 Suns
+# 20  | 2025-11-17 | 46 min | QlULl7ehS90 | Ep. 36: From Injury to Advocacy With Eden Marie James: A Mom's Mission for Truth, Health, and Change
+# 21  | 2025-12-01 | 43 min | palrIIBkoWQ | From Brain Injury to Capitol Warrior: Amy Bohn's Fight for 50,000 Kids Denied School | Ep. 38
+# 22  | 2025-12-08 | 38 min | b2EqUll-ers | Sexologist Dr. Holly Wood: Pleasure is Self-Care | Motherhood, Desire & Reclaiming You | Ep 39
+# 23  | 2025-12-15 | 33 min | SVLzi5IeDBM | Chef Lindsay Smith: 19 Years, Divorce & Rebuilding | Farm-to-Table Legacy | Ep 40
+# 24  | 2025-12-22 | 52 min | mU2baNVwfQI | Melissa Northway: Money Is Freedom | Women & Wealth, Tax Strategy | Ep 41
+# 25  | 2025-12-29 | 1h 03m | cIdU6Qf2uDU | Dr. Katie Pritchett: Toxic Resilience & Why Women Must Lead the AI Revolution | Ep 42
+# 26  | 2026-01-05 | 1h 04m | Nq9dQl0aNC8 | Stephanie Guttman: Rewrite Your Money Story | Women & Investing | Ep 43
+# 27  | 2026-01-12 | 1h 15m | ey-ZIuFXuQ0 | Julie E. Health: 3 Steps to Unlimited Healing | Sleep, Detox & Biofield | Ep 44
+# 28  | 2026-01-16 | 47 min | qvkJahJDixU | “Stop Letting Your Accountant Say No” (Tax Strategy for Entrepreneurs)
+# 29  | 2026-01-26 | 47 min | SnpxclSMvqI | Dave Lundgren: Loveness, AI & Wealth Through Conscious Leadership | Ep 45
+# 30  | 2026-02-02 | 56 min | EHZGVY9DS6A | The Book Midwives Who Birthed My Book (And Changed How Women Write) | Ep 47
+# 31  | 2026-02-16 | 45 min | MPoNQUa8opQ | Why "Silly" Business Ideas Outperform Serious Ones | Ep 49
+# 32  | 2026-02-23 | 33 min | fC9hxdJMgro | Intentional Relationship Building: Scott MacGregor on Why Human Connection Beats Everything | Ep 50
+# 33  | 2026-03-02 | 54 min | uT9hLCNcfUc | The $10 Trillion Job You're Doing for Free | Dr. Danielle Dowling | Ep 51
+# 34  | 2026-03-09 | 53 min | swolr9A2BSI | The Leadership Legacy Most Moms Are Accidentally Destroying | Tiana Reeves | Ep 52
+# 35  | 2026-03-16 | 57 min | Fx0TCk0PsFs | Option A: This Mom Saw What Schools Were Teaching Her Kids—Now She's Running for Office | Ep 53
+# 36  | 2026-03-23 | 1h 19m | p5QkTRFlGN8 | Returning to Your Feminine Nature: Why Modern Women Are "Out of Balance" | Ep 54
+# 37  | 2026-04-06 | 39 min | h6kSEVbmTnY | Holistic Motherhood: Pregnancy, Self-Care & Nervous System Health with Dr. Laura Brayton | Ep 56

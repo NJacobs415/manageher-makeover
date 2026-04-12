@@ -86,6 +86,7 @@ Generate a JSON response with EXACTLY this structure (no markdown, no backticks,
   "metaDescription": "SEO meta description under 160 characters",
   "topics": ["3-5 topic tags from: Leadership, Motherhood, Financial Literacy, Wellness, Entrepreneurship, Boundaries, Identity, Marriage, Community, Spirituality"],
   "keyTakeaways": ["5-7 key takeaways as complete sentences"],
+  "guestLinks": Extract any social media or website links for the guest from the episode description. Look for Instagram, LinkedIn, TikTok, YouTube, website URLs, etc. Return as an array of {"label": "Platform Name", "url": "https://..."} objects. If no links found, return empty array.,
   "pullQuotes": [{"text": "A memorable quote from the episode", "timestamp": ""}],
   "timestamps": [{"time": "0:00", "label": "Introduction"}],
   "content": "Full blog post as HTML. Use p tags for paragraphs, strong for emphasis, em for italic, h3 for subheadings. Write 800-1200 words covering the main themes insights and actionable advice. Write in The Manage Her brand voice: bold warm direct permission-giving. Address the reader as you. Do NOT use bullet point lists in the content. Write in flowing prose paragraphs."
@@ -210,6 +211,7 @@ async function main() {
         metaDescription: blogData.metaDescription || '',
         topics: blogData.topics || [],
         keyTakeaways: blogData.keyTakeaways || [],
+        guestLinks: blogData.guestLinks || [],
         pullQuotes: blogData.pullQuotes || [],
         timestamps: blogData.timestamps || [],
         content: blogData.content || ''

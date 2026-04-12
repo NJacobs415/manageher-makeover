@@ -28,6 +28,7 @@ interface BlogPostData {
   episodeNumber: number;
   guestName: string;
   guestBio: string;
+  guestLinks?: { label: string; url: string }[];
   publishedAt: string;
   duration: string;
   thumbnail: string;
@@ -524,6 +525,27 @@ const BlogPost = () => {
                       >
                         {post.guestBio}
                       </p>
+                      {post.guestLinks && post.guestLinks.length > 0 && (
+                        <div className="flex flex-wrap gap-3 mt-4">
+                          {post.guestLinks.map((link) => (
+                            <a
+                              key={link.url}
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-1.5 font-sans text-[12px] px-4 py-2 transition-all hover:-translate-y-0.5"
+                              style={{
+                                background: "rgba(235,24,135,0.06)",
+                                color: "#eb1887",
+                                borderRadius: "50px",
+                                border: "1px solid rgba(235,24,135,0.1)",
+                              }}
+                            >
+                              {link.label} ↗
+                            </a>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </FadeIn>
                 )}
