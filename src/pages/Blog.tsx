@@ -54,11 +54,16 @@ const Blog = () => {
 
       {/* ═══════ HERO ═══════ */}
       <section
-        className="py-28 md:py-40 px-6 relative overflow-hidden"
-        style={{ background: "#0a0a0a" }}
+        className="relative py-28 md:py-40 px-6 overflow-hidden"
+        style={{ minHeight: "50vh", display: "flex", alignItems: "center", background: "#0a0a0a" }}
       >
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(235,24,135,0.05) 0%, transparent 50%)" }} />
-        <div className="max-w-[1200px] mx-auto relative z-10 text-center">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img src="/blog-hero.png" alt="" className="w-full h-full object-cover" style={{ opacity: 0.15 }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.9) 100%)" }} />
+        </div>
+
+        <div className="max-w-[1200px] mx-auto relative z-10 text-center w-full">
           <TextReveal>
             <p className="font-sans text-[10px] uppercase tracking-[0.3em] mb-4" style={{ color: "#c9a96e" }}>The Blog</p>
           </TextReveal>
