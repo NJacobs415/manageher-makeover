@@ -26,9 +26,13 @@ interface QuizData {
 interface EpisodeQuizProps {
   quiz: QuizData;
   slug: string;
+  episodeNumber?: number;
+  resourceUrl?: string;
 }
 
-// Tiny sparkle burst — no dependencies
+const QUIZ_WEBHOOK = "https://tmh.themanageher.com/webhook/quiz-result";
+
+// Tiny sparkle burst
 const Sparkles = () => {
   const particles = Array.from({ length: 18 }, (_, i) => {
     const angle = (i / 18) * 360;
@@ -56,7 +60,11 @@ const Sparkles = () => {
       />
     );
   });
-  return <div className="absolute inset-0 pointer-events-none overflow-hidden">{particles}</div>;
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {particles}
+    </div>
+  );
 };
 
 const sparkleKeyframes = `
@@ -66,15 +74,34 @@ const sparkleKeyframes = `
 }
 `;
 
-const EpisodeQuiz = ({ quiz, slug }: EpisodeQuizProps) => {
+const EpisodeQuiz = ({
+  quiz,
+  slug,
+  episodeNumber,
+  resourceUrl,
+}: EpisodeQuizProps) => {
   const [currentQ, setCurrentQ] = useState(-1); // -1 = intro
   const [answers, setAnswers] = useState<string[]>([]);
   const [selected, setSelected] = useState<number | null>(null);
   const [result, setResult] = useState<QuizResult | null>(null);
   const [copied, setCopied] = useState(false);
   const [slideDir, setSlideDir] = useState<"in" | "out">("in");
+  const [email, setEmail] = useState("");
+  const [revealed, setRevealed] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [emailError, setEmailError] = useState("");
 
+  const storageKey = `tmh-quiz-${slug}`;
   const totalQ = quiz.questions.length;
+
+  // Check localStorage for returning users
+  useEffect(() => {
+    try {
+      if (localStorage.getItem(storageKey)) setRevealed(true);
+    } catch {
+      // storage unavailable
+    }
+  }, [storageKey]);
 
   const tallyResult = useCallback(
     (allAnswers: string[]) => {
@@ -124,10 +151,50 @@ const EpisodeQuiz = ({ quiz, slug }: EpisodeQuizProps) => {
 
   const handleRetake = () => {
     setResult(null);
+    setRevealed(false);
     setAnswers([]);
     setSelected(null);
     setCurrentQ(-1);
     setSlideDir("in");
+    setEmail("");
+    setEmailError("");
+  };
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || !email.includes("@")) {
+      setEmailError("Please enter a valid email");
+      return;
+    }
+    setEmailError("");
+    setSubmitting(true);
+
+    try {
+      await fetch(QUIZ_WEBHOOK, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          email,
+          episodeNumber: episodeNumber || 0,
+          quizTitle: quiz.title,
+          resultType: result?.type || "",
+          resultName: result?.title || "",
+          slug,
+          timestamp: new Date().toISOString(),
+        }),
+      });
+    } catch {
+      // Don't block UX on webhook failure
+    }
+
+    try {
+      localStorage.setItem(storageKey, "1");
+    } catch {
+      // storage unavailable
+    }
+
+    setSubmitting(false);
+    setRevealed(true);
   };
 
   const handleShare = async () => {
@@ -142,10 +209,13 @@ const EpisodeQuiz = ({ quiz, slug }: EpisodeQuizProps) => {
     }
   };
 
-  // Reset copied when result changes
   useEffect(() => setCopied(false), [result]);
 
-  const progress = result ? 100 : currentQ >= 0 ? ((currentQ + 1) / totalQ) * 100 : 0;
+  const progress = result
+    ? 100
+    : currentQ >= 0
+      ? ((currentQ + 1) / totalQ) * 100
+      : 0;
 
   return (
     <>
@@ -180,7 +250,8 @@ const EpisodeQuiz = ({ quiz, slug }: EpisodeQuizProps) => {
               className="text-center"
               style={{
                 opacity: slideDir === "in" ? 1 : 0,
-                transform: slideDir === "in" ? "translateY(0)" : "translateY(10px)",
+                transform:
+                  slideDir === "in" ? "translateY(0)" : "translateY(10px)",
                 transition: "all 0.25s ease",
               }}
             >
@@ -277,22 +348,24 @@ const EpisodeQuiz = ({ quiz, slug }: EpisodeQuizProps) => {
             </div>
           )}
 
-          {/* ─── RESULT ─── */}
+          {/* ─── RESULT (email-gated) ─── */}
           {result && (
             <div
               className="text-center relative"
               style={{
                 opacity: slideDir === "in" ? 1 : 0,
-                transform: slideDir === "in" ? "translateY(0)" : "translateY(10px)",
+                transform:
+                  slideDir === "in" ? "translateY(0)" : "translateY(10px)",
                 transition: "all 0.4s ease",
               }}
             >
-              <Sparkles />
+              {revealed && <Sparkles />}
+
               <p
                 className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] mb-2"
                 style={{ color: "#c9a96e" }}
               >
-                Your Result
+                {revealed ? "Your Result" : "Results Ready!"}
               </p>
               <h3
                 className="font-serif text-3xl md:text-4xl font-bold mb-2"
@@ -300,56 +373,169 @@ const EpisodeQuiz = ({ quiz, slug }: EpisodeQuizProps) => {
               >
                 {result.title}
               </h3>
-              <p
-                className="font-sans text-[14px] leading-[1.8] mb-8 max-w-[550px] mx-auto"
-                style={{ color: "#ccc" }}
-              >
-                {result.description}
-              </p>
 
-              <div className="flex flex-wrap justify-center gap-3">
-                <a
-                  href={`/blog/${slug}`}
-                  className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-7 py-3.5 transition-all hover:scale-[1.02]"
+              {/* Description — blurred until email submitted */}
+              <div className="relative max-w-[550px] mx-auto mb-8">
+                <p
+                  className="font-sans text-[14px] leading-[1.8]"
                   style={{
-                    background: "#eb1887",
-                    color: "#fff",
-                    borderRadius: "50px",
-                    boxShadow: "0 4px 20px rgba(235,24,135,0.3)",
-                    textDecoration: "none",
+                    color: "#ccc",
+                    filter: revealed ? "blur(0px)" : "blur(8px)",
+                    transition: "filter 0.8s ease",
+                    userSelect: revealed ? "auto" : "none",
                   }}
                 >
-                  Listen to the Episode
-                </a>
-                <button
-                  onClick={handleShare}
-                  className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-7 py-3.5 transition-all"
-                  style={{
-                    background: "transparent",
-                    color: "#fafafa",
-                    borderRadius: "50px",
-                    border: "1px solid rgba(255,255,255,0.15)",
-                    cursor: "pointer",
-                  }}
-                >
-                  {copied ? "Copied!" : "Share Your Result"}
-                </button>
+                  {result.description}
+                </p>
+                {!revealed && (
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background:
+                        "linear-gradient(to bottom, transparent 0%, rgba(17,17,17,0.9) 80%)",
+                    }}
+                  />
+                )}
               </div>
 
-              <button
-                onClick={handleRetake}
-                className="font-sans text-[11px] mt-6 transition-colors"
-                style={{
-                  color: "#555",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  textDecoration: "underline",
-                  textUnderlineOffset: "3px",
-                }}
-              >
-                Retake quiz
-              </button>
+              {/* Email gate */}
+              {!revealed && (
+                <div className="max-w-[400px] mx-auto">
+                  <p
+                    className="font-sans text-[13px] mb-5"
+                    style={{ color: "#aaa" }}
+                  >
+                    Enter your email to reveal your personalized result + get
+                    the free episode cheat sheet
+                  </p>
+                  <form onSubmit={handleEmailSubmit} className="space-y-3">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="your@email.com"
+                      className="w-full font-sans text-[14px] px-5 py-3.5 outline-none transition-all"
+                      style={{
+                        background: "#1a1a1a",
+                        color: "#fff",
+                        borderRadius: "14px",
+                        border: emailError
+                          ? "1px solid #ff4444"
+                          : "1px solid rgba(255,255,255,0.1)",
+                      }}
+                      onFocus={(e) =>
+                        (e.target.style.borderColor = "#eb1887")
+                      }
+                      onBlur={(e) =>
+                        (e.target.style.borderColor =
+                          "rgba(255,255,255,0.1)")
+                      }
+                    />
+                    {emailError && (
+                      <p
+                        className="font-sans text-[12px] text-left"
+                        style={{ color: "#ff4444" }}
+                      >
+                        {emailError}
+                      </p>
+                    )}
+                    <button
+                      type="submit"
+                      disabled={submitting}
+                      className="w-full font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-8 py-4 transition-all hover:scale-[1.01]"
+                      style={{
+                        background: "#eb1887",
+                        color: "#fff",
+                        borderRadius: "50px",
+                        boxShadow: "0 4px 20px rgba(235,24,135,0.3)",
+                        border: "none",
+                        cursor: submitting ? "wait" : "pointer",
+                        opacity: submitting ? 0.7 : 1,
+                      }}
+                    >
+                      {submitting ? "Revealing..." : "Reveal My Results"}
+                    </button>
+                  </form>
+                  <p
+                    className="font-sans text-[10px] mt-3"
+                    style={{ color: "#555" }}
+                  >
+                    Join 5,000+ women. Unsubscribe anytime.
+                  </p>
+                </div>
+              )}
+
+              {/* Revealed actions */}
+              {revealed && (
+                <div
+                  style={{
+                    opacity: 1,
+                    animation: "fadeIn 0.5s ease",
+                  }}
+                >
+                  <div className="flex flex-wrap justify-center gap-3">
+                    <a
+                      href={`/blog/${slug}`}
+                      className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-7 py-3.5 transition-all hover:scale-[1.02]"
+                      style={{
+                        background: "#eb1887",
+                        color: "#fff",
+                        borderRadius: "50px",
+                        boxShadow: "0 4px 20px rgba(235,24,135,0.3)",
+                        textDecoration: "none",
+                      }}
+                    >
+                      Listen to the Episode
+                    </a>
+                    <button
+                      onClick={handleShare}
+                      className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-7 py-3.5 transition-all"
+                      style={{
+                        background: "transparent",
+                        color: "#fafafa",
+                        borderRadius: "50px",
+                        border: "1px solid rgba(255,255,255,0.15)",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {copied ? "Copied!" : "Share Your Result"}
+                    </button>
+                  </div>
+
+                  {resourceUrl && (
+                    <a
+                      href={resourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 font-sans text-[12px] mt-5 transition-colors"
+                      style={{
+                        color: "#c9a96e",
+                        textDecoration: "underline",
+                        textUnderlineOffset: "3px",
+                      }}
+                    >
+                      Download your Episode Cheat Sheet
+                    </a>
+                  )}
+
+                  <div>
+                    <button
+                      onClick={handleRetake}
+                      className="font-sans text-[11px] mt-5 transition-colors"
+                      style={{
+                        color: "#555",
+                        background: "none",
+                        border: "none",
+                        cursor: "pointer",
+                        textDecoration: "underline",
+                        textUnderlineOffset: "3px",
+                      }}
+                    >
+                      Retake quiz
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>

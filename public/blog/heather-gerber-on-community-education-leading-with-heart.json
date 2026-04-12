@@ -69,5 +69,159 @@
       "label": "📚 Grab your copy of The Manage Her",
       "url": "https://a.co/d/ej9A37z"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Multi-Lane Success Style?",
+    "description": "Discover how you naturally approach building multiple dreams simultaneously and what that reveals about your unique path to success.",
+    "questions": [
+      {
+        "question": "When you have a new business idea, what's your first instinct?",
+        "options": [
+          {
+            "text": "I immediately start thinking about how this could solve a real problem in the world",
+            "type": "A"
+          },
+          {
+            "text": "I research the market and create a detailed plan before taking any action",
+            "type": "B"
+          },
+          {
+            "text": "I reach out to my network to get feedback and see who might want to collaborate",
+            "type": "C"
+          },
+          {
+            "text": "I consider how this fits with my existing commitments and life goals",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you typically handle having multiple interests or projects going at once?",
+        "options": [
+          {
+            "text": "I follow my passion and intuition, trusting that the right opportunities will align",
+            "type": "A"
+          },
+          {
+            "text": "I prioritize them based on potential return and allocate my time accordingly",
+            "type": "B"
+          },
+          {
+            "text": "I look for ways to connect them and create synergy between different projects",
+            "type": "C"
+          },
+          {
+            "text": "I try to find natural rhythms and seasons for different focuses",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What drives you most when building something new?",
+        "options": [
+          {
+            "text": "The desire to make a meaningful impact that aligns with my values",
+            "type": "A"
+          },
+          {
+            "text": "The satisfaction of creating something sustainable and well-structured",
+            "type": "B"
+          },
+          {
+            "text": "The opportunity to bring people together and build community",
+            "type": "C"
+          },
+          {
+            "text": "The chance to create more freedom and flexibility in my life",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When facing a major decision about your business or career, you tend to:",
+        "options": [
+          {
+            "text": "Trust your gut feeling about what feels right and purposeful",
+            "type": "A"
+          },
+          {
+            "text": "Analyze the data and potential outcomes before deciding",
+            "type": "B"
+          },
+          {
+            "text": "Talk it through with trusted friends, mentors, or family members",
+            "type": "C"
+          },
+          {
+            "text": "Consider how each option affects all areas of your life",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What's your biggest concern about pursuing multiple business ventures?",
+        "options": [
+          {
+            "text": "Losing sight of my core mission and values in the pursuit of growth",
+            "type": "A"
+          },
+          {
+            "text": "Not having enough systems in place to manage everything effectively",
+            "type": "B"
+          },
+          {
+            "text": "Not being able to give each community or client the attention they deserve",
+            "type": "C"
+          },
+          {
+            "text": "Creating more chaos instead of the balanced life I'm seeking",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you measure success in your ventures?",
+        "options": [
+          {
+            "text": "By the positive impact I'm making and how aligned I feel with my purpose",
+            "type": "A"
+          },
+          {
+            "text": "By consistent growth, profitability, and the strength of my business foundation",
+            "type": "B"
+          },
+          {
+            "text": "By the relationships I've built and the community I've created",
+            "type": "C"
+          },
+          {
+            "text": "By how well everything works together to support the life I want to live",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Heart-Led Visionary",
+        "description": "You see opportunities everywhere and naturally connect the dots between different passions and purposes. Like Heather, you believe that leading with heart isn't just nice—it's essential for sustainable success. You understand that impact and income can grow together when you stay true to your values. This episode will inspire you to embrace all your entrepreneurial dreams without apology and show you exactly how someone else is thriving in multiple lanes while staying grounded in what matters most."
+      },
+      {
+        "type": "B",
+        "title": "The Strategic Builder",
+        "description": "You're naturally drawn to creating systems and structures that support long-term growth. You understand that sustainable success requires intention and planning, and you're not afraid to take a methodical approach to building multiple ventures. You value both stability and expansion, seeing them as complementary rather than competing forces. Heather's blueprint for managing multiple businesses while homeschooling will give you concrete strategies for scaling your impact without sacrificing the foundation you've worked so hard to build."
+      },
+      {
+        "type": "C",
+        "title": "The Community Connector",
+        "description": "You instinctively understand that success is sweeter when shared and that building meaningful connections is just as important as building profitable businesses. Like Heather discovered with her educational program, you know that community matters as much as content in whatever you create. You're naturally drawn to ventures that bring people together and solve real problems. This episode will validate your belief that relationships are your greatest business asset and show you how to monetize your gift for creating belonging."
+      },
+      {
+        "type": "D",
+        "title": "The Balanced Integrator",
+        "description": "You refuse to accept the false choice between different aspects of your life and are constantly seeking ways to make everything work together harmoniously. You believe that entrepreneurship and motherhood can enhance each other rather than compete, and you're always looking for creative solutions that honor all parts of who you are. Heather's story will resonate deeply with you and provide the real-world proof that integration isn't just possible—it's powerful."
+      }
+    ]
+  }
 }

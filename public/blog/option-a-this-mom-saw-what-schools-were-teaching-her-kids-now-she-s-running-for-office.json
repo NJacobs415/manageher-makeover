@@ -100,5 +100,159 @@
       "label": "💝 Donate",
       "url": "https://www.efundraisingconnections.com/c/KristinaIrwinforStateSenate2026"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Advocacy Style?",
+    "description": "When something matters deeply to you and your family, how do you naturally step into action? Discover your unique approach to creating change.",
+    "questions": [
+      {
+        "question": "When you first notice a problem that affects your family or community, what's your natural first response?",
+        "options": [
+          {
+            "text": "I immediately start researching and want to understand exactly what's happening and who's responsible",
+            "type": "A"
+          },
+          {
+            "text": "I reach out to friends and neighbors to see if they're experiencing the same thing",
+            "type": "B"
+          },
+          {
+            "text": "I start mapping out potential solutions and thinking through the most effective approach",
+            "type": "C"
+          },
+          {
+            "text": "I look for ways to connect with others who share my concerns and might want to take action together",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "You're at a meeting where everyone seems to agree on something you strongly disagree with. How do you typically handle this?",
+        "options": [
+          {
+            "text": "I speak up clearly about my position, even if it makes others uncomfortable",
+            "type": "A"
+          },
+          {
+            "text": "I ask thoughtful questions to understand their perspective while gently introducing my concerns",
+            "type": "B"
+          },
+          {
+            "text": "I prepare my points carefully and present a well-reasoned alternative viewpoint",
+            "type": "C"
+          },
+          {
+            "text": "I try to find others who might share my concerns so we can present a united voice",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When facing a challenge that feels bigger than what you can handle alone, you tend to:",
+        "options": [
+          {
+            "text": "Double down on your own efforts and push harder, trusting your instincts over others' advice",
+            "type": "A"
+          },
+          {
+            "text": "Seek out mentors and advisors who can guide you toward the best path forward",
+            "type": "B"
+          },
+          {
+            "text": "Step back to analyze the situation and develop a comprehensive strategy before moving forward",
+            "type": "C"
+          },
+          {
+            "text": "Rally others to join you because you know collective action is more powerful than going it alone",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your ideal way to create lasting change involves:",
+        "options": [
+          {
+            "text": "Taking bold, decisive action that shows others it's possible to stand up for what's right",
+            "type": "A"
+          },
+          {
+            "text": "Building relationships and finding common ground that brings former opponents to your side",
+            "type": "B"
+          },
+          {
+            "text": "Developing well-researched solutions that address root causes rather than just symptoms",
+            "type": "C"
+          },
+          {
+            "text": "Empowering everyday people to see their own power and take action in their communities",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When people describe your approach to leadership challenges, they're most likely to say:",
+        "options": [
+          {
+            "text": "You're fearless and willing to take on fights that others avoid",
+            "type": "A"
+          },
+          {
+            "text": "You're diplomatic and skilled at bringing out the best in difficult situations",
+            "type": "B"
+          },
+          {
+            "text": "You're thorough and always seem to have thought through all the angles",
+            "type": "C"
+          },
+          {
+            "text": "You're inspiring and have a gift for helping others see their own potential",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "The thing that frustrates you most about how change typically happens is:",
+        "options": [
+          {
+            "text": "Too many people are afraid to take a stand when it really matters",
+            "type": "A"
+          },
+          {
+            "text": "People get stuck in us-versus-them thinking instead of finding solutions together",
+            "type": "B"
+          },
+          {
+            "text": "Most approaches are reactive and short-sighted rather than addressing underlying issues",
+            "type": "C"
+          },
+          {
+            "text": "Ordinary people don't realize how much power they actually have to make a difference",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Fierce Protector",
+        "description": "You're driven by a deep instinct to shield what matters most to you. When your values or loved ones are threatened, you don't hesitate to take bold action, even if it means going against the grain. Your protective energy is your superpower, but sometimes you might feel isolated in your intensity. This episode will show you how to channel that fierce protective instinct into strategic leadership that builds lasting change."
+      },
+      {
+        "type": "B",
+        "title": "The Bridge Builder",
+        "description": "You naturally see multiple perspectives and excel at bringing people together around shared values. You believe change happens through connection and understanding, not conflict. Your diplomatic approach is invaluable, though you might sometimes feel frustrated by how slowly things move. Kristina's story will inspire you with concrete ways to unite people across differences while still standing firm in your convictions."
+      },
+      {
+        "type": "C",
+        "title": "The Strategic Planner",
+        "description": "You approach challenges with careful analysis and methodical action. You believe in doing your homework, building coalitions, and working within systems to create sustainable change. Your thoughtful approach prevents costly mistakes, though you might sometimes feel paralyzed by wanting the perfect plan. This episode will energize you with a real example of how strategic thinking combined with bold action can break through seemingly impossible barriers."
+      },
+      {
+        "type": "D",
+        "title": "The Community Catalyst",
+        "description": "You instinctively understand that real change happens from the ground up. You're energized by grassroots movements and believe in the power of ordinary people coming together. Your ability to mobilize others is remarkable, though you might sometimes doubt whether your efforts are big enough to matter. Kristina's journey from frustrated mom to serious political candidate will show you exactly how grassroots energy can create extraordinary results."
+      }
+    ]
+  }
 }

@@ -98,5 +98,159 @@
       "label": "🎬 YouTube",
       "url": "https://www.youtube.com/@DanielleDowling"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Motherhood Leadership Style?",
+    "description": "Discover how you navigate the invisible work of motherhood and what it reveals about your natural leadership approach. This quiz will help you recognize your strengths and understand why you deserve recognition for the trillion-dollar job you're already doing.",
+    "questions": [
+      {
+        "question": "When someone compliments you on how well you manage everything at home, your first internal reaction is:",
+        "options": [
+          {
+            "text": "A mix of pride and exhaustion — you appreciate the recognition but wonder why it feels so rare",
+            "type": "A"
+          },
+          {
+            "text": "Frustration that they're noticing your work but not stepping up to share the load",
+            "type": "B"
+          },
+          {
+            "text": "Gratitude, but also a mental note about what systems you could put in place so it's not all on you",
+            "type": "C"
+          },
+          {
+            "text": "Appreciation, while also making sure they see you as more than just someone who manages a household",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your child asks you to do something they're perfectly capable of doing themselves. You:",
+        "options": [
+          {
+            "text": "Do it while mentally noting that you should probably stop doing this so much",
+            "type": "A"
+          },
+          {
+            "text": "Firmly redirect them to do it themselves and explain why that's important",
+            "type": "B"
+          },
+          {
+            "text": "Use it as a teaching moment about responsibility and help them create a system",
+            "type": "C"
+          },
+          {
+            "text": "Encourage their independence while staying connected to who they are as a person",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about all the invisible work you do daily (meal planning, scheduling, emotional labor), you feel:",
+        "options": [
+          {
+            "text": "Conflicted — you love your family but sometimes wish someone would notice all you do",
+            "type": "A"
+          },
+          {
+            "text": "Clear that this work has real value and deserves recognition, not just gratitude",
+            "type": "B"
+          },
+          {
+            "text": "Motivated to create systems that distribute this work more fairly among family members",
+            "type": "C"
+          },
+          {
+            "text": "Proud of your skills while also protective of your identity outside of these tasks",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your approach to asking your partner for help with household responsibilities tends to be:",
+        "options": [
+          {
+            "text": "You ask nicely but often end up doing it yourself to avoid conflict",
+            "type": "A"
+          },
+          {
+            "text": "You've stopped asking for 'help' and started assigning ownership of specific areas",
+            "type": "B"
+          },
+          {
+            "text": "You focus on creating shared systems where everyone knows their role without constant reminders",
+            "type": "C"
+          },
+          {
+            "text": "You communicate your needs clearly while maintaining your own interests and priorities",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you take time for yourself, the voice in your head usually says:",
+        "options": [
+          {
+            "text": "You deserve this, but you also feel a little guilty and hope nothing important needs you",
+            "type": "A"
+          },
+          {
+            "text": "This is non-negotiable self-care and anyone who has a problem with it can figure it out",
+            "type": "B"
+          },
+          {
+            "text": "This recharge time makes you a better parent and partner, so it benefits everyone",
+            "type": "C"
+          },
+          {
+            "text": "This is essential for staying connected to who you are beyond your roles in the family",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "If you had to describe your biggest growth area as a mother and leader, it would be:",
+        "options": [
+          {
+            "text": "Learning to name and value your contributions without feeling selfish",
+            "type": "A"
+          },
+          {
+            "text": "Continuing to hold firm boundaries even when others resist the changes",
+            "type": "B"
+          },
+          {
+            "text": "Building sustainable systems that don't rely on your constant management",
+            "type": "C"
+          },
+          {
+            "text": "Balancing deep love for your family with staying true to your individual identity",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Quiet Revolutionary",
+        "description": "You're beginning to question why you feel guilty for wanting recognition for all you do. You sense something isn't quite right about carrying the mental load alone, but you're still learning to name it without shame. Your awareness is growing, and you're ready to challenge the 'good girl' conditioning that keeps you silent. This episode will give you the language and validation you need to start honoring your work as the valuable labor it truly is."
+      },
+      {
+        "type": "B",
+        "title": "The Fierce Advocate",
+        "description": "You've moved beyond asking for help to demanding ownership and accountability from others. You recognize your worth and aren't afraid to set boundaries, even when others push back. Your journey from self-worth to self-respect is well underway, and you're modeling powerful leadership for those around you. This episode will reinforce your approach and give you even more tools to articulate why your stand matters for all mothers."
+      },
+      {
+        "type": "C",
+        "title": "The Conscious Builder",
+        "description": "You understand that raising independent children means stepping back from doing everything for them, even when it's harder in the short term. You're actively working to break cycles and build systems that honor everyone's contributions. Your leadership style focuses on sustainable growth rather than quick fixes. This episode will validate your long-term thinking and help you see how your approach is reshaping family dynamics for the better."
+      },
+      {
+        "type": "D",
+        "title": "The Identity Guardian",
+        "description": "You've learned that self-abandonment disguised as virtue is still self-abandonment, and you refuse to erase yourself in the name of motherhood. You prioritize maintaining your identity alongside your role as a mother, understanding that both can coexist beautifully. Your leadership comes from wholeness rather than depletion. This episode will celebrate your commitment to staying true to yourself and show you how this choice benefits everyone in your family."
+      }
+    ]
+  }
 }

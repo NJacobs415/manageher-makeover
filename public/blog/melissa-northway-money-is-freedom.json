@@ -76,5 +76,159 @@
       "label": "🔗 Website",
       "url": "https://www.melissacnorthway.com/"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Money Freedom Archetype?",
+    "description": "Discover how you naturally approach wealth and financial independence. Your mindset shapes your money story—let's uncover yours.",
+    "questions": [
+      {
+        "question": "When you think about your financial future, what drives you most?",
+        "options": [
+          {
+            "text": "The feeling that there are opportunities I haven't discovered yet",
+            "type": "A"
+          },
+          {
+            "text": "Making sure I'm protected from worst-case scenarios",
+            "type": "B"
+          },
+          {
+            "text": "Creating enough wealth to live completely on my terms",
+            "type": "C"
+          },
+          {
+            "text": "Building a solid foundation I can count on long-term",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you typically react when someone shares an unconventional money strategy?",
+        "options": [
+          {
+            "text": "I'm intrigued and want to understand the principles behind it",
+            "type": "A"
+          },
+          {
+            "text": "I'm skeptical until I can thoroughly research the risks",
+            "type": "B"
+          },
+          {
+            "text": "I'm excited if it could accelerate my wealth-building goals",
+            "type": "C"
+          },
+          {
+            "text": "I want to see the long-term track record before considering it",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What's your biggest frustration with traditional financial advice?",
+        "options": [
+          {
+            "text": "It feels too generic and doesn't address my unique situation",
+            "type": "A"
+          },
+          {
+            "text": "It often involves more risk than I'm comfortable with",
+            "type": "B"
+          },
+          {
+            "text": "It's too conservative and slow for my timeline",
+            "type": "C"
+          },
+          {
+            "text": "It's not specific enough about the step-by-step process",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When facing a major financial decision, you tend to:",
+        "options": [
+          {
+            "text": "Trust your gut feeling after gathering some key information",
+            "type": "A"
+          },
+          {
+            "text": "Research extensively and consult multiple trusted sources",
+            "type": "B"
+          },
+          {
+            "text": "Focus on the potential upside and move quickly if it aligns with your goals",
+            "type": "C"
+          },
+          {
+            "text": "Create a detailed analysis of pros, cons, and long-term implications",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you feel about the statement 'money is freedom'?",
+        "options": [
+          {
+            "text": "It resonates deeply—I've always sensed money was about more than just security",
+            "type": "A"
+          },
+          {
+            "text": "I agree, but I worry about the risks involved in pursuing wealth",
+            "type": "B"
+          },
+          {
+            "text": "Absolutely—that's exactly why I'm focused on building significant wealth",
+            "type": "C"
+          },
+          {
+            "text": "I agree, and I want a clear plan to systematically build that freedom",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What would motivate you most to learn advanced wealth strategies?",
+        "options": [
+          {
+            "text": "Discovering approaches that feel aligned with your values and intuition",
+            "type": "A"
+          },
+          {
+            "text": "Finding strategies that offer growth while protecting your downside",
+            "type": "B"
+          },
+          {
+            "text": "Learning tactics that successful people use to accelerate wealth building",
+            "type": "C"
+          },
+          {
+            "text": "Understanding proven systems you can implement consistently over time",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Intuitive Builder",
+        "description": "You have a natural sense that there's more to money than what you've been taught, and you're ready to explore beyond traditional advice. You trust your instincts and aren't afraid to question conventional wisdom when it doesn't align with your values. Your openness to new perspectives is your superpower—you just need the right strategies to match your intuitive approach. This episode will give you the advanced wealth-building tools that feel as sophisticated as your instincts."
+      },
+      {
+        "type": "B",
+        "title": "The Security Seeker",
+        "description": "You value stability above all else and prefer to make careful, well-researched financial decisions. Your cautious approach has likely served you well, but you may be missing opportunities for growth by playing it too safe. Your methodical nature is actually perfect for implementing the systematic wealth strategies Melissa shares. This episode will show you how to build security AND growth using proven strategies that align with your careful approach."
+      },
+      {
+        "type": "C",
+        "title": "The Ambitious Optimist",
+        "description": "You're naturally drawn to big goals and aren't afraid to take calculated risks to achieve them. Your confidence is inspiring, and you intuitively understand that money is a tool for creating the life you want. You're ready to level up but need the sophisticated strategies to match your ambitious vision. This episode will give you the billionaire-level tactics and mindset shifts to accelerate your wealth-building journey."
+      },
+      {
+        "type": "D",
+        "title": "The Steady Strategist",
+        "description": "You believe in consistent, disciplined approaches to building wealth over time. You're practical and realistic about money, preferring proven methods to flashy trends. Your steady nature is actually ideal for the long-term wealth strategies that create lasting financial freedom. This episode will show you how to optimize your systematic approach with advanced techniques that compound your steady efforts into significant wealth."
+      }
+    ]
+  }
 }

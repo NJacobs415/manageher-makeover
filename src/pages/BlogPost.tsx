@@ -497,7 +497,7 @@ const BlogPost = () => {
                 </div>
 
                 {/* Episode Quiz */}
-                {post.quiz && <EpisodeQuiz quiz={post.quiz} slug={post.slug} />}
+                {post.quiz && <EpisodeQuiz quiz={post.quiz} slug={post.slug} episodeNumber={post.episodeNumber} resourceUrl={(post as Record<string, unknown>).resourceUrl as string | undefined} />}
 
                 {/* Guest Bio — white card with gold border */}
                 {post.guestBio && (

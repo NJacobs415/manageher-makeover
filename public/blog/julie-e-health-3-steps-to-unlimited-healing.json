@@ -76,5 +76,159 @@
       "label": "🎬 YouTube: @JulieEhealth (",
       "url": "https://www.youtube.com/@JulieEhealth"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Family Wellness Leadership Style?",
+    "description": "Discover how you naturally approach your family's health and wellbeing as the leader of your household. Find out which strategies from this episode will transform your approach.",
+    "questions": [
+      {
+        "question": "When your child complains of feeling 'off' but has no obvious symptoms, what's your first instinct?",
+        "options": [
+          {
+            "text": "I immediately sense something deeper is going on and start observing their energy and behavior patterns",
+            "type": "A"
+          },
+          {
+            "text": "I start mentally running through potential causes and consider what tests or assessments might reveal the issue",
+            "type": "B"
+          },
+          {
+            "text": "I make sure they're getting enough sleep, water, and good food while keeping an eye on how they're feeling",
+            "type": "C"
+          },
+          {
+            "text": "I wait to see if specific symptoms develop so I know exactly what I'm dealing with",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you typically approach trying new wellness strategies for your family?",
+        "options": [
+          {
+            "text": "I'm drawn to approaches that address the whole person and trust what feels right for our family's unique needs",
+            "type": "A"
+          },
+          {
+            "text": "I need to understand the science behind it and see evidence of results before implementing anything new",
+            "type": "B"
+          },
+          {
+            "text": "I prefer starting with small, simple changes that won't disrupt our established routines too much",
+            "type": "C"
+          },
+          {
+            "text": "I usually try new things when our current approach isn't working and we need a solution",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you're managing your own health while caring for your family, you tend to:",
+        "options": [
+          {
+            "text": "Pay attention to how your energy and mood affect the whole family's wellbeing",
+            "type": "A"
+          },
+          {
+            "text": "Look for efficient systems that optimize both your health and your family management time",
+            "type": "B"
+          },
+          {
+            "text": "Focus on sustainable habits that you can maintain consistently without burning out",
+            "type": "C"
+          },
+          {
+            "text": "Put your family's immediate needs first and address your own health when you have time",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your ideal approach to preventing illness in your family would be:",
+        "options": [
+          {
+            "text": "Understanding the energetic and emotional factors that contribute to physical symptoms",
+            "type": "A"
+          },
+          {
+            "text": "Having a comprehensive prevention protocol based on the latest research and testing",
+            "type": "B"
+          },
+          {
+            "text": "Maintaining strong foundational practices like good sleep, nutrition, and stress management",
+            "type": "C"
+          },
+          {
+            "text": "Knowing exactly what to do when early symptoms appear so you can act quickly",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you hear about something like 'biofield disruption' from technology, your reaction is:",
+        "options": [
+          {
+            "text": "That makes total sense - I've noticed our family feels different around too much screen time",
+            "type": "A"
+          },
+          {
+            "text": "I want to understand the mechanism and see studies showing how this impacts health outcomes",
+            "type": "B"
+          },
+          {
+            "text": "I'm interested but want to know about simple, practical solutions that won't overwhelm our lifestyle",
+            "type": "C"
+          },
+          {
+            "text": "I'm curious if this could explain some of the unexplained symptoms we've been dealing with",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your biggest challenge in managing your family's wellness is:",
+        "options": [
+          {
+            "text": "Trusting my instincts when others dismiss my concerns or when I can't find practitioners who understand my approach",
+            "type": "A"
+          },
+          {
+            "text": "Filtering through conflicting information to find evidence-based approaches that actually work",
+            "type": "B"
+          },
+          {
+            "text": "Finding time and energy for wellness practices without adding more stress to our already full lives",
+            "type": "C"
+          },
+          {
+            "text": "Being proactive instead of reactive - I want to prevent problems before they become urgent",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Intuitive Healer",
+        "description": "You have a natural instinct for sensing when something's off with your family's health, and you trust your gut feelings about what they need. You're drawn to understanding the deeper connections between symptoms and root causes. Your intuitive approach is a gift, but sometimes you second-guess yourself when facing complex health challenges. This episode will give you the scientific framework to back up your instincts and help you understand how your family's biofield affects the signals you're picking up on."
+      },
+      {
+        "type": "B",
+        "title": "The Research-Driven Optimizer",
+        "description": "You approach your family's wellness like a strategic project, diving deep into research and wanting to understand the 'why' behind every recommendation. You love having systems and frameworks that make sense logically. Your thorough approach ensures nothing gets overlooked, but sometimes you can get stuck in analysis paralysis. This episode is perfect for you because Julie's systematic three-step framework will give you the clear, evidence-based structure you crave while helping you take confident action."
+      },
+      {
+        "type": "C",
+        "title": "The Gentle Steadiness",
+        "description": "You prefer consistent, simple routines that don't disrupt your family's flow, and you're naturally cautious about trying new approaches to health and wellness. You value stability and gradual changes over dramatic overhauls. Your steady approach creates a calm foundation for your family, but you might miss opportunities for breakthrough improvements. This episode will show you gentle, foundational changes that feel manageable while creating profound shifts in your family's wellbeing."
+      },
+      {
+        "type": "D",
+        "title": "The Responsive Firefighter",
+        "description": "You're excellent at handling health crises when they arise and can quickly mobilize to get your family the care they need in urgent situations. You're practical and action-oriented when problems present themselves. Your responsive nature means your family knows they can count on you when things go wrong, but you'd love to get ahead of issues before they become emergencies. This episode will teach you how to read your family's early warning signals and create preventive strategies that reduce those midnight ER visits."
+      }
+    ]
+  }
 }

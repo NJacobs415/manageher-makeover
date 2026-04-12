@@ -78,5 +78,159 @@
       "label": "📚 Get your copy of The Manage Her",
       "url": "https://a.co/d/ej9A37z"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Superpower Leadership Style?",
+    "description": "Discover how your unique traits and experiences shape your leadership approach. Just like Gabrielle turned her bipolar diagnosis into a PR empire, your differences might be your greatest strengths.",
+    "questions": [
+      {
+        "question": "When facing a major setback or challenge, what's your natural response?",
+        "options": [
+          {
+            "text": "I dive deep into understanding what this experience is teaching me and how I can use it",
+            "type": "A"
+          },
+          {
+            "text": "I immediately start looking for new approaches or innovative solutions others haven't tried",
+            "type": "B"
+          },
+          {
+            "text": "I reach out to my network and have honest conversations about what I'm going through",
+            "type": "C"
+          },
+          {
+            "text": "I connect it back to my bigger why and figure out how this fits into my larger mission",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What energizes you most about leadership?",
+        "options": [
+          {
+            "text": "Helping people transform their struggles into strengths",
+            "type": "A"
+          },
+          {
+            "text": "Being first to market with game-changing ideas",
+            "type": "B"
+          },
+          {
+            "text": "Creating environments where people feel safe to be themselves",
+            "type": "C"
+          },
+          {
+            "text": "Building something that makes a lasting difference in the world",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you handle being different from other leaders in your industry?",
+        "options": [
+          {
+            "text": "I've learned that my differences are actually my competitive advantages",
+            "type": "A"
+          },
+          {
+            "text": "I use my unique perspective to spot opportunities others miss",
+            "type": "B"
+          },
+          {
+            "text": "I share my authentic story to help others feel less alone",
+            "type": "C"
+          },
+          {
+            "text": "I stay focused on my mission rather than trying to fit in",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When building your team, what matters most to you?",
+        "options": [
+          {
+            "text": "Finding people who understand that vulnerability creates strength",
+            "type": "A"
+          },
+          {
+            "text": "Attracting innovators who aren't afraid to challenge the status quo",
+            "type": "B"
+          },
+          {
+            "text": "Building genuine relationships based on trust and mutual respect",
+            "type": "C"
+          },
+          {
+            "text": "Aligning everyone around a shared sense of purpose and impact",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What's your relationship with traditional business advice?",
+        "options": [
+          {
+            "text": "I've learned to trust my emotional intelligence over generic formulas",
+            "type": "A"
+          },
+          {
+            "text": "I study it but often find myself creating entirely new approaches",
+            "type": "B"
+          },
+          {
+            "text": "I prefer learning from real conversations with other leaders",
+            "type": "C"
+          },
+          {
+            "text": "I filter everything through whether it aligns with my values and mission",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you view your past struggles or challenges?",
+        "options": [
+          {
+            "text": "They've given me depth and empathy that fuel my success today",
+            "type": "A"
+          },
+          {
+            "text": "They've taught me to think outside the box and find unconventional solutions",
+            "type": "B"
+          },
+          {
+            "text": "They've made me more authentic and able to connect with others",
+            "type": "C"
+          },
+          {
+            "text": "They've clarified my purpose and what I'm meant to contribute",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Emotional Alchemist",
+        "description": "You have an incredible ability to transform difficult experiences into fuel for success. Your deep emotional intelligence allows you to connect authentically with others and see opportunities where others see obstacles. You don't just lead with your head—you lead with your whole heart, and that's what makes you unforgettable. This episode will show you how to harness your sensitivity as a competitive advantage in business."
+      },
+      {
+        "type": "B",
+        "title": "The Strategic Pioneer",
+        "description": "You're naturally drawn to innovation and have a gift for spotting trends before they become mainstream. You think differently and aren't afraid to take calculated risks that others might shy away from. Your leadership style combines vision with practical execution, making you someone others look to for direction. Gabrielle's story of being early to podcast PR will resonate deeply with your pioneering spirit."
+      },
+      {
+        "type": "C",
+        "title": "The Authentic Connector",
+        "description": "Your superpower lies in creating genuine relationships and building trust through vulnerability. You understand that real leadership isn't about having all the answers—it's about creating space for others to shine. You naturally expand possibilities for everyone around you through your inclusive approach. This episode will inspire you to lean even more into authenticity as your leadership edge."
+      },
+      {
+        "type": "D",
+        "title": "The Purposeful Builder",
+        "description": "You excel at turning your personal mission into meaningful work that impacts others. You understand that your story has power and you're not afraid to use it to create change. Your leadership style focuses on sustainable growth and helping others discover their own potential. Gabrielle's journey from diagnosis to million-dollar business will show you new ways to channel your purpose into profit."
+      }
+    ]
+  }
 }

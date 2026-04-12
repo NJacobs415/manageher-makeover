@@ -45,5 +45,159 @@
       "label": "Website",
       "url": "https://heartbeatforhire.com"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Reinvention Style?",
+    "description": "Ready to discover how you approach change and transformation in your career? This quiz reveals your unique reinvention style based on Lyndsay Dowd's powerful journey from corporate executive to entrepreneur.",
+    "questions": [
+      {
+        "question": "When you think about your next career move, what drives you most?",
+        "options": [
+          {
+            "text": "Creating a detailed plan that minimizes risk while maximizing opportunity",
+            "type": "A"
+          },
+          {
+            "text": "Finding work that aligns with my values and makes me excited to get up each day",
+            "type": "B"
+          },
+          {
+            "text": "Building relationships and finding ways to collaborate with inspiring people",
+            "type": "C"
+          },
+          {
+            "text": "Developing skills that will serve me well no matter how the industry changes",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your dream job posting appears, but it requires skills you don't have yet. Your first thought is:",
+        "options": [
+          {
+            "text": "I need to create a learning plan and timeline to acquire these skills systematically",
+            "type": "A"
+          },
+          {
+            "text": "If this role calls to me, I'll figure out how to make it work as I go",
+            "type": "B"
+          },
+          {
+            "text": "I should reach out to people in my network who can help me learn or get connected",
+            "type": "C"
+          },
+          {
+            "text": "This is exactly the kind of stretch opportunity that builds career security",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When facing a major career decision, you typically:",
+        "options": [
+          {
+            "text": "Make pros and cons lists, research extensively, and create contingency plans",
+            "type": "A"
+          },
+          {
+            "text": "Pay attention to how each option makes you feel and what your intuition says",
+            "type": "B"
+          },
+          {
+            "text": "Talk it through with trusted mentors, friends, and colleagues",
+            "type": "C"
+          },
+          {
+            "text": "Consider how each path builds your long-term professional foundation",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What scares you most about making a big career change?",
+        "options": [
+          {
+            "text": "Not having enough information or preparation before taking the leap",
+            "type": "A"
+          },
+          {
+            "text": "Compromising my values or losing sight of what matters most to me",
+            "type": "B"
+          },
+          {
+            "text": "Losing the professional relationships and community I've built",
+            "type": "C"
+          },
+          {
+            "text": "Giving up stability without knowing if the new path will provide security",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your ideal work environment is one where:",
+        "options": [
+          {
+            "text": "There are clear processes, growth opportunities, and room for strategic thinking",
+            "type": "A"
+          },
+          {
+            "text": "The culture is authentic, the mission is meaningful, and leadership leads with heart",
+            "type": "B"
+          },
+          {
+            "text": "Collaboration is valued, relationships matter, and everyone supports each other",
+            "type": "C"
+          },
+          {
+            "text": "You can build expertise, develop new skills, and create lasting professional value",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you imagine yourself in five years, you see:",
+        "options": [
+          {
+            "text": "Someone who has executed a well-thought-out plan and achieved specific goals",
+            "type": "A"
+          },
+          {
+            "text": "Someone doing work that feels authentic and makes a meaningful impact",
+            "type": "B"
+          },
+          {
+            "text": "Someone surrounded by an incredible community of colleagues and collaborators",
+            "type": "C"
+          },
+          {
+            "text": "Someone with a robust skill set and reputation that opens any door you want",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Strategic Transformer",
+        "description": "You approach reinvention with careful planning and methodical steps. You're the woman who researches every angle, builds bridges before burning them, and creates detailed roadmaps for change. Your superpower is making bold moves feel manageable and sustainable. Lyndsay's episode will show you how to leverage your planning skills while embracing the uncertainty that comes with true transformation."
+      },
+      {
+        "type": "B",
+        "title": "The Heart-Led Pioneer",
+        "description": "You follow your intuition and values when making big life changes, often trusting your gut over conventional wisdom. You're drawn to purpose-driven work and aren't afraid to choose meaning over money. Your courage to lead with your heart is your greatest asset. This episode will resonate deeply with you as Lyndsay shares how she built an 'irresistible workplace' by ditching toxic patterns and leading authentically."
+      },
+      {
+        "type": "C",
+        "title": "The Connection Catalyst",
+        "description": "You understand that relationships and community are the real fuel for both happiness and professional success. You naturally build networks and see collaboration as key to growth. Your ability to create genuine connections opens doors others can't even see. Lyndsay's insights about community-building and personal branding as a leadership skill will give you powerful tools to amplify your natural networking gifts."
+      },
+      {
+        "type": "D",
+        "title": "The Security Innovator",
+        "description": "You're thoughtful about balancing stability with growth, always looking for ways to innovate within structure. You understand the value of building career security over job security, even if change feels scary sometimes. Your practical wisdom helps you take calculated risks that pay off long-term. This episode will validate your approach while showing you how to build the foundation for reinvention at any stage."
+      }
+    ]
+  }
 }

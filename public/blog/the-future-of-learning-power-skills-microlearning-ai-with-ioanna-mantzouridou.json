@@ -71,5 +71,159 @@
       "label": "🔗 Follow Ioanna on LinkedIn",
       "url": "http://linkedin.com/in/joannemantzouridou"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Power Skill Leadership Style?",
+    "description": "Discover how you naturally lead with power skills and where your next breakthrough might be hiding. Based on insights from our conversation about the future of leadership.",
+    "questions": [
+      {
+        "question": "When your team is struggling with a challenging project, what's your first instinct?",
+        "options": [
+          {
+            "text": "Check in with each person individually to understand how they're really feeling about the situation",
+            "type": "A"
+          },
+          {
+            "text": "Step back and look at the whole process to identify what systemic issues might be causing the struggle",
+            "type": "B"
+          },
+          {
+            "text": "Call a team meeting to openly discuss the challenges and create a clear communication plan moving forward",
+            "type": "C"
+          },
+          {
+            "text": "Try to understand the root emotional and practical needs behind the struggle, then brainstorm creative solutions",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you prefer to develop new leadership skills?",
+        "options": [
+          {
+            "text": "Through real conversations and observing how different approaches land with people in the moment",
+            "type": "A"
+          },
+          {
+            "text": "By learning frameworks and models that I can apply across different situations and contexts",
+            "type": "B"
+          },
+          {
+            "text": "With consistent, structured practice that builds my confidence through repetition and feedback",
+            "type": "C"
+          },
+          {
+            "text": "By exploring innovative methods that combine traditional wisdom with new approaches and technology",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What type of leadership challenge energizes you most?",
+        "options": [
+          {
+            "text": "Building trust and psychological safety in a team that's been through difficult changes",
+            "type": "A"
+          },
+          {
+            "text": "Redesigning processes or structures to help an organization run more effectively",
+            "type": "B"
+          },
+          {
+            "text": "Presenting a vision or leading a difficult conversation that could transform how the team operates",
+            "type": "C"
+          },
+          {
+            "text": "Finding ways to maintain human connection and empathy while scaling or going digital",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about your biggest leadership strength, it's probably:",
+        "options": [
+          {
+            "text": "Your ability to sense what's not being said and address the underlying dynamics in any situation",
+            "type": "A"
+          },
+          {
+            "text": "Your talent for seeing how individual problems connect to larger patterns and organizational health",
+            "type": "B"
+          },
+          {
+            "text": "Your willingness to have the hard conversations and communicate clearly even when it's uncomfortable",
+            "type": "C"
+          },
+          {
+            "text": "Your skill at understanding what people need emotionally while also pushing for innovative solutions",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "If you had just 5 minutes a day to grow as a leader, you'd want to focus on:",
+        "options": [
+          {
+            "text": "Practicing how to better tune into and respond to the unspoken needs of your team",
+            "type": "A"
+          },
+          {
+            "text": "Learning new ways to analyze and improve the systems and processes around you",
+            "type": "B"
+          },
+          {
+            "text": "Building specific communication skills that help you show up more confidently in any situation",
+            "type": "C"
+          },
+          {
+            "text": "Exploring how to blend emotional intelligence with new tools and approaches to leadership",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What frustrates you most about traditional leadership development?",
+        "options": [
+          {
+            "text": "It doesn't acknowledge or build on the relationship skills and emotional labor you already do naturally",
+            "type": "A"
+          },
+          {
+            "text": "It focuses on individual tactics instead of helping you think strategically about organizational dynamics",
+            "type": "B"
+          },
+          {
+            "text": "It's often too theoretical and doesn't give you enough practice to actually build confidence in real situations",
+            "type": "C"
+          },
+          {
+            "text": "It hasn't kept up with how technology could enhance rather than replace the human elements of leadership",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Intuitive Connector",
+        "description": "You have a natural gift for reading between the lines and building authentic relationships that others admire. Your leadership style is rooted in genuine connection, and you often know what your team needs before they say it. While you excel at the invisible work of leadership, you might sometimes doubt whether these 'soft' skills are valued enough. This episode will validate your natural strengths and show you how to leverage AI-powered microlearning to amplify your intuitive leadership gifts."
+      },
+      {
+        "type": "B",
+        "title": "The Systems Strategist",
+        "description": "You see the bigger picture and naturally think about how all the pieces fit together in your organization. Your power skill is creating order from chaos and helping others understand complex situations. You're probably already doing systems thinking without even realizing it's a valuable leadership capability. This episode will help you recognize how your strategic mindset is exactly what modern leadership demands and give you tools to develop it further through bite-sized learning."
+      },
+      {
+        "type": "C",
+        "title": "The Confident Communicator",
+        "description": "You understand that communication is the foundation of great leadership, and you're willing to put in the work to get better at it. Whether you're naturally confident or still building that muscle, you recognize that how you show up matters as much as what you know. You're ready to invest in yourself consistently. This episode will show you how five-minute daily practices can transform your communication skills and help you build the kind of confidence that inspires others."
+      },
+      {
+        "type": "D",
+        "title": "The Empathetic Innovator",
+        "description": "You believe that the best solutions come from truly understanding people's needs and experiences. Your superpower is combining genuine empathy with forward-thinking approaches to leadership challenges. You're curious about how technology can enhance rather than replace human connection. This episode will resonate deeply with you as it explores how AI can actually help develop your emotional intelligence and scale the authentic relationships you value most."
+      }
+    ]
+  }
 }

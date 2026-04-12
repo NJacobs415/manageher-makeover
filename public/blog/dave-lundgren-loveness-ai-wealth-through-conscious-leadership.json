@@ -85,5 +85,159 @@
       "label": "🔗 Website",
       "url": "https://dave-lundgren.com"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Business Energy Archetype?",
+    "description": "Discover how you naturally balance intuition and action to create success. Based on Dave Lundgren's insights about feminine and masculine energy in leadership.",
+    "questions": [
+      {
+        "question": "When you're facing a major business decision, what's your natural first step?",
+        "options": [
+          {
+            "text": "I get quiet and tune into what feels aligned with my vision",
+            "type": "A"
+          },
+          {
+            "text": "I balance my gut feeling with data and practical considerations",
+            "type": "B"
+          },
+          {
+            "text": "I analyze the data, create a pros and cons list, and map out potential outcomes",
+            "type": "C"
+          },
+          {
+            "text": "I consider how this decision will impact everyone involved and align with my values",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you typically approach networking events or business meetings?",
+        "options": [
+          {
+            "text": "I'm drawn to conversations about big ideas and future possibilities",
+            "type": "A"
+          },
+          {
+            "text": "I enjoy both brainstorming sessions and tactical planning discussions",
+            "type": "B"
+          },
+          {
+            "text": "I prefer focused conversations about strategies, systems, and measurable outcomes",
+            "type": "C"
+          },
+          {
+            "text": "I focus on building genuine relationships and understanding people's deeper motivations",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When your business hits a challenging period, your natural response is to:",
+        "options": [
+          {
+            "text": "Step back and reimagine what's possible, trusting that clarity will come",
+            "type": "A"
+          },
+          {
+            "text": "Assess what's working and what isn't, then adjust both strategy and mindset",
+            "type": "B"
+          },
+          {
+            "text": "Create an action plan with clear steps and deadlines to work through it systematically",
+            "type": "C"
+          },
+          {
+            "text": "Reconnect with your why and ensure you're still serving your purpose authentically",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your leadership style is best described as:",
+        "options": [
+          {
+            "text": "Inspiring others with a compelling vision of what could be",
+            "type": "A"
+          },
+          {
+            "text": "Guiding teams through both creative exploration and practical execution",
+            "type": "B"
+          },
+          {
+            "text": "Setting clear expectations and providing the structure for others to succeed",
+            "type": "C"
+          },
+          {
+            "text": "Creating an environment where people feel valued, heard, and empowered to contribute",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When it comes to marketing your business, you're most comfortable:",
+        "options": [
+          {
+            "text": "Sharing your big dreams and the transformation you want to create in the world",
+            "type": "A"
+          },
+          {
+            "text": "Combining your personal story with concrete results and social proof",
+            "type": "B"
+          },
+          {
+            "text": "Focusing on your track record, systems, and the specific results you deliver",
+            "type": "C"
+          },
+          {
+            "text": "Being completely authentic about your journey and connecting heart-to-heart with your audience",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your biggest business growth typically happens when you:",
+        "options": [
+          {
+            "text": "Follow a sudden insight or intuitive hit that opens up new possibilities",
+            "type": "A"
+          },
+          {
+            "text": "Combine a creative breakthrough with disciplined execution over time",
+            "type": "B"
+          },
+          {
+            "text": "Implement proven systems and strategies with consistent, focused effort",
+            "type": "C"
+          },
+          {
+            "text": "Align more deeply with your purpose and attract the right people and opportunities",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Intuitive Visionary",
+        "description": "You're naturally gifted at tapping into big-picture ideas and seeing possibilities others miss. Your feminine energy flows freely, giving you incredible creative and visionary power. However, you might sometimes struggle with execution and structure. This episode will show you exactly how to add that crucial 20% masculine energy to scale your dreams into reality without losing your intuitive magic."
+      },
+      {
+        "type": "B",
+        "title": "The Balanced Catalyst",
+        "description": "You have a natural ability to flow between visionary thinking and practical execution, making you a powerful force in business. You understand both the importance of connection and the need for structure. You're already living what Dave teaches about balancing energies. This episode will help you refine this gift even further and understand the spiritual principles behind your natural success pattern."
+      },
+      {
+        "type": "C",
+        "title": "The Strategic Builder",
+        "description": "Your strength lies in creating systems, executing plans, and building solid foundations. You excel at the masculine energy of business but might sometimes feel disconnected from your intuitive side. You're incredibly reliable and results-driven. Dave's insights about Love and Oneness will help you tap into the feminine visionary energy that can take your already impressive execution skills to the next level."
+      },
+      {
+        "type": "D",
+        "title": "The Conscious Connector",
+        "description": "You naturally understand that business is about relationships and authentic connection. You lead with love and genuinely care about the impact you make. Your challenge might be claiming your authority and making the tough decisions leadership requires. This episode will validate your heart-centered approach while showing you how to step into your full power as a leader without compromising your values."
+      }
+    ]
+  }
 }

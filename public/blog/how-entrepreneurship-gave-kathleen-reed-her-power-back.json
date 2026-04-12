@@ -70,5 +70,159 @@
       "label": "📚 Grab your copy of The Manage Her",
       "url": "https://a.co/d/ej9A37z"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Power Reclaiming Style?",
+    "description": "Discover how you naturally take back control and create the life you want on your own terms. Find out which approach resonates most with your journey toward personal agency.",
+    "questions": [
+      {
+        "question": "When you feel like your life isn't reflecting who you really are, what's your first instinct?",
+        "options": [
+          {
+            "text": "Start researching how to launch something entirely new that excites me",
+            "type": "A"
+          },
+          {
+            "text": "Look for proven systems or frameworks I can implement step by step",
+            "type": "B"
+          },
+          {
+            "text": "Get clear on my core values and what needs to change to honor them",
+            "type": "C"
+          },
+          {
+            "text": "Consider how any changes I make will impact everyone in my family",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your definition of 'having it all' looks like:",
+        "options": [
+          {
+            "text": "Building something meaningful while proving I can succeed on my own terms",
+            "type": "A"
+          },
+          {
+            "text": "Having efficient systems that let me excel at work and be present at home",
+            "type": "B"
+          },
+          {
+            "text": "Making choices that align with my beliefs, even if they're unconventional",
+            "type": "C"
+          },
+          {
+            "text": "Creating an environment where everyone in my family can thrive together",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you discover something that could help your family, you typically:",
+        "options": [
+          {
+            "text": "Dive deep and consider if this could become something I offer to other families too",
+            "type": "A"
+          },
+          {
+            "text": "Research the most effective way to implement it and create a plan",
+            "type": "B"
+          },
+          {
+            "text": "Evaluate whether it fits with our family's values and long-term vision",
+            "type": "C"
+          },
+          {
+            "text": "Think about how it might address multiple issues we're facing simultaneously",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your biggest frustration with traditional approaches to work-life balance is:",
+        "options": [
+          {
+            "text": "They assume you have to accept limitations instead of creating your own path",
+            "type": "A"
+          },
+          {
+            "text": "They're too vague and don't provide concrete systems that actually work",
+            "type": "B"
+          },
+          {
+            "text": "They ignore the importance of living according to your personal values",
+            "type": "C"
+          },
+          {
+            "text": "They treat work and life as separate instead of integrated parts of who you are",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you imagine your ideal leadership style, you see yourself:",
+        "options": [
+          {
+            "text": "Taking charge and showing others what's possible when you refuse to settle",
+            "type": "A"
+          },
+          {
+            "text": "Leading by example through consistent actions and reliable follow-through",
+            "type": "B"
+          },
+          {
+            "text": "Inspiring others by staying true to your principles, even when it's difficult",
+            "type": "C"
+          },
+          {
+            "text": "Creating positive change that naturally spreads to benefit your whole community",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "The idea that excites you most about entrepreneurship is:",
+        "options": [
+          {
+            "text": "Having complete control over your decisions and the direction of your life",
+            "type": "A"
+          },
+          {
+            "text": "Building efficient processes that create more time for what matters most",
+            "type": "B"
+          },
+          {
+            "text": "Creating work that reflects your values and serves a purpose beyond profit",
+            "type": "C"
+          },
+          {
+            "text": "Solving problems that make life better for families like yours",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Bold Builder",
+        "description": "You're someone who sees what needs to change and takes decisive action to build something new. When you feel stuck, you channel that energy into creating solutions that serve both you and others. Your entrepreneurial spirit is strong, and you're not afraid to step into uncharted territory when it means living authentically. Kathleen's story of transforming her entire family's life through entrepreneurship will inspire you to trust your instincts and take that next bold step."
+      },
+      {
+        "type": "B",
+        "title": "The Steady Transformer",
+        "description": "You believe in the power of consistent, intentional changes that build momentum over time. Rather than dramatic shifts, you prefer to methodically address the root causes of what's not working in your life. Your approach to reclaiming power is thoughtful and sustainable, focusing on systems and foundations that create lasting change. You'll love hearing how Kathleen applied structured principles to transform her household operations and create the life her family truly wanted."
+      },
+      {
+        "type": "C",
+        "title": "The Values-Led Visionary",
+        "description": "Your north star is living in alignment with what matters most to you, and you're willing to make significant changes to honor those values. You understand that true power comes from making decisions that reflect your authentic self, even when others don't understand. Your leadership style is deeply personal and purpose-driven. Kathleen's journey of building a business that honors her faith and family values while creating meaningful impact will resonate deeply with your approach to life."
+      },
+      {
+        "type": "D",
+        "title": "The Holistic Harmonizer",
+        "description": "You see the interconnectedness of all areas of life and believe that real transformation happens when you address multiple dimensions simultaneously. You're drawn to solutions that benefit not just you, but your entire family and community. Your power comes from creating balance and wellness that ripples outward. You'll be inspired by how Kathleen's expertise in addressing foundational health issues created profound changes for entire families, proving that personal transformation can have far-reaching impact."
+      }
+    ]
+  }
 }

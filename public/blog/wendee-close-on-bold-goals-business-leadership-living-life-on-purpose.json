@@ -66,5 +66,159 @@
       "label": "Learn more about Wendee’s work",
       "url": "https://www.goals2life.com"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Goal-Setting Style as a Woman Leader?",
+    "description": "Discover how you naturally approach turning dreams into reality and what that reveals about your leadership journey. Based on insights from our conversation with entrepreneur Wendee Close about bold goal-setting and purposeful living.",
+    "questions": [
+      {
+        "question": "When you think about a big dream you have, what's your first instinct?",
+        "options": [
+          {
+            "text": "I start mapping out all the steps I'll need to take to get there",
+            "type": "A"
+          },
+          {
+            "text": "I ask myself if this dream aligns with who I want to be and the impact I want to make",
+            "type": "B"
+          },
+          {
+            "text": "I think about different ways I could approach it and what might work with my current situation",
+            "type": "C"
+          },
+          {
+            "text": "I consider who I could collaborate with or how this could benefit other women too",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "You're juggling a demanding work project while your kids need extra attention at home. How do you handle it?",
+        "options": [
+          {
+            "text": "I create a detailed schedule that blocks time for both and stick to it religiously",
+            "type": "A"
+          },
+          {
+            "text": "I remind myself of my 'why' and make choices that honor both my family values and professional commitments",
+            "type": "B"
+          },
+          {
+            "text": "I get creative with solutions - maybe working early mornings or finding ways to involve the kids",
+            "type": "C"
+          },
+          {
+            "text": "I reach out to my network for support and offer to help others when I can in return",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What motivates you most when setting goals?",
+        "options": [
+          {
+            "text": "Having a clear, measurable outcome that I can track and celebrate",
+            "type": "A"
+          },
+          {
+            "text": "Knowing that achieving this goal will help me live more authentically",
+            "type": "B"
+          },
+          {
+            "text": "The excitement of trying something new and seeing what's possible",
+            "type": "C"
+          },
+          {
+            "text": "The opportunity to create something that will benefit other women in my community",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you face a setback in pursuing a goal, you typically:",
+        "options": [
+          {
+            "text": "Analyze what went wrong and adjust my strategy accordingly",
+            "type": "A"
+          },
+          {
+            "text": "Reflect on whether this goal still feels right for who I'm becoming",
+            "type": "B"
+          },
+          {
+            "text": "Look for alternative paths and stay open to unexpected opportunities",
+            "type": "C"
+          },
+          {
+            "text": "Connect with other women who've faced similar challenges for advice and support",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your ideal definition of 'success' includes:",
+        "options": [
+          {
+            "text": "Achieving the specific outcomes I set out to accomplish",
+            "type": "A"
+          },
+          {
+            "text": "Living in alignment with my values and making decisions I'm proud of",
+            "type": "B"
+          },
+          {
+            "text": "Having the flexibility to adapt and grow in unexpected ways",
+            "type": "C"
+          },
+          {
+            "text": "Creating positive change that ripples out to benefit other women",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When sharing your goals with others, you're most likely to:",
+        "options": [
+          {
+            "text": "Present a detailed plan with timelines and milestones",
+            "type": "A"
+          },
+          {
+            "text": "Talk about the deeper purpose and meaning behind what you're doing",
+            "type": "B"
+          },
+          {
+            "text": "Share your excitement while acknowledging you're still figuring out the details",
+            "type": "C"
+          },
+          {
+            "text": "Invite others to be part of the journey or find ways to support their goals too",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Strategic Architect",
+        "description": "You're a master planner who loves creating detailed roadmaps to success. You thrive on breaking down big dreams into manageable steps and feel most confident when you have a clear strategy. Your methodical approach helps you balance multiple priorities, whether that's family, career, or personal goals. This episode will inspire you with Wendee's framework for turning ambitious visions into actionable plans that align with your deepest values."
+      },
+      {
+        "type": "B",
+        "title": "The Heart-Centered Visionary",
+        "description": "You lead with purpose and passion, making decisions based on what feels authentic to your values. You're naturally drawn to goals that create meaningful impact for others, especially other women. Your strength lies in seeing the bigger picture and inspiring others to join your mission. Wendee's story of building a purpose-driven business while staying true to her values as a mother will deeply resonate with your approach to intentional leadership."
+      },
+      {
+        "type": "C",
+        "title": "The Adaptive Innovator",
+        "description": "You excel at pivoting and finding creative solutions when life throws curveballs your way. You understand that success looks different for everyone and you're comfortable carving your own unique path. Your flexibility is your superpower, especially when balancing competing demands. This episode will validate your approach and give you fresh strategies for maintaining focus on what truly matters most while embracing the beautiful chaos of women's leadership."
+      },
+      {
+        "type": "D",
+        "title": "The Community Builder",
+        "description": "You believe that rising together is better than rising alone, and you naturally seek to lift other women as you climb. Your goals often involve creating connections, fostering collaboration, and building supportive networks. You understand the power of authentic relationships in achieving success. Wendee's insights about supporting women-owned businesses and creating meaningful connections will fuel your passion for community-driven leadership."
+      }
+    ]
+  }
 }

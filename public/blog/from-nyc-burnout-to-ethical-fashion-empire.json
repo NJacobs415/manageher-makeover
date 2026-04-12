@@ -73,5 +73,159 @@
       "label": "🔗 Explore Kathryn’s work",
       "url": "https://bytheseacompany.com"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Sustainable Success Style?",
+    "description": "Discover how you naturally approach building something meaningful without burning out. Your results will reveal your unique path to creating impact while staying true to your values.",
+    "questions": [
+      {
+        "question": "When you're feeling overwhelmed at work, what's your first instinct?",
+        "options": [
+          {
+            "text": "Question whether the work itself aligns with what you really care about",
+            "type": "A"
+          },
+          {
+            "text": "Look for ways to systematize or streamline your current processes",
+            "type": "B"
+          },
+          {
+            "text": "Consider what needs to change or shift to make things more manageable",
+            "type": "C"
+          },
+          {
+            "text": "Step back and assess how this is affecting your overall life balance",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When starting a new project, you typically:",
+        "options": [
+          {
+            "text": "Research the deeper impact and ethical implications first",
+            "type": "A"
+          },
+          {
+            "text": "Create a detailed timeline and plan before moving forward",
+            "type": "B"
+          },
+          {
+            "text": "Start with what you have and adapt as you learn",
+            "type": "C"
+          },
+          {
+            "text": "Consider how it fits with your current life and energy levels",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your definition of business success includes:",
+        "options": [
+          {
+            "text": "Making a positive difference in the world through your work",
+            "type": "A"
+          },
+          {
+            "text": "Building something stable and sustainable for the long term",
+            "type": "B"
+          },
+          {
+            "text": "Having the flexibility to evolve and respond to opportunities",
+            "type": "C"
+          },
+          {
+            "text": "Maintaining your health and relationships while growing professionally",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you hear about someone's rapid business growth, you think:",
+        "options": [
+          {
+            "text": "I wonder what corners they might have cut to get there so fast",
+            "type": "A"
+          },
+          {
+            "text": "That's great for them, but I prefer building methodically",
+            "type": "B"
+          },
+          {
+            "text": "I'm curious about what strategies I could adapt for my situation",
+            "type": "C"
+          },
+          {
+            "text": "I hope they're not sacrificing their wellbeing for those results",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your ideal work environment would:",
+        "options": [
+          {
+            "text": "Reflect your values and allow you to do meaningful work",
+            "type": "A"
+          },
+          {
+            "text": "Have clear structures and systems that support efficient progress",
+            "type": "B"
+          },
+          {
+            "text": "Offer variety and room to pivot based on what's working",
+            "type": "C"
+          },
+          {
+            "text": "Support your whole self—creativity, relationships, and personal growth",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When facing a major life transition, you're most likely to:",
+        "options": [
+          {
+            "text": "Use it as an opportunity to realign with your core values",
+            "type": "A"
+          },
+          {
+            "text": "Plan carefully and take measured steps toward your new direction",
+            "type": "B"
+          },
+          {
+            "text": "Embrace the change and see where it leads you",
+            "type": "C"
+          },
+          {
+            "text": "Consider how to make the transition in a way that honors your whole life",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Conscious Pioneer",
+        "description": "You're driven by purpose and aren't afraid to challenge the status quo when something doesn't align with your values. You naturally think about the bigger picture and long-term impact of your decisions. Sometimes you worry that prioritizing ethics means sacrificing growth, but you're learning that authentic success takes time. This episode will show you exactly how to build something significant while staying true to your principles—Kathryn's journey proves you don't have to choose between impact and integrity."
+      },
+      {
+        "type": "B",
+        "title": "The Intentional Builder",
+        "description": "You believe in steady, thoughtful growth over flashy overnight success. You're naturally drawn to creating systems and processes that can sustain long-term success. You sometimes question if you're moving fast enough compared to others, but your methodical approach is actually your superpower. Kathryn's story of starting at farmers markets and building to 3,000+ retailers will inspire you to trust your measured approach and see how intentional growth creates lasting impact."
+      },
+      {
+        "type": "C",
+        "title": "The Adaptive Innovator",
+        "description": "You're incredibly resourceful and know how to pivot when life demands it. You've probably had to reinvent yourself before and you're not afraid of change when it serves your growth. You sometimes wonder if you're being too reactive instead of proactive, but your flexibility is a rare gift in business. This episode will resonate deeply as Kathryn shares how her biggest breakdown became her breakthrough—showing you how to turn life's curveballs into your competitive advantage."
+      },
+      {
+        "type": "D",
+        "title": "The Holistic Harmonizer",
+        "description": "You instinctively know that true success includes your wellbeing, relationships, and personal fulfillment—not just business metrics. You're always seeking balance and integration rather than compartmentalization. You might worry that your need for harmony makes you less ambitious, but you're actually ahead of the curve. Kathryn's transition from Manhattan burnout to building her empire from Kauai will speak directly to your soul and validate that your whole-life approach to success is exactly what the world needs."
+      }
+    ]
+  }
 }

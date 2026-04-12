@@ -73,5 +73,159 @@
       "label": "📚 Grab your copy of The Manage Her",
       "url": "https://a.co/d/ej9A37z"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Advocacy Style?",
+    "description": "Discover how you naturally create change in the world. Every woman has the power to lead and advocate — but we all do it differently.",
+    "questions": [
+      {
+        "question": "When you see an injustice or problem in your community, what's your first instinct?",
+        "options": [
+          {
+            "text": "Jump in immediately to protect those being harmed",
+            "type": "A"
+          },
+          {
+            "text": "Start conversations to understand different viewpoints",
+            "type": "B"
+          },
+          {
+            "text": "Research thoroughly before taking any action",
+            "type": "C"
+          },
+          {
+            "text": "Map out the systemic issues and potential solutions",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your child comes home upset about something unfair happening at school. How do you handle it?",
+        "options": [
+          {
+            "text": "Call the school immediately to address the situation",
+            "type": "A"
+          },
+          {
+            "text": "Talk to other parents to see if they've noticed similar issues",
+            "type": "B"
+          },
+          {
+            "text": "Listen carefully and help your child process their feelings first",
+            "type": "C"
+          },
+          {
+            "text": "Gather information about school policies and procedures",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What motivates you most when taking on a leadership role?",
+        "options": [
+          {
+            "text": "Protecting people who can't protect themselves",
+            "type": "A"
+          },
+          {
+            "text": "Bringing people together around a common cause",
+            "type": "B"
+          },
+          {
+            "text": "Being a steady, reliable presence others can count on",
+            "type": "C"
+          },
+          {
+            "text": "Creating lasting systems that prevent future problems",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When facing a major personal challenge, you typically:",
+        "options": [
+          {
+            "text": "Channel your emotions into action and advocacy",
+            "type": "A"
+          },
+          {
+            "text": "Reach out to your network for support and advice",
+            "type": "B"
+          },
+          {
+            "text": "Take time to learn and understand before making decisions",
+            "type": "C"
+          },
+          {
+            "text": "Analyze the situation from multiple angles to find solutions",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your ideal way to create change in the world would be:",
+        "options": [
+          {
+            "text": "Leading a passionate movement that fights for justice",
+            "type": "A"
+          },
+          {
+            "text": "Building coalitions that unite diverse groups of people",
+            "type": "B"
+          },
+          {
+            "text": "Mentoring individuals one-on-one to reach their potential",
+            "type": "C"
+          },
+          {
+            "text": "Developing comprehensive policies or programs",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When telling your story or sharing your experiences, you focus most on:",
+        "options": [
+          {
+            "text": "The emotional journey and why it matters so deeply",
+            "type": "A"
+          },
+          {
+            "text": "How it brought people together and created community",
+            "type": "B"
+          },
+          {
+            "text": "The lessons learned and wisdom gained along the way",
+            "type": "C"
+          },
+          {
+            "text": "The insights it provides about larger patterns and systems",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Fierce Protector",
+        "description": "You lead with your heart and fierce determination when something matters to you. Like Eden Marie James, you have the courage to transform personal pain into powerful purpose. You're not afraid to challenge systems that aren't working and fight for what's right, especially when it involves protecting others. This episode will inspire you to see how your protective instincts are actually leadership superpowers that can create lasting change."
+      },
+      {
+        "type": "B",
+        "title": "The Bridge Builder",
+        "description": "You create change through connection and collaboration. You have a natural gift for bringing different perspectives together and finding common ground where others see division. Your leadership style focuses on building relationships and creating sustainable solutions through community. Eden's story of building grassroots movements will resonate with your belief that real change happens when we work together and lift each other up."
+      },
+      {
+        "type": "C",
+        "title": "The Quiet Revolutionary",
+        "description": "You prefer to lead by example and create change through consistent, thoughtful action. You may not be the loudest voice in the room, but your impact runs deep through the lives you touch personally. You believe in the power of education, preparation, and showing up authentically. This episode will encourage you to see how your behind-the-scenes influence and steady commitment to your values are essential forms of leadership."
+      },
+      {
+        "type": "D",
+        "title": "The Strategic Catalyst",
+        "description": "You see the big picture and naturally think about systems, strategies, and long-term impact. Your leadership style involves analyzing situations thoroughly and finding the most effective ways to create meaningful change. You're drawn to understanding root causes and developing comprehensive solutions. Eden's journey from personal crisis to policy advocacy will inspire you to see how strategic thinking combined with passionate purpose can drive real transformation."
+      }
+    ]
+  }
 }

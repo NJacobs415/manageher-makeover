@@ -82,5 +82,159 @@
       "label": "@rootslagunabeach (",
       "url": "https://instagram.com/rootslagunabeach"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Change-Making Style?",
+    "description": "Inspired by Laura Linsenmeyer's journey from Hollywood makeup artist to clean beauty pioneer, discover how you approach creating meaningful change in your life and career.",
+    "questions": [
+      {
+        "question": "When you feel misaligned with your current situation, what's your typical response?",
+        "options": [
+          {
+            "text": "I start planning my exit strategy pretty quickly – life's too short to stay somewhere that doesn't feel right",
+            "type": "A"
+          },
+          {
+            "text": "I look for small ways to make improvements while keeping my foundation stable",
+            "type": "B"
+          },
+          {
+            "text": "I try to find others who share my concerns and see if we can create change together",
+            "type": "C"
+          },
+          {
+            "text": "I reflect deeply on what's missing and how I can bring more of my true self to the situation",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What motivates you most when making a big career or life decision?",
+        "options": [
+          {
+            "text": "The excitement of possibility and the chance to create something new",
+            "type": "A"
+          },
+          {
+            "text": "Finding the sweet spot between growth and security",
+            "type": "B"
+          },
+          {
+            "text": "The opportunity to make a positive impact on my community or the world",
+            "type": "C"
+          },
+          {
+            "text": "Ensuring the decision reflects who I really am and what I value most",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When facing uncertainty in your professional life, you tend to:",
+        "options": [
+          {
+            "text": "Embrace it as part of the adventure – uncertainty means possibility",
+            "type": "A"
+          },
+          {
+            "text": "Create structure and plans to help navigate through the unknown",
+            "type": "B"
+          },
+          {
+            "text": "Lean on my network and community for support and guidance",
+            "type": "C"
+          },
+          {
+            "text": "Use it as an opportunity for self-reflection and clarifying my values",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you typically approach building something new in your life or career?",
+        "options": [
+          {
+            "text": "I dive in headfirst and figure it out as I go – momentum creates clarity",
+            "type": "A"
+          },
+          {
+            "text": "I research thoroughly and build step by step with careful milestones",
+            "type": "B"
+          },
+          {
+            "text": "I focus on how it can serve others and build community around the vision",
+            "type": "C"
+          },
+          {
+            "text": "I make sure every element reflects my authentic self and core beliefs",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What does success look like to you?",
+        "options": [
+          {
+            "text": "Having the freedom to pursue my passions and create on my own terms",
+            "type": "A"
+          },
+          {
+            "text": "Achieving sustainable growth while maintaining stability and security",
+            "type": "B"
+          },
+          {
+            "text": "Making a measurable positive difference in the lives of others",
+            "type": "C"
+          },
+          {
+            "text": "Living in complete alignment with my values across all areas of life",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about leadership, you believe it's most important to:",
+        "options": [
+          {
+            "text": "Be willing to go first and show others what's possible through bold action",
+            "type": "A"
+          },
+          {
+            "text": "Create reliable systems and steady progress that others can depend on",
+            "type": "B"
+          },
+          {
+            "text": "Unite people around a shared vision and empower them to contribute",
+            "type": "C"
+          },
+          {
+            "text": "Model authenticity and encourage others to bring their whole selves forward",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Courageous Leaper",
+        "description": "You're not afraid to leave behind what's comfortable when it no longer aligns with your values. Like Laura leaving her Hollywood career, you trust your instincts and are willing to take big risks for big rewards. You lead with your heart and create change through bold action. Laura's story will inspire you to trust your leap even more and show you how to build something meaningful from scratch."
+      },
+      {
+        "type": "B",
+        "title": "The Steady Builder",
+        "description": "You prefer to create change gradually, building momentum through consistent action and careful planning. You value security but also want purpose, and you're skilled at finding ways to bridge both. Your methodical approach to transformation is a strength that leads to lasting impact. This episode will show you how to honor your need for stability while still pursuing meaningful change."
+      },
+      {
+        "type": "C",
+        "title": "The Mission Amplifier",
+        "description": "You're energized by causes bigger than yourself and naturally rally others around shared values. Like Laura building a community around clean beauty, you understand that real change happens through connection and collective action. You measure success by the positive impact you create in the world. Laura's approach to building a purpose-driven business will resonate deeply with your values-first mindset."
+      },
+      {
+        "type": "D",
+        "title": "The Authentic Integrator",
+        "description": "You excel at weaving together different aspects of your life – career, values, relationships, and personal growth – into one cohesive whole. You don't believe in compartmentalizing and seek alignment in everything you do. Your superpower is living authentically across all areas of life. Laura's story about aligning her personal values with her professional mission will inspire you to integrate even more boldly."
+      }
+    ]
+  }
 }

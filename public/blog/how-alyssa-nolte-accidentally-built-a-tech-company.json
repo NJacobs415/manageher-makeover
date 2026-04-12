@@ -84,5 +84,159 @@
       "label": "🔗 Learn more about TruVue",
       "url": "https://alyssanolte.com"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Hidden Leadership Origin Story?",
+    "description": "Discover how your unique experiences and instincts are shaping you into the leader you're meant to be. Just like Alyssa Nolte's journey from high school coach to tech CEO, your path might be more powerful than you realize.",
+    "questions": [
+      {
+        "question": "When you're facing a problem that needs solving, what's your first instinct?",
+        "options": [
+          {
+            "text": "Trust your gut feeling about what might work, even if you can't explain why",
+            "type": "A"
+          },
+          {
+            "text": "Research thoroughly and create a step-by-step plan before taking action",
+            "type": "B"
+          },
+          {
+            "text": "Talk it through with others to get different perspectives and build consensus",
+            "type": "C"
+          },
+          {
+            "text": "Jump in and start experimenting, knowing you'll course-correct as you go",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Think about a time when you took on a role you weren't technically qualified for. How did you approach it?",
+        "options": [
+          {
+            "text": "You focused on the problems you could solve and let your natural instincts guide you",
+            "type": "A"
+          },
+          {
+            "text": "You immediately started learning everything you could to build proper expertise",
+            "type": "B"
+          },
+          {
+            "text": "You leaned heavily on building relationships and learning from others in similar roles",
+            "type": "C"
+          },
+          {
+            "text": "You figured you'd learn by doing and weren't worried about making mistakes along the way",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When leading a team or group, what feels most natural to you?",
+        "options": [
+          {
+            "text": "Adapting your approach based on what each situation or person needs in the moment",
+            "type": "A"
+          },
+          {
+            "text": "Creating clear expectations and consistent processes everyone can follow",
+            "type": "B"
+          },
+          {
+            "text": "Making sure everyone feels heard and valued, even when decisions get tough",
+            "type": "C"
+          },
+          {
+            "text": "Inspiring others to take risks and try new approaches, even if the outcome is uncertain",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your friends would say your biggest strength in challenging situations is:",
+        "options": [
+          {
+            "text": "Your ability to see creative solutions that others miss completely",
+            "type": "A"
+          },
+          {
+            "text": "Your calm, methodical approach that helps everyone stay grounded",
+            "type": "B"
+          },
+          {
+            "text": "Your talent for keeping morale up and helping people feel supported",
+            "type": "C"
+          },
+          {
+            "text": "Your willingness to take bold action when everyone else is paralyzed by uncertainty",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about your most meaningful work or volunteer experiences, they usually involved:",
+        "options": [
+          {
+            "text": "Solving a problem you personally understood or had experienced yourself",
+            "type": "A"
+          },
+          {
+            "text": "Building something sustainable that would continue to benefit others long-term",
+            "type": "B"
+          },
+          {
+            "text": "Working closely with people and seeing them grow or succeed",
+            "type": "C"
+          },
+          {
+            "text": "Breaking new ground or being the first to try something different",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "If you were to start something new tomorrow—a business, project, or initiative—you'd probably:",
+        "options": [
+          {
+            "text": "Start with a problem you're passionate about solving, then figure out the details",
+            "type": "A"
+          },
+          {
+            "text": "Want to have a solid plan and sufficient resources before you begin",
+            "type": "C"
+          },
+          {
+            "text": "Focus on who you could partner with or who might benefit from what you're creating",
+            "type": "B"
+          },
+          {
+            "text": "Just start and trust that momentum and learning will carry you forward",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Intuitive Problem-Solver",
+        "description": "You have an incredible ability to see solutions where others see obstacles, often trusting your gut even when you can't fully explain why. Your leadership style is organic and adaptive, and you're not afraid to build the plane while flying it. You thrive when solving problems you've personally experienced, which makes your solutions deeply authentic and effective. This episode will resonate with your journey of discovering that your unconventional path is actually your greatest strength."
+      },
+      {
+        "type": "B",
+        "title": "The Steady Systems Builder",
+        "description": "You're the person others turn to when they need structure, reliability, and thoughtful planning. Your leadership emerges through creating order from chaos and helping others see the bigger picture through clear processes. You believe in doing things right the first time and building sustainable foundations that last. This episode will inspire you to see how your methodical approach can be just as revolutionary as any dramatic pivot, and how your behind-the-scenes work is true leadership."
+      },
+      {
+        "type": "C",
+        "title": "The Authentic Connector",
+        "description": "Your superpower lies in bringing people together and creating environments where everyone feels valued and heard. You lead through relationship-building and genuine care for others, often using humor and vulnerability to break down barriers. You instinctively know that real leadership is about serving others and lifting them up. This episode will validate your belief that authenticity and connection are not soft skills, but the hardest and most important leadership capabilities."
+      },
+      {
+        "type": "D",
+        "title": "The Fearless Pioneer",
+        "description": "You're energized by uncharted territory and have a natural tendency to leap before you look, trusting that you'll figure it out along the way. Your leadership style is bold and inspiring, and you're not afraid to challenge conventional wisdom or try something completely new. You believe that perfection is the enemy of progress and that done is better than perfect. This episode will fuel your confidence that starting before you feel ready is not reckless—it's exactly how breakthrough success happens."
+      }
+    ]
+  }
 }

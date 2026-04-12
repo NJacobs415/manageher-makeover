@@ -70,5 +70,159 @@
       "label": "🔗 Learn more about Bart’s work",
       "url": "http://www.lionsdenprogram.com"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Partnership Style?",
+    "description": "Discover how you naturally approach shared responsibility and emotional leadership in your closest relationships. This quiz will reveal insights about your unique strengths and growth opportunities.",
+    "questions": [
+      {
+        "question": "When you notice something important needs to happen in your household or relationship, what's your typical first move?",
+        "options": [
+          {
+            "text": "I start thinking through all the steps needed and begin organizing a plan to make it happen",
+            "type": "A"
+          },
+          {
+            "text": "I ask what I can do to help and look for ways to support the effort",
+            "type": "B"
+          },
+          {
+            "text": "I bring it up directly and want to talk through what's really going on underneath",
+            "type": "C"
+          },
+          {
+            "text": "I start doing small things to model the change I want to see",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you typically handle it when you're feeling overwhelmed by everything on your plate?",
+        "options": [
+          {
+            "text": "I make lists and try to create better systems so this doesn't happen again",
+            "type": "A"
+          },
+          {
+            "text": "I push through and focus on what others need from me first",
+            "type": "B"
+          },
+          {
+            "text": "I need to talk it out with someone who will really listen and understand",
+            "type": "C"
+          },
+          {
+            "text": "I try to simplify and let go of things that aren't absolutely essential",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When there's tension or unspoken frustration in your relationship, you're most likely to:",
+        "options": [
+          {
+            "text": "Try to figure out what systems or routines might solve the underlying issue",
+            "type": "A"
+          },
+          {
+            "text": "Look for concrete ways to help reduce stress and show you care",
+            "type": "B"
+          },
+          {
+            "text": "Address it head-on because avoiding it will only make things worse",
+            "type": "C"
+          },
+          {
+            "text": "Give it some space while being extra thoughtful about your own actions",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What energizes you most about being in a committed partnership?",
+        "options": [
+          {
+            "text": "Building something meaningful together and seeing how you complement each other's strengths",
+            "type": "A"
+          },
+          {
+            "text": "Being someone your partner can always count on and knowing they feel supported",
+            "type": "B"
+          },
+          {
+            "text": "Having deep conversations and really knowing each other at the core level",
+            "type": "C"
+          },
+          {
+            "text": "Creating a peaceful, harmonious life where you both feel free to be yourselves",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When your partner expresses frustration about household or family management, your instinct is to:",
+        "options": [
+          {
+            "text": "Ask specific questions about what systems or processes could work better",
+            "type": "A"
+          },
+          {
+            "text": "Immediately offer to take things off their plate and ask how you can help",
+            "type": "B"
+          },
+          {
+            "text": "Want to understand what they're really feeling and what this means for your relationship",
+            "type": "C"
+          },
+          {
+            "text": "Listen carefully and then quietly start taking on more without making a big deal about it",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you prefer to create positive change in your relationships?",
+        "options": [
+          {
+            "text": "Through clear communication about roles and creating structures that work for everyone",
+            "type": "A"
+          },
+          {
+            "text": "By consistently showing up and proving your commitment through actions",
+            "type": "B"
+          },
+          {
+            "text": "By having honest conversations about what's working and what isn't",
+            "type": "C"
+          },
+          {
+            "text": "Through small, steady changes that naturally build momentum over time",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Systems Builder",
+        "description": "You naturally think ahead and love creating structure that makes life flow smoothly. You're the person others count on to remember the details and keep things organized. Your superpower is seeing the bigger picture and building systems that support everyone. This episode will show you how to leverage your natural planning abilities to create even deeper partnership while helping others step up alongside you."
+      },
+      {
+        "type": "B",
+        "title": "The Steady Supporter",
+        "description": "You excel at being present and responsive when others need you. Your strength lies in your reliability and willingness to jump in wherever help is needed. You create stability through your consistent care and attention to what matters most to your people. This episode will help you understand how to maintain your supportive nature while also establishing boundaries that create space for others to take more ownership."
+      },
+      {
+        "type": "C",
+        "title": "The Authentic Connector",
+        "description": "You value genuine communication and aren't afraid to address the real issues in relationships. Your strength is creating emotional safety through honesty and vulnerability. You naturally see through surface-level solutions to the deeper dynamics at play. This episode will resonate with your desire for authentic partnership and give you language for the changes you know need to happen."
+      },
+      {
+        "type": "D",
+        "title": "The Gentle Influencer",
+        "description": "You prefer to lead through example and create change gradually rather than through confrontation. Your strength is maintaining harmony while still moving relationships forward. You understand that lasting change happens through patience and consistent modeling. This episode will give you practical strategies for creating the shifts you want to see while honoring your natural approach to influence."
+      }
+    ]
+  }
 }

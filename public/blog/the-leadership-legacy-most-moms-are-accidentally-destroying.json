@@ -102,5 +102,159 @@
       "label": "💼 LinkedIn",
       "url": "https://www.linkedin.com/in/tiana-reeves-pmp-pmi-acp-cssbb-2080427/"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Wealth Mindset?",
+    "description": "Discover how you really think about money, success, and what it means to build a life on your own terms. Your mindset might surprise you!",
+    "questions": [
+      {
+        "question": "When you think about your ideal financial future, what matters most to you?",
+        "options": [
+          {
+            "text": "Having a solid emergency fund and knowing I can handle whatever life throws at me",
+            "type": "A"
+          },
+          {
+            "text": "Never having to ask permission or depend on someone else for financial decisions",
+            "type": "B"
+          },
+          {
+            "text": "Earning money through work that feels meaningful and aligned with my values",
+            "type": "C"
+          },
+          {
+            "text": "Being able to create amazing memories and experiences with the people I love",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "You're facing a major life transition. What's your first instinct?",
+        "options": [
+          {
+            "text": "Create a detailed plan and build up my safety net before making any big moves",
+            "type": "A"
+          },
+          {
+            "text": "See this as my chance to break free from anything that's been holding me back",
+            "type": "B"
+          },
+          {
+            "text": "Use this opportunity to realign with what truly matters to me",
+            "type": "C"
+          },
+          {
+            "text": "Focus on maintaining peace and happiness for myself and my family during the change",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you define being 'successful' in life?",
+        "options": [
+          {
+            "text": "Having enough resources to feel confident and prepared for the future",
+            "type": "A"
+          },
+          {
+            "text": "Being completely self-sufficient and able to make my own choices",
+            "type": "B"
+          },
+          {
+            "text": "Making a positive impact while also achieving financial stability",
+            "type": "C"
+          },
+          {
+            "text": "Living with joy, peace, and strong relationships with the people I care about",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you're stressed about money, what bothers you most?",
+        "options": [
+          {
+            "text": "The uncertainty and not knowing if I'll have enough for unexpected expenses",
+            "type": "A"
+          },
+          {
+            "text": "Feeling like I have to compromise my independence or ask others for help",
+            "type": "B"
+          },
+          {
+            "text": "Worrying that I might have to take work that doesn't align with my values",
+            "type": "C"
+          },
+          {
+            "text": "The impact financial stress has on my peace of mind and family relationships",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "You have an unexpected windfall. What's your first move?",
+        "options": [
+          {
+            "text": "Put most of it into savings and investments to build long-term security",
+            "type": "A"
+          },
+          {
+            "text": "Use it to eliminate any debts or dependencies that limit my freedom",
+            "type": "B"
+          },
+          {
+            "text": "Invest in education or business opportunities that align with my goals",
+            "type": "C"
+          },
+          {
+            "text": "Create some amazing experiences while also being responsible with the rest",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What motivates you most when it comes to your career?",
+        "options": [
+          {
+            "text": "Building expertise and a reputation that provides steady, reliable income",
+            "type": "A"
+          },
+          {
+            "text": "Having control over my schedule, decisions, and financial independence",
+            "type": "B"
+          },
+          {
+            "text": "Doing work that feels meaningful and contributes to something bigger",
+            "type": "C"
+          },
+          {
+            "text": "Maintaining a balance that allows me to prioritize what brings me joy",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Security Builder",
+        "description": "You value stability and creating a solid foundation for yourself and your loved ones. Financial peace means having enough saved for emergencies and knowing you can weather life's storms. You understand that true wealth includes emotional security, not just numbers in a bank account. This episode will resonate with your journey of building sustainable success while redefining what 'enough' really means."
+      },
+      {
+        "type": "B",
+        "title": "The Freedom Seeker",
+        "description": "You're driven by the desire for independence and the ability to make choices without financial constraints holding you back. Money represents options and autonomy to you. You've likely experienced or fear the trap of financial dependence that limits your ability to live authentically. Tiana's story of breaking free and creating her own path will inspire your next bold move toward true freedom."
+      },
+      {
+        "type": "C",
+        "title": "The Purpose Pioneer",
+        "description": "You believe that meaningful work and financial success can absolutely go hand in hand. You're not just building wealth—you're building a legacy that aligns with your values. You understand that when you start with what brings you joy, the money often follows naturally. This episode will validate your approach and show you how to turn your passion into sustainable six-figure success."
+      },
+      {
+        "type": "D",
+        "title": "The Joy Maximizer",
+        "description": "You've discovered the secret that many people miss: being rich isn't about your income—it's about the peace, joy, and memories you create with the people you love. You measure wealth in experiences and relationships, not just dollars. You'll love hearing how Tiana redefined success and created a life where financial stability serves her happiness, not the other way around."
+      }
+    ]
+  }
 }

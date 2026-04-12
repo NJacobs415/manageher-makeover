@@ -112,5 +112,159 @@
       "label": "🔗 Linktree",
       "url": "https://linktr.ee/huntresswealth"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Money Story?",
+    "description": "Discover the invisible financial script that's been running your life since childhood and learn how to rewrite it for success.",
+    "questions": [
+      {
+        "question": "When you think about your financial future, what's your honest first reaction?",
+        "options": [
+          {
+            "text": "I feel a little anxious and prefer to focus on more immediate concerns",
+            "type": "A"
+          },
+          {
+            "text": "I get excited thinking about all the possibilities money could create",
+            "type": "B"
+          },
+          {
+            "text": "I think about what financial success would say about me as a person",
+            "type": "C"
+          },
+          {
+            "text": "I start running through my budget and savings plan in my head",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your friend just got a huge promotion and salary increase. Your first thought is:",
+        "options": [
+          {
+            "text": "I hope all that money doesn't change who they are",
+            "type": "A"
+          },
+          {
+            "text": "I wonder how I can position myself for a similar opportunity",
+            "type": "B"
+          },
+          {
+            "text": "I'm excited for them—they've earned that level of success",
+            "type": "C"
+          },
+          {
+            "text": "I hope they're putting some of that increase toward their retirement fund",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When it comes to investing, you tend to:",
+        "options": [
+          {
+            "text": "Feel overwhelmed by all the options and put off making decisions",
+            "type": "A"
+          },
+          {
+            "text": "Look for investments that could really accelerate your wealth building",
+            "type": "B"
+          },
+          {
+            "text": "Consider what kinds of investments successful people in your field make",
+            "type": "C"
+          },
+          {
+            "text": "Research thoroughly and choose stable, long-term options",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "At a dinner party, when the conversation turns to money, you:",
+        "options": [
+          {
+            "text": "Try to steer the conversation toward more comfortable topics",
+            "type": "A"
+          },
+          {
+            "text": "Share your latest financial wins or strategies you're excited about",
+            "type": "B"
+          },
+          {
+            "text": "Listen carefully to gauge where others stand financially",
+            "type": "C"
+          },
+          {
+            "text": "Engage thoughtfully but don't reveal too much about your own situation",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your biggest financial fear is:",
+        "options": [
+          {
+            "text": "That focusing too much on money will make me lose sight of what really matters",
+            "type": "A"
+          },
+          {
+            "text": "That I'll never have enough to live the life I really want",
+            "type": "B"
+          },
+          {
+            "text": "That people will judge me based on my financial situation",
+            "type": "C"
+          },
+          {
+            "text": "That I'll make a costly mistake or run out of money in retirement",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you make a significant purchase, you feel best when:",
+        "options": [
+          {
+            "text": "It's something practical that you really need and will use for years",
+            "type": "A"
+          },
+          {
+            "text": "It's an investment in your future success or happiness",
+            "type": "B"
+          },
+          {
+            "text": "It's something that reflects your values and where you are in life",
+            "type": "C"
+          },
+          {
+            "text": "You've planned for it and it fits comfortably within your budget",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Money Avoider",
+        "description": "You've learned to see money as complicated or even morally questionable, so you prefer to keep financial decisions simple and avoid the stress altogether. Your heart is in the right place—you value relationships and authenticity over material wealth. However, this avoidance might be costing you long-term financial security. This episode will show you how to transform your relationship with money from something you avoid into a tool for creating the life you truly want, without compromising your values."
+      },
+      {
+        "type": "B",
+        "title": "The Wealth Chaser",
+        "description": "You believe deeply that financial success will unlock the life you're meant to live, and you're willing to work hard to get there. Your drive and ambition are real strengths that can take you far. Sometimes though, you might find yourself on an endless treadmill of earning and spending, always chasing the next level. This episode will help you channel your natural motivation into sustainable wealth-building strategies that actually deliver the security and freedom you're seeking."
+      },
+      {
+        "type": "C",
+        "title": "The Status Strategist",
+        "description": "You understand that money represents more than just numbers—it's about respect, influence, and having a seat at the table. Your awareness of how wealth creates opportunities is sophisticated and valuable. You might sometimes find yourself making financial choices based on how they look rather than how they serve your long-term goals. This episode will show you how to leverage your natural understanding of money's power while building genuine wealth that matches your impressive exterior."
+      },
+      {
+        "type": "D",
+        "title": "The Financial Guardian",
+        "description": "You approach money with wisdom and caution, understanding that financial security requires discipline and smart planning. Your natural tendency toward vigilance is actually your superpower—research shows it's the only money story correlated with positive financial outcomes. You sometimes worry that you're too conservative or that you should be taking bigger risks. This episode will validate your approach while showing you practical ways to grow your wealth confidently and securely."
+      }
+    ]
+  }
 }

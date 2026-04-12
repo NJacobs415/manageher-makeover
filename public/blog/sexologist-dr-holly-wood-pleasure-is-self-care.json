@@ -90,5 +90,159 @@
       "label": "🔗 Website",
       "url": "https://www.thehollywoodsexologist.com/"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Relationship with Pleasure and Self-Care?",
+    "description": "Discover how you currently approach pleasure, intimacy, and self-care in your life. This quiz will help you understand your unique patterns and what might be holding you back from the fulfillment you deserve.",
+    "questions": [
+      {
+        "question": "When you think about taking time for activities that bring you pure joy or pleasure, what's your first instinct?",
+        "options": [
+          {
+            "text": "I feel a twinge of guilt and start mentally listing everything else I should be doing instead",
+            "type": "A"
+          },
+          {
+            "text": "I want to, but I'm not always sure what would actually bring me pleasure anymore",
+            "type": "B"
+          },
+          {
+            "text": "I try to schedule it in, but life often gets in the way and I struggle to follow through",
+            "type": "C"
+          },
+          {
+            "text": "I remind myself that this is essential for my well-being and make it happen",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you typically approach conversations about intimacy and sexual needs with your partner?",
+        "options": [
+          {
+            "text": "I drop hints and hope they pick up on what I need rather than being direct",
+            "type": "A"
+          },
+          {
+            "text": "I want to communicate more openly but feel awkward or don't know how to start",
+            "type": "B"
+          },
+          {
+            "text": "I try to bring things up but we often get interrupted or the timing never feels right",
+            "type": "C"
+          },
+          {
+            "text": "I'm learning to be more direct about my needs, even when it feels uncomfortable",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "If your relationship with your body and desire has changed (due to motherhood, age, or life circumstances), how do you feel about that?",
+        "options": [
+          {
+            "text": "I worry that something is wrong with me and that I should get back to how I used to be",
+            "type": "A"
+          },
+          {
+            "text": "I feel confused and disconnected, like I don't recognize this version of myself",
+            "type": "B"
+          },
+          {
+            "text": "I'm working on accepting the changes but it's a daily struggle some days",
+            "type": "C"
+          },
+          {
+            "text": "I'm learning to embrace this evolution as a natural part of my journey",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When it comes to shame around sexuality or pleasure, where are you in your journey?",
+        "options": [
+          {
+            "text": "I carry a lot of shame but rarely talk about it or examine where it comes from",
+            "type": "A"
+          },
+          {
+            "text": "I know shame is affecting me, but I'm just beginning to understand how deeply",
+            "type": "B"
+          },
+          {
+            "text": "I'm actively working on it but find myself slipping back into old patterns sometimes",
+            "type": "C"
+          },
+          {
+            "text": "I've done significant work to dismantle shame and help others do the same",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you prioritize your own pleasure and desires in your daily life?",
+        "options": [
+          {
+            "text": "I tend to focus on everyone else's needs first and hope there's time left over for me",
+            "type": "A"
+          },
+          {
+            "text": "I want to prioritize myself more but I'm not always clear on what I actually want",
+            "type": "B"
+          },
+          {
+            "text": "I'm working on creating better boundaries but consistency is my biggest challenge",
+            "type": "C"
+          },
+          {
+            "text": "I've learned that prioritizing my pleasure makes me a better partner, mother, and leader",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What's your relationship with the idea that 'pleasure is self-care, not selfishness'?",
+        "options": [
+          {
+            "text": "Intellectually I get it, but emotionally I still feel selfish when I prioritize pleasure",
+            "type": "A"
+          },
+          {
+            "text": "It's a new concept for me and I'm curious but not sure how to apply it practically",
+            "type": "B"
+          },
+          {
+            "text": "I believe it's true and I'm working on making choices that reflect this belief",
+            "type": "C"
+          },
+          {
+            "text": "I fully embrace this philosophy and try to model it for other women in my life",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Permission Seeker",
+        "description": "You know pleasure and self-care are important, but you struggle with feeling like you've 'earned' the right to prioritize them. You often find yourself justifying your needs or waiting for others to give you permission to pursue what brings you joy. Your caring nature sometimes means you put everyone else first, leaving little energy for yourself. This episode will help you understand that pleasure isn't selfish—it's essential self-care that you deserve simply by being human."
+      },
+      {
+        "type": "B",
+        "title": "The Quiet Explorer",
+        "description": "You're curious about deepening your relationship with pleasure and intimacy, but you prefer to process things privately before taking action. You might feel like you're 'behind' or don't know where to start, especially if motherhood or life changes have shifted your relationship with your body and desires. Your thoughtful approach is actually a strength. Dr. Holly Wood's insights will give you the framework and validation you need to begin exploring what you truly want without judgment."
+      },
+      {
+        "type": "C",
+        "title": "The Intentional Builder",
+        "description": "You understand that pleasure and intimacy require intentional effort, and you're willing to do the work to create positive change in your life. You might be navigating communication challenges with your partner or working through your own relationship with shame around sexuality. Your commitment to growth is admirable, and you're ready for practical strategies. This episode will provide you with expert guidance on how to build the safe spaces and open communication that healthy pleasure requires."
+      },
+      {
+        "type": "D",
+        "title": "The Empowered Advocate",
+        "description": "You've already begun your journey of reclaiming pleasure as a vital part of your well-being, and you're passionate about helping other women do the same. You understand that dismantling shame is ongoing work and that every season of life brings new challenges to navigate. Your leadership in this area is valuable, but even advocates need support and fresh perspectives. Dr. Wood's expertise will deepen your understanding and give you new tools to continue your own evolution while supporting others."
+      }
+    ]
+  }
 }

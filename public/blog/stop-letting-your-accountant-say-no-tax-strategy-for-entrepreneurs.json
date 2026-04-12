@@ -95,5 +95,159 @@
       "label": "💼 LinkedIn",
       "url": "https://www.linkedin.com/company/your-tax-coach/"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Money Empowerment Style?",
+    "description": "Discover how you approach financial decisions and unlock your unique path to building wealth. Based on insights from episode 45 with tax expert Barbara Schreihans.",
+    "questions": [
+      {
+        "question": "When you're facing a major financial decision, what's your first instinct?",
+        "options": [
+          {
+            "text": "Research all the options and create a detailed comparison chart",
+            "type": "A"
+          },
+          {
+            "text": "Trust my gut and move forward if it feels like the right opportunity",
+            "type": "B"
+          },
+          {
+            "text": "Take time to think through all possible outcomes and potential risks",
+            "type": "C"
+          },
+          {
+            "text": "Talk it through with trusted friends or family to get their perspective",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you typically feel about complex financial topics like tax strategy?",
+        "options": [
+          {
+            "text": "Energized—I love diving into the details and figuring out how everything works",
+            "type": "A"
+          },
+          {
+            "text": "Motivated—if it can help me build wealth, I'm ready to learn it",
+            "type": "B"
+          },
+          {
+            "text": "Cautious—I want to understand it thoroughly before I feel comfortable",
+            "type": "C"
+          },
+          {
+            "text": "Overwhelmed—I prefer when someone can break it down in simple terms",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When your accountant tells you 'no' to a potential deduction, you:",
+        "options": [
+          {
+            "text": "Ask for specific documentation about why it doesn't qualify",
+            "type": "A"
+          },
+          {
+            "text": "Push back and ask them to find a legal way to make it work",
+            "type": "B"
+          },
+          {
+            "text": "Accept their expertise but make a mental note to research it later",
+            "type": "C"
+          },
+          {
+            "text": "Trust their judgment—they're the professional, after all",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What motivates you most about improving your financial situation?",
+        "options": [
+          {
+            "text": "The satisfaction of optimizing every dollar and maximizing efficiency",
+            "type": "A"
+          },
+          {
+            "text": "Building the freedom and independence to make choices on my own terms",
+            "type": "B"
+          },
+          {
+            "text": "Creating long-term security and stability for the future",
+            "type": "C"
+          },
+          {
+            "text": "Being able to provide for and share experiences with people I care about",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you prefer to learn about new financial strategies?",
+        "options": [
+          {
+            "text": "Deep-dive articles and detailed case studies with real numbers",
+            "type": "A"
+          },
+          {
+            "text": "Success stories from entrepreneurs who've implemented these strategies",
+            "type": "B"
+          },
+          {
+            "text": "Step-by-step guides that walk through the process methodically",
+            "type": "C"
+          },
+          {
+            "text": "Conversations and explanations that connect the strategy to real life",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about your current business structure, you feel:",
+        "options": [
+          {
+            "text": "Like there's probably a more efficient option I should be exploring",
+            "type": "A"
+          },
+          {
+            "text": "Ready to make changes if they'll help me scale and save money",
+            "type": "B"
+          },
+          {
+            "text": "Uncertain about whether what I have now is really the best fit",
+            "type": "C"
+          },
+          {
+            "text": "Confused about the options and wishing someone would just tell me what works",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Strategic Optimizer",
+        "description": "You have a natural gift for seeing systems and finding ways to make them work better for you. You're not afraid to dive deep into details when it means long-term benefits, and you understand that knowledge is power when it comes to your finances. Your methodical approach means you're perfectly positioned to leverage the tax strategies Barbara shares. This episode will give you concrete tools to optimize your business structure and turn your analytical nature into serious tax savings."
+      },
+      {
+        "type": "B",
+        "title": "The Confident Builder",
+        "description": "You trust your instincts and aren't easily intimidated by complex financial topics. You know that taking smart risks and making bold moves is how wealth gets built, and you're ready to advocate for yourself. Your natural confidence is your superpower in financial negotiations and decision-making. Barbara's insights about S-Corp structures and strategic business deductions will resonate with your growth-oriented mindset and give you the ammunition you need to level up your financial game."
+      },
+      {
+        "type": "C",
+        "title": "The Thoughtful Planner",
+        "description": "You value stability and prefer to fully understand your options before making moves. You're naturally good at seeing potential risks and want to make sure any financial strategy feels solid and sustainable. Your careful approach protects you from costly mistakes that impulsive decision-makers often face. This episode is perfect for you because Barbara explains exactly how these tax strategies work legally and safely, giving you the confidence to implement changes that align with your thoughtful approach."
+      },
+      {
+        "type": "D",
+        "title": "The Relationship Harmonizer",
+        "description": "You understand that money isn't just about numbers—it's about relationships, communication, and shared goals. You naturally see how financial decisions impact everyone around you, and you value transparency and collaboration in money matters. Your strength lies in building consensus and ensuring everyone feels heard in financial discussions. Barbara's emphasis on regular money conversations with spouses and clear communication with tax professionals will speak directly to your collaborative approach to wealth building."
+      }
+    ]
+  }
 }

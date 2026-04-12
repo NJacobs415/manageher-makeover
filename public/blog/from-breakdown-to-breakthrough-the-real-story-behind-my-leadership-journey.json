@@ -62,5 +62,159 @@
       "label": "**Buy *The Manage Her* on Amazon:** [",
       "url": "https://a.co/d/6R7eKiC"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Hidden Leadership Style?",
+    "description": "You've been leading all along—you just might not have called it that. Discover the unique leadership strengths you're already using every day.",
+    "questions": [
+      {
+        "question": "When your family is facing a hectic week with overlapping activities and deadlines, your instinct is to:",
+        "options": [
+          {
+            "text": "Create a detailed schedule and coordinate everyone's needs in advance",
+            "type": "A"
+          },
+          {
+            "text": "Check in with each person individually to see how they're feeling about everything",
+            "type": "B"
+          },
+          {
+            "text": "Figure out creative solutions as things come up throughout the week",
+            "type": "C"
+          },
+          {
+            "text": "Stay calm and provide steady support so everyone feels grounded",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "At work or in volunteer situations, you find yourself naturally:",
+        "options": [
+          {
+            "text": "Taking on the role of organizing projects and keeping track of all the details",
+            "type": "A"
+          },
+          {
+            "text": "Being the person others come to when they need someone to listen or give advice",
+            "type": "B"
+          },
+          {
+            "text": "Jumping in wherever help is needed and adapting to whatever the situation requires",
+            "type": "C"
+          },
+          {
+            "text": "Creating a supportive environment where everyone feels comfortable contributing",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When someone asks for your help with a problem, you typically:",
+        "options": [
+          {
+            "text": "Help them break it down into manageable steps and create a plan",
+            "type": "A"
+          },
+          {
+            "text": "Listen carefully to understand what they're really struggling with emotionally",
+            "type": "B"
+          },
+          {
+            "text": "Brainstorm creative solutions and help them see new possibilities",
+            "type": "C"
+          },
+          {
+            "text": "Offer consistent encouragement and remind them of their strengths",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your friends and family would say your greatest strength in stressful situations is:",
+        "options": [
+          {
+            "text": "Your ability to see the whole picture and keep everyone organized",
+            "type": "A"
+          },
+          {
+            "text": "Your skill at reading the room and knowing exactly what people need",
+            "type": "B"
+          },
+          {
+            "text": "Your talent for thinking on your feet and finding unexpected solutions",
+            "type": "C"
+          },
+          {
+            "text": "Your calming presence that helps everyone feel more secure",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about your daily routine, you feel most energized by:",
+        "options": [
+          {
+            "text": "Successfully coordinating multiple moving parts and seeing everything flow smoothly",
+            "type": "A"
+          },
+          {
+            "text": "The meaningful conversations and connections you have with people throughout the day",
+            "type": "B"
+          },
+          {
+            "text": "The variety and unpredictability that keeps you problem-solving and adapting",
+            "type": "C"
+          },
+          {
+            "text": "Being the reliable constant that others can count on no matter what happens",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "If you were to describe your approach to handling responsibilities, you'd say:",
+        "options": [
+          {
+            "text": "I like to plan ahead and make sure all the pieces fit together perfectly",
+            "type": "A"
+          },
+          {
+            "text": "I focus on understanding what really matters to the people involved",
+            "type": "B"
+          },
+          {
+            "text": "I stay flexible and ready to pivot when circumstances change",
+            "type": "C"
+          },
+          {
+            "text": "I provide consistent, dependable follow-through that others can rely on",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Strategic Orchestrator",
+        "description": "You see the big picture and naturally coordinate moving pieces to create harmony. Your leadership style is about bringing order to chaos and helping everyone succeed together. You excel at long-term planning and making sure nothing falls through the cracks. This episode will help you recognize how your natural organizing abilities are actually sophisticated leadership skills that deserve recognition and can be leveraged in every area of your life."
+      },
+      {
+        "type": "B",
+        "title": "The Intuitive Connector",
+        "description": "Your leadership superpower lies in reading people and situations with remarkable accuracy. You lead through understanding, empathy, and creating genuine connections that motivate others. You naturally sense what people need before they ask and excel at building trust. This episode will validate how your emotional intelligence and people skills are powerful leadership tools that can transform both your personal and professional relationships."
+      },
+      {
+        "type": "C",
+        "title": "The Adaptive Problem-Solver",
+        "description": "You thrive in the moment, turning challenges into opportunities with creative thinking and quick action. Your leadership style is flexible, resourceful, and gets things done even when the path isn't clear. You're the person others turn to when they need solutions fast. This episode will show you how your ability to pivot and find creative solutions under pressure are executive-level leadership skills that make you invaluable in any situation."
+      },
+      {
+        "type": "D",
+        "title": "The Steady Foundation",
+        "description": "Your leadership strength is creating stability and consistency that others can count on. You lead through reliability, patience, and creating safe spaces where others can grow and take risks. Your calm presence and steady guidance provide the foundation that allows teams and families to thrive. This episode will help you see how your nurturing, supportive approach is a powerful form of leadership that creates lasting positive change in people's lives."
+      }
+    ]
+  }
 }

@@ -82,5 +82,159 @@
       "label": "💼 LinkedIn",
       "url": "https://www.linkedin.com/in/christinamariehernandez/"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Connection Catalyst Style?",
+    "description": "Discover how you naturally bring people together and build community. Just like Christina Wooldridge turned her gift for connection into a thriving business empire, you have your own unique way of creating belonging.",
+    "questions": [
+      {
+        "question": "When you walk into a room full of strangers, what's your natural instinct?",
+        "options": [
+          {
+            "text": "Look for ways to get conversations started—maybe suggest an icebreaker or find common ground to share",
+            "type": "A"
+          },
+          {
+            "text": "Find one or two people to have deeper conversations with rather than working the whole room",
+            "type": "B"
+          },
+          {
+            "text": "Notice who looks uncomfortable and naturally gravitate toward including them",
+            "type": "C"
+          },
+          {
+            "text": "Observe the room dynamics and think about how the space or setup could better serve everyone",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "You have an idea that excites you, but others might think it's 'not serious enough.' How do you typically respond?",
+        "options": [
+          {
+            "text": "Get even more excited—if it brings joy, it's probably filling a real need people have",
+            "type": "A"
+          },
+          {
+            "text": "Take time to research and validate it quietly before sharing with anyone else",
+            "type": "B"
+          },
+          {
+            "text": "Start talking to people to understand what problem this might actually be solving for them",
+            "type": "C"
+          },
+          {
+            "text": "Begin sketching out how this could work systematically and what it might look like at scale",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When people describe what you bring to a team or relationship, they usually mention:",
+        "options": [
+          {
+            "text": "Your ability to make everything more fun and memorable",
+            "type": "A"
+          },
+          {
+            "text": "Your reliability and the way you really listen to what matters to them",
+            "type": "B"
+          },
+          {
+            "text": "Your knack for knowing exactly what someone needs, often before they realize it themselves",
+            "type": "C"
+          },
+          {
+            "text": "Your talent for seeing the bigger picture and helping everyone understand how their part fits",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "You're planning an event or gathering. What aspect do you focus on first?",
+        "options": [
+          {
+            "text": "What will make this feel special and different from everything else people attend",
+            "type": "A"
+          },
+          {
+            "text": "Making sure every person who comes will feel comfortable and genuinely welcome",
+            "type": "B"
+          },
+          {
+            "text": "Understanding what people really need from this experience, beyond what they're saying they want",
+            "type": "C"
+          },
+          {
+            "text": "Creating a framework that could work for this event and future ones too",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your biggest frustration with how most businesses operate is:",
+        "options": [
+          {
+            "text": "They're so focused on being 'professional' that they forget to be human and enjoyable",
+            "type": "A"
+          },
+          {
+            "text": "They prioritize quick wins over building real, lasting relationships with people",
+            "type": "B"
+          },
+          {
+            "text": "They solve surface problems instead of paying attention to what customers actually need",
+            "type": "C"
+          },
+          {
+            "text": "They make everything more complicated than it needs to be instead of creating simple, effective systems",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about your ideal work situation, what energizes you most?",
+        "options": [
+          {
+            "text": "Creating something that brings people joy and gives them stories to tell later",
+            "type": "A"
+          },
+          {
+            "text": "Building something sustainable that will genuinely serve people for years to come",
+            "type": "B"
+          },
+          {
+            "text": "Solving real problems for people, especially ones that others have overlooked or dismissed",
+            "type": "C"
+          },
+          {
+            "text": "Taking your knowledge and expertise and packaging it so more people can benefit from it",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Experience Creator",
+        "description": "You're the one who turns ordinary moments into memorable experiences. Like Christina organizing childhood parades, you instinctively know how to make people feel special and included. Your superpower lies in seeing possibilities where others see just another Tuesday. This episode will show you how to recognize the business potential in what might feel like 'just being yourself' and help you understand why your seemingly simple ideas could be your most valuable ones."
+      },
+      {
+        "type": "B",
+        "title": "The Steady Cultivator",
+        "description": "You build deep, lasting connections through consistency and genuine care. While others chase the spotlight, you're creating the foundation that everything else stands on. Your approach to community-building is methodical and intentional—qualities that become even sharper under pressure. Christina's insights about motherhood as leadership training will resonate deeply with you, showing how your deliberate, thoughtful approach to relationships is actually a rare and valuable business skill."
+      },
+      {
+        "type": "C",
+        "title": "The Bridge Builder",
+        "description": "You have a natural gift for seeing what people need and connecting them with solutions—or with each other. You understand that real value comes from relationships, not just transactions. Your ability to spot gaps and fill them is exactly what makes unconventional businesses thrive. This episode will inspire you to trust your instincts about what people are really craving and show you how hospitality skills can become your secret weapon in any industry."
+      },
+      {
+        "type": "D",
+        "title": "The Vision Translator",
+        "description": "You excel at taking big ideas and making them accessible, scalable, and real. You see systems where others see chaos, and you know how to package wisdom in ways people can actually use. Like Christina turning her community-building expertise into a tech-enabled business, you understand that scaling doesn't always mean doing more—sometimes it means doing things differently. This episode will validate your approach to growth and show you how unconventional paths often lead to the most meaningful success."
+      }
+    ]
+  }
 }

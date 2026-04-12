@@ -89,5 +89,159 @@
       "label": "🔗 Website",
       "url": "https://shanahartman.com/about"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Creative Expression Style?",
+    "description": "Discover how you naturally bring your ideas to life and what might be holding you back from sharing your story with the world.",
+    "questions": [
+      {
+        "question": "When you have a creative project you're excited about, what's your first instinct?",
+        "options": [
+          {
+            "text": "I need to feel into it first and let the idea marinate before I take action",
+            "type": "A"
+          },
+          {
+            "text": "I start researching the best methods and create a detailed plan",
+            "type": "B"
+          },
+          {
+            "text": "I immediately think about who I can brainstorm with or get feedback from",
+            "type": "C"
+          },
+          {
+            "text": "I envision the full impact this could have and start mapping out the bigger picture",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What tends to derail your creative momentum most often?",
+        "options": [
+          {
+            "text": "Trying to force myself to work when my body and energy aren't aligned",
+            "type": "A"
+          },
+          {
+            "text": "Getting stuck in planning mode and never feeling ready to start the messy work",
+            "type": "B"
+          },
+          {
+            "text": "Worrying that I don't have enough support or that I'm bothering people by asking for help",
+            "type": "C"
+          },
+          {
+            "text": "Getting overwhelmed by the scope of what I want to create",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about sharing your story or expertise, what comes up for you?",
+        "options": [
+          {
+            "text": "I have so much to say but it doesn't always come out in a logical order",
+            "type": "A"
+          },
+          {
+            "text": "I need to organize my thoughts better before anyone would want to hear them",
+            "type": "B"
+          },
+          {
+            "text": "I wonder if anyone would actually be interested or if I'm qualified enough",
+            "type": "C"
+          },
+          {
+            "text": "I see how it could change everything, but the responsibility feels huge",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your ideal creative environment includes:",
+        "options": [
+          {
+            "text": "Natural light, comfortable seating, and the freedom to move around or change locations",
+            "type": "A"
+          },
+          {
+            "text": "A dedicated workspace with all my tools organized and a clear schedule",
+            "type": "B"
+          },
+          {
+            "text": "Other people nearby, even if we're working on different things, or regular check-ins with collaborators",
+            "type": "C"
+          },
+          {
+            "text": "Inspiring visuals and reminders of the bigger mission driving this work",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What's your relationship with 'perfect timing' for big creative projects?",
+        "options": [
+          {
+            "text": "I believe in divine timing and trust that things will happen when they're meant to",
+            "type": "A"
+          },
+          {
+            "text": "I keep waiting for the right time when I have all the pieces in place",
+            "type": "B"
+          },
+          {
+            "text": "I'd feel more confident starting if I knew others were on the journey with me",
+            "type": "C"
+          },
+          {
+            "text": "I know there's never a perfect time, but I want to make sure the impact will be worth it",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you imagine your creative work making an impact, what matters most to you?",
+        "options": [
+          {
+            "text": "That it feels authentic and true to who I really am",
+            "type": "A"
+          },
+          {
+            "text": "That it's well-crafted and provides real value to people",
+            "type": "B"
+          },
+          {
+            "text": "That it creates connection and helps people feel less alone",
+            "type": "C"
+          },
+          {
+            "text": "That it transforms how people think or creates lasting change",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Intuitive Creator",
+        "description": "You trust your gut and know that your best ideas come when you're not forcing them. You understand that creativity is a full-body experience and you honor the messy, non-linear process of bringing something meaningful into the world. Your challenge is often finding the right community and structure to support your natural flow. This episode will show you how to embrace your embodied creative process and find the support system that honors how you actually work best."
+      },
+      {
+        "type": "B",
+        "title": "The Structured Storyteller",
+        "description": "You thrive with frameworks and clear processes, but sometimes wonder if you're missing something deeper in your creative work. You have incredible stories and wisdom to share, but you might be trying to force them into systems that don't quite fit. Your organized approach is a strength, but your stories deserve to breathe too. This episode will help you discover how to blend your love of structure with a more intuitive, embodied approach to creativity."
+      },
+      {
+        "type": "C",
+        "title": "The Community Builder",
+        "description": "You know instinctively that the best work happens when we're not alone, and you naturally create spaces for others to shine. You understand the power of collaboration and support, but you might hold back from fully stepping into your own story. Your gift for bringing people together is exactly what the world needs. This episode will inspire you to see how your community-focused nature can become the foundation for sharing your own powerful message."
+      },
+      {
+        "type": "D",
+        "title": "The Legacy Visionary",
+        "description": "You think big and see the long-term impact of the work you want to create in the world. You're not interested in one-time projects but in building something that will matter for years to come. Sometimes this big vision can feel overwhelming or paralyzing. Your desire to create lasting change is your superpower. This episode will show you how to step into your identity as someone who creates meaningful legacy work, starting with trusting what wants to emerge through you right now."
+      }
+    ]
+  }
 }

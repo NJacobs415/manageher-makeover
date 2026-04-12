@@ -72,5 +72,159 @@
       "label": "📚 Get your copy of The Manage Her",
       "url": "https://a.co/d/ej9A37z"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Advocacy Superpower?",
+    "description": "Discover how you naturally show up when it's time to fight for what matters most. Amy Bohn's incredible journey from brain injury recovery to leading a movement shows us that advocacy comes in many forms.",
+    "questions": [
+      {
+        "question": "When you see an injustice happening in your community, your first instinct is to:",
+        "options": [
+          {
+            "text": "Feel deeply angry and immediately start researching what you can personally do about it",
+            "type": "A"
+          },
+          {
+            "text": "Start conversations with friends and neighbors to see who else cares about this issue",
+            "type": "B"
+          },
+          {
+            "text": "Look into the bigger picture to understand how this fits into larger systemic patterns",
+            "type": "C"
+          },
+          {
+            "text": "Find organizations already working on this and see how you can support their efforts",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your biggest personal challenges have taught you:",
+        "options": [
+          {
+            "text": "That your struggles give you unique insight into what vulnerable people need",
+            "type": "A"
+          },
+          {
+            "text": "How much you need community and how to create it for others going through similar experiences",
+            "type": "B"
+          },
+          {
+            "text": "To recognize warning signs and patterns that others might miss",
+            "type": "C"
+          },
+          {
+            "text": "The importance of showing up consistently, even when you don't feel like the expert",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When facing an overwhelming problem that affects many people, you're most likely to:",
+        "options": [
+          {
+            "text": "Channel your outrage into learning everything you can and taking direct action",
+            "type": "A"
+          },
+          {
+            "text": "Focus on bringing the right people together and building collective power",
+            "type": "B"
+          },
+          {
+            "text": "Research the political processes and strategic approaches that could actually work",
+            "type": "C"
+          },
+          {
+            "text": "Look for ways to support the people who are already leading the charge",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your approach to stepping outside your comfort zone is:",
+        "options": [
+          {
+            "text": "When something matters enough, comfort zones become irrelevant",
+            "type": "A"
+          },
+          {
+            "text": "It's easier when you bring other people along for the journey",
+            "type": "B"
+          },
+          {
+            "text": "You prepare thoroughly so the unfamiliar territory feels more manageable",
+            "type": "C"
+          },
+          {
+            "text": "You prefer to support others who are naturally comfortable in those spaces",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When building momentum for change, your natural strength is:",
+        "options": [
+          {
+            "text": "Using your personal story and passion to inspire others to care",
+            "type": "A"
+          },
+          {
+            "text": "Creating spaces where people feel connected and empowered to act together",
+            "type": "B"
+          },
+          {
+            "text": "Developing smart strategies and helping others understand the bigger game being played",
+            "type": "C"
+          },
+          {
+            "text": "Providing the consistent energy and support that keeps movements going strong",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your leadership style is most effective when:",
+        "options": [
+          {
+            "text": "You can transform your personal experience into a rallying cry for justice",
+            "type": "A"
+          },
+          {
+            "text": "You're bringing people together around shared values and helping everyone feel heard",
+            "type": "C"
+          },
+          {
+            "text": "You're analyzing complex situations and helping others navigate strategic decisions",
+            "type": "C"
+          },
+          {
+            "text": "You're supporting and amplifying other leaders while ensuring nothing falls through the cracks",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Fierce Protector",
+        "description": "You have an incredible ability to transform personal pain into powerful purpose. Like Amy Bohn, you don't let your own struggles hold you back from fighting for others who need a voice. Your lived experiences become your greatest strength in understanding what vulnerable people need. You lead with both heart and strategy, never underestimating the power of one determined person to create massive change. This episode will inspire you to see how your own challenges might be preparing you for battles you never imagined fighting."
+      },
+      {
+        "type": "B",
+        "title": "The Bridge Builder",
+        "description": "You excel at bringing people together around shared values and creating community from chaos. Your superpower lies in seeing connections others miss and building coalitions that amplify everyone's voice. You understand that sustainable change happens through relationships, not just campaigns. You're naturally gifted at helping people feel heard and valued, which makes you incredibly effective at growing movements from the ground up. Amy's story of building PERK will show you how your community-building instincts can create exponential impact beyond what any individual can achieve alone."
+      },
+      {
+        "type": "C",
+        "title": "The Strategic Disruptor",
+        "description": "You have a unique gift for seeing patterns and understanding systems that others miss entirely. You're the person who can spot legislative strategies before they impact families and anticipate ripple effects across different environments. Your analytical mind combined with your passion for justice makes you incredibly effective at dismantling unfair systems. You thrive in unfamiliar territory and aren't intimidated by complex political processes. This episode will resonate with your ability to combine emotional passion with strategic thinking to create lasting change."
+      },
+      {
+        "type": "D",
+        "title": "The Steady Amplifier",
+        "description": "Your strength lies in consistent, behind-the-scenes work that keeps movements moving forward day after day. You may not always be the loudest voice in the room, but you're often the most reliable one. You excel at supporting others who are ready to step into the spotlight while ensuring the infrastructure exists to sustain their efforts. Your loyalty and dedication create the foundation that allows other advocates to take bigger risks. Amy's journey will inspire you to see how your steady support and amplification of others' voices is absolutely essential to creating the change you want to see."
+      }
+    ]
+  }
 }

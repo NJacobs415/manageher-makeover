@@ -66,5 +66,159 @@
       "label": "🌱 Learn more",
       "url": "https://www.farmschooloc.com/"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Purpose-Driven Leadership Style?",
+    "description": "Discover how you naturally combine your passions with impact, just like Brooke Briggs did when building her heart-centered businesses while raising her children.",
+    "questions": [
+      {
+        "question": "When you imagine your ideal work life, what excites you most?",
+        "options": [
+          {
+            "text": "Creating spaces where people feel genuinely connected and supported",
+            "type": "A"
+          },
+          {
+            "text": "Building something sustainable that will have lasting positive impact",
+            "type": "B"
+          },
+          {
+            "text": "Pioneering solutions to problems that others haven't tackled yet",
+            "type": "C"
+          },
+          {
+            "text": "Doing work that perfectly aligns with what you believe matters most",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you typically approach big decisions in your life?",
+        "options": [
+          {
+            "text": "I consider how it will affect the people and communities I care about",
+            "type": "A"
+          },
+          {
+            "text": "I think through the long-term implications and build from there",
+            "type": "B"
+          },
+          {
+            "text": "I trust my gut instinct about what feels right to explore",
+            "type": "C"
+          },
+          {
+            "text": "I ask myself if it aligns with my core values and priorities",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What frustrates you most about traditional business approaches?",
+        "options": [
+          {
+            "text": "They often prioritize individual success over community wellbeing",
+            "type": "A"
+          },
+          {
+            "text": "They focus on short-term gains instead of sustainable growth",
+            "type": "B"
+          },
+          {
+            "text": "They stick to what's always been done instead of innovating",
+            "type": "C"
+          },
+          {
+            "text": "They compromise values for profit and conventional metrics",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you're feeling most fulfilled as a leader, you're usually:",
+        "options": [
+          {
+            "text": "Facilitating meaningful connections between people",
+            "type": "A"
+          },
+          {
+            "text": "Steadily building systems that serve others well",
+            "type": "B"
+          },
+          {
+            "text": "Exploring new territory that others haven't ventured into",
+            "type": "C"
+          },
+          {
+            "text": "Living out your purpose in tangible, daily ways",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you prefer to measure success in your work?",
+        "options": [
+          {
+            "text": "By the strength and depth of relationships and community I've helped create",
+            "type": "A"
+          },
+          {
+            "text": "By the solid foundation and lasting impact I've built over time",
+            "type": "B"
+          },
+          {
+            "text": "By the innovative solutions and new possibilities I've opened up",
+            "type": "C"
+          },
+          {
+            "text": "By how authentically my work reflects my values and serves my purpose",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What draws you most to entrepreneurship or leadership roles?",
+        "options": [
+          {
+            "text": "The opportunity to bring people together around something meaningful",
+            "type": "A"
+          },
+          {
+            "text": "The chance to create something substantial and well-built from the ground up",
+            "type": "B"
+          },
+          {
+            "text": "The freedom to pursue ideas and approaches that feel innovative",
+            "type": "C"
+          },
+          {
+            "text": "The ability to design work that honors both your values and your life",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Community Weaver",
+        "description": "You have a gift for bringing people together and creating spaces where authentic connections flourish. Like Brooke with her music classes, you understand that the most meaningful work happens when you're building community around shared values. You thrive when your leadership creates ripple effects that touch multiple generations. This episode will inspire you with practical ways to scale your community-building gifts while staying true to your heart-centered approach."
+      },
+      {
+        "type": "B",
+        "title": "The Steady Builder",
+        "description": "You believe in growing something beautiful over time, laying strong foundations that will serve others for years to come. Your leadership style focuses on sustainable systems and deep roots rather than quick wins. You understand that meaningful impact requires patience and intentional choices. Brooke's journey from music teacher to farm school founder will resonate deeply with your approach to building purpose-driven work that aligns with your values and grows alongside your life."
+      },
+      {
+        "type": "C",
+        "title": "The Intuitive Pioneer",
+        "description": "You trust your instincts about what the world needs and aren't afraid to create something entirely new to meet that need. Your leadership is driven by a deep sense of purpose and willingness to forge your own path. Like Brooke recognizing children's need for nature-based learning, you see gaps others miss and feel called to fill them. This episode will validate your pioneering spirit and show you how to balance bold vision with practical family life."
+      },
+      {
+        "type": "D",
+        "title": "The Values-First Visionary",
+        "description": "Everything you do flows from your core beliefs about what matters most. You refuse to compromise your values for conventional success and instead create work that feels deeply meaningful. Your leadership inspires others because it comes from an authentic place of service. Brooke's story of aligning business with family values while making a real difference will speak directly to your heart and give you permission to lead in your own authentic way."
+      }
+    ]
+  }
 }

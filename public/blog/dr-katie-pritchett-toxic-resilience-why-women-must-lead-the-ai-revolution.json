@@ -102,5 +102,159 @@
       "label": "🧠 Take Her Free Quiz",
       "url": "https://drkatiepritchett.com/pattern-quiz"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Resilience Style?",
+    "description": "Are you thriving with healthy boundaries, or is your resilience actually keeping you stuck? Discover your unique pattern and learn how to build sustainable strength.",
+    "questions": [
+      {
+        "question": "When you're facing a particularly challenging week at work, what's your go-to response?",
+        "options": [
+          {
+            "text": "I assess what's truly urgent, delegate what I can, and make sure I'm getting enough sleep to handle it well",
+            "type": "A"
+          },
+          {
+            "text": "I notice my old urge to just power through, but I'm trying to be more intentional about asking for help",
+            "type": "B"
+          },
+          {
+            "text": "I buckle down and get it done—I can handle more than most people think",
+            "type": "C"
+          },
+          {
+            "text": "I feel overwhelmed and know I need a different approach, but I'm not sure what that looks like yet",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you typically view your childhood experiences in relation to your current leadership style?",
+        "options": [
+          {
+            "text": "I've done work to understand how my past shaped me, and I consciously choose which patterns to keep or change",
+            "type": "A"
+          },
+          {
+            "text": "I'm starting to see connections between my childhood survival strategies and how I lead today",
+            "type": "B"
+          },
+          {
+            "text": "My challenging experiences made me stronger and more capable than I would have been otherwise",
+            "type": "C"
+          },
+          {
+            "text": "I sense there are patterns from my past affecting me now, but I haven't fully explored that connection",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When someone compliments your ability to 'handle anything,' how do you feel?",
+        "options": [
+          {
+            "text": "Grateful, but I also make sure they know it's because I've learned to set good boundaries and ask for support",
+            "type": "A"
+          },
+          {
+            "text": "A mix of pride and exhaustion—I appreciate it but I'm questioning if this is sustainable",
+            "type": "B"
+          },
+          {
+            "text": "Proud and energized—I've worked hard to develop that reputation",
+            "type": "C"
+          },
+          {
+            "text": "Conflicted—part of me likes the recognition, but another part feels trapped by the expectation",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What's your relationship with rest and downtime?",
+        "options": [
+          {
+            "text": "I prioritize it as essential fuel for my effectiveness and creativity",
+            "type": "A"
+          },
+          {
+            "text": "I'm learning to see it as productive rather than lazy, though it still feels challenging sometimes",
+            "type": "B"
+          },
+          {
+            "text": "I'll rest when the important work is done—there's always so much that needs my attention",
+            "type": "C"
+          },
+          {
+            "text": "I know I need more of it, but I struggle with guilt or feeling like there's always something more urgent",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you handle it when systems or situations in your life aren't working?",
+        "options": [
+          {
+            "text": "I look for the root cause and am willing to rebuild things completely if that's what's needed",
+            "type": "A"
+          },
+          {
+            "text": "I'm getting better at questioning whether I should fix it or if the system itself needs to change",
+            "type": "B"
+          },
+          {
+            "text": "I find ways to work around the problems and make things function, even if it requires extra effort from me",
+            "type": "C"
+          },
+          {
+            "text": "I often feel frustrated because I know something should change, but I default to just managing the dysfunction",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about the example you're setting for other women or your children, what comes up?",
+        "options": [
+          {
+            "text": "I want to model that strength includes knowing your limits and honoring your needs",
+            "type": "A"
+          },
+          {
+            "text": "I'm working to break cycles I inherited and show that there are healthier ways to be successful",
+            "type": "B"
+          },
+          {
+            "text": "I want them to see that you can overcome anything if you're determined and work hard enough",
+            "type": "C"
+          },
+          {
+            "text": "I worry I might be modeling patterns I don't want to pass on, but I'm not sure how to change them",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Regenerative Leader",
+        "description": "You understand that true strength comes from knowing when to rest, reset, and rebuild. You've learned to see challenges as opportunities for growth rather than tests of endurance. Your approach to leadership honors both your needs and your team's wellbeing. This episode will give you even more tools to model this regenerative approach and help others break free from toxic resilience patterns."
+      },
+      {
+        "type": "B",
+        "title": "The Conscious Rebuilder",
+        "description": "You're in the beautiful process of recognizing old patterns that no longer serve you. You've started to question whether pushing through everything is actually helping or hurting your goals. Your awareness is your superpower, even if the change feels messy right now. This episode will validate your journey and give you the neuroscience behind why breaking these patterns is so challenging—and so necessary."
+      },
+      {
+        "type": "C",
+        "title": "The Determined Achiever",
+        "description": "Your drive and commitment have taken you far, but you're starting to feel the cost of always being 'on.' You pride yourself on handling whatever comes your way, yet something whispers that there might be a more sustainable path. Your strength is real, but it deserves better boundaries. This episode will help you understand how to channel that incredible energy in ways that fuel you instead of depleting you."
+      },
+      {
+        "type": "D",
+        "title": "The Breakthrough Seeker",
+        "description": "You know something needs to change, but you're not sure exactly what or how. You feel caught between old patterns of pushing through and a growing desire for something more sustainable. Your intuition is guiding you toward transformation, even when the path isn't clear. This episode will give you the framework to understand what toxic resilience looks like and concrete steps to move toward regenerative strength instead."
+      }
+    ]
+  }
 }

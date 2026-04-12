@@ -64,5 +64,159 @@
     }
   ],
   "content": "<p>What if everything you think you know about creating structure in your home and business is backwards? What if instead of imposing rules from the top down, you could build something far more powerful from the ground up? That's exactly what today's guest Amanda Jaggard discovered when she transformed her approach to both parenting and leadership, and the results will challenge everything you think you know about raising leaders.</p><p>Amanda's story is one that will resonate deeply with any woman who has felt the tension between nurturing her family and building her career. After earning her Master's in Leadership and Ministry, she spent nearly a decade as a homeschooling mother, pouring herself into raising her two sons. But in 2014, she made a pivotal decision to step fully into executive coaching, and by 2017, she had joined Novus Global, where she helped build their unique franchise model and co-created the Meta Performance Institute.</p><p>What makes Amanda's perspective so valuable isn't just her professional success, but how she's seamlessly integrated the principles of executive coaching into her role as a single mother. She's raised one son who now attends UCLA and has another approaching high school graduation, and her approach offers profound insights for anyone looking to build stronger culture both at home and in business.</p><h3>The Power of Commitments Over Rules</h3><p>One of the most transformative concepts Amanda shares is the radical difference between operating from rules versus commitments. In traditional households and many businesses, we default to rules because they feel safer and more controlled. Rules are imposed from authority figures and followed out of obligation or fear of consequences. But Amanda discovered something remarkable when she shifted her family dynamic to operate from commitments instead.</p><p>Commitments require something completely different from everyone involved. They demand conversation, buy-in, and personal ownership. When her family moved from <em>you must do this because I said so</em> to <em>what are we all committing to and why does this matter to us</em>, everything changed. Her sons began taking genuine ownership of their choices rather than simply complying or rebelling against external expectations.</p><p>This shift creates leaders rather than followers. When you raise children on commitments, you're teaching them to think critically about their choices, to understand the impact of their decisions on others, and to operate from internal motivation rather than external pressure. These are exactly the qualities we desperately need in business leaders, and Amanda proves that we can cultivate them from the earliest ages.</p><h3>Creating Intentional Culture at Home</h3><p>Amanda's approach to building family culture offers a masterclass in leadership that directly translates to business success. She understood that culture doesn't happen by accident, whether you're leading a household or a corporation. It requires intentional language, clear agreements, and a foundation built on mutual respect and honor.</p><p>In her home, this meant having real conversations about what kind of family they wanted to be, what values would guide their decisions, and how they would handle conflicts when they arose. It meant treating her sons as valuable contributors to the family culture rather than recipients of rules handed down from above. This approach required more initial investment in conversation and relationship-building, but it created a foundation that could weather the storms of adolescence and single parenthood.</p><p>The brilliance of this approach becomes clear when you consider how it prepares both parents and children for success in every other area of life. Children who grow up participating in the creation of family culture understand how to contribute meaningfully to workplace culture. They know how to have difficult conversations, how to negotiate agreements that work for everyone involved, and how to take responsibility for their part in making systems function well.</p><h3>Building a Business While Raising Leaders</h3><p>Amanda's journey from homeschooling mother to successful executive coach and co-founder of the Meta Performance Institute demonstrates something crucial that many women need to hear: your experience as a mother has prepared you for business success in ways you might not even recognize yet. The skills required to successfully homeschool children, manage a household, and create thriving family culture are directly transferable to building and leading businesses.</p><p>The Meta Performance Institute, which Amanda co-founded, addresses a critical gap in the coaching industry. While many programs focus solely on developing coaching skills, Amanda recognized that coaches also need strong business fundamentals to build sustainable practices. This insight came directly from her experience as a mother and educator, understanding that you need both the heart skills and the practical skills to create lasting impact.</p><p>Her success in building this institute while raising her sons as a single mother proves that you don't have to choose between being fully present for your children and building something significant professionally. Instead, the key is recognizing how these roles can strengthen and inform each other when approached with intention and strategic thinking.</p><h3>Preparing for What's Next</h3><p>One of the most honest parts of Amanda's story involves her preparation for the empty nest season. Rather than waiting until her sons left home to figure out what comes next, she's been intentionally building her career and identity alongside her role as their mother. This preparation isn't about rushing toward the next phase of life, but about ensuring that when the time comes for her sons to launch into their own lives, she'll be ready to launch into hers as well.</p><p>This approach benefits everyone in the family. Her sons get to see their mother as a whole person with her own dreams and ambitions, not just someone whose entire identity revolves around their needs. They learn that healthy adults continue growing and pursuing meaningful work throughout their lives. And Amanda gets to model what it looks like to be a woman who embraces all aspects of her identity without apology.</p><p>Amanda Jaggard's story offers a powerful reminder that the invisible work of motherhood is indeed leadership, and the skills you're developing in that role are preparing you for impact far beyond your home. Whether you're homeschooling, working full-time, or somewhere in between, you have the capacity to create culture, build commitments that matter, and raise the next generation of leaders while building something meaningful for yourself.</p>",
-  "guestLinks": []
+  "guestLinks": [],
+  "quiz": {
+    "title": "What's Your Leadership Building Style?",
+    "description": "Discover how you naturally create structure and empower others, whether at home, work, or in your community. This quiz reveals your unique approach to building leaders around you.",
+    "questions": [
+      {
+        "question": "When you need to establish new expectations in your family or team, what's your go-to approach?",
+        "options": [
+          {
+            "text": "I create clear guidelines and systems that everyone can follow consistently",
+            "type": "A"
+          },
+          {
+            "text": "I bring everyone together to discuss what we all think would work best",
+            "type": "B"
+          },
+          {
+            "text": "I start with something flexible and adjust based on how it's working for different people",
+            "type": "C"
+          },
+          {
+            "text": "I focus on helping each person understand how this connects to their personal growth",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When someone you're leading makes a mistake, your first instinct is to:",
+        "options": [
+          {
+            "text": "Review what systems or processes might need to be strengthened",
+            "type": "A"
+          },
+          {
+            "text": "Have a conversation about what happened and what we can learn together",
+            "type": "B"
+          },
+          {
+            "text": "Figure out what approach might work better for this specific person",
+            "type": "C"
+          },
+          {
+            "text": "Help them reflect on what this experience can teach them about themselves",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "You feel most successful as a leader when:",
+        "options": [
+          {
+            "text": "The people around you have reliable structures that help them thrive",
+            "type": "A"
+          },
+          {
+            "text": "Everyone feels like they have a voice and ownership in our shared goals",
+            "type": "B"
+          },
+          {
+            "text": "You can meet each person's unique needs while moving toward the same vision",
+            "type": "C"
+          },
+          {
+            "text": "The people you lead are growing into their own leadership capabilities",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When planning for the future, whether family goals or business objectives, you typically:",
+        "options": [
+          {
+            "text": "Create a solid framework that can guide decisions and actions over time",
+            "type": "A"
+          },
+          {
+            "text": "Make sure everyone is aligned on the vision before moving forward",
+            "type": "B"
+          },
+          {
+            "text": "Keep the big picture in mind while staying open to changing circumstances",
+            "type": "C"
+          },
+          {
+            "text": "Focus on how this journey will develop everyone involved",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your friends and family would say your greatest strength in relationships is:",
+        "options": [
+          {
+            "text": "Being someone others can count on to create stability and consistency",
+            "type": "A"
+          },
+          {
+            "text": "Making sure everyone feels included and heard in important decisions",
+            "type": "B"
+          },
+          {
+            "text": "Understanding what different people need and adapting your support accordingly",
+            "type": "C"
+          },
+          {
+            "text": "Helping others see their own potential and encouraging their growth",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about your legacy as a leader, you most want to be remembered for:",
+        "options": [
+          {
+            "text": "Building something lasting that continues to benefit others long after you're gone",
+            "type": "A"
+          },
+          {
+            "text": "Creating environments where everyone felt valued and had a voice",
+            "type": "B"
+          },
+          {
+            "text": "Being able to bring out the best in people by meeting them where they were",
+            "type": "C"
+          },
+          {
+            "text": "Developing other leaders who went on to make their own positive impact",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Foundation Builder",
+        "description": "You believe in creating strong systems and structures that everyone can rely on. You naturally think about long-term impact and love establishing frameworks that help others thrive. Your strength lies in building something solid that lasts, whether that's family traditions, team processes, or organizational culture. This episode will show you how to transform your natural structure-building gifts by shifting from rules to commitments, creating even deeper buy-in from those you lead."
+      },
+      {
+        "type": "B",
+        "title": "The Collaborative Creator",
+        "description": "You thrive on bringing people together and building consensus before moving forward. You instinctively know that the best solutions come from involving everyone in the conversation. Your superpower is making others feel heard and valued in the decision-making process. Amanda's insights about creating commitments through conversation and buy-in will resonate deeply with your collaborative nature and give you practical tools to strengthen your approach both at home and work."
+      },
+      {
+        "type": "C",
+        "title": "The Adaptive Navigator",
+        "description": "You excel at reading the room and adjusting your approach based on what each situation or person needs. You're comfortable with flexibility and believe that leadership looks different in different contexts. Your strength is in your ability to pivot and meet people where they are. This episode will help you see how your adaptability is actually a form of intentional culture-building, and give you frameworks to channel your natural flexibility into even more powerful leadership."
+      },
+      {
+        "type": "D",
+        "title": "The Empowerment Catalyst",
+        "description": "You're naturally focused on developing others and helping them step into their own power. You believe deeply that everyone has leadership potential waiting to be unlocked. Your gift is seeing people's capabilities before they see them themselves and creating space for growth. Amanda's journey from homeschooling to executive coaching perfectly mirrors your development-focused approach, and this episode will inspire new ways to nurture the leaders around you."
+      }
+    ]
+  }
 }

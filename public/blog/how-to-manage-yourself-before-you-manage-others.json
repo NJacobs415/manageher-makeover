@@ -78,5 +78,159 @@
       "label": "📚 Follow Lynda Harvey → Instagram @lynda.leads (",
       "url": "https://www.instagram.com/lynda.leads"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Leadership Starting Point?",
+    "description": "Discover where you're beginning your leadership journey and how to build on the management skills you already have. Based on insights from episode 30 with leadership expert Lynda Harvey.",
+    "questions": [
+      {
+        "question": "When you see something at work or in your community that could be running more smoothly, your first instinct is to:",
+        "options": [
+          {
+            "text": "Jump in and start organizing people to fix it",
+            "type": "A"
+          },
+          {
+            "text": "Watch and analyze the situation to understand all the moving pieces first",
+            "type": "B"
+          },
+          {
+            "text": "Quietly start doing what you can to improve it yourself",
+            "type": "C"
+          },
+          {
+            "text": "Feel frustrated but hesitate to speak up because it's 'not your job'",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When someone asks you about your management or leadership experience, you typically:",
+        "options": [
+          {
+            "text": "Share examples easily—you've been leading in various contexts for a while",
+            "type": "A"
+          },
+          {
+            "text": "Focus on times you've supported others or helped behind the scenes",
+            "type": "B"
+          },
+          {
+            "text": "Mention projects you've completed but downplay the leadership aspects",
+            "type": "C"
+          },
+          {
+            "text": "Struggle to come up with examples because you don't see yourself as a 'leader type'",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your biggest concern about taking on more leadership responsibility is:",
+        "options": [
+          {
+            "text": "Making sure you don't lose touch with what made you effective in the first place",
+            "type": "A"
+          },
+          {
+            "text": "Whether you'll be able to make tough decisions when emotions are running high",
+            "type": "B"
+          },
+          {
+            "text": "Having to become more vocal and visible than feels natural to you",
+            "type": "C"
+          },
+          {
+            "text": "Becoming the type of manager or leader that you've complained about in the past",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about the leadership skills you already have, you:",
+        "options": [
+          {
+            "text": "Can clearly identify several areas where you're already strong",
+            "type": "A"
+          },
+          {
+            "text": "Recognize you're good at reading people and understanding group dynamics",
+            "type": "B"
+          },
+          {
+            "text": "Know you're dependable and good at follow-through, but wonder if that's enough",
+            "type": "C"
+          },
+          {
+            "text": "Have trouble seeing your everyday problem-solving as 'real' leadership skills",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "If you had to choose the most important quality in a leader, you'd pick:",
+        "options": [
+          {
+            "text": "The ability to inspire and mobilize people toward a common goal",
+            "type": "A"
+          },
+          {
+            "text": "Emotional intelligence and the skill to manage different personality types",
+            "type": "B"
+          },
+          {
+            "text": "Consistency and the ability to create stable, trustworthy environments",
+            "type": "C"
+          },
+          {
+            "text": "Self-awareness and the commitment to not repeat the mistakes of bad leaders",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your relationship with the idea of 'self-management' is:",
+        "options": [
+          {
+            "text": "You're pretty good at it and see how it connects to managing others effectively",
+            "type": "A"
+          },
+          {
+            "text": "You're very aware of your own patterns and triggers, maybe sometimes too aware",
+            "type": "B"
+          },
+          {
+            "text": "You manage yourself well day-to-day but don't always advocate for your own needs",
+            "type": "C"
+          },
+          {
+            "text": "You're still figuring out how to manage your own reactions before trying to lead others",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Natural Leader",
+        "description": "You already demonstrate strong leadership qualities, often stepping up without being asked and naturally organizing those around you. Your challenge isn't learning to lead—it's recognizing that you're already doing it and giving yourself permission to own that identity. You might be underestimating the management skills you've developed through life experience. This episode will help you see how to leverage what you already know and take your leadership to the next level."
+      },
+      {
+        "type": "B",
+        "title": "The Thoughtful Observer",
+        "description": "You prefer to understand all the dynamics before taking action, and you've developed keen insights about what makes effective leadership by watching others. Your superpower is emotional intelligence and your ability to read situations deeply. You might doubt whether you're 'leadership material,' but your thoughtful approach is exactly what modern workplaces need. This episode will show you how self-awareness and practical empathy are becoming the most essential leadership skills."
+      },
+      {
+        "type": "C",
+        "title": "The Quiet Achiever",
+        "description": "You get things done consistently and reliably, often preferring to lead by example rather than taking center stage. Your strength lies in building trust through your actions and creating stability for others. You might think you need to be more outgoing or charismatic to be a leader, but your steady approach is incredibly valuable. This episode will help you understand how tactical missions and small daily practices can build your leadership confidence without requiring a complete personality overhaul."
+      },
+      {
+        "type": "D",
+        "title": "The Reluctant Leader",
+        "description": "You have strong opinions about how things should be done and can clearly see what's not working, but you're hesitant to step into formal leadership roles. You might know exactly who you don't want to be as a leader, but you're still figuring out who you do want to become. Your critical thinking skills are actually a leadership asset waiting to be channeled. This episode will resonate with you because it explores how knowing who you don't want to be is just as important as defining your leadership identity."
+      }
+    ]
+  }
 }

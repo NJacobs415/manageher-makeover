@@ -74,5 +74,159 @@
       "label": "Website",
       "url": "https://www.calamos.com/globalassets/media/retirement/women-and-wealth-women-want-to-understand-the-risks-theyre-taking.pdf?utm_source=chatgpt.com"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Leadership Style DNA?",
+    "description": "Leadership isn't about your title—it's about how you show up every single day. Discover your natural leadership approach and how to leverage it for success.",
+    "questions": [
+      {
+        "question": "When you're facing a major decision at work, what's your first instinct?",
+        "options": [
+          {
+            "text": "Consider how this will impact each person on your team individually",
+            "type": "A"
+          },
+          {
+            "text": "Look for the strategic opportunity that others might be missing",
+            "type": "B"
+          },
+          {
+            "text": "Gather data and think through potential long-term consequences",
+            "type": "C"
+          },
+          {
+            "text": "Trust your gut while staying flexible about the outcome",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your relationship with financial risk could best be described as:",
+        "options": [
+          {
+            "text": "I'll take risks for others' benefit, but rarely for my own financial gain",
+            "type": "A"
+          },
+          {
+            "text": "I see financial opportunities where others see obstacles",
+            "type": "B"
+          },
+          {
+            "text": "I prefer building wealth slowly through informed, steady choices",
+            "type": "C"
+          },
+          {
+            "text": "I adjust my financial strategy based on what life throws at me",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When someone asks you to describe your leadership style, you'd probably say:",
+        "options": [
+          {
+            "text": "I lead by caring deeply and making sure everyone feels supported",
+            "type": "A"
+          },
+          {
+            "text": "I lead by helping people see what's possible and inspiring action",
+            "type": "B"
+          },
+          {
+            "text": "I lead by being consistent, reliable, and following through on commitments",
+            "type": "C"
+          },
+          {
+            "text": "I lead by meeting people where they are and adjusting to what they need",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "You're most likely to feel burned out when:",
+        "options": [
+          {
+            "text": "You've been giving so much to everyone else that you've forgotten about yourself",
+            "type": "A"
+          },
+          {
+            "text": "You're stuck in routines that don't challenge you or move the needle forward",
+            "type": "B"
+          },
+          {
+            "text": "You're being pressured to make quick decisions without proper analysis",
+            "type": "C"
+          },
+          {
+            "text": "You're forced into rigid structures that don't allow for flexibility",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your ideal work environment would allow you to:",
+        "options": [
+          {
+            "text": "Build deep relationships and create a culture where everyone thrives",
+            "type": "A"
+          },
+          {
+            "text": "Think big, take calculated risks, and drive meaningful change",
+            "type": "B"
+          },
+          {
+            "text": "Work systematically toward clear goals with adequate resources",
+            "type": "C"
+          },
+          {
+            "text": "Pivot when needed and apply your skills to diverse challenges",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When it comes to balancing ambition with rest and joy, you:",
+        "options": [
+          {
+            "text": "Struggle to rest because you're always thinking about how to help others",
+            "type": "A"
+          },
+          {
+            "text": "Find joy in pursuing ambitious goals, but sometimes forget to celebrate wins",
+            "type": "B"
+          },
+          {
+            "text": "Believe rest and planning go hand-in-hand for sustainable success",
+            "type": "C"
+          },
+          {
+            "text": "Adapt your definition of balance based on what each season of life requires",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Fierce Protector",
+        "description": "You lead with your heart and fierce loyalty to your team. Your superpower is creating psychological safety where others can thrive, but you often sacrifice your own needs in the process. You're the manager everyone wants to work for, yet you're probably experiencing that burnout epidemic Elizabeth talks about. This episode will show you how to channel your protective instincts into sustainable leadership that doesn't drain your energy."
+      },
+      {
+        "type": "B",
+        "title": "The Strategic Visionary",
+        "description": "You see possibilities everywhere and aren't afraid to take calculated risks to get there. Your natural leadership style is about painting the big picture and inspiring others to join your mission. You understand that leadership is a behavior, not a title, and you've probably been leading long before anyone gave you permission. This episode will help you develop the credit confidence and financial literacy to turn your bold visions into reality."
+      },
+      {
+        "type": "C",
+        "title": "The Steady Builder",
+        "description": "You believe in consistent progress over flashy moves, and your leadership style reflects that wisdom. You're naturally risk-aware rather than risk-averse, making thoughtful decisions that build long-term success. Your team trusts you because you show up the same way every day, creating that leadership brand Elizabeth emphasizes. This episode will validate your approach while showing you how to amplify your quiet confidence in bigger ways."
+      },
+      {
+        "type": "D",
+        "title": "The Adaptive Navigator",
+        "description": "You're the leader who thrives in uncertainty and helps others find their footing when everything feels chaotic. Your strength lies in reading situations quickly and adjusting your approach to meet the moment. You intuitively understand that leadership is about behavior and mindset, not hierarchy. This episode will give you frameworks to harness your adaptability while building the financial confidence to navigate any storm."
+      }
+    ]
+  }
 }

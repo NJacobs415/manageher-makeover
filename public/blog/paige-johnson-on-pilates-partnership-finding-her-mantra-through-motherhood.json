@@ -74,5 +74,159 @@
       "label": "📕 Order The Manage Her (on Amazon)",
       "url": "https://a.co/d/ej9A37z"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Invisible Leadership Style?",
+    "description": "We all lead differently, but some of our greatest strengths happen behind the scenes. Discover how you create impact in ways others might not even notice.",
+    "questions": [
+      {
+        "question": "When someone compliments the success of something you've created, what's your first internal reaction?",
+        "options": [
+          {
+            "text": "I appreciate it, but they have no idea how much work went into making it look this smooth",
+            "type": "A"
+          },
+          {
+            "text": "I'm grateful they see the value now - it took a while to prove what was possible",
+            "type": "B"
+          },
+          {
+            "text": "I'm happy they feel that way, but the real success is how it's brought people together",
+            "type": "C"
+          },
+          {
+            "text": "I'm thankful for the recognition and grounded in knowing this is just one step of the journey",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "You're in a meeting where someone questions your expertise. How do you typically respond?",
+        "options": [
+          {
+            "text": "I let my detailed preparation and thoughtful questions demonstrate my knowledge",
+            "type": "A"
+          },
+          {
+            "text": "I stay calm and use it as motivation to show them what I'm capable of through my actions",
+            "type": "B"
+          },
+          {
+            "text": "I focus on finding common ground and building bridges rather than defending my position",
+            "type": "C"
+          },
+          {
+            "text": "I speak my truth confidently while remaining open to learning something new",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you're feeling overwhelmed by your responsibilities, what helps you most?",
+        "options": [
+          {
+            "text": "Breaking everything down into systems and prioritizing what needs to happen behind the scenes",
+            "type": "A"
+          },
+          {
+            "text": "Reminding myself of how far I've come and using that momentum to push through",
+            "type": "B"
+          },
+          {
+            "text": "Connecting with my community and remembering why this work matters to the people I serve",
+            "type": "C"
+          },
+          {
+            "text": "Taking a step back to realign with my values and deciding what I can gracefully release",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What energizes you most about leadership?",
+        "options": [
+          {
+            "text": "Creating seamless experiences that allow others to thrive without them having to worry about the details",
+            "type": "A"
+          },
+          {
+            "text": "Proving that limitations are just starting points and showing others what's possible",
+            "type": "B"
+          },
+          {
+            "text": "Building spaces where people feel genuinely seen, supported, and connected to something bigger",
+            "type": "C"
+          },
+          {
+            "text": "Balancing vision with wisdom and helping others find their own centered approach to success",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you prefer to handle conflict or challenges in your work?",
+        "options": [
+          {
+            "text": "I address issues systematically, often solving problems before they become visible to others",
+            "type": "A"
+          },
+          {
+            "text": "I see challenges as opportunities to demonstrate resilience and grow stronger",
+            "type": "B"
+          },
+          {
+            "text": "I try to understand all perspectives and find solutions that strengthen relationships",
+            "type": "C"
+          },
+          {
+            "text": "I approach conflicts with both firmness and flexibility, knowing when to stand strong and when to adapt",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What would others say is your greatest leadership strength?",
+        "options": [
+          {
+            "text": "I make complex things look effortless and create environments where everything just flows",
+            "type": "A"
+          },
+          {
+            "text": "I don't give up easily and inspire others to push past what they thought was possible",
+            "type": "B"
+          },
+          {
+            "text": "I bring out the best in people and help them feel like they belong to something meaningful",
+            "type": "C"
+          },
+          {
+            "text": "I stay grounded under pressure and help others find balance between ambition and peace",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Quiet Architect",
+        "description": "You're the master of behind-the-scenes magic, building systems and creating experiences that seem effortless to others. Your leadership style is rooted in thoughtful planning and anticipating needs before they're even expressed. While others might not always see the depth of work you do, your influence creates ripple effects that transform entire communities. This episode will validate the incredible value of your invisible labor and show you how to leverage your architectural mindset for even greater impact."
+      },
+      {
+        "type": "B",
+        "title": "The Rising Phoenix",
+        "description": "You've learned to transform challenges and underestimation into fuel for your fire. When others doubt your capabilities, you quietly prove them wrong through consistent action and authentic leadership. Your superpower lies in turning obstacles into opportunities and inspiring others through your resilience. You understand that sometimes the best response to being underestimated is simply showing up and doing the work. Paige's story of navigating underestimation in business will deeply resonate with your journey and give you new strategies for channeling that energy."
+      },
+      {
+        "type": "C",
+        "title": "The Community Weaver",
+        "description": "Your leadership shines through your ability to bring people together and create meaningful connections. You understand that real influence happens through relationships, not just transactions. You naturally see the potential in others and create spaces where people feel truly seen and supported. Your approach to leadership is collaborative and heart-centered, building something bigger than yourself through shared experiences. This episode will inspire you with fresh ideas about how movement and community can amplify your natural gift for bringing people together."
+      },
+      {
+        "type": "D",
+        "title": "The Grounded Visionary",
+        "description": "You balance big dreams with practical wisdom, knowing when to push forward and when to release control with grace. Your leadership style combines ambition with groundedness, allowing you to pursue your vision while staying connected to what truly matters. You've learned that sustainable success requires both rising up and letting go, and you help others find that same balance. Paige's insights about finding your personal mantra while juggling multiple responsibilities will give you powerful tools for maintaining your centered approach to leadership."
+      }
+    ]
+  }
 }

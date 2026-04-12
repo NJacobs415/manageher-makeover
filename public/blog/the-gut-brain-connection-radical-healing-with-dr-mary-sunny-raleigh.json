@@ -73,5 +73,159 @@
       "label": "Buy The Manage Her on Amazon",
       "url": "https://a.co/d/6R7eKiC"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Balancing Act Style?",
+    "description": "Discover how you naturally navigate the pull between your professional mission and personal priorities. Based on insights from Dr. Sunny Raleigh's approach to revolutionary medicine and motherhood.",
+    "questions": [
+      {
+        "question": "When you're facing a major decision about your career or family priorities, what feels most true for you?",
+        "options": [
+          {
+            "text": "I focus on where I can make the biggest impact with my limited time and energy",
+            "type": "A"
+          },
+          {
+            "text": "I think about who might be left without support if I don't step up",
+            "type": "B"
+          },
+          {
+            "text": "I look for the option that I can sustain long-term without burning out",
+            "type": "C"
+          },
+          {
+            "text": "I get creative and look for ways to customize a solution that fits my unique situation",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your ideal approach to creating change in your work or community looks like:",
+        "options": [
+          {
+            "text": "Identifying the most critical moments to intervene and going all-in during those times",
+            "type": "A"
+          },
+          {
+            "text": "Advocating for the people who don't have a voice and filling gaps others ignore",
+            "type": "B"
+          },
+          {
+            "text": "Making small, consistent improvements that build momentum over time",
+            "type": "C"
+          },
+          {
+            "text": "Building flexible systems that can evolve and adapt as needs change",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When people describe your leadership style, they most often say:",
+        "options": [
+          {
+            "text": "You know exactly when to be hands-on and when to step back",
+            "type": "A"
+          },
+          {
+            "text": "You fight for the underdogs and see potential others miss",
+            "type": "B"
+          },
+          {
+            "text": "You create lasting change through patience and persistence",
+            "type": "C"
+          },
+          {
+            "text": "You find solutions that work for everyone's different circumstances",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "The biggest challenge you face in balancing your personal and professional life is:",
+        "options": [
+          {
+            "text": "Choosing which opportunities deserve your full attention when everything feels important",
+            "type": "A"
+          },
+          {
+            "text": "Setting boundaries when you know people genuinely need your help",
+            "type": "B"
+          },
+          {
+            "text": "Sticking to your sustainable pace when others push for faster results",
+            "type": "C"
+          },
+          {
+            "text": "Getting others to understand why you need to do things differently than the standard way",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your approach to health and wellness (for yourself or others) tends to be:",
+        "options": [
+          {
+            "text": "Strategic - focusing intensely on the areas that will create the most significant impact",
+            "type": "A"
+          },
+          {
+            "text": "Holistic - addressing the root causes others might overlook or dismiss",
+            "type": "B"
+          },
+          {
+            "text": "Gradual - making sustainable changes that you can maintain over time",
+            "type": "C"
+          },
+          {
+            "text": "Personalized - finding what works for your specific circumstances and needs",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about your legacy or the impact you want to have, what matters most?",
+        "options": [
+          {
+            "text": "Being remembered for showing up fully in the moments that truly mattered",
+            "type": "A"
+          },
+          {
+            "text": "Knowing you made a difference for people who had nowhere else to turn",
+            "type": "B"
+          },
+          {
+            "text": "Creating lasting positive change through consistent, thoughtful action",
+            "type": "C"
+          },
+          {
+            "text": "Proving that there's more than one way to build a meaningful life and career",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Strategic Presence",
+        "description": "You understand that being everywhere isn't the same as being present everywhere. Like Dr. Sunny, you've learned that quality often trumps quantity when it comes to showing up for what matters most. You make intentional choices about where to focus your energy, even when it means saying no to good opportunities. This episode will inspire you with practical strategies for distance leadership and help you refine your approach to being fully present in the moments that count."
+      },
+      {
+        "type": "B",
+        "title": "The Compassionate Revolutionary",
+        "description": "You're driven by a deep desire to help others, especially those who've been overlooked or underserved. You see gaps in traditional systems and feel called to fill them, even when it's challenging or unconventional. Your empathy is both your superpower and sometimes your burden. Dr. Sunny's journey of treating patients that traditional medicine gives up on will resonate deeply with you and offer insights on maintaining your mission while protecting your own well-being."
+      },
+      {
+        "type": "C",
+        "title": "The Steady Innovator",
+        "description": "You believe in the power of small, consistent changes to create lasting impact. Rather than dramatic overhauls, you trust in sustainable progress and incremental improvements. You're the person others come to for reliable, thoughtful solutions that actually stick. This episode will validate your approach while showing you how Dr. Sunny applies this same philosophy to both healing patients and building a practice across multiple states."
+      },
+      {
+        "type": "D",
+        "title": "The Flexible Architect",
+        "description": "You excel at building systems that can adapt to life's changing demands. You understand that rigid structures often break under pressure, so you create frameworks that bend without breaking. Your strength lies in finding creative solutions when traditional approaches don't fit your unique circumstances. Dr. Sunny's story of managing a medical practice from Idaho while raising teenagers will give you fresh ideas for designing a life and career that works for your specific situation."
+      }
+    ]
+  }
 }

@@ -69,5 +69,159 @@
       "label": "📚 Grab your copy of The Manage Her",
       "url": "https://a.co/d/ej9A37z"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Values-Driven Leadership Style?",
+    "description": "Ever wondered how you'd step up when your deepest values are on the line? This quiz reveals how you naturally lead when what matters most is at stake.",
+    "questions": [
+      {
+        "question": "When you discover your current role conflicts with your deeper values, what's your typical response?",
+        "options": [
+          {
+            "text": "Start planning an exit strategy — life's too short for work that doesn't matter",
+            "type": "A"
+          },
+          {
+            "text": "Look for ways to gradually shift your responsibilities toward more meaningful projects",
+            "type": "B"
+          },
+          {
+            "text": "Find small ways to honor your values within your current situation while supporting others",
+            "type": "C"
+          },
+          {
+            "text": "Speak up about the conflict and push for changes, even if it creates tension",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What draws you most to leadership opportunities?",
+        "options": [
+          {
+            "text": "The chance to create something completely new and transformative",
+            "type": "A"
+          },
+          {
+            "text": "The opportunity to build sustainable systems that create lasting impact",
+            "type": "B"
+          },
+          {
+            "text": "The ability to support and protect people who need an advocate",
+            "type": "C"
+          },
+          {
+            "text": "The platform to defend important principles and stand up for what's right",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When facing a major life decision, you tend to:",
+        "options": [
+          {
+            "text": "Trust your gut and make the leap, even if others think you're crazy",
+            "type": "A"
+          },
+          {
+            "text": "Carefully research all options and create a detailed plan before moving forward",
+            "type": "B"
+          },
+          {
+            "text": "Consider how your choice will affect the people you care about most",
+            "type": "C"
+          },
+          {
+            "text": "Ask yourself what choice you could live with and what would compromise your integrity",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your ideal way to create change in the world would be:",
+        "options": [
+          {
+            "text": "Making a dramatic career shift that becomes an inspiring example for others",
+            "type": "A"
+          },
+          {
+            "text": "Developing programs or organizations that address root causes systematically",
+            "type": "B"
+          },
+          {
+            "text": "Mentoring and supporting individuals to help them reach their potential",
+            "type": "C"
+          },
+          {
+            "text": "Fighting against injustices and defending the rights of those who can't defend themselves",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What kind of courage do you most admire in others?",
+        "options": [
+          {
+            "text": "The willingness to completely reinvent yourself for something you believe in",
+            "type": "A"
+          },
+          {
+            "text": "The patience to work steadily toward long-term goals despite setbacks",
+            "type": "B"
+          },
+          {
+            "text": "The strength to keep caring and supporting others even when it's emotionally difficult",
+            "type": "C"
+          },
+          {
+            "text": "The backbone to stand up to powerful people or systems when principles are at stake",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you imagine your legacy, what matters most to you?",
+        "options": [
+          {
+            "text": "That you showed others it's possible to completely change course and follow your calling",
+            "type": "A"
+          },
+          {
+            "text": "That you built something meaningful that continues to help people long after you're gone",
+            "type": "B"
+          },
+          {
+            "text": "That the people in your life felt truly seen, supported, and valued",
+            "type": "C"
+          },
+          {
+            "text": "That you never compromised on your core values, even when it cost you",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Bold Pivot",
+        "description": "You're wired to make dramatic changes when your values call for it. Like Leigh leaving corporate law, you're not afraid to walk away from success if it doesn't align with your deeper purpose. Your superpower is the courage to completely reinvent yourself for a cause bigger than personal gain. Leigh's story will inspire you to trust that bold leap you've been considering."
+      },
+      {
+        "type": "B",
+        "title": "The Strategic Builder",
+        "description": "You create lasting change through careful planning and systematic action. You understand that meaningful impact requires both vision and execution, and you're willing to do the unglamorous work of building sustainable movements. Your strength lies in translating big ideas into actionable strategies. Leigh's methodical approach to fighting trafficking will give you a masterclass in turning passion into powerful results."
+      },
+      {
+        "type": "C",
+        "title": "The Quiet Guardian",
+        "description": "Your leadership style is about protecting and nurturing what matters most, often behind the scenes. You lead through deep relationships and steady support, creating safe spaces for others to thrive. Your power is in the consistency of your care and the strength of your convictions. Leigh's emphasis on self-care and support systems will resonate deeply with your protective instincts."
+      },
+      {
+        "type": "D",
+        "title": "The Boundary Warrior",
+        "description": "You lead by standing firm on principles, even when it's uncomfortable or costly. Like Leigh defending civil liberties, you're not afraid to be the person who says 'no' when lines are crossed. Your courage shows up in defending others and holding the line on what's right. This episode will validate your instinct to fight for fundamental freedoms and human dignity."
+      }
+    ]
+  }
 }

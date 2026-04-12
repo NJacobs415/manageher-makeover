@@ -96,5 +96,159 @@
       "label": "💼 LinkedIn",
       "url": "https://www.linkedin.com/in/macgregorscott/"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Relationship Building Superpower?",
+    "description": "Discover your natural approach to building meaningful connections and learn how to amplify your unique relationship-building strengths.",
+    "questions": [
+      {
+        "question": "When you meet someone new at a networking event, what feels most natural to you?",
+        "options": [
+          {
+            "text": "I share something real about myself early on, even if it's imperfect or vulnerable",
+            "type": "A"
+          },
+          {
+            "text": "I ask thoughtful follow-up questions and try to understand their world",
+            "type": "B"
+          },
+          {
+            "text": "I look for ways I might be able to help them or connect them with someone",
+            "type": "C"
+          },
+          {
+            "text": "I focus on really listening and picking up on what they're not saying",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "After meeting someone interesting, you're most likely to:",
+        "options": [
+          {
+            "text": "Send them a quick, casual message referencing something funny or real from our conversation",
+            "type": "A"
+          },
+          {
+            "text": "Add notes about them to my contacts and set a reminder to follow up thoughtfully",
+            "type": "B"
+          },
+          {
+            "text": "Send them a resource, connection, or idea that could be useful for their goals",
+            "type": "C"
+          },
+          {
+            "text": "Wait for the right moment to reach out when I have something meaningful to share",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When someone shares a challenge they're facing, your first instinct is to:",
+        "options": [
+          {
+            "text": "Share a similar experience I've had, even if it shows my own struggles or mistakes",
+            "type": "A"
+          },
+          {
+            "text": "Ask clarifying questions to really understand the full situation before responding",
+            "type": "B"
+          },
+          {
+            "text": "Think about who I know or what resources might help them solve this problem",
+            "type": "C"
+          },
+          {
+            "text": "Listen deeply and reflect back what I'm hearing to help them feel understood",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your ideal way to maintain long-term relationships is:",
+        "options": [
+          {
+            "text": "Spontaneous check-ins when something reminds me of them, keeping it real and unpolished",
+            "type": "A"
+          },
+          {
+            "text": "Regular, meaningful touchpoints where I reference things they've told me about",
+            "type": "B"
+          },
+          {
+            "text": "Consistently looking for ways to support their goals and celebrate their wins",
+            "type": "C"
+          },
+          {
+            "text": "Quality conversations when we both have space to really connect and go deep",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about building professional relationships, you believe:",
+        "options": [
+          {
+            "text": "The best connections happen when you drop the professional mask and get real",
+            "type": "A"
+          },
+          {
+            "text": "Strong relationships are built through consistent, intentional effort over time",
+            "type": "B"
+          },
+          {
+            "text": "Relationships thrive when you focus on giving value rather than getting something",
+            "type": "C"
+          },
+          {
+            "text": "True connection comes from understanding people as whole humans, not just their roles",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your biggest relationship-building challenge is probably:",
+        "options": [
+          {
+            "text": "Sometimes being too casual or unfiltered when professionalism might be expected",
+            "type": "A"
+          },
+          {
+            "text": "Occasionally over-thinking interactions or feeling like my systems are too complicated",
+            "type": "B"
+          },
+          {
+            "text": "Giving so much to others that I sometimes forget to ask for what I need",
+            "type": "C"
+          },
+          {
+            "text": "Trusting my instincts about people when others think I should be more strategic",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Authentic Connector",
+        "description": "You build relationships through genuine, in-the-moment connections. Your superpower is your ability to be real and vulnerable, showing up exactly as you are without pretense. People are drawn to your authenticity because it gives them permission to be genuine too. This episode will show you how to turn your natural authenticity into a systematic approach that creates even deeper, more intentional connections."
+      },
+      {
+        "type": "B",
+        "title": "The Thoughtful Architect",
+        "description": "You approach relationships like a master builder, carefully laying foundations and nurturing growth over time. Your superpower is your ability to remember details and create systems that help you stay connected to what matters most to people. You naturally think long-term about relationships rather than seeking quick wins. This episode will give you practical tools to enhance your already thoughtful approach and show you how going just one 'extra inch' can amplify your natural gifts."
+      },
+      {
+        "type": "C",
+        "title": "The Natural Giver",
+        "description": "You instinctively look for ways to add value and support others, often before they even realize they need it. Your superpower is your generous heart and your ability to see opportunities to help that others might miss. You genuinely care about people's success and wellbeing. This episode will help you channel your giving nature more strategically while maintaining the authenticity that makes you so magnetic to others."
+      },
+      {
+        "type": "D",
+        "title": "The Intuitive Bridge",
+        "description": "You have a gift for reading between the lines and connecting with people on an emotional level. Your superpower is your ability to make others feel truly seen and understood, often sensing what they need before they voice it. You naturally create safe spaces where people feel comfortable being vulnerable. This episode will show you how to trust your intuitive process even more and build relationships that create unexpected opportunities through genuine human connection."
+      }
+    ]
+  }
 }

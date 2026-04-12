@@ -74,5 +74,159 @@
       "label": "📚 Grab your copy of The Manage Her",
       "url": "https://a.co/d/ej9A37z"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Rebuilding Style?",
+    "description": "Every woman's journey to rediscovering herself looks different. Take this quiz to uncover your unique approach to rebuilding confidence and finding balance.",
+    "questions": [
+      {
+        "question": "When you think about making changes in your life, what feels most true for you?",
+        "options": [
+          {
+            "text": "I prefer to start with small, manageable steps that I can build on over time",
+            "type": "A"
+          },
+          {
+            "text": "I'm ready to make bold moves and take on new challenges head-first",
+            "type": "B"
+          },
+          {
+            "text": "I want to find the most efficient path forward using the right tools and systems",
+            "type": "C"
+          },
+          {
+            "text": "I need to work on my mindset and inner world before I can make external changes",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you're feeling overwhelmed or burned out, your first instinct is to:",
+        "options": [
+          {
+            "text": "Take a step back and focus on one small thing I can do today to feel better",
+            "type": "A"
+          },
+          {
+            "text": "Look for a bigger solution or opportunity that could change everything",
+            "type": "B"
+          },
+          {
+            "text": "Analyze what's not working and research better ways to manage my time and energy",
+            "type": "C"
+          },
+          {
+            "text": "Examine my feelings and figure out what my burnout is trying to tell me",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you view the relationship between taking care of yourself and taking care of others?",
+        "options": [
+          {
+            "text": "I'm learning to balance both by making small daily choices that honor my needs too",
+            "type": "A"
+          },
+          {
+            "text": "I believe showing my family what's possible requires me to go after my own dreams",
+            "type": "B"
+          },
+          {
+            "text": "The more efficiently I can manage my own life, the more present I can be for others",
+            "type": "C"
+          },
+          {
+            "text": "I can't pour from an empty cup—my emotional wellbeing affects everyone around me",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What does 'finding yourself again' after a major life transition look like to you?",
+        "options": [
+          {
+            "text": "Slowly reconnecting with old interests and discovering new parts of myself",
+            "type": "A"
+          },
+          {
+            "text": "Pursuing goals and dreams that I may have put on hold",
+            "type": "B"
+          },
+          {
+            "text": "Creating systems and routines that support who I want to become",
+            "type": "C"
+          },
+          {
+            "text": "Understanding how I've changed and what I truly value now",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When it comes to building confidence, you believe:",
+        "options": [
+          {
+            "text": "Confidence grows through consistent small wins and self-compassion",
+            "type": "A"
+          },
+          {
+            "text": "Confidence comes from pushing yourself outside your comfort zone",
+            "type": "B"
+          },
+          {
+            "text": "Confidence builds when you have the right strategies and feel prepared",
+            "type": "C"
+          },
+          {
+            "text": "Confidence starts with truly knowing and accepting yourself",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "If you could change one thing about your current life situation, you'd focus on:",
+        "options": [
+          {
+            "text": "Creating more moments of peace and intention in my daily routine",
+            "type": "A"
+          },
+          {
+            "text": "Opening up new possibilities for growth and achievement",
+            "type": "B"
+          },
+          {
+            "text": "Making everything run more smoothly so I have more time for what matters",
+            "type": "C"
+          },
+          {
+            "text": "Feeling more aligned with who I really am at my core",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Gentle Rebuilder",
+        "description": "You believe in taking small, thoughtful steps toward change. You understand that lasting transformation happens slowly, and you're willing to be patient with yourself as you rediscover who you are beyond your roles and responsibilities. You value sustainable progress over dramatic shifts. This episode will resonate deeply with you because Jessica's story shows how small, intentional daily habits can create the massive shifts you're seeking without overwhelming your already full life."
+      },
+      {
+        "type": "B",
+        "title": "The Bold Reinventor",
+        "description": "You're ready to make significant changes and aren't afraid to shake things up in pursuit of your dreams. You see challenges as opportunities and believe that taking calculated risks is worth it when it comes to rebuilding your life. You're energized by the possibility of transformation. Jessica's entrepreneurial journey in this episode will inspire you, showing how single motherhood doesn't have to limit your biggest ambitions and how you can pursue multiple passions simultaneously."
+      },
+      {
+        "type": "C",
+        "title": "The Practical Optimizer",
+        "description": "You approach rebuilding by looking for smart systems and efficient solutions. You want to maximize your time and energy, and you're always seeking tools and strategies that can help streamline your life. You believe in working smarter, not harder. This episode is perfect for you because Jessica shares practical insights about using tools like AI and creating wellness habits that actually stick, giving you actionable ways to reclaim precious time in your day."
+      },
+      {
+        "type": "D",
+        "title": "The Heart-Centered Rebuilder",
+        "description": "You prioritize emotional healing and mindset work as the foundation for any life changes. You understand that true transformation starts from within, and you're committed to doing the deeper work of understanding yourself and your patterns. You value authenticity and connection above all else. Jessica's honest discussion about losing and finding her identity after motherhood will speak directly to your soul, validating your experience and showing you that prioritizing your own wellness isn't selfish—it's essential."
+      }
+    ]
+  }
 }

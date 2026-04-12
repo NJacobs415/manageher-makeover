@@ -49,5 +49,159 @@
       "label": "📸 Instagram: @springeatmon (",
       "url": "https://instagram.com/springeatmon"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Wealth & Purpose Alignment Style?",
+    "description": "Discover how you approach the intersection of financial freedom, faith, and purposeful leadership. This quiz explores your unique relationship with money, meaning, and making impact.",
+    "questions": [
+      {
+        "question": "When you think about your current career path, what resonates most with you?",
+        "options": [
+          {
+            "text": "I feel called to something bigger, even if I can't see the whole staircase yet",
+            "type": "A"
+          },
+          {
+            "text": "I want to build something meaningful, but I need a solid plan first",
+            "type": "B"
+          },
+          {
+            "text": "I'm most excited about work that creates impact beyond just my own success",
+            "type": "C"
+          },
+          {
+            "text": "I'm questioning whether my current definition of success is actually mine",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you typically approach major life decisions?",
+        "options": [
+          {
+            "text": "I trust my gut and take action when something feels aligned, even without guarantees",
+            "type": "A"
+          },
+          {
+            "text": "I research thoroughly, create backup plans, and move when I feel prepared",
+            "type": "B"
+          },
+          {
+            "text": "I consider how my choices will affect the people I care about and our shared goals",
+            "type": "C"
+          },
+          {
+            "text": "I'm learning to listen to my inner voice instead of just external expectations",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What's your relationship with money like right now?",
+        "options": [
+          {
+            "text": "I'm learning that financial freedom is more about alignment than amount",
+            "type": "A"
+          },
+          {
+            "text": "I believe in building wealth systematically and being smart with every dollar",
+            "type": "B"
+          },
+          {
+            "text": "Money is a tool for creating impact and taking care of the people I love",
+            "type": "C"
+          },
+          {
+            "text": "I'm actively working to separate my worth from my net worth",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you imagine your ideal work situation, what stands out?",
+        "options": [
+          {
+            "text": "Working with purpose every day, even if the income varies",
+            "type": "A"
+          },
+          {
+            "text": "Building something sustainable that grows steadily over time",
+            "type": "B"
+          },
+          {
+            "text": "Creating success alongside people who share my values and vision",
+            "type": "C"
+          },
+          {
+            "text": "Finally feeling like my work reflects who I really am",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you handle uncertainty in your professional life?",
+        "options": [
+          {
+            "text": "I've learned to see uncertainty as space for faith and growth to work",
+            "type": "A"
+          },
+          {
+            "text": "I create systems and strategies to minimize risks and maximize stability",
+            "type": "B"
+          },
+          {
+            "text": "I focus on how we can navigate challenges together rather than alone",
+            "type": "C"
+          },
+          {
+            "text": "I'm getting more comfortable with not having all the answers right now",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What kind of legacy do you want to create?",
+        "options": [
+          {
+            "text": "A story of courage and faith that inspires others to trust their calling",
+            "type": "A"
+          },
+          {
+            "text": "Generational wealth and wisdom that provides security for years to come",
+            "type": "B"
+          },
+          {
+            "text": "A ripple effect of positive impact through partnership and collaboration",
+            "type": "C"
+          },
+          {
+            "text": "An example of what's possible when you choose authenticity over approval",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Faith-Forward Leaper",
+        "description": "You're someone who trusts your inner compass even when the path isn't perfectly clear. You understand that purpose often requires stepping away from traditional security, and you're willing to make bold moves when they align with your values. Your relationship with money is evolving as you learn to trust that doing meaningful work will create the abundance you need. Spring's journey from executive to entrepreneur will deeply resonate with your spirit of faithful courage."
+      },
+      {
+        "type": "B",
+        "title": "The Strategic Builder",
+        "description": "You believe in creating solid foundations before making big moves, and there's wisdom in your approach. You're naturally gifted at seeing the long-term picture and building wealth systematically. While you may sometimes overthink opportunities, your methodical nature creates lasting security. You value both purpose and practicality, seeking ways to align them thoughtfully. Spring's insights on redefining financial freedom and building generational wealth will give you fresh perspectives on balancing security with purpose."
+      },
+      {
+        "type": "C",
+        "title": "The Collaborative Visionary",
+        "description": "You understand that the best success comes from lifting others while you rise. Partnership and shared impact energize you more than individual achievement ever could. You're naturally drawn to creating legacy and meaning through your work, though you may sometimes undervalue your own contributions. Your heart for collaboration is a leadership superpower. Spring's story about building alongside her husband and redefining wealth through service will inspire your next level of impact."
+      },
+      {
+        "type": "D",
+        "title": "The Awakening Leader",
+        "description": "You're in a season of questioning what success really means and feeling called to something deeper than your current path. There's a stirring in you that knows your worth isn't tied to your paycheck, even if you're still figuring out what that looks like practically. You're ready to rewrite your relationship with money and leadership. Spring's transformation and insights about choosing alignment over comfort will provide the roadmap you've been seeking for your own purposeful pivot."
+      }
+    ]
+  }
 }

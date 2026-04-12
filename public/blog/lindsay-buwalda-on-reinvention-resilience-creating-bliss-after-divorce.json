@@ -66,5 +66,159 @@
       "label": "📕 Order The Manage Her (on Amazon)",
       "url": "https://a.co/d/ej9A37z"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Creative Leadership Style?",
+    "description": "Discover how you naturally navigate the balance between creativity, leadership, and life's invisible demands. Your results will reveal your unique approach to building something meaningful while managing it all.",
+    "questions": [
+      {
+        "question": "When you're feeling overwhelmed by everything on your plate, what's your go-to response?",
+        "options": [
+          {
+            "text": "I step back and trust my instincts about what really matters right now",
+            "type": "A"
+          },
+          {
+            "text": "I create a system or list to organize everything into manageable pieces",
+            "type": "B"
+          },
+          {
+            "text": "I focus on one concrete task I can complete to build momentum",
+            "type": "C"
+          },
+          {
+            "text": "I reach out to someone I trust to talk through what I'm feeling",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you typically handle it when others underestimate your capabilities?",
+        "options": [
+          {
+            "text": "I let my unconventional results speak for themselves",
+            "type": "A"
+          },
+          {
+            "text": "I calmly demonstrate my competence through strategic actions",
+            "type": "B"
+          },
+          {
+            "text": "I use it as fuel to work even harder and prove them wrong",
+            "type": "C"
+          },
+          {
+            "text": "I focus on building relationships with people who see my value",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What aspect of invisible labor do you find most draining?",
+        "options": [
+          {
+            "text": "Having to explain or justify my creative vision constantly",
+            "type": "A"
+          },
+          {
+            "text": "Managing all the details that others don't even notice need doing",
+            "type": "B"
+          },
+          {
+            "text": "Carrying the mental load of everyone else's needs and deadlines",
+            "type": "C"
+          },
+          {
+            "text": "Being the emotional regulator for everyone around me",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When making important decisions, you tend to:",
+        "options": [
+          {
+            "text": "Follow what feels right, even if I can't fully explain why",
+            "type": "A"
+          },
+          {
+            "text": "Consider all the variables and create a plan with clear steps",
+            "type": "B"
+          },
+          {
+            "text": "Look at what's worked before and adapt it to the current situation",
+            "type": "C"
+          },
+          {
+            "text": "Think about how the decision will impact everyone involved",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your biggest leadership challenge is probably:",
+        "options": [
+          {
+            "text": "Getting others to buy into ideas that feel risky or different",
+            "type": "A"
+          },
+          {
+            "text": "Maintaining boundaries while still being helpful and available",
+            "type": "B"
+          },
+          {
+            "text": "Fighting perfectionism and accepting that good enough is sometimes okay",
+            "type": "C"
+          },
+          {
+            "text": "Asking for help instead of trying to handle everything myself",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What energizes you most about your work or projects?",
+        "options": [
+          {
+            "text": "The moment when a wild idea starts becoming reality",
+            "type": "A"
+          },
+          {
+            "text": "Seeing all the pieces come together exactly as planned",
+            "type": "B"
+          },
+          {
+            "text": "Overcoming obstacles that would stop most people",
+            "type": "C"
+          },
+          {
+            "text": "Creating something that brings people together or transforms their experience",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Intuitive Innovator",
+        "description": "You lead with your gut and aren't afraid to break the mold when something feels right. Your creative vision drives everything you do, and you're naturally drawn to opportunities that others might overlook. Sometimes you feel misunderstood, but that's often your greatest strength—you see possibilities where others see obstacles. Lindsay's journey from creative chaos to intentional leadership will resonate deeply with your experience of turning unconventional thinking into competitive advantage."
+      },
+      {
+        "type": "B",
+        "title": "The Strategic Harmonizer",
+        "description": "You excel at seeing the big picture while keeping all the moving pieces in perfect balance. People rely on you because you naturally anticipate what needs to happen and when. Your superpower lies in creating systems that allow creativity to flourish within structure. You understand that sustainable success requires both vision and boundaries. This episode will speak to your desire to lead intentionally while managing the invisible labor that keeps everything running smoothly."
+      },
+      {
+        "type": "C",
+        "title": "The Resilient Builder",
+        "description": "You're the person who gets things done, no matter what obstacles appear along the way. Your leadership style is grounded in persistence and practical problem-solving, and you've learned to turn challenges into stepping stones. You understand that progress matters more than perfection, and you're not afraid to pivot when needed. Lindsay's honest conversation about balancing motherhood, entrepreneurship, and the reality of building something sustainable will validate your own journey of steady growth through life's complexities."
+      },
+      {
+        "type": "D",
+        "title": "The Empowered Connector",
+        "description": "Your leadership strength comes from your ability to see and elevate others while building meaningful relationships. You understand that success isn't just about your own achievements—it's about creating experiences and opportunities that transform everyone involved. You're naturally collaborative and have an intuitive sense of what people need to thrive. This episode will inspire you to embrace how your relational intelligence and ability to manage invisible emotional labor can become powerful business assets."
+      }
+    ]
+  }
 }

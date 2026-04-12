@@ -46,5 +46,159 @@
       "label": "📖 Get the book",
       "url": "https://a.co/d/ej9A37z"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Relationship with Vulnerability?",
+    "description": "Inspired by episode 17 of The Manage Her® Podcast, discover how you approach the scary but necessary act of showing up authentically in your leadership and life.",
+    "questions": [
+      {
+        "question": "When you're about to share something important about yourself, what goes through your mind?",
+        "options": [
+          {
+            "text": "I need to make sure I've thought this through completely before I say anything",
+            "type": "A"
+          },
+          {
+            "text": "Here goes nothing—my heart is racing but I'm going for it",
+            "type": "B"
+          },
+          {
+            "text": "I'll share through my actions rather than making a big announcement",
+            "type": "C"
+          },
+          {
+            "text": "This feels scary, which probably means it's exactly what I need to do",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you typically handle moments when you feel like you're not doing 'enough' despite managing countless responsibilities?",
+        "options": [
+          {
+            "text": "I make lists and analyze what I could optimize or do better next time",
+            "type": "A"
+          },
+          {
+            "text": "I reach out to friends or family and talk through what I'm feeling",
+            "type": "B"
+          },
+          {
+            "text": "I remind myself that I don't need recognition—I know what I've accomplished",
+            "type": "C"
+          },
+          {
+            "text": "I sit with the feeling and try to understand what it's teaching me about my expectations",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you're facing a new challenge or opportunity that feels beyond your current comfort zone, you:",
+        "options": [
+          {
+            "text": "Research extensively and create a plan before taking any steps forward",
+            "type": "A"
+          },
+          {
+            "text": "Feel the fear but jump in anyway, figuring you'll learn as you go",
+            "type": "B"
+          },
+          {
+            "text": "Focus on what you can control and take practical steps without overthinking it",
+            "type": "C"
+          },
+          {
+            "text": "See it as a chance to discover something new about yourself, even if it's uncomfortable",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What does 'authentic leadership' look like to you in practice?",
+        "options": [
+          {
+            "text": "Being thoughtful about when and how you share your experiences to help others",
+            "type": "A"
+          },
+          {
+            "text": "Showing up as your full self, imperfections and all, so others feel permission to do the same",
+            "type": "B"
+          },
+          {
+            "text": "Leading by example through consistent actions rather than grand speeches",
+            "type": "C"
+          },
+          {
+            "text": "Being willing to admit you don't have all the answers and learning alongside your team",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about all the 'invisible labor' you do—the planning, organizing, anticipating, and managing that often goes unnoticed—how does it make you feel?",
+        "options": [
+          {
+            "text": "I wish others understood how much thought and preparation goes into keeping everything running smoothly",
+            "type": "A"
+          },
+          {
+            "text": "I want to talk about it more openly so other women know they're not alone in this experience",
+            "type": "B"
+          },
+          {
+            "text": "It's just part of life—I don't need a medal for doing what needs to be done",
+            "type": "C"
+          },
+          {
+            "text": "It makes me curious about why I take on so much and what I might learn from examining these patterns",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your hands are metaphorically shaking as you're about to take a big leap. What helps you move forward?",
+        "options": [
+          {
+            "text": "Reminding myself that I've prepared as much as I can, and now it's time to trust the process",
+            "type": "A"
+          },
+          {
+            "text": "Remembering that courage isn't the absence of fear—it's feeling afraid and doing it anyway",
+            "type": "B"
+          },
+          {
+            "text": "Focusing on the next concrete step rather than the enormity of the whole journey",
+            "type": "C"
+          },
+          {
+            "text": "Recognizing that the shaking means I'm about to grow into someone new",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Careful Curator",
+        "description": "You're thoughtful about what you share and when, preferring to perfect your thoughts before putting them out into the world. This isn't weakness—it's wisdom. You understand that vulnerability requires intention, not impulse. Your challenge is recognizing when your desire for perfection might be keeping you from the very connections and growth you're seeking. This episode will resonate deeply with you as Aimee shares how the creation process felt safe, but hitting publish was terrifying—and why taking that leap anyway changed everything."
+      },
+      {
+        "type": "B",
+        "title": "The Brave Heart",
+        "description": "You lead with your heart on your sleeve and aren't afraid to share your truth, even when it feels uncomfortable. Your willingness to be open creates incredible connections with others, and people are drawn to your authenticity. Sometimes though, you might wonder if you're sharing too much too quickly, or if others think you're 'too much.' This episode will remind you that your vulnerability is actually your superpower, and help you see how leading with beginner's mind and openness creates the authentic leadership the world desperately needs."
+      },
+      {
+        "type": "C",
+        "title": "The Steady Builder",
+        "description": "You prefer to let your actions speak louder than your words, building trust through consistency rather than grand gestures of openness. You're the reliable force others count on, and you get things done without needing fanfare or recognition. Your challenge is that your incredible contributions—especially all that invisible labor—often go unnoticed, even by yourself. This episode will help you recognize the profound leadership you're already demonstrating and give you permission to step into more visible roles where your steady wisdom can have even greater impact."
+      },
+      {
+        "type": "D",
+        "title": "The Truth Seeker",
+        "description": "You're on a constant journey of self-discovery and growth, always asking the deeper questions about who you are and who you're becoming. You see vulnerability not as weakness but as a path to understanding, both for yourself and others. Your gift is helping others feel safe to explore their own truth through your example of honest self-reflection. This episode will speak directly to your soul as Aimee explores how fear often signals we're growing in the right direction, and why perseverance through discomfort is part of the journey to authentic leadership."
+      }
+    ]
+  }
 }

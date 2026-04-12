@@ -93,5 +93,159 @@
       "label": "📕 Learn more about the Viktor Frankl Institute",
       "url": "https://www.viktorfranklinstitute.org"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Parenting Leadership Style?",
+    "description": "Discover how you naturally guide the young people in your life and what that reveals about your leadership approach. Whether you're a parent, mentor, or someone who influences the next generation, this quiz will help you understand your unique style.",
+    "questions": [
+      {
+        "question": "When someone you care about is facing a difficult challenge, your first instinct is to:",
+        "options": [
+          {
+            "text": "Ask them what they think they should do and help them explore their options",
+            "type": "A"
+          },
+          {
+            "text": "Offer to help solve the problem or remove obstacles from their path",
+            "type": "B"
+          },
+          {
+            "text": "Help them break down the challenge into manageable steps with clear actions",
+            "type": "C"
+          },
+          {
+            "text": "Connect them with others who have faced similar challenges and remind them they're not alone",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about what makes life fulfilling, you believe it's most important to:",
+        "options": [
+          {
+            "text": "Find purpose and meaning, even when things are difficult",
+            "type": "A"
+          },
+          {
+            "text": "Feel safe, supported, and free from unnecessary stress",
+            "type": "B"
+          },
+          {
+            "text": "Have clear goals and the resources needed to achieve them",
+            "type": "C"
+          },
+          {
+            "text": "Feel deeply connected to people who truly understand you",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "If someone you're mentoring makes a mistake that will have natural consequences, you're most likely to:",
+        "options": [
+          {
+            "text": "Let the consequences happen while being available to process the experience with them",
+            "type": "A"
+          },
+          {
+            "text": "Try to minimize the consequences or help them avoid the worst outcomes",
+            "type": "B"
+          },
+          {
+            "text": "Use it as a learning opportunity to create better systems for next time",
+            "type": "C"
+          },
+          {
+            "text": "Make sure they know mistakes don't change how you feel about them and that everyone struggles sometimes",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your approach to building confidence in others focuses on:",
+        "options": [
+          {
+            "text": "Helping them recognize their own strength by reflecting on challenges they've already overcome",
+            "type": "A"
+          },
+          {
+            "text": "Making sure they feel supported and know you believe in their abilities",
+            "type": "B"
+          },
+          {
+            "text": "Setting up opportunities for small wins that build toward bigger successes",
+            "type": "C"
+          },
+          {
+            "text": "Creating environments where they feel accepted and can develop authentic self-expression",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When someone you lead is feeling overwhelmed or discouraged, you tend to:",
+        "options": [
+          {
+            "text": "Help them find meaning or purpose in what they're experiencing",
+            "type": "A"
+          },
+          {
+            "text": "Look for ways to reduce their stress or take some burden off their shoulders",
+            "type": "B"
+          },
+          {
+            "text": "Help them organize their priorities and create a clearer path forward",
+            "type": "C"
+          },
+          {
+            "text": "Remind them of their strengths and surround them with encouraging community",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "In your ideal vision, the people you influence would grow up or develop to be:",
+        "options": [
+          {
+            "text": "Self-directed individuals who can find meaning and strength even in difficult circumstances",
+            "type": "A"
+          },
+          {
+            "text": "Confident people who know they're loved and supported no matter what happens",
+            "type": "B"
+          },
+          {
+            "text": "Capable individuals with strong skills and clear direction for their lives",
+            "type": "C"
+          },
+          {
+            "text": "Authentic people who maintain deep connections and contribute to their communities",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Empowering Guide",
+        "description": "You naturally understand that real growth happens when people navigate their own challenges with support, not rescue. You have an intuitive sense that meaning trumps momentary comfort, and you're willing to let others struggle in service of their long-term development. Your leadership style creates resilient, self-directed people who trust their own judgment. This episode will give you the framework and confidence to lean even deeper into this powerful approach."
+      },
+      {
+        "type": "B",
+        "title": "The Protective Advocate",
+        "description": "Your instinct to shield and support comes from a place of deep love and care. You see potential everywhere and want to clear the path for others to succeed. While this compassion is one of your greatest strengths, you might sometimes wonder if you're doing too much for the people you lead. This episode will help you discover how to channel your protective energy in ways that actually build strength and resilience in others."
+      },
+      {
+        "type": "C",
+        "title": "The Strategic Planner",
+        "description": "You believe in preparation, structure, and setting people up for success through careful planning and clear expectations. You naturally think several steps ahead and want to ensure others have every advantage. Your methodical approach creates stability and confidence in those you lead. This episode will show you how to balance your excellent planning instincts with space for others to find their own meaning and purpose in unexpected moments."
+      },
+      {
+        "type": "D",
+        "title": "The Connected Collaborator",
+        "description": "You understand that belonging and community are essential for growth, and you naturally create environments where people feel seen and valued. You know that authentic connection fuels motivation better than external pressure ever could. Your ability to build genuine relationships is a rare leadership gift. This episode will deepen your understanding of how to use community and shared meaning to build even more resilience in the people you guide."
+      }
+    ]
+  }
 }

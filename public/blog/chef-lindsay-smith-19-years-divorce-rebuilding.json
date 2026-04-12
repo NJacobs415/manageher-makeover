@@ -86,5 +86,159 @@
       "label": "🔗 Website",
       "url": "https://nirvanlaguna.com"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Reinvention Style?",
+    "description": "Like Chef Lindsay Smith, we all face moments when our lives need to evolve. Discover how you naturally navigate change and transformation.",
+    "questions": [
+      {
+        "question": "When you sense that something major in your life needs to change, what's your first instinct?",
+        "options": [
+          {
+            "text": "Trust the feeling and start exploring what needs to shift, even if I can't explain it yet",
+            "type": "A"
+          },
+          {
+            "text": "Take time to analyze the situation and create a thoughtful plan before acting",
+            "type": "B"
+          },
+          {
+            "text": "Look for the hidden opportunity in the challenge and get excited about possibilities",
+            "type": "C"
+          },
+          {
+            "text": "Reach out to trusted friends or mentors to process the situation together",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your business or career feels stuck in an old version of yourself. How do you approach evolving it?",
+        "options": [
+          {
+            "text": "Listen to what my authentic self is calling for and honor that vision",
+            "type": "A"
+          },
+          {
+            "text": "Systematically identify what's not working and build new systems gradually",
+            "type": "B"
+          },
+          {
+            "text": "Use the constraints as creative fuel to innovate something completely new",
+            "type": "C"
+          },
+          {
+            "text": "Engage my community to understand what they need and how I can serve better",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When facing a major life transition like divorce, career change, or empty nest, you tend to:",
+        "options": [
+          {
+            "text": "See it as a natural evolution and trust the process, even when it's uncomfortable",
+            "type": "A"
+          },
+          {
+            "text": "Focus on building stability in other areas while navigating the transition carefully",
+            "type": "B"
+          },
+          {
+            "text": "Get energized by the blank slate and all the new possibilities ahead",
+            "type": "C"
+          },
+          {
+            "text": "Lean into your support network and be open about what you're experiencing",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your relationship with control and delegation is:",
+        "options": [
+          {
+            "text": "Learning to let go feels scary but necessary for my growth",
+            "type": "A"
+          },
+          {
+            "text": "I delegate systematically, ensuring proper training and clear expectations",
+            "type": "B"
+          },
+          {
+            "text": "I love empowering others to bring their own creative solutions to challenges",
+            "type": "C"
+          },
+          {
+            "text": "I naturally collaborate and prefer shared decision-making over controlling everything",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When building community or deepening relationships, you're most drawn to:",
+        "options": [
+          {
+            "text": "Creating authentic connections by being vulnerable about your own journey",
+            "type": "A"
+          },
+          {
+            "text": "Building consistent, reliable touchpoints that people can count on over time",
+            "type": "B"
+          },
+          {
+            "text": "Bringing people together through shared experiences and creative collaboration",
+            "type": "C"
+          },
+          {
+            "text": "Facilitating meaningful conversations and helping others connect with each other",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your biggest fear about reinventing yourself is:",
+        "options": [
+          {
+            "text": "Ignoring my intuition and staying stuck in something that no longer serves me",
+            "type": "A"
+          },
+          {
+            "text": "Making changes too quickly without proper planning and losing what I've built",
+            "type": "B"
+          },
+          {
+            "text": "Playing it safe and missing the opportunity to create something truly innovative",
+            "type": "C"
+          },
+          {
+            "text": "Going through the process alone without the support and input of people I trust",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Intuitive Transformer",
+        "description": "You have a remarkable ability to sense when something in your life needs to shift before it becomes a crisis. You trust your inner wisdom and aren't afraid to make bold changes when your gut tells you it's time. Your superpower is recognizing patterns and pivoting gracefully, even when others don't understand your decisions yet. Lindsay's story of recognizing she 'couldn't breathe' at 40 and choosing radical change will deeply resonate with your transformative nature."
+      },
+      {
+        "type": "B",
+        "title": "The Steady Rebuilder",
+        "description": "You approach change methodically, preferring to build solid foundations before making major moves. While others might rush into transformation, you take time to plan and create sustainable systems for your new chapter. Your strength lies in creating lasting change that stands the test of time. Lindsay's journey of systematically shifting from operator to owner while building authentic community will inspire your thoughtful approach to reinvention."
+      },
+      {
+        "type": "C",
+        "title": "The Catalyst Creator",
+        "description": "You thrive on turning challenges into opportunities and often find your greatest innovations emerge from your most difficult moments. You have a unique gift for seeing possibilities where others see problems and inspiring others through your resilience. Your ability to create something beautiful from chaos is truly remarkable. Lindsay's story of transforming divorce and pandemic challenges into business breakthroughs will fuel your creative problem-solving spirit."
+      },
+      {
+        "type": "D",
+        "title": "The Connected Collaborator",
+        "description": "You understand that meaningful change happens through relationships and community. You naturally build bridges and create spaces where authentic connections flourish. Your reinvention style involves bringing others along on the journey and finding strength through vulnerability and shared experiences. Lindsay's evolution from controlling every detail to creating community through her ladies' dinners will speak directly to your collaborative heart."
+      }
+    ]
+  }
 }

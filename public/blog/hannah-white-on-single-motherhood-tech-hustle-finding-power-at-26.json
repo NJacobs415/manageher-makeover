@@ -60,5 +60,159 @@
     }
   ],
   "content": "<p>What does it mean to own your power in your twenties when life doesn't go according to plan? This week on The Manage Her, I sat down with my stepdaughter Hannah White for one of the most honest conversations we've ever had about modern motherhood, career ambition, and finding your footing when the traditional playbook goes out the window.</p><p>At 26, Hannah is navigating waters that many women twice her age find challenging. She's building her career in IT at Tomahawk while raising two young boys as a single mother. But here's what struck me most about our conversation: Hannah isn't just surviving this season - she's actually thriving in ways that might surprise you.</p><h3>When Life Rewrites Your Script</h3><p>Hannah's story isn't the linear career trajectory you might expect. Like so many women, she's had to pivot, adapt, and create her own version of success. What I love about her approach is that she's not apologizing for where she is or waiting for some mythical perfect moment to start pursuing her goals.</p><p>Too often, we get caught in the trap of thinking we need to have it all figured out before we can step into our power. Hannah is living proof that you can build something meaningful exactly where you are right now. Her journey into tech wasn't planned from age five, but she's embracing it with the kind of intentionality that creates real results.</p><p>The reality is that most of our careers won't look like what we imagined in college, and that's not a failure - it's life. Hannah's willingness to lean into the unexpected has opened doors she might never have walked through otherwise.</p><h3>The Hidden Superpowers of Single Motherhood</h3><p>Here's something we don't talk about enough: single motherhood can actually make you a better professional. I know that might sound counterintuitive when you're drowning in the daily demands, but Hannah's experience illustrates this beautifully.</p><p>When you're the sole decision-maker for your family, you develop skills that translate directly to the workplace. You become incredibly efficient with your time because you have to be. You learn to make decisions quickly and trust your judgment. You develop a level of organization and prioritization that your colleagues notice.</p><p>Hannah has had to become the CEO of her own life in a way that many people never experience. Every choice about her career directly impacts her children's future, which gives her a clarity of purpose that's honestly inspiring to watch.</p><p>This doesn't mean single motherhood is easy or that we should romanticize the struggle. But it does mean that if you're in this season, you're developing leadership muscles you might not even recognize yet.</p><h3>Technology as Your Life Management Partner</h3><p>One of the most practical parts of our conversation centered on the tools and systems that keep Hannah's life running smoothly. As someone working in tech, she has a unique perspective on how to leverage technology not just for work, but for life management.</p><p>The key insight here is that you don't need to be a tech expert to use technology strategically. Hannah has identified specific pain points in her daily routine and found apps, systems, and processes that address them directly. She's not using technology for the sake of being high-tech - she's using it to create more space for what matters most.</p><p>This approach to life systems is something every working mother can adopt, regardless of your industry. The goal isn't to optimize every moment of your life, but to create reliable structures that handle the routine decisions so you can focus your mental energy on the bigger picture.</p><h3>Owning Your Power Without Permission</h3><p>The most powerful moment in our conversation came when Hannah talked about learning to own her power without waiting for external validation or permission. At 26, she's already grasped something that takes many women decades to understand: your power isn't something someone else gives you - it's something you claim.</p><p>This is particularly important for young women who might feel like they need to prove themselves before they can step into leadership roles. Hannah is demonstrating that leadership isn't about age or experience level - it's about taking responsibility for your choices and their outcomes.</p><p>She's not waiting until her kids are older, or until she has more experience, or until her life looks more traditional. She's building her career and claiming her space in the tech industry right now, as a single mother in her twenties, because she understands that there's never going to be a perfect time.</p><p>This mindset shift is everything. When you stop waiting for permission to pursue your goals, you start creating opportunities that wouldn't have existed otherwise.</p><h3>The Integration Challenge</h3><p>One of the ongoing themes in Hannah's story is the challenge of integrating motherhood with professional ambition. She's not trying to compartmentalize these parts of her identity - she's finding ways to let them strengthen each other.</p><p>Her children see her working hard and pursuing goals, which teaches them that women can be both nurturing mothers and ambitious professionals. Her experience as a mother brings perspective to her work that her colleagues value. Rather than seeing these roles as competing priorities, she's finding ways to let them complement each other.</p><p>This integration isn't always smooth or easy, but it's authentic to who she is and what her life requires right now. She's not trying to be the perfect mother or the perfect employee - she's trying to be fully present in whatever role requires her attention in the moment.</p><p>Hannah's story is a reminder that you don't have to choose between being a good mother and having professional ambitions. You can honor both parts of yourself, even when it's messy and imperfect and nothing like what you originally planned.</p><p>If you're navigating similar waters - whether you're a young mother, changing careers, or just trying to figure out how to own your power in your current season - Hannah's story offers both inspiration and practical wisdom. The path forward isn't about waiting for perfect conditions. It's about taking the next right step from exactly where you are today.</p>",
-  "guestLinks": []
+  "guestLinks": [],
+  "quiz": {
+    "title": "What's Your Power-Building Style?",
+    "description": "Discover how you naturally step into your power when life doesn't go according to plan. Based on Hannah White's inspiring journey of building a tech career while raising two boys as a single mom.",
+    "questions": [
+      {
+        "question": "When your original career plan gets completely derailed by life circumstances, what's your first instinct?",
+        "options": [
+          {
+            "text": "Look for ways to use the unexpected situation to build new skills I wouldn't have developed otherwise",
+            "type": "A"
+          },
+          {
+            "text": "Focus on what I can control and take one small step forward each day",
+            "type": "B"
+          },
+          {
+            "text": "Trust that this detour might actually lead me somewhere better than my original plan",
+            "type": "C"
+          },
+          {
+            "text": "Step back and reassess what success really means to me in this new context",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "You're juggling work deadlines and family responsibilities, and something has to give. How do you decide what gets your attention first?",
+        "options": [
+          {
+            "text": "I've created systems that help me switch between roles efficiently — I know exactly how to prioritize in the moment",
+            "type": "A"
+          },
+          {
+            "text": "I stick to my established routine as much as possible and handle urgent things as they come up",
+            "type": "B"
+          },
+          {
+            "text": "I go with my gut feeling about what matters most right now, even if it's not what I planned",
+            "type": "C"
+          },
+          {
+            "text": "I consider which choice aligns best with my bigger goals and values, then commit fully to that decision",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When people ask how you manage to pursue professional goals while handling major personal responsibilities, what do you usually say?",
+        "options": [
+          {
+            "text": "I've learned that limitations actually force you to get really good at what matters most",
+            "type": "A"
+          },
+          {
+            "text": "It's about showing up consistently, even when I don't feel like I'm making huge leaps forward",
+            "type": "B"
+          },
+          {
+            "text": "I've stopped comparing my journey to anyone else's timeline — this is just what works for my life",
+            "type": "C"
+          },
+          {
+            "text": "I'm very intentional about where I invest my energy because I don't have any to waste",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What does 'owning your power' mean to you right now in your life?",
+        "options": [
+          {
+            "text": "Making the most of whatever circumstances I'm in instead of waiting for things to be perfect",
+            "type": "A"
+          },
+          {
+            "text": "Staying committed to my growth even when progress feels invisible day-to-day",
+            "type": "B"
+          },
+          {
+            "text": "Being confident in my choices even when they don't look like everyone else's",
+            "type": "C"
+          },
+          {
+            "text": "Making deliberate decisions about my time and energy based on what I actually want to build",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about your professional identity, especially if you're balancing it with other major life roles, what feels most true?",
+        "options": [
+          {
+            "text": "My different roles actually make me stronger in each area — the skills transfer more than people realize",
+            "type": "A"
+          },
+          {
+            "text": "I'm building something meaningful even if it doesn't happen as quickly as I originally imagined",
+            "type": "B"
+          },
+          {
+            "text": "I'm creating my own definition of what it means to be successful in my career",
+            "type": "C"
+          },
+          {
+            "text": "I'm being very purposeful about which opportunities I say yes to and which ones I pass on",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you handle it when others question your choices or timeline for achieving your goals?",
+        "options": [
+          {
+            "text": "I focus on the unique advantages my situation gives me that they might not see",
+            "type": "A"
+          },
+          {
+            "text": "I remind myself that sustainable progress matters more than impressing other people",
+            "type": "B"
+          },
+          {
+            "text": "I trust that my path doesn't have to make sense to anyone else as long as it's working for me",
+            "type": "C"
+          },
+          {
+            "text": "I remember that I'm the only one who knows what my priorities are and why I've set them",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Strategic Adapter",
+        "description": "You're naturally gifted at taking whatever life throws at you and turning it into your advantage. Like Hannah, you don't wait for perfect conditions to pursue your goals — you create systems and boundaries that work for your reality. Your superpower is seeing opportunities where others see obstacles. Hannah's story will show you how to leverage the skills you're already building into even greater professional success."
+      },
+      {
+        "type": "B",
+        "title": "The Steady Builder",
+        "description": "You believe in putting in consistent work day after day, even when progress feels slow. You're not looking for overnight transformations — you're building something sustainable for the long haul. Your methodical approach creates real, lasting results. Hannah's episode will inspire you with practical strategies for maintaining momentum while juggling multiple priorities and responsibilities."
+      },
+      {
+        "type": "C",
+        "title": "The Intuitive Navigator",
+        "description": "You trust your instincts and aren't afraid to forge your own path, even when it looks different from what everyone else is doing. You understand that success has many definitions, and you're committed to creating one that feels authentic to you. Your courage to be different is your greatest strength. Hannah's journey will validate your unconventional approach and show you how to own your unique story."
+      },
+      {
+        "type": "D",
+        "title": "The Intentional Leader",
+        "description": "You're thoughtful about every decision and understand that true power comes from being deliberate about how you spend your time and energy. You naturally think about the bigger picture and how your choices today impact your future. Your ability to see the long game sets you apart. Hannah's conversation will give you frameworks for making those intentional choices while balancing competing priorities."
+      }
+    ]
+  }
 }

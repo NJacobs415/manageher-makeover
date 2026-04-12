@@ -70,5 +70,159 @@
       "label": "🌿 Explore Sybil’s work",
       "url": "http://www.sybilsteele.com"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Reinvention Style?",
+    "description": "Discover how you naturally approach transformation and change in your life and career. Your results will reveal insights inspired by Sybil Steele's powerful journey of authentic reinvention.",
+    "questions": [
+      {
+        "question": "When you think about making a major life or career change, what feels most important to you?",
+        "options": [
+          {
+            "text": "Following my gut instinct, even if I can't explain it logically to others",
+            "type": "A"
+          },
+          {
+            "text": "Ensuring the change aligns with my core values and serves a greater purpose",
+            "type": "B"
+          },
+          {
+            "text": "Finding ways the change can benefit my community or solve real problems",
+            "type": "C"
+          },
+          {
+            "text": "Making sure I can show up as my authentic self in this new direction",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you typically respond when you realize something in your life isn't working anymore?",
+        "options": [
+          {
+            "text": "I'm ready to blow it up and start fresh—I love the thrill of creating something completely new",
+            "type": "A"
+          },
+          {
+            "text": "I carefully evaluate what needs to change and create a plan that honors my bigger vision",
+            "type": "B"
+          },
+          {
+            "text": "I look for ways to reimagine it that could also help or inspire other people",
+            "type": "C"
+          },
+          {
+            "text": "I ask myself what version of this would feel most true to who I'm becoming",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What energizes you most about the idea of entrepreneurship or creating something new?",
+        "options": [
+          {
+            "text": "The freedom to follow my curiosity wherever it leads, without having to justify every decision",
+            "type": "A"
+          },
+          {
+            "text": "Building something meaningful that reflects my values and makes a real difference",
+            "type": "B"
+          },
+          {
+            "text": "Creating solutions that bring people together and strengthen communities",
+            "type": "C"
+          },
+          {
+            "text": "Having the space to integrate all parts of myself into my work, not just one dimension",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you're feeling stuck or unclear about your next move, you usually:",
+        "options": [
+          {
+            "text": "Take a creative risk or try something completely different to shake things up",
+            "type": "A"
+          },
+          {
+            "text": "Reconnect with my deeper purpose and ask what would feel most meaningful",
+            "type": "B"
+          },
+          {
+            "text": "Talk to people in my community to understand what's needed and where I can contribute",
+            "type": "C"
+          },
+          {
+            "text": "Step back and reflect on what feels authentic versus what I think I 'should' do",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you view the relationship between your personal growth and your professional life?",
+        "options": [
+          {
+            "text": "My personal evolution naturally leads to new creative and professional possibilities",
+            "type": "A"
+          },
+          {
+            "text": "They should reinforce each other—my work should support who I want to become",
+            "type": "B"
+          },
+          {
+            "text": "Both grow stronger when I focus on how I can serve and connect with others",
+            "type": "C"
+          },
+          {
+            "text": "They're inseparable—I can't compartmentalize different parts of myself",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What draws you most to successful women entrepreneurs like Sybil Steele?",
+        "options": [
+          {
+            "text": "Their willingness to completely reinvent themselves and take bold creative leaps",
+            "type": "A"
+          },
+          {
+            "text": "How they've built businesses that reflect their values and create positive impact",
+            "type": "B"
+          },
+          {
+            "text": "Their ability to identify community needs and create innovative solutions",
+            "type": "C"
+          },
+          {
+            "text": "The way they've integrated their whole selves into their work and leadership",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Intuitive Pioneer",
+        "description": "You trust your inner compass above all else, even when it leads you down unexpected paths. Like Sybil, you're willing to completely reimagine your life when something doesn't feel aligned anymore. You see transformation as an adventure rather than something to fear, and you're naturally drawn to creating something entirely new rather than tweaking what already exists. This episode will inspire you to embrace your next bold leap with even more confidence."
+      },
+      {
+        "type": "B",
+        "title": "The Purposeful Builder",
+        "description": "You approach change strategically, always connecting your next move to your deeper values and long-term vision. You're skilled at taking life's pivotal moments—like motherhood or career shifts—and using them as fuel for meaningful transformation. You don't just want success; you want your work to matter and serve others authentically. Sybil's story of building multiple purpose-driven businesses will show you how to scale your impact while staying true to your core values."
+      },
+      {
+        "type": "C",
+        "title": "The Creative Connector",
+        "description": "You see opportunities everywhere to bring people together and solve real problems through innovation. Your superpower is spotting gaps in your community and creating solutions that foster deeper connections. You're naturally collaborative and believe the best ideas come from understanding what people actually need. This episode will resonate with your community-first approach and inspire new ways to blend creativity with meaningful impact."
+      },
+      {
+        "type": "D",
+        "title": "The Authentic Evolutionist",
+        "description": "You understand that reinvention isn't a one-time event—it's an ongoing journey of becoming more yourself. You're comfortable letting go of old identities when they no longer serve you, and you prioritize showing up as your whole, authentic self in everything you do. You believe that personal transformation and professional success go hand in hand. Sybil's journey of continuous evolution while staying grounded in authenticity will deeply inspire your own path forward."
+      }
+    ]
+  }
 }

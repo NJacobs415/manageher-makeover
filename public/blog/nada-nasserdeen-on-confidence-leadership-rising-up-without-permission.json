@@ -77,5 +77,159 @@
       "label": "Website",
       "url": "https://www.riseupforyou.com"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Confidence Building Style?",
+    "description": "Discover how you naturally approach building confidence and stepping into your power. Find out which strategies from episode 14 will help you rise up without permission.",
+    "questions": [
+      {
+        "question": "When you're facing a new challenge or opportunity that feels intimidating, what's your first instinct?",
+        "options": [
+          {
+            "text": "Research everything I can about it and create a detailed plan of action",
+            "type": "A"
+          },
+          {
+            "text": "Trust my gut feeling and jump in, figuring it out as I go",
+            "type": "B"
+          },
+          {
+            "text": "Talk it through with trusted friends or mentors to get their perspectives",
+            "type": "C"
+          },
+          {
+            "text": "Start with a small, manageable version of the challenge to test the waters",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you typically handle moments when you're doubting yourself or feeling like an imposter?",
+        "options": [
+          {
+            "text": "I remind myself of my qualifications and all the work I've put in to be here",
+            "type": "A"
+          },
+          {
+            "text": "I focus on why I'm passionate about this and trust that my authentic self is enough",
+            "type": "B"
+          },
+          {
+            "text": "I reach out to my support network and remember I'm not alone in feeling this way",
+            "type": "C"
+          },
+          {
+            "text": "I acknowledge the feeling and take one small confident action to shift my energy",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What gives you the strongest sense of confidence in professional settings?",
+        "options": [
+          {
+            "text": "Knowing I'm exceptionally well-prepared and knowledgeable about the topic",
+            "type": "A"
+          },
+          {
+            "text": "Staying true to my authentic voice and unique perspective",
+            "type": "B"
+          },
+          {
+            "text": "Feeling connected to the people around me and knowing we're in it together",
+            "type": "C"
+          },
+          {
+            "text": "Building on past successes and proven track record",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about 'rising up without permission,' what resonates most with you?",
+        "options": [
+          {
+            "text": "Having all my ducks in a row so no one can question my readiness",
+            "type": "A"
+          },
+          {
+            "text": "Following my inner knowing even when others don't understand my vision",
+            "type": "B"
+          },
+          {
+            "text": "Creating space for other women to rise up alongside me",
+            "type": "C"
+          },
+          {
+            "text": "Taking progressively bigger steps until I'm exactly where I want to be",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "How do you prefer to step outside your comfort zone?",
+        "options": [
+          {
+            "text": "With a clear strategy and backup plan in place",
+            "type": "A"
+          },
+          {
+            "text": "By following what feels aligned and exciting, even if it's uncertain",
+            "type": "B"
+          },
+          {
+            "text": "With encouragement and support from people who believe in me",
+            "type": "C"
+          },
+          {
+            "text": "By gradually expanding what feels comfortable over time",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What would make you feel most ready to take on a bigger leadership role?",
+        "options": [
+          {
+            "text": "Additional training, certifications, or expertise in key areas",
+            "type": "A"
+          },
+          {
+            "text": "A clear sense of purpose and mission that I'm passionate about",
+            "type": "B"
+          },
+          {
+            "text": "A strong team and network of supporters who can help me succeed",
+            "type": "C"
+          },
+          {
+            "text": "More experience and proven wins in progressively responsible roles",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Strategic Preparer",
+        "description": "You build confidence through thorough preparation and mastering your craft. You believe in doing your homework and showing up ready, which is a tremendous strength. Your methodical approach means when you do step forward, you're incredibly well-equipped. The key for you is learning when 'good enough' is actually perfect, and that sometimes the best preparation is simply taking action. This episode will show you how to bridge the gap between your incredible preparation and the bold action that's waiting for you."
+      },
+      {
+        "type": "B",
+        "title": "The Intuitive Leap-Taker",
+        "description": "You're naturally drawn to following your instincts and taking inspired action, even when you can't see the full picture. Your willingness to trust yourself is a rare and powerful gift in leadership. You understand that confidence comes from doing, not just thinking. Your challenge might be honoring your intuitive wisdom when others question your unconventional approach. This episode will validate your natural confidence-building style and give you language to articulate why your approach works so brilliantly."
+      },
+      {
+        "type": "C",
+        "title": "The Community Builder",
+        "description": "You gain confidence through connection, collaboration, and lifting others as you rise. You understand that vulnerability creates strength and that authentic relationships fuel sustainable success. Your ability to see confidence as a collective experience rather than a solo journey is exactly what modern leadership needs. Sometimes you might doubt whether your collaborative approach is 'leadership enough,' but it absolutely is. This episode will reinforce why your relationship-centered confidence style is not just valid, but essential for the future of leadership."
+      },
+      {
+        "type": "D",
+        "title": "The Gradual Expander",
+        "description": "You build confidence by taking consistent small steps and celebrating incremental progress. You understand that sustainable growth happens through steady expansion of your comfort zone, not dramatic leaps. Your approach creates lasting confidence because it's built on a solid foundation of proven experiences. You might sometimes feel pressure to move faster or be bolder, but your methodical approach is actually incredibly wise. This episode will help you see how your steady confidence-building style is a strength, while also showing you how to recognize when you're ready for bigger steps than you think."
+      }
+    ]
+  }
 }

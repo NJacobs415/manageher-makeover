@@ -70,5 +70,159 @@
       "label": "📖 Grab the book",
       "url": "https://a.co/d/ej9A37z"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Invisible Leadership Style?",
+    "description": "You're already leading in ways you might not recognize. Discover how your unique approach to life's challenges reveals your natural leadership superpower.",
+    "questions": [
+      {
+        "question": "When your family or team is facing a stressful situation, what's your natural response?",
+        "options": [
+          {
+            "text": "I start mentally organizing and coordinating what needs to happen to fix it",
+            "type": "A"
+          },
+          {
+            "text": "I look for small, manageable steps we can take to move forward",
+            "type": "B"
+          },
+          {
+            "text": "I focus on making sure everyone feels heard and supported first",
+            "type": "C"
+          },
+          {
+            "text": "I dig deep to find the lesson or opportunity hidden in the challenge",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "You're feeling overwhelmed by your daily responsibilities. How do you typically handle it?",
+        "options": [
+          {
+            "text": "I create systems and lists to manage everything more efficiently",
+            "type": "A"
+          },
+          {
+            "text": "I pick one small thing to change that might make everything easier",
+            "type": "B"
+          },
+          {
+            "text": "I reach out to my support network and focus on connection",
+            "type": "C"
+          },
+          {
+            "text": "I remind myself that this difficult season will teach me something important",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "What gives you the most energy in your leadership role, whether at work or home?",
+        "options": [
+          {
+            "text": "Seeing all the pieces come together perfectly because of your planning",
+            "type": "A"
+          },
+          {
+            "text": "Noticing how small improvements create positive ripple effects",
+            "type": "B"
+          },
+          {
+            "text": "Watching others grow and succeed because you believed in them",
+            "type": "C"
+          },
+          {
+            "text": "Knowing you're building something meaningful from difficult circumstances",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When someone asks how you manage to handle so much, you usually think:",
+        "options": [
+          {
+            "text": "If I don't keep track of everything, who will? Someone has to see the whole picture",
+            "type": "A"
+          },
+          {
+            "text": "I just focus on the next right step instead of trying to do everything at once",
+            "type": "B"
+          },
+          {
+            "text": "I couldn't do it without my people - we all support each other",
+            "type": "C"
+          },
+          {
+            "text": "Every challenge I've faced has prepared me for what I'm handling now",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your ideal way to create change in the world would be:",
+        "options": [
+          {
+            "text": "Behind the scenes, making sure all the important details are handled",
+            "type": "A"
+          },
+          {
+            "text": "Through consistent, small actions that inspire others to do the same",
+            "type": "B"
+          },
+          {
+            "text": "By creating spaces where people feel safe to be authentic and grow",
+            "type": "C"
+          },
+          {
+            "text": "By sharing your story and showing others what's possible",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about your biggest accomplishments, they usually involve:",
+        "options": [
+          {
+            "text": "Successfully managing complex situations that others found overwhelming",
+            "type": "A"
+          },
+          {
+            "text": "Gradual improvements that made a real difference over time",
+            "type": "B"
+          },
+          {
+            "text": "Helping others discover their potential and supporting their success",
+            "type": "C"
+          },
+          {
+            "text": "Overcoming obstacles that seemed impossible and proving it could be done",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Quiet Orchestrator",
+        "description": "You see the big picture and naturally coordinate all the moving pieces behind the scenes. Your leadership shows up in how you create harmony and keep everything flowing smoothly, even when others don't notice the complexity you're managing. You have an incredible gift for making the impossible look effortless. This episode will help you recognize the profound impact of your invisible labor and show you how to honor this leadership style without burning out."
+      },
+      {
+        "type": "B",
+        "title": "The Gentle Revolutionary",
+        "description": "You lead through small, meaningful changes that ripple outward in powerful ways. While others chase dramatic transformations, you understand that real change happens through consistent, intentional shifts. Your superpower lies in creating safe spaces where others can grow and flourish. This episode will validate your approach and show you how those one-degree shifts you're already making are actually revolutionary acts of leadership."
+      },
+      {
+        "type": "C",
+        "title": "The Intuitive Connector",
+        "description": "Your leadership flows from your ability to sense what others need and create the connections that make communities thrive. You're the one people turn to, the bridge-builder, the heart of your circles. You lead with empathy and presence, understanding that relationships are the foundation of all meaningful change. This episode will help you see how your natural ability to hold space for others is a profound form of world-shaping leadership."
+      },
+      {
+        "type": "D",
+        "title": "The Purpose-Driven Transformer",
+        "description": "You have an innate ability to turn challenges into opportunities and pain into purpose. Your leadership emerges from your willingness to face difficulties head-on and transform them into something meaningful. You inspire others through your resilience and your refusal to let setbacks define you. This episode will speak directly to your soul, showing you how to channel your transformative energy without depleting yourself in the process."
+      }
+    ]
+  }
 }

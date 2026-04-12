@@ -125,5 +125,159 @@
       "label": "🎬 YouTube",
       "url": "https://theimpactfulparent.com/youtube"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Parenting Leadership Style?",
+    "description": "Discover how you naturally show up as a leader in your home and what that reveals about your unique approach to raising independent, capable humans.",
+    "questions": [
+      {
+        "question": "When your child asks for help with something you know they could figure out themselves, what's your first instinct?",
+        "options": [
+          {
+            "text": "Take a deep breath and walk them through it step by step, even though it takes longer",
+            "type": "A"
+          },
+          {
+            "text": "Sit down beside them and ask questions about what's really going on",
+            "type": "B"
+          },
+          {
+            "text": "See it as a teaching opportunity that will pay off in the long run",
+            "type": "C"
+          },
+          {
+            "text": "Assess whether they need skill-building, emotional support, or just a confidence boost",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your ten-year-old's room looks like a tornado hit it. How do you typically handle this?",
+        "options": [
+          {
+            "text": "Create a simple system and consistently follow up until it becomes habit",
+            "type": "A"
+          },
+          {
+            "text": "Talk with them about how their environment affects their mood and our family",
+            "type": "B"
+          },
+          {
+            "text": "Use it as practice for organizational skills they'll need as adults",
+            "type": "C"
+          },
+          {
+            "text": "Try different approaches until you find what motivates this particular child",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When you think about your role as a parent, which statement resonates most?",
+        "options": [
+          {
+            "text": "I'm building a foundation that will support them for life",
+            "type": "A"
+          },
+          {
+            "text": "I'm their safe person who helps them navigate the world",
+            "type": "B"
+          },
+          {
+            "text": "I'm preparing them to be independent, capable adults",
+            "type": "C"
+          },
+          {
+            "text": "I'm their guide who meets them where they are and helps them grow",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "Your child is struggling with screen time boundaries. What's your approach?",
+        "options": [
+          {
+            "text": "Create clear, consistent rules that everyone can follow",
+            "type": "A"
+          },
+          {
+            "text": "Have ongoing conversations about how technology makes them feel",
+            "type": "B"
+          },
+          {
+            "text": "Teach them self-regulation skills they can use throughout life",
+            "type": "C"
+          },
+          {
+            "text": "Experiment with different boundaries until you find what works for them",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "During your child's challenging developmental phase, what keeps you grounded?",
+        "options": [
+          {
+            "text": "Remembering that consistency and patience will eventually pay off",
+            "type": "A"
+          },
+          {
+            "text": "Focusing on maintaining connection even when you don't understand their choices",
+            "type": "B"
+          },
+          {
+            "text": "Keeping your eye on who they're becoming, not who they are right now",
+            "type": "C"
+          },
+          {
+            "text": "Staying curious about what they need and adjusting your approach accordingly",
+            "type": "D"
+          }
+        ]
+      },
+      {
+        "question": "When other parents share parenting advice, how do you typically respond?",
+        "options": [
+          {
+            "text": "Listen politely but stick with what's been working for your family",
+            "type": "A"
+          },
+          {
+            "text": "Consider how it might affect the relationships in your home",
+            "type": "B"
+          },
+          {
+            "text": "Evaluate whether it aligns with your long-term goals for your kids",
+            "type": "C"
+          },
+          {
+            "text": "Take what resonates and adapt it to fit your family's unique needs",
+            "type": "D"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Steady Builder",
+        "description": "You believe in consistency and structure as the foundation for growth. You're naturally patient with the process and understand that real change takes time. Your superpower is creating stable environments where everyone knows what to expect, which allows your family to thrive. This episode will show you how to leverage your steady nature to build even stronger systems that support everyone's independence."
+      },
+      {
+        "type": "B",
+        "title": "The Connector",
+        "description": "Relationship is your secret weapon. You instinctively know that connection comes before correction, and your family feels deeply seen by you. You have a gift for reading the emotional temperature of your home and responding with exactly what's needed. This episode will give you specific tools like the 15-minute daily connection practice that will amplify your natural relationship-building strengths."
+      },
+      {
+        "type": "C",
+        "title": "The Strategic Visionary",
+        "description": "You naturally think in systems and see the big picture of what your family could become. You're always looking for ways to optimize and improve, and you understand that short-term investments lead to long-term gains. Your challenge is sometimes slowing down for the messy middle. This episode will validate your long-game thinking while giving you practical ways to stay patient during the teaching process."
+      },
+      {
+        "type": "D",
+        "title": "The Adaptive Leader",
+        "description": "You're incredibly flexible and meet each situation with fresh eyes. You don't believe in one-size-fits-all approaches because you see each family member as beautifully unique. Your strength is pivoting when something isn't working and finding creative solutions. This episode will help you structure your natural adaptability so you can maintain consistency while still honoring everyone's individual needs."
+      }
+    ]
+  }
 }
