@@ -126,20 +126,38 @@ async function main() {
   console.log('📋 Getting video details...');
   const allVideos = await getVideoDetails(allIds);
 
-  // Filter out audio-only RSS feed uploads (bulk-uploaded at the same second)
-  // These share the generic podcast cover art thumbnail and were uploaded in bulk
-  const publishCounts = {};
-  for (const v of allVideos) {
-    const ts = v.snippet.publishedAt;
-    publishCounts[ts] = (publishCounts[ts] || 0) + 1;
-  }
-  const bulkTimestamps = new Set(Object.entries(publishCounts).filter(([, c]) => c > 1).map(([ts]) => ts));
-  const videoOnly = allVideos.filter(v => !bulkTimestamps.has(v.snippet.publishedAt));
-  console.log(`Filtered out ${allVideos.length - videoOnly.length} audio RSS bulk uploads, ${videoOnly.length} real videos remain`);
+  // Filter OUT audio/podcast RSS uploads
+  const videoEpisodes = allVideos.filter(v => {
+    const desc = v.snippet.description || '';
+    // Skip RSS/podcast audio uploads
+    if (desc.includes('buzzsprout.com')) return false;
+    if (desc.startsWith('Send us Fan Mail')) return false;
+    // Skip if it's a Short (under 3 min)
+    if (getDurationSeconds(v.contentDetails.duration) < 180) return false;
+    // Keep full episodes (20+ min)
+    if (getDurationSeconds(v.contentDetails.duration) >= 1200) return true;
+    return false;
+  });
+  console.log(`Filtered to ${videoEpisodes.length} video episodes (excluded ${allVideos.length - videoEpisodes.length} audio RSS/shorts/clips)`);
 
-  // Filter to full episodes (20+ min to catch slightly shorter ones)
-  const fullEpisodes = videoOnly
-    .filter(v => getDurationSeconds(v.contentDetails.duration) >= 1200)
+  // Deduplicate by episode number — prefer the version without buzzsprout
+  const seen = new Map();
+  for (const ep of videoEpisodes) {
+    const epNum = (ep.snippet.title.match(/[Ee]p\.?\s*(\d+)/)||[])[1] || ep.id;
+    if (!seen.has(epNum)) {
+      seen.set(epNum, ep);
+    } else {
+      const existing = seen.get(epNum);
+      if ((existing.snippet.description||'').includes('buzzsprout') && !(ep.snippet.description||'').includes('buzzsprout')) {
+        seen.set(epNum, ep);
+      }
+    }
+  }
+  const dedupedVideos = [...seen.values()];
+  console.log(`After dedup: ${dedupedVideos.length} unique episodes`);
+
+  // Map to episode objects
+  const fullEpisodes = dedupedVideos
     .map(v => ({
       id: v.id,
       title: v.snippet.title,
