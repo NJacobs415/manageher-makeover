@@ -59,7 +59,7 @@ const Blog = () => {
       >
         {/* Background image */}
         <div className="absolute inset-0">
-          <img src="/blog-hero.png" alt="" className="w-full h-full object-cover" style={{ opacity: 0.15 }} />
+          <img src="/blog-hero.png" alt="" className="w-full h-full object-cover" style={{ opacity: 0.3 }} />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.9) 100%)" }} />
         </div>
 
