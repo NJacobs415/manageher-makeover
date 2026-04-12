@@ -370,21 +370,19 @@ const BlogPost = () => {
               {/* Main content — 8 cols */}
               <div className="lg:col-span-8">
                 {/* Excerpt */}
-                <FadeIn y={20}>
-                  <p
-                    className="font-sans text-[16px] leading-[1.9] mb-10 pb-10"
-                    style={{
-                      color: "#3a3a3a",
-                      borderBottom: "1px solid rgba(0,0,0,0.08)",
-                    }}
-                  >
-                    {post.excerpt}
-                  </p>
-                </FadeIn>
+                <p
+                  className="font-sans text-[16px] leading-[1.9] mb-10 pb-10"
+                  style={{
+                    color: "#3a3a3a",
+                    borderBottom: "1px solid rgba(0,0,0,0.08)",
+                  }}
+                >
+                  {post.excerpt}
+                </p>
 
                 {/* Key Takeaways — white card */}
                 {post.keyTakeaways?.length > 0 && (
-                  <FadeIn delay={100} y={20}>
+                  <FadeIn delay={0} y={20}>
                     <div
                       className="mb-12 p-8"
                       style={{
@@ -429,75 +427,71 @@ const BlogPost = () => {
 
                 {/* Hero pull quote — the first one, featured above the content */}
                 {post.pullQuotes?.[0] && (
-                  <FadeIn delay={200} y={20}>
-                    <blockquote
-                      className="my-10 pl-6"
-                      style={{ borderLeft: "3px solid #eb1887" }}
+                  <blockquote
+                    className="my-10 pl-6"
+                    style={{ borderLeft: "3px solid #eb1887" }}
+                  >
+                    <p
+                      className="font-serif text-xl md:text-2xl italic leading-[1.4] mb-2"
+                      style={{ color: "#1a1a1a" }}
                     >
-                      <p
-                        className="font-serif text-xl md:text-2xl italic leading-[1.4] mb-2"
-                        style={{ color: "#1a1a1a" }}
+                      "{post.pullQuotes[0].text}"
+                    </p>
+                    {post.pullQuotes[0].timestamp && (
+                      <span
+                        className="font-sans text-[10px] uppercase tracking-[0.15em]"
+                        style={{ color: "#888" }}
                       >
-                        "{post.pullQuotes[0].text}"
-                      </p>
-                      {post.pullQuotes[0].timestamp && (
-                        <span
-                          className="font-sans text-[10px] uppercase tracking-[0.15em]"
-                          style={{ color: "#888" }}
-                        >
-                          at {post.pullQuotes[0].timestamp}
-                        </span>
-                      )}
-                    </blockquote>
-                  </FadeIn>
+                        at {post.pullQuotes[0].timestamp}
+                      </span>
+                    )}
+                  </blockquote>
                 )}
 
                 {/* Content sections interleaved with remaining pull quotes */}
-                <FadeIn delay={300} y={20}>
-                  <div>
-                    {contentSections.map((section, i) => {
-                      const sprinkled = post.pullQuotes?.[i + 1];
-                      return (
-                        <Fragment key={i}>
-                          <div
-                            className="prose-tmh"
-                            dangerouslySetInnerHTML={{ __html: section }}
-                          />
-                          {sprinkled && (
-                            <blockquote
-                              className="my-12 py-8 px-8"
-                              style={{
-                                background:
-                                  "linear-gradient(135deg, rgba(235,24,135,0.04), rgba(201,169,110,0.03))",
-                                borderLeft: "3px solid #eb1887",
-                                borderRadius: "0 16px 16px 0",
-                              }}
+                <div>
+                  {contentSections.map((section, i) => {
+                    const sprinkled = post.pullQuotes?.[i + 1];
+                    return (
+                      <Fragment key={i}>
+                        <div
+                          className="prose-tmh"
+                          dangerouslySetInnerHTML={{ __html: section }}
+                        />
+                        {sprinkled && (
+                          <blockquote
+                            className="my-12 py-8 px-8"
+                            style={{
+                              background:
+                                "linear-gradient(135deg, rgba(235,24,135,0.04), rgba(201,169,110,0.03))",
+                              borderLeft: "3px solid #eb1887",
+                              borderRadius: "0 16px 16px 0",
+                            }}
+                          >
+                            <p
+                              className="font-serif text-lg md:text-xl italic leading-[1.5] mb-2"
+                              style={{ color: "#2a2a2a" }}
                             >
-                              <p
-                                className="font-serif text-lg md:text-xl italic leading-[1.5] mb-2"
-                                style={{ color: "#2a2a2a" }}
+                              "{sprinkled.text}"
+                            </p>
+                            {sprinkled.timestamp && (
+                              <span
+                                className="font-sans text-[10px] uppercase tracking-[0.15em]"
+                                style={{ color: "#888" }}
                               >
-                                "{sprinkled.text}"
-                              </p>
-                              {sprinkled.timestamp && (
-                                <span
-                                  className="font-sans text-[10px] uppercase tracking-[0.15em]"
-                                  style={{ color: "#888" }}
-                                >
-                                  at {sprinkled.timestamp}
-                                </span>
-                              )}
-                            </blockquote>
-                          )}
-                        </Fragment>
-                      );
-                    })}
-                  </div>
-                </FadeIn>
+                                at {sprinkled.timestamp}
+                              </span>
+                            )}
+                          </blockquote>
+                        )}
+                      </Fragment>
+                    );
+                  })}
+                </div>
 
                 {/* Guest Bio — white card with gold border */}
                 {post.guestBio && (
-                  <FadeIn delay={400} y={20}>
+                  <FadeIn delay={0} y={20}>
                     <div
                       className="mt-12 p-8"
                       style={{

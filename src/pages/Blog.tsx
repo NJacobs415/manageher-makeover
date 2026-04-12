@@ -128,7 +128,7 @@ const Blog = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filtered.map((post, i) => (
-                <FadeIn key={post.slug} delay={i * 80} y={30}>
+                <FadeIn key={post.slug} delay={0} y={20}>
                   <Link
                     to={`/blog/${post.slug}`}
                     className="group block h-full transition-all duration-300 hover:-translate-y-1"
