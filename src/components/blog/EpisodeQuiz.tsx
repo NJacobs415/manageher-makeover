@@ -86,10 +86,11 @@ const EpisodeQuiz = ({
   const [result, setResult] = useState<QuizResult | null>(null);
   const [copied, setCopied] = useState(false);
   const [slideDir, setSlideDir] = useState<"in" | "out">("in");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [revealed, setRevealed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [emailError, setEmailError] = useState("");
+  const [formError, setFormError] = useState("");
 
   const storageKey = `tmh-quiz-${slug}`;
   const totalQ = quiz.questions.length;
@@ -156,17 +157,22 @@ const EpisodeQuiz = ({
     setSelected(null);
     setCurrentQ(-1);
     setSlideDir("in");
+    setName("");
     setEmail("");
-    setEmailError("");
+    setFormError("");
   };
 
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !email.includes("@")) {
-      setEmailError("Please enter a valid email");
+    if (!name.trim()) {
+      setFormError("Please enter your name");
       return;
     }
-    setEmailError("");
+    if (!email || !email.includes("@")) {
+      setFormError("Please enter a valid email");
+      return;
+    }
+    setFormError("");
     setSubmitting(true);
 
     try {
@@ -174,6 +180,7 @@ const EpisodeQuiz = ({
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
+          name: name.trim(),
           email,
           episodeNumber: episodeNumber || 0,
           quizTitle: quiz.title,
@@ -410,6 +417,26 @@ const EpisodeQuiz = ({
                   </p>
                   <form onSubmit={handleEmailSubmit} className="space-y-3">
                     <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Your full name"
+                      className="w-full font-sans text-[14px] px-5 py-3.5 outline-none transition-all"
+                      style={{
+                        background: "#1a1a1a",
+                        color: "#fff",
+                        borderRadius: "14px",
+                        border: "1px solid rgba(255,255,255,0.1)",
+                      }}
+                      onFocus={(e) =>
+                        (e.target.style.borderColor = "#eb1887")
+                      }
+                      onBlur={(e) =>
+                        (e.target.style.borderColor =
+                          "rgba(255,255,255,0.1)")
+                      }
+                    />
+                    <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -419,7 +446,7 @@ const EpisodeQuiz = ({
                         background: "#1a1a1a",
                         color: "#fff",
                         borderRadius: "14px",
-                        border: emailError
+                        border: formError
                           ? "1px solid #ff4444"
                           : "1px solid rgba(255,255,255,0.1)",
                       }}
@@ -431,12 +458,12 @@ const EpisodeQuiz = ({
                           "rgba(255,255,255,0.1)")
                       }
                     />
-                    {emailError && (
+                    {formError && (
                       <p
                         className="font-sans text-[12px] text-left"
                         style={{ color: "#ff4444" }}
                       >
-                        {emailError}
+                        {formError}
                       </p>
                     )}
                     <button
