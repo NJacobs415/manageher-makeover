@@ -11,6 +11,7 @@ import TextReveal from "@/components/animations/TextReveal";
 import FadeIn from "@/components/animations/FadeIn";
 import Magnetic from "@/components/animations/Magnetic";
 import SEO from "@/components/SEO";
+import EpisodeQuiz from "@/components/blog/EpisodeQuiz";
 import {
   ArrowLeft,
   ArrowRight,
@@ -42,6 +43,12 @@ interface BlogPostData {
   timestamps: { time: string; label: string }[];
   content: string; // HTML or markdown body
   metaDescription: string;
+  quiz?: {
+    title: string;
+    description: string;
+    questions: { question: string; options: { text: string; type: string }[] }[];
+    results: { type: string; title: string; description: string }[];
+  };
 }
 
 // ── Prose styles for the rendered HTML content ──
@@ -488,6 +495,9 @@ const BlogPost = () => {
                     );
                   })}
                 </div>
+
+                {/* Episode Quiz */}
+                {post.quiz && <EpisodeQuiz quiz={post.quiz} slug={post.slug} />}
 
                 {/* Guest Bio — white card with gold border */}
                 {post.guestBio && (

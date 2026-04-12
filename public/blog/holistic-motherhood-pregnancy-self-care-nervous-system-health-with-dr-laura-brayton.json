@@ -97,5 +97,87 @@
       "label": "🏥 Practice",
       "url": "https://hobokenchiro.com/"
     }
-  ]
+  ],
+  "quiz": {
+    "title": "What's Your Motherhood Leadership Style?",
+    "description": "Inspired by Episode 56 with Dr. Laura Brayton — discover how you naturally lead in motherhood and where your nervous system might be asking for more support.",
+    "questions": [
+      {
+        "question": "When your morning routine gets completely derailed, you typically...",
+        "options": [
+          { "text": "Push through and power on — there's no time to stop", "type": "A" },
+          { "text": "Feel the frustration but try to adapt in the moment", "type": "B" },
+          { "text": "Pause, take a breath, and reset your intentions", "type": "C" },
+          { "text": "Let go of the plan entirely and follow what feels right", "type": "D" }
+        ]
+      },
+      {
+        "question": "Your idea of self-care looks most like...",
+        "options": [
+          { "text": "What self-care? I'll rest when everything's done", "type": "A" },
+          { "text": "A quick workout or podcast when I can squeeze it in", "type": "B" },
+          { "text": "Intentional time for journaling, meditation, or therapy", "type": "C" },
+          { "text": "Whatever my body is asking for that day — naps, walks, baths", "type": "D" }
+        ]
+      },
+      {
+        "question": "When someone asks 'How are you doing, really?' you...",
+        "options": [
+          { "text": "Give the highlight reel — you don't want to burden anyone", "type": "A" },
+          { "text": "Share a little but keep it practical, not emotional", "type": "B" },
+          { "text": "Get honest — vulnerability is how you connect", "type": "C" },
+          { "text": "Check in with yourself first because you might not actually know", "type": "D" }
+        ]
+      },
+      {
+        "question": "Your relationship with your body during motherhood feels...",
+        "options": [
+          { "text": "Like a machine I need to keep running efficiently", "type": "A" },
+          { "text": "Complicated — I appreciate it but don't always listen to it", "type": "B" },
+          { "text": "Like a partnership I'm actively working to strengthen", "type": "C" },
+          { "text": "Sacred — my body has done extraordinary things and deserves reverence", "type": "D" }
+        ]
+      },
+      {
+        "question": "When it comes to asking for help, you...",
+        "options": [
+          { "text": "Rarely do — it's faster to handle it yourself", "type": "A" },
+          { "text": "Will ask when you're truly stuck, but not before", "type": "B" },
+          { "text": "Are learning to ask proactively, even when you don't 'need' to", "type": "C" },
+          { "text": "See receiving help as a form of self-love, not weakness", "type": "D" }
+        ]
+      },
+      {
+        "question": "The leadership lesson motherhood has taught you most is...",
+        "options": [
+          { "text": "How to be incredibly efficient with limited resources", "type": "A" },
+          { "text": "How to stay calm when plans fall apart", "type": "B" },
+          { "text": "How to lead yourself before you lead anyone else", "type": "C" },
+          { "text": "How to surrender control and trust the process", "type": "D" }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "type": "A",
+        "title": "The Powerhouse",
+        "description": "You lead with strength, discipline, and relentless energy. You're the mom who gets it ALL done — but Dr. Laura Brayton's message about nervous system regulation is especially for you. Your body is keeping score even when your mind says 'I'm fine.' This episode is your permission slip to slow down without guilt."
+      },
+      {
+        "type": "B",
+        "title": "The Steady Navigator",
+        "description": "You're adaptable, practical, and resilient. You roll with the punches better than most — but you might be absorbing more stress than you realize. Dr. Brayton's insights on holistic wellness can help you move from 'managing' to truly thriving. You don't just deserve to cope — you deserve to flourish."
+      },
+      {
+        "type": "C",
+        "title": "The Conscious Leader",
+        "description": "You're already doing the inner work, and it shows. You lead with self-awareness and emotional intelligence — two of the most powerful leadership tools that exist. This episode will deepen your practice and validate what you already know: taking care of yourself IS taking care of everyone around you."
+      },
+      {
+        "type": "D",
+        "title": "The Intuitive Mother",
+        "description": "You trust your instincts, honor your body, and lead from a place of deep knowing. You embody the holistic approach Dr. Brayton describes. Your growth edge? Helping other women see that your way isn't 'soft' — it's actually the most sustainable form of leadership there is."
+      }
+    ]
+  }
 }
