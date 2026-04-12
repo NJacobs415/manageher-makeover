@@ -627,10 +627,9 @@ const BlogPost = () => {
                     <div
                       className="p-7"
                       style={{
-                        background:
-                          "linear-gradient(135deg, rgba(235,24,135,0.14), rgba(201,169,110,0.08))",
+                        background: "#111",
                         borderRadius: "24px",
-                        border: "1px solid rgba(235,24,135,0.18)",
+                        border: "1px solid rgba(255,255,255,0.05)",
                       }}
                     >
                       <h3 className="font-serif text-lg font-bold text-white mb-3">
