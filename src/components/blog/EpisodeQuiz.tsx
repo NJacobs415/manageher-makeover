@@ -186,7 +186,9 @@ const EpisodeQuiz = ({
           quizTitle: quiz.title,
           resultType: result?.type || "",
           resultName: result?.title || "",
+          resultDescription: result?.description || "",
           slug,
+          episodeUrl: `https://themanageher.com/blog/${slug}`,
           timestamp: new Date().toISOString(),
         }),
       });
