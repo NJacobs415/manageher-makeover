@@ -30,7 +30,7 @@ interface EpisodeQuizProps {
   resourceUrl?: string;
 }
 
-const QUIZ_WEBHOOK = "https://services.leadconnectorhq.com/hooks/JzYUXEAehZEve2vuOdqM/webhook-trigger/d42875dc-5179-40dd-a360-c11705045e4c";
+const QUIZ_WEBHOOK = "https://services.leadconnectorhq.com/hooks/JzYUXEAehZEve2vuOdqM/webhook-trigger/f2de3459-6c4f-4b40-b9d5-c9f5843c38ec";
 
 // Tiny sparkle burst
 const Sparkles = () => {
