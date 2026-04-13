@@ -30,7 +30,7 @@ interface EpisodeQuizProps {
   resourceUrl?: string;
 }
 
-const QUIZ_WEBHOOK = "https://tmh.themanageher.com/webhook/quiz-result";
+const QUIZ_WEBHOOK = "https://services.leadconnectorhq.com/hooks/JzYUXEAehZEve2vuOdqM/webhook-trigger/d42875dc-5179-40dd-a360-c11705045e4c";
 
 // Tiny sparkle burst
 const Sparkles = () => {
