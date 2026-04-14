@@ -59,6 +59,7 @@ const NotFound = () => {
       <SEO
         title="Page Not Found | The Manage Her®"
         description="The page you're looking for has wandered off. Explore our podcast, book, and blog instead."
+        noindex
       />
       <style>{particleCss}</style>
       <Navbar />

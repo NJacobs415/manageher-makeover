@@ -13,6 +13,7 @@ interface SEOProps {
   url?: string;
   type?: string;
   jsonLd?: Record<string, unknown>;
+  noindex?: boolean;
 }
 
 const SITE_URL = "https://themanageher.com";
@@ -25,11 +26,13 @@ const SEO = ({
   url = SITE_URL,
   type = "website",
   jsonLd,
+  noindex = false,
 }: SEOProps) => (
   <Helmet>
     {/* Primary meta */}
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={url} />
 
     {/* Open Graph */}

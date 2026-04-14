@@ -60,6 +60,26 @@ const About = () => {
         title="About Aimee Rickabus | The Manage Her®"
         description="CEO of a nine-figure tech company, bestselling author, podcast host, and mother of six."
         url="https://themanageher.com/about"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Aimee Rickabus",
+          jobTitle: "CEO & Founder",
+          worksFor: {
+            "@type": "Organization",
+            name: "The Manage Her",
+          },
+          url: "https://themanageher.com/about",
+          image: "https://themanageher.com/aimee-portrait-1.jpg",
+          sameAs: [
+            "https://www.instagram.com/themanageher/",
+            "https://www.youtube.com/@TheManageHer",
+            "https://www.tiktok.com/@themanageher",
+            "https://www.linkedin.com/company/themanageher",
+          ],
+          description:
+            "CEO of a nine-figure technology company, bestselling author, podcast host, and mother of six. Founder of The Manage Her — a leadership movement redefining how women lead.",
+        }}
       />
       <Navbar />
 

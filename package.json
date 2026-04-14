@@ -11,6 +11,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
+    "predeploy": "node scripts/generate-sitemap.mjs",
     "deploy": "npm run build && wrangler pages deploy dist --project-name=themanageher --branch=main",
     "deploy:preview": "npm run build && wrangler pages deploy dist --project-name=themanageher --branch=preview"
   },
@@ -53,6 +54,7 @@
     "input-otp": "^1.4.2",
     "lucide-react": "^0.462.0",
     "next-themes": "^0.3.0",
+    "pdfkit": "^0.18.0",
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",

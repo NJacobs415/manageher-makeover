@@ -193,6 +193,28 @@ const BlogPost = () => {
         image={post.thumbnail}
         url={`https://themanageher.com/blog/${post.slug}`}
         type="article"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: post.title,
+          image: post.thumbnail,
+          datePublished: post.publishedAt,
+          author: {
+            "@type": "Person",
+            name: "Aimee Rickabus",
+            url: "https://themanageher.com/about",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "The Manage Her",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://themanageher.com/M_Logo_Pink.png",
+            },
+          },
+          description: post.metaDescription || post.excerpt,
+          mainEntityOfPage: `https://themanageher.com/blog/${post.slug}`,
+        }}
       />
       {/* Prose styles for dangerouslySetInnerHTML content */}
       <style>{proseCss}</style>

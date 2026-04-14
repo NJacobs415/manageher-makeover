@@ -2,8 +2,8 @@
 // src/pages/Links.tsx
 // Mobile-first social link hub — no Navbar/Footer, standalone experience
 
-import { useEffect } from "react";
 import { useEpisodeCount } from "@/hooks/useEpisodeCount";
+import SEO from "@/components/SEO";
 import SPOTIFY_LOGO from "@/assets/logo-spotify.png";
 import APPLE_LOGO from "@/assets/logo-apple-podcasts.svg";
 import AMAZON_LOGO from "@/assets/logo-amazon-music.png";
@@ -18,10 +18,6 @@ const PODCAST_COVER =
 const Links = () => {
   const episodeCount = useEpisodeCount();
 
-  useEffect(() => {
-    document.title = "Links | The Manage Her®";
-  }, []);
-
   return (
     <div
       className="min-h-screen flex flex-col items-center"
@@ -30,6 +26,11 @@ const Links = () => {
         fontFamily: "'DM Sans', -apple-system, sans-serif",
       }}
     >
+      <SEO
+        title="Links | The Manage Her®"
+        description="All the links for The Manage Her® — podcast, book, social media, and more."
+        url="https://themanageher.com/links"
+      />
       <style>{`
         @keyframes tmhPulse {
           0%, 100% { box-shadow: 0 0 0 0 rgba(235,24,135,0.3); }
