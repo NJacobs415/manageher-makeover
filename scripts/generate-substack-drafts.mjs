@@ -86,6 +86,8 @@ function buildHtml(post, copy) {
 <!-- SUBSTACK TITLE: ${post.title} -->
 <!-- SUBSTACK SUBTITLE: Episode ${post.episodeNumber} | ${guestLine} -->
 
+<img src="${post.thumbnail}" alt="${post.title.replace(/"/g, '&quot;')}" style="width:100%;border-radius:8px;" />
+
 <p><strong>${copy.hook}</strong></p>
 
 <p>Hey friend,</p>
