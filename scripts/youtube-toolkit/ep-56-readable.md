@@ -65,9 +65,9 @@ Discover why prioritizing yourself as a mother isn't just okay—it's mandatory 
 💼 LinkedIn: https://www.linkedin.com/in/drlaurabrayton/
 🏥 Practice: https://hobokenchiro.com/
 
-📺 SUBSCRIBE: https://www.youtube.com/@TheManageHerPodcast
-🎧 LISTEN ON APPLE: https://podcasts.apple.com/us/podcast/the-manage-her-podcast/id1420610771
-🎧 LISTEN ON SPOTIFY: https://open.spotify.com/show/4NPYRZZjEzqxqZyUdFzwYr
+📺 SUBSCRIBE: https://www.www.youtube.com/@TheManageHer
+🎧 LISTEN ON APPLE: https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475
+🎧 LISTEN ON SPOTIFY: https://open.spotify.com/show/03FuFRyzkaWhZkk5yxFePJ
 
 📖 FULL SHOW NOTES: https://themanageher.com/blog/holistic-motherhood-pregnancy-self-care-nervous-system-health-with-dr-laura-brayton
 📊 TAKE THE QUIZ: https://themanageher.com/blog/holistic-motherhood-pregnancy-self-care-nervous-system-health-with-dr-laura-brayton

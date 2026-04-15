@@ -60,7 +60,7 @@ Amy Bohn's story proves that personal recovery can fuel extraordinary advocacy f
 🔗 Learn more about PERK: https://www.perkadvocacy.com/
 📚 Get your copy of The Manage Her: https://a.co/d/ej9A37z
 
-🎯 SUBSCRIBE to The Manage Her Podcast: https://www.youtube.com/@TheManageHer
+🎯 SUBSCRIBE to The Manage Her Podcast: https://www.www.youtube.com/@TheManageHer
 📱 Follow on Instagram: https://instagram.com/themanageher
 💼 LinkedIn: https://linkedin.com/company/themanageher
 

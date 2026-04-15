@@ -62,7 +62,7 @@ Discover the NESTS Framework and how to apply strategic leadership thinking to o
 
 📊 TAKE THE QUIZ: https://themanageher.com/blog/reset-your-mitochondria-for-energy-longevity-health
 
-🎧 Subscribe to The Manage Her® Podcast: https://podcasts.apple.com/us/podcast/the-manage-her-podcast/id1234567890
+🎧 Subscribe to The Manage Her® Podcast: https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475
 
 💼 Follow The Manage Her®:
 • Website: https://themanageher.com

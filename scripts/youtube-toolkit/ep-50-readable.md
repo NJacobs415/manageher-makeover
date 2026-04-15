@@ -66,8 +66,8 @@ Discover how to turn networking into friendship building and why choosing impact
 💼 LinkedIn: https://www.linkedin.com/in/macgregorscott/
 
 📈 SUBSCRIBE: https://www.youtube.com/@themanageher
-🎧 LISTEN ON APPLE: https://podcasts.apple.com/podcast/the-manage-her/id1669826076
-🎧 LISTEN ON SPOTIFY: https://open.spotify.com/show/4fqUygHjADYbBVF6LgAzOK
+🎧 LISTEN ON APPLE: https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475
+🎧 LISTEN ON SPOTIFY: https://open.spotify.com/show/03FuFRyzkaWhZkk5yxFePJ
 
 📝 FULL SHOW NOTES: https://themanageher.com/blog/intentional-relationship-building-scott-macgregor-on-why-human-connection-beats-everything
 📊 TAKE THE QUIZ: https://themanageher.com/blog/intentional-relationship-building-scott-macgregor-on-why-human-connection-beats-everything

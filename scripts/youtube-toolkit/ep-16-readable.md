@@ -60,7 +60,7 @@ She's breaking down why movement is actually emotional leadership and how being 
 📚 CONNECT WITH GUEST:
 📕 Order The Manage Her (on Amazon): https://a.co/d/ej9A37z
 
-🔔 SUBSCRIBE for weekly leadership insights: https://www.youtube.com/@TheManageHer
+🔔 SUBSCRIBE for weekly leadership insights: https://www.www.youtube.com/@TheManageHer
 📖 READ FULL SHOW NOTES: https://themanageher.com/blog/paige-johnson-on-pilates-partnership-finding-her-mantra-through-motherhood
 📊 TAKE THE QUIZ: https://themanageher.com/blog/paige-johnson-on-pilates-partnership-finding-her-mantra-through-motherhood
 

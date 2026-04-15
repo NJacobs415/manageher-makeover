@@ -62,8 +62,8 @@ Website: https://www.nadalena.com
 Website: https://www.riseupforyou.com
 
 📺 SUBSCRIBE: https://www.youtube.com/@themanageher
-🎧 LISTEN ON APPLE: https://podcasts.apple.com/podcast/the-manage-her/id1672081572
-🎧 LISTEN ON SPOTIFY: https://open.spotify.com/show/3UqPih7dHEi4XccWJWGRmY
+🎧 LISTEN ON APPLE: https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475
+🎧 LISTEN ON SPOTIFY: https://open.spotify.com/show/03FuFRyzkaWhZkk5yxFePJ
 📖 FULL SHOW NOTES: https://themanageher.com/blog/nada-nasserdeen-on-confidence-leadership-rising-up-without-permission
 📊 TAKE THE QUIZ: https://themanageher.com/blog/nada-nasserdeen-on-confidence-leadership-rising-up-without-permission
 

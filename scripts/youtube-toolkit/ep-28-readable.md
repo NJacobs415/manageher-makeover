@@ -62,7 +62,7 @@ Bart Morse breaks down what masculine leadership REALLY means in modern marriage
 
 📖 FULL SHOW NOTES: https://themanageher.com/blog/marriage-masculinity-mental-load-a-conversation-with-bart-morse
 
-🔔 SUBSCRIBE: https://www.youtube.com/@TheManageHer
+🔔 SUBSCRIBE: https://www.www.youtube.com/@TheManageHer
 
 #MarriageAdvice #MentalLoad #MasculineLeadership #ModernMarriage #RelationshipGoals #WomensLeadership #EmotionalLabor #Partnership #WorkingMoms #MarriageGoals
 

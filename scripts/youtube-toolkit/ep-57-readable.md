@@ -62,7 +62,7 @@ YouTube: https://www.youtube.com/@drdremata
 LinkedIn: https://www.linkedin.com/in/andrea-mata-ph-d-278765225/
 Book: https://a.co/d/01cSFY1k
 
-📺 SUBSCRIBE: https://www.youtube.com/@TheManageHer
+📺 SUBSCRIBE: https://www.www.youtube.com/@TheManageHer
 📊 TAKE THE QUIZ: https://themanageher.com/blog/gentle-parenting-vs-authoritative-parenting-what-actually-works
 📖 FULL SHOW NOTES: https://themanageher.com/blog/gentle-parenting-vs-authoritative-parenting-what-actually-works
 

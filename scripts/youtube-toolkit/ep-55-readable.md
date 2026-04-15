@@ -69,7 +69,7 @@ Kristina Campos reveals why your home is actually a leadership academy and how t
 
 📊 TAKE THE QUIZ: https://themanageher.com/blog/she-lost-herself-in-motherhood-then-built-an-empire-from-her-closet-floor
 
-🔔 SUBSCRIBE for weekly leadership insights: https://www.youtube.com/@TheManageHer
+🔔 SUBSCRIBE for weekly leadership insights: https://www.www.youtube.com/@TheManageHer
 
 #ParentingIsLeadership #WomenInLeadership #MomBoss #ParentingTips #WorkingMoms #Leadership #MotherhoodJourney #WomenEmpowerment #MomLife #PersonalGrowth
 

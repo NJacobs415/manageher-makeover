@@ -61,7 +61,7 @@ Discover her blueprint for running multiple ventures while homeschooling and cre
 🔗 Learn more about Guiding Our Days: https://guidingourdays.com
 📚 Grab your copy of The Manage Her: https://a.co/d/ej9A37z
 
-📺 SUBSCRIBE: https://www.youtube.com/@TheManageHer
+📺 SUBSCRIBE: https://www.www.youtube.com/@TheManageHer
 🎧 LISTEN ON PODCAST: https://themanageher.com/podcast
 📖 FULL SHOW NOTES: https://themanageher.com/blog/heather-gerber-on-community-education-leading-with-heart
 📊 TAKE THE QUIZ: https://themanageher.com/blog/heather-gerber-on-community-education-leading-with-heart

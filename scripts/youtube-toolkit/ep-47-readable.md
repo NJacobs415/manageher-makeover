@@ -59,7 +59,7 @@ Discover why women need a completely different approach to writing—and how 'bo
 🔗 Dr. Shana Hartman: https://shanahartman.com/
 🔗 Dr. Cindy Urbanski: https://linktr.ee/cindy_d_urbanski
 
-📈 SUBSCRIBE: https://www.youtube.com/@TheManageHer for weekly leadership insights
+📈 SUBSCRIBE: https://www.www.youtube.com/@TheManageHer for weekly leadership insights
 📊 TAKE THE QUIZ: https://themanageher.com/blog/the-book-midwives-who-birthed-my-book-and-changed-how-women-write
 📝 FULL SHOW NOTES: https://themanageher.com/blog/the-book-midwives-who-birthed-my-book-and-changed-how-women-write
 

@@ -52,7 +52,7 @@ Her story will inspire you to lead where you are and fight for what matters.
 📚 Grab your copy of The Manage Her: https://a.co/d/ej9A37z
 
 🎧 SUBSCRIBE TO THE PODCAST:
-• Apple Podcasts: https://podcasts.apple.com/us/podcast/the-manage-her-podcast/id1234567890
+• Apple Podcasts: https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475
 • Spotify: https://open.spotify.com/show/themanageher
 
 📝 FULL SHOW NOTES: https://themanageher.com/blog/from-injury-to-advocacy-with-eden-marie-james-a-mom-s-mission-for-truth-health-and-change

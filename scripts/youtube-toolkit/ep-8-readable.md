@@ -57,7 +57,7 @@ In this solo episode, discover how your invisible work is actually powerful lead
 
 📚 **Buy *The Manage Her* on Amazon:** https://a.co/d/6R7eKiC
 
-🎙️ Subscribe to The Manage Her Podcast for weekly leadership insights: https://www.youtube.com/@TheManageHer
+🎙️ Subscribe to The Manage Her Podcast for weekly leadership insights: https://www.www.youtube.com/@TheManageHer
 
 📖 FULL SHOW NOTES: https://themanageher.com/blog/from-breakdown-to-breakthrough-the-real-story-behind-my-leadership-journey
 📊 TAKE THE QUIZ: https://themanageher.com/blog/from-breakdown-to-breakthrough-the-real-story-behind-my-leadership-journey

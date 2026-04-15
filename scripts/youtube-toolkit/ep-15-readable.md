@@ -65,7 +65,7 @@ From invisible labor to intentional leadership—this conversation will transfor
 
 🎯 SUBSCRIBE TO THE MANAGE HER PODCAST:
 • YouTube: https://www.youtube.com/c/TheManageHer
-• Apple Podcasts: https://podcasts.apple.com/us/podcast/the-manage-her/id1234567890
+• Apple Podcasts: https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475
 • Spotify: https://open.spotify.com/show/themanageher
 
 📖 FULL SHOW NOTES: https://themanageher.com/blog/lindsay-buwalda-on-reinvention-resilience-creating-bliss-after-divorce

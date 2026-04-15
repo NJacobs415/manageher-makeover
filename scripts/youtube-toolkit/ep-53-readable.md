@@ -63,7 +63,7 @@ Kristina Irwin's journey from frustrated parent to political candidate proves th
 💼 LinkedIn: https://www.linkedin.com/in/kristinairwin
 💝 Donate: https://www.efundraisingconnections.com/c/KristinaIrwinforStateSenate2026
 
-📺 SUBSCRIBE: https://www.youtube.com/@TheManageHer for weekly leadership insights for ambitious women
+📺 SUBSCRIBE: https://www.www.youtube.com/@TheManageHer for weekly leadership insights for ambitious women
 🎧 LISTEN: Search "The Manage Her Podcast" on any podcast platform
 📖 FULL SHOW NOTES: https://themanageher.com/blog/option-a-this-mom-saw-what-schools-were-teaching-her-kids-now-she-s-running-for-office
 📊 TAKE THE QUIZ: https://themanageher.com/blog/option-a-this-mom-saw-what-schools-were-teaching-her-kids-now-she-s-running-for-office

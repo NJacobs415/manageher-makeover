@@ -65,7 +65,7 @@ Dave Lundgren reveals how Love and Oneness became the foundation for building bi
 📊 TAKE THE QUIZ: https://themanageher.com/blog/dave-lundgren-loveness-ai-wealth-through-conscious-leadership
 
 🎧 SUBSCRIBE TO THE MANAGE HER® PODCAST:
-Apple: https://podcasts.apple.com/us/podcast/the-manage-her-podcast/id1234567890
+Apple: https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475
 Spotify: https://open.spotify.com/show/abcdefg
 
 #WomenLeadership #BusinessSuccess #Entrepreneurship #Leadership #WomenInBusiness #PersonalGrowth #RealEstate #AI #WealthBuilding #TheManagerPodcast

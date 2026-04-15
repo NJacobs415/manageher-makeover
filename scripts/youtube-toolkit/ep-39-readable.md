@@ -62,8 +62,8 @@ In this candid conversation, we're diving deep into why pleasure isn't selfish�
 📊 TAKE THE QUIZ: https://themanageher.com/blog/sexologist-dr-holly-wood-pleasure-is-self-care
 
 🎧 SUBSCRIBE TO THE MANAGE HER® PODCAST:
-Apple: https://podcasts.apple.com/us/podcast/the-manage-her-podcast/id1517350055
-Spotify: https://open.spotify.com/show/2Qw6gwvDEjqGKDd8YHvQdZ
+Apple: https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475
+Spotify: https://open.spotify.com/show/03FuFRyzkaWhZkk5yxFePJ
 
 #pleasure #selfcare #motherhood #relationships #sexuality #womenempowerment #leadership #communication #boundaries #wellness
 

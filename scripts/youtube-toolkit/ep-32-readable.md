@@ -61,7 +61,7 @@ Discover why your parenting experience contains the exact skills needed to excel
 
 📊 TAKE THE QUIZ: https://themanageher.com/blog/executive-coaching-motherhood-amanda-jaggard-on-culture-commitments-and-raising-leaders
 
-🎧 SUBSCRIBE to The Manage Her® Podcast for weekly leadership insights: https://www.youtube.com/@TheManageHer
+🎧 SUBSCRIBE to The Manage Her® Podcast for weekly leadership insights: https://www.www.youtube.com/@TheManageHer
 
 #ExecutiveCoaching #WomenLeaders #Homeschooling #ParentingTips #LeadershipSkills #MomEntrepreneur #BusinessLeadership #FamilyCulture #RaisingLeaders #WomenInBusiness
 

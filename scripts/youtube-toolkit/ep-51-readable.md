@@ -65,7 +65,7 @@ Dr. Danielle Dowling reveals why naming this labor isn't betrayal—it's dignity
 📊 TAKE THE QUIZ: https://themanageher.com/blog/the-10-trillion-job-you-re-doing-for-free
 
 🔔 SUBSCRIBE for weekly leadership insights: https://www.youtube.com/@themanageher
-🎧 LISTEN on Apple Podcasts: https://podcasts.apple.com/us/podcast/the-manage-her-podcast/id1234567890
+🎧 LISTEN on Apple Podcasts: https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475
 🎵 LISTEN on Spotify: https://open.spotify.com/show/1234567890
 
 #motherhood #womenleadership #unpaidlabor #selfworth #boundaries #maternalload #workingmom #leadership #feminism #empowerment

@@ -59,7 +59,7 @@ Discover how Denielle and Thyme turned an invisible problem into the UNICORN sol
 📝 FULL SHOW NOTES: https://themanageher.com/blog/redesigning-dignity-how-unicorn-is-transforming-restroom-equity
 📊 TAKE THE QUIZ: https://themanageher.com/blog/redesigning-dignity-how-unicorn-is-transforming-restroom-equity
 
-🔔 SUBSCRIBE for weekly leadership insights: https://www.youtube.com/@TheManageHer
+🔔 SUBSCRIBE for weekly leadership insights: https://www.www.youtube.com/@TheManageHer
 🎧 LISTEN on all podcast platforms: https://themanageher.com/podcast
 
 #leadership #womenleaders #entrepreneurship #restromequity #unicornstory #businessgrowth #missiondriven #femaleentrepreneurs #innovation #businessscaling

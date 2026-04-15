@@ -60,7 +60,7 @@ Discover the unseen hustle behind women's achievements and how to break barriers
 📖 FULL SHOW NOTES: https://themanageher.com/blog/kelly-abney-on-grit-growth-the-unseen-hustle-of-women-in-fitness
 📊 TAKE THE QUIZ: https://themanageher.com/blog/kelly-abney-on-grit-growth-the-unseen-hustle-of-women-in-fitness
 
-🔔 SUBSCRIBE for weekly women's leadership insights: https://www.youtube.com/@TheManageHer
+🔔 SUBSCRIBE for weekly women's leadership insights: https://www.www.youtube.com/@TheManageHer
 📧 JOIN our leadership community: https://themanageher.com
 🎧 LISTEN on your favorite podcast platform: https://themanageher.com/podcast
 

@@ -62,8 +62,8 @@ Website: https://heartbeatforhire.com
 📊 TAKE THE QUIZ: https://themanageher.com/blog/reinvent-yourself-at-any-age-leadership-culture-community-with-lyndsay-dowd
 
 🎧 SUBSCRIBE TO THE MANAGE HER PODCAST:
-Apple Podcasts: https://podcasts.apple.com/us/podcast/the-manage-her-podcast/id1626586856
-Spotify: https://open.spotify.com/show/4C6nIwJwAR6ZCDHcE7K4iN
+Apple Podcasts: https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475
+Spotify: https://open.spotify.com/show/03FuFRyzkaWhZkk5yxFePJ
 
 #CareerReinvention #WomenInLeadership #Entrepreneurship #CareerSecurity #PersonalBranding #Leadership #ProfessionalGrowth #TheManageHer #CareerChange #WomenEntrepreneurs
 

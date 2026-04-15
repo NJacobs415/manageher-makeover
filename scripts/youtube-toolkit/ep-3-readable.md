@@ -60,7 +60,7 @@ Discover practical strategies that work in boardrooms and living rooms alike.
 📖 FULL SHOW NOTES: https://themanageher.com/blog/vanessa-morgan-on-emotional-wellness-boundaries-building-stronger-relationships
 📊 TAKE THE QUIZ: https://themanageher.com/blog/vanessa-morgan-on-emotional-wellness-boundaries-building-stronger-relationships
 
-🔔 Subscribe for weekly leadership insights: https://www.youtube.com/@TheManageHer
+🔔 Subscribe for weekly leadership insights: https://www.www.youtube.com/@TheManageHer
 🎧 Listen on all podcast platforms: https://themanageher.com
 
 #WomensLeadership #EmotionalWellness #HealthyBoundaries #TheManageHerPodcast #LeadershipDevelopment #ConflictResolution #CommunicationSkills #EmotionalIntelligence #AuthenticLeadership #PersonalGrowth
