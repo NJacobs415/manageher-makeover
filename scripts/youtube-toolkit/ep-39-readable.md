@@ -1,0 +1,100 @@
+# Episode 39: Dr. Holly Wood: Why Pleasure Is Self-Care for Moms, Not Selfishness
+
+_Guest: Dr. Holly Wood · [YouTube](https://www.youtube.com/watch?v=b2EqUll-ers) · [Blog](https://themanageher.com/blog/sexologist-dr-holly-wood-pleasure-is-self-care)_
+
+## 🎬 Shorts Ideas
+
+### Short 1: Pleasure isn't selfish
+**Title:** Why pleasure is actually self-care for busy moms
+**Content to clip:** Pleasure isn't selfish. It's self-care. As women, especially as mothers, we've been conditioned to believe that prioritizing our own pleasure and desires is somehow wrong or selfish. But that's not true. Your pleasure matters. Your desires matter. And making time for what brings you joy isn't taking away from anyone else - it's filling your own cup so you can show up better for everyone in your life.
+**Hashtags:** #selfcare #motherhood #pleasure #womenempowerment #momlife #boundaries #leadership #wellness
+**CTA:** Subscribe for more leadership insights
+
+### Short 2: Your body changes after motherhood
+**Title:** How motherhood changes your relationship with desire
+**Content to clip:** Motherhood changes your relationship with your body and your desire - and that's completely normal. We need to stop expecting our bodies to be the same after we've literally created life. Accept the evolution. Embrace the changes. Your sexuality doesn't disappear after becoming a mother, it just transforms. And that transformation is beautiful and worthy of exploration.
+**Hashtags:** #motherhood #bodypositive #postpartum #sexuality #selfacceptance #momstruggles #womenhealth #mindset
+**CTA:** Subscribe for more leadership insights
+
+### Short 3: Women's desire works differently
+**Title:** The truth about how women's desire actually works
+**Content to clip:** Understanding that women's desire works differently than men's can help normalize your experience and reduce shame. We don't have to match anyone else's timeline or experience. Your desire is valid exactly as it is. Stop comparing yourself to unrealistic standards and start honoring your own unique needs and rhythms.
+**Hashtags:** #sexuality #womenhealth #desire #relationships #communication #selfawareness #empowerment #wellness
+**CTA:** Subscribe for more leadership insights
+
+### Short 4: You deserve the sex you want
+**Title:** Permission to want pleasure at any life stage
+**Content to clip:** You have the right to pursue the sex and pleasure you desire, regardless of your life stage or circumstances. It doesn't matter if you're a busy mom, in your 40s, or going through life transitions. Your pleasure matters at every stage of life. Don't let anyone tell you otherwise. You deserve to feel good in your own body and relationship.
+**Hashtags:** #pleasure #empowerment #selfworth #relationships #boundaries #womenover40 #sexualhealth #confidence
+**CTA:** Subscribe for more leadership insights
+
+## 📝 Title A/B Test Options
+
+- **Curiosity gap:** What Happens When Moms Stop Feeling Guilty About Pleasure
+- **Bold statement:** Sexologist: Pleasure Is Self-Care, Not Selfishness for Moms
+- **Number-based:** 7 Ways Motherhood Changes Your Sexuality (And Why That's OK)
+
+## 📋 Optimized Description
+
+Think pursuing pleasure makes you selfish? Think again. Sexologist Dr. Holly Wood is here to flip that script entirely.
+
+In this candid conversation, we're diving deep into why pleasure isn't selfish—it's essential self-care that every woman deserves to prioritize.
+
+⏰ TIMESTAMPS:
+0:00 - Why pleasure guilt is hurting women
+5:30 - How motherhood changes your sexuality
+12:45 - Communication strategies for couples
+18:20 - Breaking free from sexual shame
+25:10 - Creating safe spaces for intimacy
+
+✨ KEY TAKEAWAYS:
+• Pleasure is vital self-care, not selfishness
+• Motherhood naturally evolves your relationship with desire
+• Open communication is essential for maintaining intimacy
+• Women's desire works differently—and that's normal
+• You deserve pleasure at every life stage
+
+🔗 CONNECT WITH DR. HOLLY WOOD:
+📸 Instagram: https://www.instagram.com/drhollywoodphd/
+🌐 Website: https://www.thehollywoodsexologist.com/
+
+📖 FULL SHOW NOTES: https://themanageher.com/blog/sexologist-dr-holly-wood-pleasure-is-self-care
+📊 TAKE THE QUIZ: https://themanageher.com/blog/sexologist-dr-holly-wood-pleasure-is-self-care
+
+🎧 SUBSCRIBE TO THE MANAGE HER® PODCAST:
+Apple: https://podcasts.apple.com/us/podcast/the-manage-her-podcast/id1517350055
+Spotify: https://open.spotify.com/show/2Qw6gwvDEjqGKDd8YHvQdZ
+
+#pleasure #selfcare #motherhood #relationships #sexuality #womenempowerment #leadership #communication #boundaries #wellness
+
+## 💬 Community Tab Posts
+
+### Community Post 1 (poll)
+Let's talk about something we don't discuss enough: pleasure and self-care. 💭
+
+I just had the most eye-opening conversation with sexologist Dr. Holly Wood about why so many of us feel guilty for prioritizing our own pleasure and desires.
+
+Here's what I'm curious about:
+
+POLL: What's your biggest barrier to prioritizing pleasure/self-care?
+A) Feeling guilty or selfish
+B) Not having enough time
+C) Partner doesn't understand my needs
+D) Don't know where to start
+
+Your answers help me create content that actually serves you. Drop a comment and let me know what resonates! 👇
+
+### Community Post 2 (quote)
+"Pleasure isn't selfish. It's self-care." - Dr. Holly Wood 💎
+
+This quote from my latest podcast episode hit me right in the heart. How many of us have been conditioned to believe that prioritizing our own pleasure and desires is somehow wrong?
+
+As leaders, as mothers, as women juggling it all—we give so much of ourselves to everyone else. But here's the truth: Your pleasure matters. Your desires matter. Making time for what brings you joy isn't taking away from anyone else.
+
+It's filling your own cup so you can show up better for everyone in your life.
+
+What would change in your life if you truly believed pleasure was self-care, not selfishness? 🤔
+
+## 📌 Pinned Comment
+
+What resonated most with you from this conversation? 💭 And if you want to dive deeper into this topic, check out the full show notes and take our quiz here: https://themanageher.com/blog/sexologist-dr-holly-wood-pleasure-is-self-care

@@ -5,7 +5,6 @@ const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const BLOG_DIR = path.join(process.cwd(), 'public/blog');
 const OUTPUT_DIR = path.join(process.cwd(), 'scripts/youtube-toolkit');
 const MODEL = 'claude-sonnet-4-20250514';
-const EPISODES = [57, 56];
 const DELAY_MS = 3000;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -143,16 +142,33 @@ async function main() {
   if (!fs.existsSync(OUTPUT_DIR)) fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
   const index = JSON.parse(fs.readFileSync(path.join(BLOG_DIR, 'posts.json'), 'utf-8')).posts || [];
+  // Descending so newest runs first (most valuable for testing output)
+  const episodes = [...index].sort((a, b) => (b.episodeNumber || 0) - (a.episodeNumber || 0));
 
-  for (const ep of EPISODES) {
-    const meta = index.find((p) => p.episodeNumber === ep);
-    if (!meta) {
-      console.error(`❌ No post found for Ep ${ep}`);
+  let done = 0;
+  let skipped = 0;
+  let failed = 0;
+  for (let i = 0; i < episodes.length; i++) {
+    const meta = episodes[i];
+    const ep = meta.episodeNumber;
+    const jsonPath = path.join(OUTPUT_DIR, `ep-${ep}.json`);
+    const mdPath = path.join(OUTPUT_DIR, `ep-${ep}-readable.md`);
+
+    if (fs.existsSync(jsonPath) && fs.existsSync(mdPath)) {
+      skipped++;
+      console.log(`[${i + 1}/${episodes.length}] Ep ${ep}: ⏭️  already exists, skipping`);
       continue;
     }
-    const post = JSON.parse(fs.readFileSync(path.join(BLOG_DIR, `${meta.slug}.json`), 'utf-8'));
 
-    console.log(`Ep ${ep}: ${post.title.slice(0, 70)}…`);
+    const postFile = path.join(BLOG_DIR, `${meta.slug}.json`);
+    if (!fs.existsSync(postFile)) {
+      console.error(`[${i + 1}/${episodes.length}] Ep ${ep}: ❌ no post JSON at ${postFile}`);
+      failed++;
+      continue;
+    }
+    const post = JSON.parse(fs.readFileSync(postFile, 'utf-8'));
+
+    console.log(`[${i + 1}/${episodes.length}] Ep ${ep}: ${post.title.slice(0, 70)}…`);
     let kit;
     for (let attempt = 1; attempt <= 3 && !kit; attempt++) {
       try {
@@ -164,19 +180,19 @@ async function main() {
     }
     if (!kit) {
       console.error(`  ❌ giving up on Ep ${ep}`);
+      failed++;
       continue;
     }
 
-    const jsonPath = path.join(OUTPUT_DIR, `ep-${ep}.json`);
-    const mdPath = path.join(OUTPUT_DIR, `ep-${ep}-readable.md`);
     fs.writeFileSync(jsonPath, JSON.stringify(kit, null, 2));
     fs.writeFileSync(mdPath, buildMarkdown(post, kit));
-    console.log(`  ✅ wrote ${jsonPath} and ${mdPath}`);
+    done++;
+    console.log(`  ✅`);
 
-    if (ep !== EPISODES[EPISODES.length - 1]) await sleep(DELAY_MS);
+    if (i < episodes.length - 1) await sleep(DELAY_MS);
   }
 
-  console.log('\n🎉 Done');
+  console.log(`\n🎉 Done. Generated ${done}, skipped ${skipped}, failed ${failed}. Total episodes: ${episodes.length}`);
 }
 
 main();
