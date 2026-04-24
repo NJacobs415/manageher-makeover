@@ -18,7 +18,13 @@ export function trackEvent(eventName: string, params?: GtagEventParams): void {
   if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
     return;
   }
-  window.gtag('event', eventName, params);
+  try {
+    window.gtag('event', eventName, params);
+  } catch (err) {
+    if (typeof console !== 'undefined' && console.warn) {
+      console.warn('[analytics] trackEvent failed:', eventName, err);
+    }
+  }
 }
 
 // ─── Conversion events ─────────────────────────────────────────

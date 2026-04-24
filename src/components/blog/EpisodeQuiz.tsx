@@ -127,7 +127,11 @@ const EpisodeQuiz = ({
     setSelected(optionIdx);
 
     if (answers.length === 0) {
-      trackQuizStart(episodeNumber || 0, quiz.title);
+      try {
+        trackQuizStart(episodeNumber || 0, quiz.title);
+      } catch (err) {
+        console.warn('[analytics] quiz_start tracking failed:', err);
+      }
     }
 
     const newAnswers = [...answers, type];
@@ -198,7 +202,11 @@ const EpisodeQuiz = ({
         }),
       });
       if (webhookRes.ok) {
-        trackQuizComplete(episodeNumber || 0, quiz.title, result?.type || "");
+        try {
+          trackQuizComplete(episodeNumber || 0, quiz.title, result?.type || "");
+        } catch (err) {
+          console.warn('[analytics] quiz_complete tracking failed:', err);
+        }
       }
     } catch {
       // Don't block UX on webhook failure

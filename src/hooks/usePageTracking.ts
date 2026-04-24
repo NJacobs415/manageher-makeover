@@ -1,11 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-
-declare global {
-  interface Window {
-    gtag?: (command: string, targetId: string, config?: Record<string, unknown>) => void;
-  }
-}
+// Window.gtag type is declared in src/lib/analytics.ts
 
 export function usePageTracking() {
   const location = useLocation();

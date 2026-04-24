@@ -370,7 +370,11 @@ const BlogPost = () => {
                 <div
                   onClick={() => {
                     if (!episodePlayTracked.current && post) {
-                      trackEpisodePlay(post.episodeNumber, post.title);
+                      try {
+                        trackEpisodePlay(post.episodeNumber, post.title);
+                      } catch (err) {
+                        console.warn('[analytics] episode_play tracking failed:', err);
+                      }
                       episodePlayTracked.current = true;
                     }
                   }}
@@ -578,7 +582,7 @@ const BlogPost = () => {
                               href={link.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              onClick={() => trackGuestLinkClick(post.guestName, inferLinkType(link.url))}
+                              onClick={() => { try { trackGuestLinkClick(post.guestName, inferLinkType(link.url)); } catch {} }}
                               className="flex items-center gap-1.5 font-sans text-[12px] px-4 py-2 transition-all hover:-translate-y-0.5"
                               style={{
                                 background: "rgba(235,24,135,0.06)",
@@ -601,7 +605,7 @@ const BlogPost = () => {
                     className="mt-8 border-t border-white/5 pt-6"
                     onToggle={(e) => {
                       if ((e.target as HTMLDetailsElement).open) {
-                        trackTranscriptExpand(post.episodeNumber);
+                        try { trackTranscriptExpand(post.episodeNumber); } catch {}
                       }
                     }}
                   >
