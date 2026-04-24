@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { trackQuizStart, trackQuizComplete } from '@/lib/analytics';
 
 interface QuizOption {
   text: string;
@@ -125,6 +126,10 @@ const EpisodeQuiz = ({
     if (selected !== null) return;
     setSelected(optionIdx);
 
+    if (answers.length === 0) {
+      trackQuizStart(episodeNumber || 0, quiz.title);
+    }
+
     const newAnswers = [...answers, type];
     setAnswers(newAnswers);
 
@@ -176,7 +181,7 @@ const EpisodeQuiz = ({
     setSubmitting(true);
 
     try {
-      await fetch(QUIZ_WEBHOOK, {
+      const webhookRes = await fetch(QUIZ_WEBHOOK, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
@@ -192,6 +197,9 @@ const EpisodeQuiz = ({
           timestamp: new Date().toISOString(),
         }),
       });
+      if (webhookRes.ok) {
+        trackQuizComplete(episodeNumber || 0, quiz.title, result?.type || "");
+      }
     } catch {
       // Don't block UX on webhook failure
     }

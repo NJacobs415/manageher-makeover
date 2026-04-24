@@ -3,7 +3,7 @@
 // Reads individual episode JSON from public/blog/{slug}.json
 // Renders enhanced show notes with key takeaways, timestamps, quotes, and CTAs
 
-import { useState, useEffect, useMemo, Fragment } from "react";
+import { useState, useEffect, useMemo, useRef, Fragment } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -12,6 +12,7 @@ import FadeIn from "@/components/animations/FadeIn";
 import Magnetic from "@/components/animations/Magnetic";
 import SEO from "@/components/SEO";
 import EpisodeQuiz from "@/components/blog/EpisodeQuiz";
+import { trackTranscriptExpand, trackEpisodePlay, trackGuestLinkClick } from '@/lib/analytics';
 import {
   ArrowLeft,
   ArrowRight,
@@ -110,6 +111,16 @@ const getYouTubeId = (url: string): string => {
   return match ? match[1] : "";
 };
 
+function inferLinkType(url: string): string {
+  if (url.includes('instagram.com')) return 'instagram';
+  if (url.includes('linkedin.com')) return 'linkedin';
+  if (url.includes('twitter.com') || url.includes('x.com')) return 'twitter';
+  if (url.includes('youtube.com') || url.includes('youtu.be')) return 'youtube';
+  if (url.includes('tiktok.com')) return 'tiktok';
+  if (url.includes('facebook.com')) return 'facebook';
+  return 'website';
+}
+
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -117,6 +128,7 @@ const BlogPost = () => {
   const [loading, setLoading] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [copied, setCopied] = useState(false);
+  const episodePlayTracked = useRef(false);
 
   // Fetch the blog post JSON
   useEffect(() => {
@@ -356,6 +368,12 @@ const BlogPost = () => {
             <div className="max-w-[900px] mx-auto">
               {videoId ? (
                 <div
+                  onClick={() => {
+                    if (!episodePlayTracked.current && post) {
+                      trackEpisodePlay(post.episodeNumber, post.title);
+                      episodePlayTracked.current = true;
+                    }
+                  }}
                   style={{
                     aspectRatio: "16/9",
                     borderRadius: "20px",
@@ -560,6 +578,7 @@ const BlogPost = () => {
                               href={link.url}
                               target="_blank"
                               rel="noopener noreferrer"
+                              onClick={() => trackGuestLinkClick(post.guestName, inferLinkType(link.url))}
                               className="flex items-center gap-1.5 font-sans text-[12px] px-4 py-2 transition-all hover:-translate-y-0.5"
                               style={{
                                 background: "rgba(235,24,135,0.06)",
@@ -578,7 +597,14 @@ const BlogPost = () => {
                 )}
 
                 {post.transcript && (
-                  <details className="mt-8 border-t border-white/5 pt-6">
+                  <details
+                    className="mt-8 border-t border-white/5 pt-6"
+                    onToggle={(e) => {
+                      if ((e.target as HTMLDetailsElement).open) {
+                        trackTranscriptExpand(post.episodeNumber);
+                      }
+                    }}
+                  >
                     <summary className="font-sans text-[12px] font-semibold uppercase tracking-[0.15em] cursor-pointer hover:text-[#eb1887] transition-colors" style={{ color: "#c9a96e" }}>
                       📝 Full Episode Transcript (click to expand)
                     </summary>
