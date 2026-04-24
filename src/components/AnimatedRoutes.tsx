@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import PageTransition from "@/components/animations/PageTransition";
+import { usePageTracking } from "@/hooks/usePageTracking";
 import Index from "@/pages/Index";
 import About from "@/pages/About";
 import Podcast from "@/pages/Podcast";
@@ -14,6 +15,7 @@ import NotFound from "@/pages/NotFound";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
+  usePageTracking();
 
   return (
     <AnimatePresence mode="wait">
