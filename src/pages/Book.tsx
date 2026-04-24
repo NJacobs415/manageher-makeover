@@ -8,6 +8,7 @@ import { Star, ArrowRight, BookOpen, Headphones, Smartphone } from "lucide-react
 import { Link } from "react-router-dom";
 import bookCover from "@/assets/book-cover.png";
 import SEO from "@/components/SEO";
+import { trackBookClick } from "@/lib/analytics";
 
 const BOOK_COVER_CDN =
   "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png";
@@ -34,10 +35,11 @@ function useCountdown(targetDate: string) {
   return timeLeft;
 }
 
-const BuyButtons = () => (
+const BuyButtons = ({ location = "book_page" }: { location?: string }) => (
   <div className="flex flex-wrap gap-3 items-center">
     <Magnetic strength={0.2}>
       <a href="https://a.co/d/by5X0fV" target="_blank" rel="noopener noreferrer"
+        onClick={() => { try { trackBookClick(location); } catch {} }}
         className="btn-glow inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-8 py-4 transition-all"
         style={{ background: "linear-gradient(135deg, #c9a96e, #dfc08a)", color: "#0a0a0a", borderRadius: "50px", boxShadow: "0 4px 24px rgba(201,169,110,0.3)" }}>
         Order on Amazon
@@ -105,7 +107,7 @@ const Book = () => {
                   The invisible labor. The standard operating procedures you've been writing for your household since day one. The capital management, the people management, the crisis management — all the same skills Fortune 500 CEOs get paid millions for. Except when you do it at home, people's lives depend on it. And no one calls it leadership. Until now.
                 </p>
               </FadeIn>
-              <FadeIn delay={900} y={20}><BuyButtons /></FadeIn>
+              <FadeIn delay={900} y={20}><BuyButtons location="book_page_hero" /></FadeIn>
               <FadeIn delay={1100} y={20}>
                 <div className="flex items-center gap-6 mt-10 pt-8" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
                   <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={14} style={{ color: "#c9a96e", fill: "#c9a96e" }} />)}</div>
@@ -182,7 +184,7 @@ const Book = () => {
             <p className="font-serif text-2xl md:text-3xl text-foreground text-center mt-14 italic">
               If you're nodding right now — <em className="text-brand-pink not-italic font-bold">start reading</em>.
             </p>
-            <div className="flex justify-center mt-8"><BuyButtons /></div>
+            <div className="flex justify-center mt-8"><BuyButtons location="book_page_chapters" /></div>
           </FadeIn>
         </div>
       </section>
@@ -333,7 +335,7 @@ const Book = () => {
             ))}
           </div>
           <FadeIn delay={700} y={20}>
-            <div className="flex justify-center mt-12"><BuyButtons /></div>
+            <div className="flex justify-center mt-12"><BuyButtons location="book_page_reviews" /></div>
           </FadeIn>
         </div>
       </section>
