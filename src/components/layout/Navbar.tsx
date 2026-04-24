@@ -9,6 +9,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Instagram, Youtube, Linkedin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Magnetic from "@/components/animations/Magnetic";
+import { trackSocialClick } from "@/lib/analytics";
 
 const navLinks = [
   { label: "About", path: "/about" },
@@ -301,6 +302,7 @@ const Navbar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
+                onClick={() => { try { trackSocialClick(label.toLowerCase() as 'instagram'|'tiktok'|'linkedin'|'youtube', 'navbar'); } catch {} }}
                 className="flex items-center justify-center transition-all duration-300 hover:border-brand-pink hover:text-brand-pink"
                 style={{
                   width: "44px",

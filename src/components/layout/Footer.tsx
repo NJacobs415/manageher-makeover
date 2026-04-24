@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Instagram, Youtube, Mail, Linkedin } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import FadeIn from "@/components/animations/FadeIn";
+import { trackSocialClick, trackPodcastPlatformClick, toPlatformKey } from "@/lib/analytics";
 
 // Gold gradient hairline used for top + bottom-bar dividers
 const goldDivider =
@@ -144,6 +145,7 @@ const Footer = () => (
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
+                onClick={() => { try { trackSocialClick(label.toLowerCase() as 'instagram'|'tiktok'|'linkedin'|'youtube', 'footer'); } catch {} }}
                 className="transition-colors hover:text-brand-pink"
                 style={{ color: "#888" }}
               >
@@ -206,6 +208,7 @@ const Footer = () => (
               href={l.href}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => { try { trackPodcastPlatformClick(toPlatformKey(l.label), 'footer'); } catch {} }}
               className="block font-sans text-sm mb-2.5 transition-colors hover:text-white"
               style={{ color: "#888" }}
             >

@@ -12,6 +12,7 @@ import { ArrowRight, Play, Clock, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEpisodeCount } from "@/hooks/useEpisodeCount";
 import SEO from "@/components/SEO";
+import { trackBlogTopicFilter } from "@/lib/analytics";
 
 interface BlogPostMeta {
   slug: string;
@@ -85,7 +86,7 @@ const Blog = () => {
         <section className="py-8 px-6" style={{ background: "#111", borderTop: "1px solid rgba(255,255,255,0.04)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
           <div className="max-w-[1200px] mx-auto flex flex-wrap justify-center gap-2">
             <button
-              onClick={() => setFilter(null)}
+              onClick={() => { setFilter(null); try { trackBlogTopicFilter('all'); } catch {} }}
               className="font-sans text-[11px] font-medium px-5 py-2 transition-all duration-300 cursor-pointer"
               style={{
                 background: !filter ? "hsl(var(--brand-pink))" : "#0a0a0a",
@@ -99,7 +100,7 @@ const Blog = () => {
             {allTopics.map((topic) => (
               <button
                 key={topic}
-                onClick={() => setFilter(topic)}
+                onClick={() => { setFilter(topic); try { trackBlogTopicFilter(topic); } catch {} }}
                 className="font-sans text-[11px] font-medium px-5 py-2 transition-all duration-300 cursor-pointer"
                 style={{
                   background: filter === topic ? "hsl(var(--brand-pink))" : "#0a0a0a",

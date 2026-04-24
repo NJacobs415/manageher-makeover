@@ -20,6 +20,7 @@ import cardActionable from "@/assets/card-actionable.png";
 import cardFinancial from "@/assets/card-financial.png";
 import cardConversations from "@/assets/card-conversations.png";
 import SEO from "@/components/SEO";
+import { trackPodcastPlatformClick, toPlatformKey } from "@/lib/analytics";
 
 // Hardcoded fallback for the featured "Latest Episode" card
 const fallbackLatest = {
@@ -111,6 +112,7 @@ const Podcast = () => {
                     { name: "Amazon Music", logo: logoAmazonMusic, href: "https://music.amazon.com/podcasts/91c217a5-4245-4b83-8d15-8edfdde06884/the-manage-her" },
                   ].map((p) => (
                     <a key={p.name} href={p.href} target="_blank" rel="noopener noreferrer"
+                      onClick={() => { try { trackPodcastPlatformClick(toPlatformKey(p.name), 'podcast_page_hero'); } catch {} }}
                       className="inline-flex items-center gap-2 px-4 py-2.5 transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
                       style={{ background: "#111", borderRadius: "50px", border: "1px solid rgba(255,255,255,0.06)" }}
                       onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(235,24,135,0.2)"; }}
@@ -711,6 +713,7 @@ const Podcast = () => {
             ].map((platform, i) => (
               <FadeIn key={platform.name} delay={i * 80} y={15}>
                 <a href={platform.href} target="_blank" rel="noopener noreferrer"
+                  onClick={() => { try { trackPodcastPlatformClick(toPlatformKey(platform.name), 'podcast_page_listen_section'); } catch {} }}
                   className="group block p-6 text-center transition-all duration-300 hover:-translate-y-1"
                   style={{ background: "#111", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.05)" }}
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(235,24,135,0.2)"; }}

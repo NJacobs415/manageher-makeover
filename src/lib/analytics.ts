@@ -65,8 +65,19 @@ export function trackBookingClick(bookingType: 'podcast_guest' | '1on1', locatio
 
 // ─── Engagement events ─────────────────────────────────────────
 
+type PodcastPlatform = 'spotify' | 'apple' | 'amazon' | 'youtube';
+
+const PLATFORM_MAP: Record<string, PodcastPlatform> = {
+  'Apple Podcasts': 'apple', Spotify: 'spotify', YouTube: 'youtube', 'Amazon Music': 'amazon',
+  apple: 'apple', spotify: 'spotify', youtube: 'youtube', amazon: 'amazon',
+};
+
+export function toPlatformKey(name: string): PodcastPlatform {
+  return PLATFORM_MAP[name] || 'youtube';
+}
+
 export function trackPodcastPlatformClick(
-  platform: 'spotify' | 'apple' | 'amazon' | 'youtube',
+  platform: PodcastPlatform,
   location: string
 ) {
   trackEvent('podcast_platform_click', {
