@@ -43,6 +43,7 @@ interface BlogPostData {
   timestamps: { time: string; label: string }[];
   content: string; // HTML or markdown body
   metaDescription: string;
+  transcript?: string;
   quiz?: {
     title: string;
     description: string;
@@ -574,6 +575,17 @@ const BlogPost = () => {
                       )}
                     </div>
                   </FadeIn>
+                )}
+
+                {post.transcript && (
+                  <details className="mt-8 border-t border-white/5 pt-6">
+                    <summary className="font-sans text-[12px] font-semibold uppercase tracking-[0.15em] cursor-pointer hover:text-[#eb1887] transition-colors" style={{ color: "#c9a96e" }}>
+                      📝 Full Episode Transcript (click to expand)
+                    </summary>
+                    <div className="mt-4 font-sans text-[13px] leading-[1.8] text-muted-foreground whitespace-pre-wrap max-h-[600px] overflow-y-auto">
+                      {post.transcript}
+                    </div>
+                  </details>
                 )}
               </div>
 
