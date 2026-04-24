@@ -55,7 +55,7 @@ const BuyButtons = () => (
 );
 
 const Book = () => {
-  const countdown = useCountdown("2026-05-01T00:00:00");
+  const countdown = useCountdown("2026-08-01T00:00:00");
 
   return (
     <div className="overflow-x-hidden page-enter">
@@ -370,7 +370,7 @@ const Book = () => {
         <div className="max-w-[1100px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <TextReveal><p className="font-sans text-[10px] uppercase tracking-[0.3em] text-brand-pink mb-4">Coming May 1, 2026</p></TextReveal>
+              <TextReveal><p className="font-sans text-[10px] uppercase tracking-[0.3em] text-brand-pink mb-4">Coming August 1, 2026</p></TextReveal>
               <TextReveal delay={100}>
                 <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4">
                   Book Two:<br />Unlocking Human <em style={{ color: "#c9a96e", fontStyle: "italic" }}>Potential</em>
