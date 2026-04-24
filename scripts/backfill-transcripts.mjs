@@ -1,8 +1,8 @@
 /**
  * Backfill transcripts for existing blog posts.
  *
- * Fetches YouTube transcripts via the free SearchAPI transcript endpoint
- * (same one the n8n pipeline uses) and writes them into each blog post JSON.
+ * Uses the youtube-transcript npm package to scrape YouTube's built-in
+ * captions for free (no API key needed).
  *
  * Usage:
  *   node scripts/backfill-transcripts.mjs            # dry-run, prints stats
@@ -14,6 +14,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { YoutubeTranscript } from 'youtube-transcript/dist/youtube-transcript.esm.js';
 
 const BLOG_DIR = path.join(process.cwd(), 'public/blog');
 const WRITE = process.argv.includes('--write');
@@ -28,27 +29,9 @@ function getVideoId(url) {
 }
 
 async function fetchTranscript(videoId) {
-  // Use the free SearchAPI transcript endpoint (same as n8n "Fetch Transcript" node)
-  const url = `https://www.searchapi.io/api/v1/search?engine=youtube_transcripts&video_id=${videoId}`;
-  const res = await fetch(url);
-  if (!res.ok) return null;
-
-  const data = await res.json();
-  let text = '';
-
-  if (data.transcripts) {
-    text = data.transcripts.map((t) => t.text || t.snippet || '').join(' ');
-  } else if (data.transcript) {
-    if (Array.isArray(data.transcript)) {
-      text = data.transcript.map((t) => t.text || t.snippet || '').join(' ');
-    } else {
-      text = data.transcript;
-    }
-  } else if (Array.isArray(data)) {
-    text = data.map((t) => t.text || t.snippet || '').join(' ');
-  }
-
-  return text.replace(/\s+/g, ' ').trim() || null;
+  const items = await YoutubeTranscript.fetchTranscript(videoId);
+  if (!items || items.length === 0) return null;
+  return items.map((i) => i.text).join(' ').replace(/\s+/g, ' ').trim();
 }
 
 async function main() {
@@ -69,7 +52,6 @@ async function main() {
     const filePath = path.join(BLOG_DIR, file);
     const post = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
-    // Skip if transcript already present
     if (post.transcript && post.transcript.length > 100) {
       skipped++;
       console.log(`[${i + 1}/${files.length}] Ep ${post.episodeNumber}: ⏭️  already has transcript (${post.transcript.length} chars)`);
@@ -92,7 +74,10 @@ async function main() {
         console.log(`  ❌ no transcript available`);
       } else {
         fetched++;
-        const trimmed = transcript.length > 80000 ? transcript.substring(0, 80000) + '... [truncated]' : transcript;
+        const trimmed =
+          transcript.length > 80000
+            ? transcript.substring(0, 80000) + '... [truncated]'
+            : transcript;
         console.log(`  ✅ ${trimmed.length} chars`);
 
         if (WRITE) {
@@ -116,7 +101,9 @@ async function main() {
   console.log(`  No video ID: ${noVideo}`);
   console.log(`  Total: ${files.length}`);
   if (!WRITE && fetched > 0) {
-    console.log(`\n⚠️  Dry run — no files changed. Re-run with --write to save transcripts.`);
+    console.log(
+      `\n⚠️  Dry run — no files changed. Re-run with --write to save transcripts.`
+    );
   }
 }
 
