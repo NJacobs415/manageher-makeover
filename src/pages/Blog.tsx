@@ -40,9 +40,14 @@ const Blog = () => {
   }, []);
 
   const allTopics = [...new Set(posts.flatMap((p) => p.topics))].sort();
+  const sorted = [...posts].sort((a, b) => {
+    const dateDiff = new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+    if (dateDiff !== 0) return dateDiff;
+    return b.episodeNumber - a.episodeNumber;
+  });
   const filtered = filter
-    ? posts.filter((p) => p.topics.includes(filter))
-    : posts;
+    ? sorted.filter((p) => p.topics.includes(filter))
+    : sorted;
 
   return (
     <div className="overflow-x-hidden page-enter">
