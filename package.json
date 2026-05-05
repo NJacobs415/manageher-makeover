@@ -14,8 +14,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "predeploy": "node scripts/generate-sitemap.mjs",
-    "deploy": "npm run build && wrangler pages deploy dist --project-name=themanageher --branch=main",
-    "deploy:preview": "npm run build && wrangler pages deploy dist --project-name=themanageher --branch=preview"
+    "deploy": "npm run build && wrangler pages deploy dist --project-name=themanageher-git --branch=main",
+    "deploy:preview": "npm run build && wrangler pages deploy dist --project-name=themanageher-git --branch=preview"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
