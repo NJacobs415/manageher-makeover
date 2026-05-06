@@ -168,9 +168,13 @@ function injectMeta(template, { title, description, url, image, type, jsonLd, no
   html = html.replace(/(<meta name="twitter:description" content=")[^"]*(")/,  `$1${escapeHtml(description)}$2`);
   html = html.replace(/(<meta name="twitter:image" content=")[^"]*(")/,        `$1${escapeHtml(image || DEFAULT_IMAGE)}$2`);
 
-  // Noindex
+  // Robots — replace the default rich-SERP meta with noindex when set.
+  // Otherwise leave the template default in place.
   if (noindex) {
-    html = html.replace('</head>', '    <meta name="robots" content="noindex, nofollow" />\n  </head>');
+    html = html.replace(
+      /<meta name="robots" content="[^"]*"\s*\/?>/,
+      '<meta name="robots" content="noindex, nofollow" />'
+    );
   }
 
   // JSON-LD — inject before </head>. Remove any existing JSON-LD first.
@@ -221,7 +225,7 @@ function main() {
       if (!fs.existsSync(postFile)) continue;
 
       const post = JSON.parse(fs.readFileSync(postFile, 'utf-8'));
-      const url = `${SITE_URL}/blog/${post.slug}`;
+      const url = `${SITE_URL}/blog/${post.slug}/`;
 
       const html = injectMeta(template, {
         title: `${post.title} | The Manage Her® Podcast`,

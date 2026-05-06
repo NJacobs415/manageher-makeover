@@ -36,7 +36,7 @@ function main() {
   }
 
   for (const post of posts) {
-    urls.push(`  <url>\n    <loc>${SITE_URL}/blog/${xmlEscape(post.slug)}</loc>\n    <lastmod>${toDate(post.publishedAt)}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`);
+    urls.push(`  <url>\n    <loc>${SITE_URL}/blog/${xmlEscape(post.slug)}/</loc>\n    <lastmod>${toDate(post.publishedAt)}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`);
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
