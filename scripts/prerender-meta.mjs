@@ -54,7 +54,7 @@ const STATIC_ROUTES = [
       name: 'Aimee Rickabus',
       jobTitle: 'CEO & Founder',
       worksFor: { '@type': 'Organization', name: 'The Manage Her' },
-      url: `${SITE_URL}/about`,
+      url: `${SITE_URL}/about/`,
       image: `${SITE_URL}/aimee-portrait-1.jpg`,
       sameAs: [
         'https://www.instagram.com/themanageher/',
@@ -73,7 +73,7 @@ const STATIC_ROUTES = [
       '@context': 'https://schema.org',
       '@type': 'PodcastSeries',
       name: 'The Manage Her Podcast',
-      url: `${SITE_URL}/podcast`,
+      url: `${SITE_URL}/podcast/`,
       author: { '@type': 'Person', name: 'Aimee Rickabus' },
     },
   },
@@ -102,7 +102,7 @@ const STATIC_ROUTES = [
       name: 'Aimee Rickabus',
       jobTitle: 'CEO & Founder',
       worksFor: { '@type': 'Organization', name: 'The Manage Her' },
-      url: `${SITE_URL}/press`,
+      url: `${SITE_URL}/press/`,
       image: `${SITE_URL}/aimee-portrait-1.jpg`,
       sameAs: [
         'https://www.instagram.com/themanageher/',
@@ -201,7 +201,9 @@ function main() {
 
   // Static routes
   for (const route of STATIC_ROUTES) {
-    const url = `${SITE_URL}${route.path}`;
+    // CF Pages serves all directory routes with a trailing slash and 308s the
+    // no-slash form. Canonical/og:url must match the served URL.
+    const url = route.path === '/' ? `${SITE_URL}/` : `${SITE_URL}${route.path}/`;
     const html = injectMeta(template, { ...route, url });
 
     if (route.path === '/') {
@@ -242,7 +244,7 @@ function main() {
           author: {
             '@type': 'Person',
             name: 'Aimee Rickabus',
-            url: `${SITE_URL}/about`,
+            url: `${SITE_URL}/about/`,
           },
           publisher: {
             '@type': 'Organization',

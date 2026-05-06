@@ -32,7 +32,10 @@ function main() {
   const urls = [];
 
   for (const p of STATIC_PAGES) {
-    urls.push(`  <url>\n    <loc>${SITE_URL}${p.loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${p.changefreq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>`);
+    // CF Pages 308s no-slash → trailing slash for directory routes; keep
+    // sitemap URLs aligned with the served URL + canonical.
+    const loc = p.loc === '/' ? '/' : `${p.loc}/`;
+    urls.push(`  <url>\n    <loc>${SITE_URL}${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${p.changefreq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>`);
   }
 
   for (const post of posts) {
