@@ -27,3 +27,7 @@ dist-ssr
 *.sln
 *.sw?
 public/substack-drafts/
+
+# n8n workflow working files (committed snapshot is the bare ID file)
+n8n-workflows/*.before-patch.json
+n8n-workflows/.*.json

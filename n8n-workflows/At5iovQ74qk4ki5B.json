@@ -1,0 +1,820 @@
+{
+  "name": "TMH \u2014 Auto Blog Publisher",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 6
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        112
+      ],
+      "id": "4a675d1e-c494-49c5-a7c2-52bef6e3c910",
+      "name": "Every 6 Hours"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.github.com/repos/NJacobs415/manageher-makeover/contents/public/blog/{{ $json.slug }}.json",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        880,
+        112
+      ],
+      "id": "09f1ab8e-50be-49a6-a5b1-a54a10ab7f98",
+      "name": "Check If Blog Exists",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "NFxb8B77hW0VVEFO",
+          "name": "Search Atlas"
+        },
+        "githubApi": {
+          "id": "Z8iraOqUHXjTIxm3",
+          "name": "GitHub PAT - Blog Publisher"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "check-404",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "Not Found",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1104,
+        112
+      ],
+      "id": "1361d2bd-6085-4134-8cf4-1a93f93023f7",
+      "name": "Is New Episode?"
+    },
+    {
+      "parameters": {
+        "url": "=https://www.searchapi.io/api/v1/search?engine=youtube_transcripts&video_id={{ $('Code in JavaScript').item.json.id }}",
+        "authentication": "noAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1328,
+        112
+      ],
+      "id": "88e5aca6-484c-417b-ac29-4806578b4106",
+      "name": "Fetch Transcript (Free)",
+      "onError": "continueRegularOutput",
+      "credentials": {}
+    },
+    {
+      "parameters": {
+        "jsCode": "// Combine transcript segments into clean text\nconst episode = $('Code in JavaScript').item.json;\nlet transcript = '';\n\ntry {\n  const transcriptData = $input.first().json;\n  \n  // Handle different transcript response formats\n  if (transcriptData.transcripts) {\n    // youtube-transcript.io format\n    transcript = transcriptData.transcripts\n      .map(t => t.text || t.snippet || '')\n      .join(' ')\n      .replace(/\\s+/g, ' ')\n      .trim();\n  } else if (transcriptData.transcript) {\n    // Alternative format\n    if (Array.isArray(transcriptData.transcript)) {\n      transcript = transcriptData.transcript\n        .map(t => t.text || t.snippet || '')\n        .join(' ')\n        .replace(/\\s+/g, ' ')\n        .trim();\n    } else {\n      transcript = transcriptData.transcript;\n    }\n  } else if (Array.isArray(transcriptData)) {\n    transcript = transcriptData\n      .map(t => t.text || t.snippet || '')\n      .join(' ')\n      .replace(/\\s+/g, ' ')\n      .trim();\n  }\n} catch(e) {\n  // If transcript fetch failed, use the video description as fallback\n  transcript = episode.description || 'Transcript not available.';\n}\n\n// Truncate if too long (Claude has context limits)\nif (transcript.length > 80000) {\n  transcript = transcript.substring(0, 80000) + '... [transcript truncated]';\n}\n\nreturn [{ json: { ...episode, transcript } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1552,
+        112
+      ],
+      "id": "cb44f4db-ffea-4670-9a4d-9c65f6cd94d5",
+      "name": "Clean Transcript"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $json.claudeRequestBody }}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2000,
+        112
+      ],
+      "id": "d287c296-2d66-427f-b164-2a56f5fc6d17",
+      "name": "Claude: Generate Blog Post",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "IXzg19aGpRrP4TdF",
+          "name": "Anthropic \u2014 Claude API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse Claude's response and build the complete blog post JSON\nconst episode = $('Clean Transcript').item.json;\nconst claudeResponse = $input.first().json;\n\nlet blogData;\ntry {\n  // Extract text content from Claude's response\n  const text = claudeResponse.content[0].text;\n  // Clean any accidental markdown wrapping\n  const clean = text.replace(/```json\\n?/g, '').replace(/```\\n?/g, '').trim();\n  blogData = JSON.parse(clean);\n} catch(e) {\n  throw new Error('Failed to parse Claude response: ' + e.message);\n}\n\n// Build the complete blog post object\nconst post = {\n  slug: episode.slug,\n  title: blogData.title || episode.title,\n  episodeNumber: blogData.episodeNumber || 0,\n  // TODO: If episodeNumber is 0, fetch posts.json from GitHub and set to max + 1\n  // For now, 0 flags it for manual fix\n  guestName: blogData.guestName || '',\n  guestBio: blogData.guestBio || '',\n  publishedAt: episode.publishedAt,\n  duration: episode.durationFormatted,\n  thumbnail: episode.thumbnail,\n  youtubeUrl: episode.youtubeUrl,\n  spotifyUrl: 'https://open.spotify.com/show/03FuFRyzkaWhZkk5yxFePJ',\n  appleUrl: 'https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475',\n  excerpt: blogData.excerpt || '',\n  metaDescription: blogData.metaDescription || '',\n  topics: blogData.topics || [],\n  keyTakeaways: blogData.keyTakeaways || [],\n  guestLinks: blogData.guestLinks || [],\n  pullQuotes: blogData.pullQuotes || [],\n  timestamps: blogData.timestamps || [],\n  quiz: blogData.quiz || null,\n  transcript: $('Clean Transcript').first().json.transcript || '',\n  content: blogData.content || ''\n};\n\n// Also build the posts.json index entry\nconst indexEntry = {\n  slug: post.slug,\n  title: post.title,\n  episodeNumber: post.episodeNumber,\n  guestName: post.guestName,\n  publishedAt: post.publishedAt,\n  duration: post.duration,\n  thumbnail: post.thumbnail,\n  excerpt: post.excerpt,\n  topics: post.topics,\n  youtubeUrl: post.youtubeUrl\n};\n\nreturn [{ json: { post, indexEntry, slug: episode.slug } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2224,
+        112
+      ],
+      "id": "e1aeff75-6570-4a4f-98c1-c0fcaf81deeb",
+      "name": "Build Blog JSON"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://api.github.com/repos/NJacobs415/manageher-makeover/contents/public/blog/{{ $json.slug }}.json",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"message\": \"Auto-publish blog: {{ $json.post.title }}\",\n  \"content\": \"{{ $json.postBase64 }}\",\n  \"branch\": \"main\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2672,
+        112
+      ],
+      "id": "2100e8be-1791-4186-8dcc-8a68dc5c480d",
+      "name": "Commit Blog Post to GitHub",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "NFxb8B77hW0VVEFO",
+          "name": "Search Atlas"
+        },
+        "githubApi": {
+          "id": "Z8iraOqUHXjTIxm3",
+          "name": "GitHub PAT - Blog Publisher"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/NJacobs415/manageher-makeover/contents/public/blog/posts.json",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2896,
+        112
+      ],
+      "id": "02c489f3-490e-4659-bbd6-567d073ad8c3",
+      "name": "Fetch Current posts.json",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "NFxb8B77hW0VVEFO",
+          "name": "Search Atlas"
+        },
+        "githubApi": {
+          "id": "Z8iraOqUHXjTIxm3",
+          "name": "GitHub PAT - Blog Publisher"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Update the posts.json index with the new entry\nconst newEntry = $('Build Blog JSON').item.json.indexEntry;\nconst response = $input.first().json;\n\nlet existingPosts = [];\nlet sha = '';\n\ntry {\n  if (response.content) {\n    const decoded = Buffer.from(response.content, 'base64').toString('utf-8');\n    const parsed = JSON.parse(decoded);\n    existingPosts = parsed.posts || [];\n    sha = response.sha;\n  }\n} catch(e) {\n  existingPosts = [];\n}\n\n// Add new entry at the beginning (most recent first)\n// Remove any existing entry with the same slug\nexistingPosts = existingPosts.filter(p => p.slug !== newEntry.slug);\nexistingPosts.unshift(newEntry);\n\nconst updatedIndex = { posts: existingPosts };\nconst content = Buffer.from(JSON.stringify(updatedIndex, null, 2)).toString('base64');\n\nconst body = {\n  message: `Update blog index: add ${newEntry.title}`,\n  content,\n  branch: 'main'\n};\n\nif (sha) body.sha = sha;\n\nreturn [{ json: body }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3120,
+        112
+      ],
+      "id": "3a589857-b787-4163-a5ac-bcb8f3dce842",
+      "name": "Update Posts Index"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "https://api.github.com/repos/NJacobs415/manageher-makeover/contents/public/blog/posts.json",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        3344,
+        112
+      ],
+      "id": "c8e7a011-ec9e-49de-bf98-87474b7fa59a",
+      "name": "Commit Updated Index",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "NFxb8B77hW0VVEFO",
+          "name": "Search Atlas"
+        },
+        "githubApi": {
+          "id": "Z8iraOqUHXjTIxm3",
+          "name": "GitHub PAT - Blog Publisher"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## TMH Auto Blog Publisher\n\n### FLOW:\n1. Fetches 5 most recent medium-length videos\n2. Filters to full episodes (30+ min)\n3. Checks if blog already exists in GitHub\n4. If new: fetches transcript\n5. Sends to Claude API for blog generation\n6. Commits blog post JSON to GitHub\n7. Updates posts.json index\n8. Cloudflare Pages auto-deploys\n\n### SETUP:\n1. Add GitHub PAT credential (Header Auth)\n2. Add Anthropic API credential\n3. Update credential IDs in nodes\n4. Test with manual trigger first\n\n### TRANSCRIPT:\nUses free transcript API.\nFalls back to video description if unavailable."
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d9daf4b9-8edd-46f1-83e6-b26edfc0222a",
+      "name": "Instructions"
+    },
+    {
+      "parameters": {
+        "url": "https://n8n.srv1075406.hstgr.cloud/webhook/tmh-youtube-episodes",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        432,
+        112
+      ],
+      "id": "5c57dcdf-99d3-4dac-8fee-b3755efc5c25",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Process episodes from the webhook response\nconst episodes = $input.first().json.episodes || [];\n\nfunction makeSlug(title) {\n  return title\n    .toLowerCase()\n    .replace(/^ep\\.?\\s*\\d+\\s*:?\\s*/i, '')\n    .replace(/\\|.*$/g, '')\n    .replace(/the manage her:?\\s*/gi, '')\n    .replace(/[^a-z0-9]+/g, '-')\n    .replace(/^-+|-+$/g, '')\n    .substring(0, 120);\n}\n\nfunction formatDuration(iso) {\n  const match = (iso || '').match(/PT(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+)S)?/);\n  if (!match) return '30 min';\n  const h = parseInt(match[1]||0);\n  const m = parseInt(match[2]||0);\n  if (h > 0) return `${h}h ${m}m`;\n  return `${m} min`;\n}\n\n// Filter out YouTube Shorts (under 120 seconds)\nconst filtered = episodes.filter(ep => {\n  const match = (ep.duration || '').match(/PT(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+)S)?/);\n  if (!match) return true;\n  const totalSeconds = (parseInt(match[1]||0) * 3600) + (parseInt(match[2]||0) * 60) + parseInt(match[3]||0);\n  return totalSeconds >= 120;\n});\n\n// Return each episode as a separate item\nreturn filtered.slice(0, 5).map(ep => ({\n  json: {\n    id: ep.id,\n    title: ep.title,\n    slug: makeSlug(ep.title),\n    description: ep.description,\n    thumbnail: ep.thumbnailMax || ep.thumbnail,\n    publishedAt: ep.publishedAt,\n    duration: ep.duration,\n    durationFormatted: formatDuration(ep.duration),\n    youtubeUrl: `https://www.youtube.com/watch?v=${ep.id}`\n  }\n}));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        656,
+        112
+      ],
+      "id": "0688b309-1c14-4e9d-87ae-4c4b8a2a24a9",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "jsCode": "const post = $input.first().json.post;\nconst indexEntry = $input.first().json.indexEntry;\nconst slug = $input.first().json.slug;\n\n// Base64 encode the blog post JSON for GitHub API\nconst postJson = JSON.stringify(post, null, 2);\nconst postBase64 = btoa(unescape(encodeURIComponent(postJson)));\n\nreturn [{\n  json: {\n    post,\n    indexEntry,\n    slug,\n    postBase64\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2448,
+        112
+      ],
+      "id": "47e5c7dc-0c32-476c-b199-a65181f76b5d",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const episode = $input.first().json;\n\nconst prompt = `You are a blog content writer for The Manage Her\u00ae \u2014 a women's leadership podcast hosted by Aimee Rickabus, CEO of a nine-figure technology company, bestselling author, and mother of six. Generate an enhanced show notes blog post from this podcast episode.\n\nEPISODE DETAILS:\nTitle: ${episode.title}\nDuration: ${episode.durationFormatted}\nPublished: ${episode.publishedAt}\nYouTube URL: ${episode.youtubeUrl}\n\nEPISODE DESCRIPTION:\n${(episode.description || '').substring(0, 8000)}\n\nTRANSCRIPT:\n${(episode.transcript || '').substring(0, 50000)}\n\nGenerate a JSON response with EXACTLY this structure (no markdown, no backticks, just raw JSON):\n{\n  \"title\": \"A compelling blog title (different from the episode title, more SEO-friendly, under 80 characters)\",\n  \"episodeNumber\": extract the episode number from the title or use 0,\n  \"guestName\": \"Guest full name or empty string if solo episode\",\n  \"guestBio\": \"2-3 sentence bio of the guest based on what is discussed in the episode\",\n  \"excerpt\": \"A compelling 2-3 sentence summary that makes someone want to listen\",\n  \"metaDescription\": \"SEO meta description under 160 characters\",\n  \"topics\": [\"3-5 topic tags from: Leadership, Motherhood, Financial Literacy, Wellness, Entrepreneurship, Boundaries, Identity, Marriage, Community, Spirituality\"],\n  \"keyTakeaways\": [\"5-7 key takeaways as complete sentences\"],\n  \"guestLinks\": Extract any social media or website links for the guest from the episode description. Look for Instagram, LinkedIn, TikTok, YouTube, website URLs, etc. Return as an array of {\"label\": \"Platform Name\", \"url\": \"https://...\"} objects. If no links found, return empty array.,\n  \"pullQuotes\": [{\"text\": \"A memorable quote from the episode\", \"timestamp\": \"MM:SS or empty\"}],\n  \"timestamps\": [{\"time\": \"0:00\", \"label\": \"Introduction\"}, {\"time\": \"5:30\", \"label\": \"Topic discussed\"}],\n  \"content\": \"Full blog post as HTML. Use p tags for paragraphs, strong for emphasis, em for italic, h3 for subheadings. Write 800-1200 words covering the main themes insights and actionable advice. Write in The Manage Her brand voice: bold warm direct permission-giving. Address the reader as you. Do NOT use bullet point lists in the content. Write in flowing prose paragraphs.\",\n  \"quiz\": {\n    \"title\": \"A compelling self-discovery quiz title related to the episode theme (e.g. What is Your Leadership Superpower?)\",\n    \"description\": \"1-2 sentence invitation to take the quiz\",\n    \"types\": {\n      \"A\": {\"name\": \"2-4 word empowering archetype name\", \"description\": \"3-4 sentence personalized result that validates the reader and connects to episode themes. Write in second person. End with why they should listen to this episode.\"},\n      \"B\": {\"name\": \"archetype name\", \"description\": \"...\"},\n      \"C\": {\"name\": \"archetype name\", \"description\": \"...\"},\n      \"D\": {\"name\": \"archetype name\", \"description\": \"...\"}\n    },\n    \"questions\": [\n      {\n        \"question\": \"A relatable scenario or self-reflection question in second person\",\n        \"options\": [\n          {\"text\": \"Realistic behavior or belief - not obviously right or wrong\", \"type\": \"A\"},\n          {\"text\": \"Option text\", \"type\": \"B\"},\n          {\"text\": \"Option text\", \"type\": \"C\"},\n          {\"text\": \"Option text\", \"type\": \"D\"}\n        ]\n      }\n    ]\n  }\n}\n\nQUIZ RULES: Generate exactly 6 questions with 4 options each (types A/B/C/D). This is a SELF-DISCOVERY quiz not a knowledge test. Questions should help listeners learn about themselves. All options should feel valid. Archetype names should be empowering. Results should make every type feel seen and valued. Tie results back to why this episode would help them.\n\nIMPORTANT: Return ONLY valid JSON. No markdown. No backticks. No preamble. No explanation before or after the JSON.`;\n\nconst requestBody = {\n  model: \"claude-sonnet-4-20250514\",\n  max_tokens: 6000,\n  messages: [\n    {\n      role: \"user\",\n      content: prompt\n    }\n  ]\n};\n\nreturn [{\n  json: {\n    ...episode,\n    claudeRequestBody: JSON.stringify(requestBody)\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1776,
+        112
+      ],
+      "id": "7b164a58-19eb-4713-bbef-dd673f50095d",
+      "name": "Build Claude Request"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.indexnow.org/indexnow",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"host\": \"themanageher.com\",\n  \"key\": \"a1b2c3d4e5f6g7h8\",\n  \"keyLocation\": \"https://themanageher.com/a1b2c3d4e5f6g7h8.txt\",\n  \"urlList\": [\"https://themanageher.com/blog/{{ $('Build Blog JSON').item.json.slug }}\"]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        3568,
+        112
+      ],
+      "id": "indexnow-ping-001",
+      "name": "Ping IndexNow"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://services.leadconnectorhq.com/contacts/?locationId=JzYUXEAehZEve2vuOdqM&query={{ encodeURIComponent($('Build Blog JSON').item.json.post.guestName.replace(/^(Dr\\.?|Chef|Coach|Pastor|Rev\\.?|Professor|Prof\\.?)\\s+/i, '')) }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        3792,
+        112
+      ],
+      "id": "ghl-lookup-guest-001",
+      "name": "Lookup Guest by Name",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "oAJEopy5GkzizkE5",
+          "name": "GHL PIT (TMH)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "tags-include-sent",
+              "leftValue": "={{ ($json.contacts && $json.contacts[0] && $json.contacts[0].tags) ? $json.contacts[0].tags : [] }}",
+              "rightValue": "guest-outreach-sent",
+              "operator": {
+                "type": "array",
+                "operation": "contains",
+                "rightType": "any"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4016,
+        112
+      ],
+      "id": "ghl-is-sent-001",
+      "name": "Is Already Sent?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "has-contact-id",
+              "leftValue": "={{ ($('Lookup Guest by Name').item.json.contacts || []).length }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4240,
+        112
+      ],
+      "id": "ghl-has-existing-001",
+      "name": "Has Existing Contact?"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://services.leadconnectorhq.com/contacts/{{ $('Lookup Guest by Name').item.json.contacts[0].id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"customFields\": [\n    {\"id\": \"RyA70UVI5yUY83Wu5hYz\", \"field_value\": \"{{ $('Build Blog JSON').item.json.post.title }}\"},\n    {\"id\": \"zRU07yCeCsSBQrkNZwdb\", \"field_value\": \"https://themanageher.com/blog/{{ $('Build Blog JSON').item.json.slug }}\"},\n    {\"id\": \"lctcR3WExxz0pULDyokA\", \"field_value\": \"{{ $('Build Blog JSON').item.json.post.episodeNumber }}\"},\n    {\"id\": \"HsP54mVLCSvKjPv2sGyO\", \"field_value\": \"{{ $('Build Blog JSON').item.json.post.quiz ? $('Build Blog JSON').item.json.post.quiz.title : '' }}\"},\n    {\"id\": \"KX3Tvi2pvlrUCtlVhYDI\", \"field_value\": \"{{ new Date($('Build Blog JSON').item.json.post.publishedAt).toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' }) }}\"}\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        4464,
+        0
+      ],
+      "id": "ghl-update-existing-001",
+      "name": "Update Existing Contact",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "oAJEopy5GkzizkE5",
+          "name": "GHL PIT (TMH)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://services.leadconnectorhq.com/contacts/{{ $('Lookup Guest by Name').item.json.contacts[0].id }}/tags",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"tags\": [\"podcast-guest\", \"guest-outreach-pending\"]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        4688,
+        0
+      ],
+      "id": "ghl-add-tags-001",
+      "name": "Add Tags to Existing",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "oAJEopy5GkzizkE5",
+          "name": "GHL PIT (TMH)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/contacts/upsert",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"locationId\": \"JzYUXEAehZEve2vuOdqM\",\n  \"name\": \"{{ $('Build Blog JSON').item.json.post.guestName.replace(/^(Dr\\.?|Chef|Coach|Pastor|Rev\\.?|Professor|Prof\\.?)\\s+/i, '') }}\",\n  \"firstName\": \"{{ $('Build Blog JSON').item.json.post.guestName.replace(/^(Dr\\.?|Chef|Coach|Pastor|Rev\\.?|Professor|Prof\\.?)\\s+/i, '').split(' ')[0] }}\",\n  \"lastName\": \"{{ $('Build Blog JSON').item.json.post.guestName.replace(/^(Dr\\.?|Chef|Coach|Pastor|Rev\\.?|Professor|Prof\\.?)\\s+/i, '').split(' ').slice(1).join(' ') }}\",\n  \"tags\": [\"podcast-guest\", \"guest-outreach-pending\"],\n  \"customFields\": [\n    {\"id\": \"RyA70UVI5yUY83Wu5hYz\", \"field_value\": \"{{ $('Build Blog JSON').item.json.post.title }}\"},\n    {\"id\": \"zRU07yCeCsSBQrkNZwdb\", \"field_value\": \"https://themanageher.com/blog/{{ $('Build Blog JSON').item.json.slug }}\"},\n    {\"id\": \"lctcR3WExxz0pULDyokA\", \"field_value\": \"{{ $('Build Blog JSON').item.json.post.episodeNumber }}\"},\n    {\"id\": \"HsP54mVLCSvKjPv2sGyO\", \"field_value\": \"{{ $('Build Blog JSON').item.json.post.quiz ? $('Build Blog JSON').item.json.post.quiz.title : '' }}\"},\n    {\"id\": \"KX3Tvi2pvlrUCtlVhYDI\", \"field_value\": \"{{ new Date($('Build Blog JSON').item.json.post.publishedAt).toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' }) }}\"}\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        4464,
+        224
+      ],
+      "id": "ghl-create-new-001",
+      "name": "Create New Contact",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "oAJEopy5GkzizkE5",
+          "name": "GHL PIT (TMH)"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Every 6 Hours": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check If Blog Exists": {
+      "main": [
+        [
+          {
+            "node": "Is New Episode?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is New Episode?": {
+      "main": [
+        [
+          {
+            "node": "Fetch Transcript (Free)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Transcript (Free)": {
+      "main": [
+        [
+          {
+            "node": "Clean Transcript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean Transcript": {
+      "main": [
+        [
+          {
+            "node": "Build Claude Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Claude: Generate Blog Post": {
+      "main": [
+        [
+          {
+            "node": "Build Blog JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Blog JSON": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Commit Blog Post to GitHub": {
+      "main": [
+        [
+          {
+            "node": "Fetch Current posts.json",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Current posts.json": {
+      "main": [
+        [
+          {
+            "node": "Update Posts Index",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Posts Index": {
+      "main": [
+        [
+          {
+            "node": "Commit Updated Index",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Check If Blog Exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Commit Blog Post to GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Claude Request": {
+      "main": [
+        [
+          {
+            "node": "Claude: Generate Blog Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Commit Updated Index": {
+      "main": [
+        [
+          {
+            "node": "Ping IndexNow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ping IndexNow": {
+      "main": [
+        [
+          {
+            "node": "Lookup Guest by Name",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lookup Guest by Name": {
+      "main": [
+        [
+          {
+            "node": "Is Already Sent?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Already Sent?": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Has Existing Contact?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Has Existing Contact?": {
+      "main": [
+        [
+          {
+            "node": "Update Existing Contact",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create New Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Existing Contact": {
+      "main": [
+        [
+          {
+            "node": "Add Tags to Existing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": true
+  },
+  "staticData": {
+    "node:Every 6 Hours": {
+      "recurrenceRules": [
+        12
+      ]
+    }
+  }
+}
