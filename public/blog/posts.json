@@ -1,6 +1,24 @@
 {
   "posts": [
     {
+      "slug": "the-9-to-5-was-built-for-a-1920s-family-not-working-moms",
+      "title": "Why Corporate America Fails Working Mothers (And How to Fix It)",
+      "episodeNumber": 63,
+      "guestName": "Cassie Leonard",
+      "publishedAt": "2026-05-25T12:00:29Z",
+      "duration": "1h 5m",
+      "thumbnail": "https://i.ytimg.com/vi/cJ43lmKNNP0/maxresdefault.jpg",
+      "excerpt": "Working mothers aren't failing—they're operating inside a system never designed for them. Cassie Leonard breaks down what the corporate world gets wrong about women, motherhood, and leadership, plus how to engineer a career that doesn't break you.",
+      "topics": [
+        "Leadership",
+        "Motherhood",
+        "Identity",
+        "Boundaries",
+        "Community"
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=cJ43lmKNNP0"
+    },
+    {
       "slug": "why-smart-women-shatter-instead-of-bounce-wharton-coach-explains",
       "title": "The Science Behind Why High-Achieving Women Get Stuck in Failure Loops",
       "episodeNumber": 62,
