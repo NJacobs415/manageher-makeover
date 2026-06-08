@@ -1,5 +1,5 @@
 {
-  "name": "TMH \u2014 Auto Blog Publisher",
+  "name": "TMH — Auto Blog Publisher",
   "nodes": [
     {
       "parameters": {
@@ -88,8 +88,23 @@
     },
     {
       "parameters": {
-        "url": "=https://www.searchapi.io/api/v1/search?engine=youtube_transcripts&video_id={{ $('Code in JavaScript').item.json.id }}",
-        "authentication": "noAuth",
+        "method": "POST",
+        "url": "https://www.youtube-transcript.io/api/transcripts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"ids\":[\"{{ $(\"Code in JavaScript\").item.json.id }}\"]}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -99,9 +114,14 @@
         112
       ],
       "id": "88e5aca6-484c-417b-ac29-4806578b4106",
-      "name": "Fetch Transcript (Free)",
+      "name": "Fetch Transcript",
       "onError": "continueRegularOutput",
-      "credentials": {}
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "fAyHesS0Y4HSlRBu",
+          "name": "YouTube Transcript IO"
+        }
+      }
     },
     {
       "parameters": {
@@ -158,7 +178,7 @@
       "credentials": {
         "httpHeaderAuth": {
           "id": "IXzg19aGpRrP4TdF",
-          "name": "Anthropic \u2014 Claude API"
+          "name": "Anthropic — Claude API"
         }
       }
     },
@@ -335,7 +355,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const episode = $input.first().json;\n\nconst prompt = `You are a blog content writer for The Manage Her\u00ae \u2014 a women's leadership podcast hosted by Aimee Rickabus, CEO of a nine-figure technology company, bestselling author, and mother of six. Generate an enhanced show notes blog post from this podcast episode.\n\nEPISODE DETAILS:\nTitle: ${episode.title}\nDuration: ${episode.durationFormatted}\nPublished: ${episode.publishedAt}\nYouTube URL: ${episode.youtubeUrl}\n\nEPISODE DESCRIPTION:\n${(episode.description || '').substring(0, 8000)}\n\nTRANSCRIPT:\n${(episode.transcript || '').substring(0, 50000)}\n\nGenerate a JSON response with EXACTLY this structure (no markdown, no backticks, just raw JSON):\n{\n  \"title\": \"A compelling blog title (different from the episode title, more SEO-friendly, under 80 characters)\",\n  \"episodeNumber\": extract the episode number from the title or use 0,\n  \"guestName\": \"Guest full name or empty string if solo episode\",\n  \"guestBio\": \"2-3 sentence bio of the guest based on what is discussed in the episode\",\n  \"excerpt\": \"A compelling 2-3 sentence summary that makes someone want to listen\",\n  \"metaDescription\": \"SEO meta description under 160 characters\",\n  \"topics\": [\"3-5 topic tags from: Leadership, Motherhood, Financial Literacy, Wellness, Entrepreneurship, Boundaries, Identity, Marriage, Community, Spirituality\"],\n  \"keyTakeaways\": [\"5-7 key takeaways as complete sentences\"],\n  \"guestLinks\": Extract any social media or website links for the guest from the episode description. Look for Instagram, LinkedIn, TikTok, YouTube, website URLs, etc. Return as an array of {\"label\": \"Platform Name\", \"url\": \"https://...\"} objects. If no links found, return empty array.,\n  \"pullQuotes\": [{\"text\": \"A memorable quote from the episode\", \"timestamp\": \"MM:SS or empty\"}],\n  \"timestamps\": [{\"time\": \"0:00\", \"label\": \"Introduction\"}, {\"time\": \"5:30\", \"label\": \"Topic discussed\"}],\n  \"content\": \"Full blog post as HTML. Use p tags for paragraphs, strong for emphasis, em for italic, h3 for subheadings. Write 800-1200 words covering the main themes insights and actionable advice. Write in The Manage Her brand voice: bold warm direct permission-giving. Address the reader as you. Do NOT use bullet point lists in the content. Write in flowing prose paragraphs.\",\n  \"quiz\": {\n    \"title\": \"A compelling self-discovery quiz title related to the episode theme (e.g. What is Your Leadership Superpower?)\",\n    \"description\": \"1-2 sentence invitation to take the quiz\",\n    \"types\": {\n      \"A\": {\"name\": \"2-4 word empowering archetype name\", \"description\": \"3-4 sentence personalized result that validates the reader and connects to episode themes. Write in second person. End with why they should listen to this episode.\"},\n      \"B\": {\"name\": \"archetype name\", \"description\": \"...\"},\n      \"C\": {\"name\": \"archetype name\", \"description\": \"...\"},\n      \"D\": {\"name\": \"archetype name\", \"description\": \"...\"}\n    },\n    \"questions\": [\n      {\n        \"question\": \"A relatable scenario or self-reflection question in second person\",\n        \"options\": [\n          {\"text\": \"Realistic behavior or belief - not obviously right or wrong\", \"type\": \"A\"},\n          {\"text\": \"Option text\", \"type\": \"B\"},\n          {\"text\": \"Option text\", \"type\": \"C\"},\n          {\"text\": \"Option text\", \"type\": \"D\"}\n        ]\n      }\n    ]\n  }\n}\n\nQUIZ RULES: Generate exactly 6 questions with 4 options each (types A/B/C/D). This is a SELF-DISCOVERY quiz not a knowledge test. Questions should help listeners learn about themselves. All options should feel valid. Archetype names should be empowering. Results should make every type feel seen and valued. Tie results back to why this episode would help them.\n\nIMPORTANT: Return ONLY valid JSON. No markdown. No backticks. No preamble. No explanation before or after the JSON.`;\n\nconst requestBody = {\n  model: \"claude-sonnet-4-20250514\",\n  max_tokens: 6000,\n  messages: [\n    {\n      role: \"user\",\n      content: prompt\n    }\n  ]\n};\n\nreturn [{\n  json: {\n    ...episode,\n    claudeRequestBody: JSON.stringify(requestBody)\n  }\n}];"
+        "jsCode": "const episode = $input.first().json;\n\nconst prompt = `You are a blog content writer for The Manage Her® — a women's leadership podcast hosted by Aimee Rickabus, CEO of a nine-figure technology company, bestselling author, and mother of six. Generate an enhanced show notes blog post from this podcast episode.\n\nEPISODE DETAILS:\nTitle: ${episode.title}\nDuration: ${episode.durationFormatted}\nPublished: ${episode.publishedAt}\nYouTube URL: ${episode.youtubeUrl}\n\nEPISODE DESCRIPTION:\n${(episode.description || '').substring(0, 8000)}\n\nTRANSCRIPT:\n${(episode.transcript || '').substring(0, 50000)}\n\nGenerate a JSON response with EXACTLY this structure (no markdown, no backticks, just raw JSON):\n{\n  \"title\": \"A compelling blog title (different from the episode title, more SEO-friendly, under 80 characters)\",\n  \"episodeNumber\": extract the episode number from the title or use 0,\n  \"guestName\": \"Guest full name or empty string if solo episode\",\n  \"guestBio\": \"2-3 sentence bio of the guest based on what is discussed in the episode\",\n  \"excerpt\": \"A compelling 2-3 sentence summary that makes someone want to listen\",\n  \"metaDescription\": \"SEO meta description under 160 characters\",\n  \"topics\": [\"3-5 topic tags from: Leadership, Motherhood, Financial Literacy, Wellness, Entrepreneurship, Boundaries, Identity, Marriage, Community, Spirituality\"],\n  \"keyTakeaways\": [\"5-7 key takeaways as complete sentences\"],\n  \"guestLinks\": Extract any social media or website links for the guest from the episode description. Look for Instagram, LinkedIn, TikTok, YouTube, website URLs, etc. Return as an array of {\"label\": \"Platform Name\", \"url\": \"https://...\"} objects. If no links found, return empty array.,\n  \"pullQuotes\": [{\"text\": \"A memorable quote from the episode\", \"timestamp\": \"MM:SS or empty\"}],\n  \"timestamps\": [{\"time\": \"0:00\", \"label\": \"Introduction\"}, {\"time\": \"5:30\", \"label\": \"Topic discussed\"}],\n  \"content\": \"Full blog post as HTML. Use p tags for paragraphs, strong for emphasis, em for italic, h3 for subheadings. Write 800-1200 words covering the main themes insights and actionable advice. Write in The Manage Her brand voice: bold warm direct permission-giving. Address the reader as you. Do NOT use bullet point lists in the content. Write in flowing prose paragraphs.\",\n  \"quiz\": {\n    \"title\": \"A compelling self-discovery quiz title related to the episode theme (e.g. What is Your Leadership Superpower?)\",\n    \"description\": \"1-2 sentence invitation to take the quiz\",\n    \"types\": {\n      \"A\": {\"name\": \"2-4 word empowering archetype name\", \"description\": \"3-4 sentence personalized result that validates the reader and connects to episode themes. Write in second person. End with why they should listen to this episode.\"},\n      \"B\": {\"name\": \"archetype name\", \"description\": \"...\"},\n      \"C\": {\"name\": \"archetype name\", \"description\": \"...\"},\n      \"D\": {\"name\": \"archetype name\", \"description\": \"...\"}\n    },\n    \"questions\": [\n      {\n        \"question\": \"A relatable scenario or self-reflection question in second person\",\n        \"options\": [\n          {\"text\": \"Realistic behavior or belief - not obviously right or wrong\", \"type\": \"A\"},\n          {\"text\": \"Option text\", \"type\": \"B\"},\n          {\"text\": \"Option text\", \"type\": \"C\"},\n          {\"text\": \"Option text\", \"type\": \"D\"}\n        ]\n      }\n    ]\n  }\n}\n\nQUIZ RULES: Generate exactly 6 questions with 4 options each (types A/B/C/D). This is a SELF-DISCOVERY quiz not a knowledge test. Questions should help listeners learn about themselves. All options should feel valid. Archetype names should be empowering. Results should make every type feel seen and valued. Tie results back to why this episode would help them.\n\nIMPORTANT: Return ONLY valid JSON. No markdown. No backticks. No preamble. No explanation before or after the JSON.`;\n\nconst requestBody = {\n  model: \"claude-sonnet-4-20250514\",\n  max_tokens: 6000,\n  messages: [\n    {\n      role: \"user\",\n      content: prompt\n    }\n  ]\n};\n\nreturn [{\n  json: {\n    ...episode,\n    claudeRequestBody: JSON.stringify(requestBody)\n  }\n}];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -603,18 +623,7 @@
       "main": [
         [
           {
-            "node": "Fetch Transcript (Free)",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Fetch Transcript (Free)": {
-      "main": [
-        [
-          {
-            "node": "Clean Transcript",
+            "node": "Fetch Transcript",
             "type": "main",
             "index": 0
           }
@@ -804,6 +813,17 @@
           }
         ]
       ]
+    },
+    "Fetch Transcript": {
+      "main": [
+        [
+          {
+            "node": "Clean Transcript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "settings": {
@@ -813,7 +833,7 @@
   "staticData": {
     "node:Every 6 Hours": {
       "recurrenceRules": [
-        12
+        18
       ]
     }
   }
