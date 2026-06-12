@@ -31,8 +31,11 @@ const AnimatedRoutes = () => {
 
   return (
     <AnimatePresence mode="wait">
-      <Suspense fallback={<RouteFallback />}>
-        <Routes location={location} key={location.pathname}>
+      {/* Suspense lives INSIDE AnimatePresence and carries the same
+          location key, so AnimatePresence still sees a keyed child and
+          runs PageTransition exit animations on lazy-route navigation. */}
+      <Suspense key={location.pathname} fallback={<RouteFallback />}>
+        <Routes location={location}>
           <Route path="/" element={<PageTransition><Index /></PageTransition>} />
           <Route path="/about" element={<PageTransition><About /></PageTransition>} />
           <Route path="/podcast" element={<PageTransition><Podcast /></PageTransition>} />
