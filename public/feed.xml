@@ -4,24 +4,19 @@
      xmlns:atom="http://www.w3.org/2005/Atom"
      xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>The Manage Her® Podcast</title>
+    <title>The Manage Her® — Episode Show Notes</title>
     <link>https://themanageher.com/podcast/</link>
     <atom:link href="https://themanageher.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <description>Real conversations on leadership, motherhood, financial literacy, and purpose. Hosted by Aimee Rickabus.</description>
+    <description>Show-notes companion feed for The Manage Her® Podcast. Each item links to the full episode page with transcript, key takeaways, and guest links. Subscribe in Apple Podcasts/Spotify for audio.</description>
     <language>en-us</language>
     <copyright>© 2026 The Manage Her®</copyright>
-    <lastBuildDate>Fri, 12 Jun 2026 12:10:42 GMT</lastBuildDate>
-    <itunes:author>Aimee Rickabus</itunes:author>
-    <itunes:summary>Real conversations on leadership, motherhood, financial literacy, and purpose. Hosted by Aimee Rickabus.</itunes:summary>
-    <itunes:owner>
-      <itunes:name>Aimee Rickabus</itunes:name>
-      <itunes:email>info@themanageher.com</itunes:email>
-    </itunes:owner>
-    <itunes:explicit>false</itunes:explicit>
-    <itunes:image href="https://themanageher.com/M_Logo_Pink.png"/>
-    <itunes:category text="Business">
-      <itunes:category text="Entrepreneurship"/>
-    </itunes:category>
+    <lastBuildDate>Fri, 12 Jun 2026 12:15:27 GMT</lastBuildDate>
+    <image>
+      <url>https://themanageher.com/M_Logo_Pink.png</url>
+      <title>The Manage Her® — Episode Show Notes</title>
+      <link>https://themanageher.com/podcast/</link>
+    </image>
+    <managingEditor>Aimee Rickabus</managingEditor>
     <item>
       <title>The Real Truth About Peptide Therapy: What Every Woman Needs to Know</title>
       <link>https://themanageher.com/blog/peptides-glp-1s-the-gray-market-a-doctor-sets-it-straight/</link>
@@ -107,20 +102,6 @@
       <itunes:image href="https://i.ytimg.com/vi/4n5HORlmsWA/maxresdefault.jpg"/>
     </item>
     <item>
-      <title>Real Estate Investing Strategies That Generate $1,000+ Monthly Cashflow</title>
-      <link>https://themanageher.com/blog/1-000-vs-200-month-same-property-different-strategy/</link>
-      <guid isPermaLink="true">https://themanageher.com/blog/1-000-vs-200-month-same-property-different-strategy/</guid>
-      <pubDate>Mon, 20 Apr 2026 12:00:47 GMT</pubDate>
-      <description>Learn real estate investing strategies that generate $1,000+ monthly cashflow. Discover lease options, syndications &amp; tax loopholes most investors miss.</description>
-      <itunes:title>Real Estate Investing Strategies That Generate $1,000+ Monthly Cashflow</itunes:title>
-      <itunes:summary>Learn real estate investing strategies that generate $1,000+ monthly cashflow. Discover lease options, syndications &amp; tax loopholes most investors miss.</itunes:summary>
-      <itunes:author>Aimee Rickabus</itunes:author>
-      <itunes:explicit>false</itunes:explicit>
-      <itunes:episode>58</itunes:episode>
-      <itunes:duration>01:03:00</itunes:duration>
-      <itunes:image href="https://i.ytimg.com/vi/PT4Lq4tsD3c/maxresdefault.jpg"/>
-    </item>
-    <item>
       <title>Why Perfectionism Is Sabotaging Your Work-Life Balance (And What to Do Instead)</title>
       <link>https://themanageher.com/blog/perfectionism-is-killing-your-balance-the-identity-shift-every-ambitious-woman-needs/</link>
       <guid isPermaLink="true">https://themanageher.com/blog/perfectionism-is-killing-your-balance-the-identity-shift-every-ambitious-woman-needs/</guid>
@@ -133,6 +114,20 @@
       <itunes:episode>59</itunes:episode>
       <itunes:duration>00:40:00</itunes:duration>
       <itunes:image href="https://i.ytimg.com/vi/y4RPCX-d9fg/maxresdefault.jpg"/>
+    </item>
+    <item>
+      <title>Real Estate Investing Strategies That Generate $1,000+ Monthly Cashflow</title>
+      <link>https://themanageher.com/blog/1-000-vs-200-month-same-property-different-strategy/</link>
+      <guid isPermaLink="true">https://themanageher.com/blog/1-000-vs-200-month-same-property-different-strategy/</guid>
+      <pubDate>Mon, 20 Apr 2026 12:00:47 GMT</pubDate>
+      <description>Learn real estate investing strategies that generate $1,000+ monthly cashflow. Discover lease options, syndications &amp; tax loopholes most investors miss.</description>
+      <itunes:title>Real Estate Investing Strategies That Generate $1,000+ Monthly Cashflow</itunes:title>
+      <itunes:summary>Learn real estate investing strategies that generate $1,000+ monthly cashflow. Discover lease options, syndications &amp; tax loopholes most investors miss.</itunes:summary>
+      <itunes:author>Aimee Rickabus</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:episode>58</itunes:episode>
+      <itunes:duration>01:03:00</itunes:duration>
+      <itunes:image href="https://i.ytimg.com/vi/PT4Lq4tsD3c/maxresdefault.jpg"/>
     </item>
     <item>
       <title>Why Parenting and Leadership Are the Same Skill Set (According to a Psychologist)</title>
@@ -877,20 +872,6 @@
       <itunes:image href="https://i.ytimg.com/vi/IJA_-Jwjbtw/maxresdefault.jpg"/>
     </item>
     <item>
-      <title>How Intuitive Leadership Transforms Motherhood and Business Success</title>
-      <link>https://themanageher.com/blog/nikki-bostwick-on-intuitive-leadership-saffron-lattes-conscious-motherhood/</link>
-      <guid isPermaLink="true">https://themanageher.com/blog/nikki-bostwick-on-intuitive-leadership-saffron-lattes-conscious-motherhood/</guid>
-      <pubDate>Wed, 02 Apr 2025 03:30:21 GMT</pubDate>
-      <description>Discover how intuitive leadership transforms business and motherhood with Nikki Bostwick, founder of The Fullest, on The Manage Her podcast.</description>
-      <itunes:title>How Intuitive Leadership Transforms Motherhood and Business Success</itunes:title>
-      <itunes:summary>Discover how intuitive leadership transforms business and motherhood with Nikki Bostwick, founder of The Fullest, on The Manage Her podcast.</itunes:summary>
-      <itunes:author>Aimee Rickabus</itunes:author>
-      <itunes:explicit>false</itunes:explicit>
-      <itunes:episode>2</itunes:episode>
-      <itunes:duration>00:32:00</itunes:duration>
-      <itunes:image href="https://i.ytimg.com/vi/gIDKnhS-WaQ/maxresdefault.jpg"/>
-    </item>
-    <item>
       <title>How to Build Stronger Relationships Through Emotional Wellness and Boundaries</title>
       <link>https://themanageher.com/blog/vanessa-morgan-on-emotional-wellness-boundaries-building-stronger-relationships/</link>
       <guid isPermaLink="true">https://themanageher.com/blog/vanessa-morgan-on-emotional-wellness-boundaries-building-stronger-relationships/</guid>
@@ -903,6 +884,20 @@
       <itunes:episode>3</itunes:episode>
       <itunes:duration>00:21:00</itunes:duration>
       <itunes:image href="https://i.ytimg.com/vi/vCXWjC0-DD8/maxresdefault.jpg"/>
+    </item>
+    <item>
+      <title>How Intuitive Leadership Transforms Motherhood and Business Success</title>
+      <link>https://themanageher.com/blog/nikki-bostwick-on-intuitive-leadership-saffron-lattes-conscious-motherhood/</link>
+      <guid isPermaLink="true">https://themanageher.com/blog/nikki-bostwick-on-intuitive-leadership-saffron-lattes-conscious-motherhood/</guid>
+      <pubDate>Wed, 02 Apr 2025 03:30:21 GMT</pubDate>
+      <description>Discover how intuitive leadership transforms business and motherhood with Nikki Bostwick, founder of The Fullest, on The Manage Her podcast.</description>
+      <itunes:title>How Intuitive Leadership Transforms Motherhood and Business Success</itunes:title>
+      <itunes:summary>Discover how intuitive leadership transforms business and motherhood with Nikki Bostwick, founder of The Fullest, on The Manage Her podcast.</itunes:summary>
+      <itunes:author>Aimee Rickabus</itunes:author>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:episode>2</itunes:episode>
+      <itunes:duration>00:32:00</itunes:duration>
+      <itunes:image href="https://i.ytimg.com/vi/gIDKnhS-WaQ/maxresdefault.jpg"/>
     </item>
     <item>
       <title>How to Build Your Own Table When There&apos;s No Seat for You in Leadership</title>

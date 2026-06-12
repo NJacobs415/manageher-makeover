@@ -20,13 +20,10 @@ const POSTS_JSON = path.join(process.cwd(), 'public/blog/posts.json');
 const BLOG_DIR = path.join(process.cwd(), 'public/blog');
 const OUT = path.join(process.cwd(), 'public/feed.xml');
 
-const FEED_TITLE = 'The Manage Her® Podcast';
+const FEED_TITLE = 'The Manage Her® — Episode Show Notes';
 const FEED_DESC =
-  'Real conversations on leadership, motherhood, financial literacy, and purpose. Hosted by Aimee Rickabus.';
+  'Show-notes companion feed for The Manage Her® Podcast. Each item links to the full episode page with transcript, key takeaways, and guest links. Subscribe in Apple Podcasts/Spotify for audio.';
 const FEED_AUTHOR = 'Aimee Rickabus';
-const FEED_EMAIL = 'info@themanageher.com';
-const FEED_CATEGORY = 'Business';
-const FEED_SUBCATEGORY = 'Entrepreneurship';
 const FEED_IMAGE = `${SITE_URL}/M_Logo_Pink.png`;
 
 function xmlEscape(s) {
@@ -55,7 +52,15 @@ function main() {
   const index = JSON.parse(fs.readFileSync(POSTS_JSON, 'utf-8')).posts || [];
   const items = [];
 
-  for (const meta of index) {
+  // Sort newest-first by publishedAt so feed readers display in
+  // expected chronological order regardless of posts.json ordering.
+  const sorted = [...index].sort((a, b) => {
+    const ta = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
+    const tb = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
+    return tb - ta;
+  });
+
+  for (const meta of sorted) {
     const file = path.join(BLOG_DIR, `${meta.slug}.json`);
     if (!fs.existsSync(file)) continue;
     const post = JSON.parse(fs.readFileSync(file, 'utf-8'));
@@ -95,17 +100,12 @@ function main() {
     <language>en-us</language>
     <copyright>© ${new Date().getFullYear()} The Manage Her®</copyright>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <itunes:author>${xmlEscape(FEED_AUTHOR)}</itunes:author>
-    <itunes:summary>${xmlEscape(FEED_DESC)}</itunes:summary>
-    <itunes:owner>
-      <itunes:name>${xmlEscape(FEED_AUTHOR)}</itunes:name>
-      <itunes:email>${xmlEscape(FEED_EMAIL)}</itunes:email>
-    </itunes:owner>
-    <itunes:explicit>false</itunes:explicit>
-    <itunes:image href="${FEED_IMAGE}"/>
-    <itunes:category text="${xmlEscape(FEED_CATEGORY)}">
-      <itunes:category text="${xmlEscape(FEED_SUBCATEGORY)}"/>
-    </itunes:category>
+    <image>
+      <url>${FEED_IMAGE}</url>
+      <title>${xmlEscape(FEED_TITLE)}</title>
+      <link>${SITE_URL}/podcast/</link>
+    </image>
+    <managingEditor>${xmlEscape(FEED_AUTHOR)}</managingEditor>
 ${items.join('\n')}
   </channel>
 </rss>

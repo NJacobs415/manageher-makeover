@@ -260,7 +260,6 @@ const BlogPost = () => {
                   description: post.metaDescription || post.excerpt,
                   thumbnailUrl: post.thumbnail,
                   uploadDate: post.publishedAt,
-                  contentUrl: post.youtubeUrl,
                   embedUrl: post.youtubeUrl.replace("watch?v=", "embed/"),
                 },
               }),
