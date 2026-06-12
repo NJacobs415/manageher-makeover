@@ -45,7 +45,17 @@ const Blog = () => {
       .catch(() => setPosts([]));
   }, []);
 
-  const allTopics = [...new Set(posts.flatMap((p) => p.topics))].sort();
+  // Show only topics with ≥ 2 posts so the chip strip mirrors the
+  // sitemap + prerendered topic pages (singletons are intentionally
+  // skipped upstream to avoid crawl-budget waste).
+  const allTopics = (() => {
+    const tally = new Map<string, number>();
+    for (const p of posts) for (const t of p.topics) tally.set(t, (tally.get(t) || 0) + 1);
+    return [...tally.entries()]
+      .filter(([, n]) => n >= 2)
+      .map(([name]) => name)
+      .sort();
+  })();
   const sorted = [...posts].sort((a, b) => {
     const dateDiff = new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
     if (dateDiff !== 0) return dateDiff;
