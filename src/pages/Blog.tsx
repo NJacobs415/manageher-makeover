@@ -10,6 +10,7 @@ import TextReveal from "@/components/animations/TextReveal";
 import FadeIn from "@/components/animations/FadeIn";
 import { ArrowRight, Play, Clock, Calendar } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
+import { topicToSlug } from "@/lib/topicSlug";
 import { useEpisodeCount } from "@/hooks/useEpisodeCount";
 import SEO from "@/components/SEO";
 import { trackBlogTopicFilter } from "@/lib/analytics";
@@ -44,7 +45,17 @@ const Blog = () => {
       .catch(() => setPosts([]));
   }, []);
 
-  const allTopics = [...new Set(posts.flatMap((p) => p.topics))].sort();
+  // Show only topics with ≥ 2 posts so the chip strip mirrors the
+  // sitemap + prerendered topic pages (singletons are intentionally
+  // skipped upstream to avoid crawl-budget waste).
+  const allTopics = (() => {
+    const tally = new Map<string, number>();
+    for (const p of posts) for (const t of p.topics) tally.set(t, (tally.get(t) || 0) + 1);
+    return [...tally.entries()]
+      .filter(([, n]) => n >= 2)
+      .map(([name]) => name)
+      .sort();
+  })();
   const sorted = [...posts].sort((a, b) => {
     const dateDiff = new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
     if (dateDiff !== 0) return dateDiff;
@@ -108,10 +119,11 @@ const Blog = () => {
               All Episodes
             </button>
             {allTopics.map((topic) => (
-              <button
+              <Link
                 key={topic}
-                onClick={() => { setFilter(topic); try { trackBlogTopicFilter(topic); } catch {} }}
-                className="font-sans text-[11px] font-medium px-5 py-2 transition-all duration-300 cursor-pointer"
+                to={`/blog/topic/${topicToSlug(topic)}/`}
+                onClick={() => { try { trackBlogTopicFilter(topic); } catch { /* noop */ } }}
+                className="font-sans text-[11px] font-medium px-5 py-2 transition-all duration-300"
                 style={{
                   background: filter === topic ? "hsl(var(--brand-pink))" : "#0a0a0a",
                   color: filter === topic ? "#fff" : "#888",
@@ -120,7 +132,7 @@ const Blog = () => {
                 }}
               >
                 {topic}
-              </button>
+              </Link>
             ))}
           </div>
         </section>
