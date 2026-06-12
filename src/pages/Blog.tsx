@@ -9,7 +9,7 @@ import Footer from "@/components/layout/Footer";
 import TextReveal from "@/components/animations/TextReveal";
 import FadeIn from "@/components/animations/FadeIn";
 import { ArrowRight, Play, Clock, Calendar } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useEpisodeCount } from "@/hooks/useEpisodeCount";
 import SEO from "@/components/SEO";
 import { trackBlogTopicFilter } from "@/lib/analytics";
@@ -29,7 +29,12 @@ interface BlogPostMeta {
 
 const Blog = () => {
   const [posts, setPosts] = useState<BlogPostMeta[]>([]);
-  const [filter, setFilter] = useState<string | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const filter = searchParams.get("topic");
+  const setFilter = (next: string | null) => {
+    if (next) setSearchParams({ topic: next });
+    else setSearchParams({});
+  };
   const episodeCount = useEpisodeCount();
 
   useEffect(() => {
