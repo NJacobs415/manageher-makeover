@@ -154,7 +154,7 @@ function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-function injectMeta(template, { title, description, url, image, type, jsonLd, noindex }) {
+function injectMeta(template, { title, description, url, image, type, jsonLd, noindex, linkRels }) {
   let html = template;
 
   // Title
@@ -200,6 +200,14 @@ function injectMeta(template, { title, description, url, image, type, jsonLd, no
     html = html.replace('</head>', `${ldTag}</head>`);
   }
 
+  // Extra <link rel> tags (prev/next). Inject just before </head>.
+  if (linkRels && linkRels.length > 0) {
+    const linkTags = linkRels
+      .map((l) => `    <link rel="${escapeHtml(l.rel)}" href="${escapeHtml(l.href)}" />`)
+      .join('\n');
+    html = html.replace('</head>', `${linkTags}\n  </head>`);
+  }
+
   return html;
 }
 
@@ -238,12 +246,25 @@ function main() {
   if (fs.existsSync(postsFile)) {
     const posts = JSON.parse(fs.readFileSync(postsFile, 'utf-8')).posts || [];
 
+    // Sort ascending by date so we can compute prev/next neighbors.
+    const sortedByDate = [...posts].sort(
+      (a, b) => new Date(a.publishedAt || 0).getTime() - new Date(b.publishedAt || 0).getTime(),
+    );
+    const slugOrder = sortedByDate.map((p) => p.slug);
+
     for (const meta of posts) {
       const postFile = path.join(BLOG_DIR, `${meta.slug}.json`);
       if (!fs.existsSync(postFile)) continue;
 
       const post = JSON.parse(fs.readFileSync(postFile, 'utf-8'));
       const url = `${SITE_URL}/blog/${post.slug}/`;
+
+      const idx = slugOrder.indexOf(post.slug);
+      const prevSlug = idx > 0 ? slugOrder[idx - 1] : null;
+      const nextSlug = idx >= 0 && idx < slugOrder.length - 1 ? slugOrder[idx + 1] : null;
+      const linkRels = [];
+      if (prevSlug) linkRels.push({ rel: 'prev', href: `${SITE_URL}/blog/${prevSlug}/` });
+      if (nextSlug) linkRels.push({ rel: 'next', href: `${SITE_URL}/blog/${nextSlug}/` });
 
       const html = injectMeta(template, {
         title: `${post.title} | The Manage Her® Podcast`,
@@ -274,6 +295,12 @@ function main() {
               },
               description: post.metaDescription || post.excerpt || '',
               mainEntityOfPage: url,
+              ...(Array.isArray(post.pullQuotes) && post.pullQuotes.length > 0 && {
+                speakable: {
+                  '@type': 'SpeakableSpecification',
+                  cssSelector: ['.tmh-speakable'],
+                },
+              }),
             },
             {
               '@type': 'PodcastEpisode',
@@ -301,8 +328,17 @@ function main() {
                 author: { '@type': 'Person', name: 'Aimee Rickabus' },
               },
             },
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+                { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog/` },
+                { '@type': 'ListItem', position: 3, name: post.title, item: url },
+              ],
+            },
           ],
         },
+        linkRels,
       });
 
       const dir = path.join(DIST, 'blog', post.slug);

@@ -208,6 +208,24 @@ const BlogPost = () => {
     }
   };
 
+  // Adjacent episodes by date (newer = "next", older = "prev").
+  // Used to emit <link rel="prev/next"> for crawler hint on serial ordering.
+  const { prevPost, nextPost } = useMemo<{
+    prevPost: RelatedEpisode | null;
+    nextPost: RelatedEpisode | null;
+  }>(() => {
+    if (!post || allPosts.length === 0) return { prevPost: null, nextPost: null };
+    const sorted = [...allPosts].sort(
+      (a, b) => new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime(),
+    );
+    const idx = sorted.findIndex((p) => p.slug === post.slug);
+    if (idx === -1) return { prevPost: null, nextPost: null };
+    return {
+      prevPost: idx > 0 ? sorted[idx - 1] : null,
+      nextPost: idx < sorted.length - 1 ? sorted[idx + 1] : null,
+    };
+  }, [post, allPosts]);
+
   // Top 3 related episodes by Jaccard similarity on topic sets.
   // Ties broken by descending publish date so newer episodes win.
   const relatedEpisodes = useMemo<RelatedEpisode[]>(() => {
@@ -289,6 +307,12 @@ const BlogPost = () => {
               },
               description: post.metaDescription || post.excerpt,
               mainEntityOfPage: `https://themanageher.com/blog/${post.slug}`,
+              ...(post.pullQuotes && post.pullQuotes.length > 0 && {
+                speakable: {
+                  "@type": "SpeakableSpecification",
+                  cssSelector: [".tmh-speakable"],
+                },
+              }),
             },
             {
               "@type": "PodcastEpisode",
@@ -316,8 +340,20 @@ const BlogPost = () => {
                 author: { "@type": "Person", name: "Aimee Rickabus" },
               },
             },
+            {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://themanageher.com/" },
+                { "@type": "ListItem", position: 2, name: "Blog", item: "https://themanageher.com/blog/" },
+                { "@type": "ListItem", position: 3, name: post.title, item: `https://themanageher.com/blog/${post.slug}/` },
+              ],
+            },
           ],
         }}
+        linkRels={[
+          ...(prevPost ? [{ rel: "prev", href: `https://themanageher.com/blog/${prevPost.slug}/` }] : []),
+          ...(nextPost ? [{ rel: "next", href: `https://themanageher.com/blog/${nextPost.slug}/` }] : []),
+        ]}
       />
       {/* Prose styles for dangerouslySetInnerHTML content */}
       <style>{proseCss}</style>
@@ -574,7 +610,7 @@ const BlogPost = () => {
                     style={{ borderLeft: "3px solid #eb1887" }}
                   >
                     <p
-                      className="font-serif text-xl md:text-2xl italic leading-[1.4] mb-2"
+                      className="tmh-speakable font-serif text-xl md:text-2xl italic leading-[1.4] mb-2"
                       style={{ color: "#1a1a1a" }}
                     >
                       "{post.pullQuotes[0].text}"
@@ -611,7 +647,7 @@ const BlogPost = () => {
                             }}
                           >
                             <p
-                              className="font-serif text-lg md:text-xl italic leading-[1.5] mb-2"
+                              className="tmh-speakable font-serif text-lg md:text-xl italic leading-[1.5] mb-2"
                               style={{ color: "#2a2a2a" }}
                             >
                               "{sprinkled.text}"
