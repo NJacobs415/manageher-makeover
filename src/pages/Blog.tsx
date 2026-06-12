@@ -10,6 +10,7 @@ import TextReveal from "@/components/animations/TextReveal";
 import FadeIn from "@/components/animations/FadeIn";
 import { ArrowRight, Play, Clock, Calendar } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
+import { topicToSlug } from "@/lib/topicSlug";
 import { useEpisodeCount } from "@/hooks/useEpisodeCount";
 import SEO from "@/components/SEO";
 import { trackBlogTopicFilter } from "@/lib/analytics";
@@ -108,10 +109,11 @@ const Blog = () => {
               All Episodes
             </button>
             {allTopics.map((topic) => (
-              <button
+              <Link
                 key={topic}
-                onClick={() => { setFilter(topic); try { trackBlogTopicFilter(topic); } catch {} }}
-                className="font-sans text-[11px] font-medium px-5 py-2 transition-all duration-300 cursor-pointer"
+                to={`/blog/topic/${topicToSlug(topic)}/`}
+                onClick={() => { try { trackBlogTopicFilter(topic); } catch { /* noop */ } }}
+                className="font-sans text-[11px] font-medium px-5 py-2 transition-all duration-300"
                 style={{
                   background: filter === topic ? "hsl(var(--brand-pink))" : "#0a0a0a",
                   color: filter === topic ? "#fff" : "#888",
@@ -120,7 +122,7 @@ const Blog = () => {
                 }}
               >
                 {topic}
-              </button>
+              </Link>
             ))}
           </div>
         </section>

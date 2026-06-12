@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useEpisodeCount } from "@/hooks/useEpisodeCount";
 import { useEpisodes } from "@/hooks/useEpisodes";
 import { useTopicCounts } from "@/hooks/useTopicCounts";
+import { topicToSlug } from "@/lib/topicSlug";
 import podcastCover from "@/assets/podcast-cover.png";
 import logoSpotify from "@/assets/logo-spotify.png";
 import logoApplePodcasts from "@/assets/logo-apple-podcasts.svg";
@@ -410,7 +411,7 @@ const Podcast = () => {
               {topicCounts.map((tag) => (
                 <Link
                   key={tag.name}
-                  to={`/blog?topic=${encodeURIComponent(tag.name)}`}
+                  to={`/blog/topic/${topicToSlug(tag.name)}/`}
                   className="font-sans text-[13px] font-medium px-6 py-3 transition-all duration-300 hover:-translate-y-0.5"
                   style={{ background: "#111", borderRadius: "50px", border: "1px solid rgba(255,255,255,0.06)", color: "#999" }}
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(235,24,135,0.3)"; e.currentTarget.style.color = "#eb1887"; }}

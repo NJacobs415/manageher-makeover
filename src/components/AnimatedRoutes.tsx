@@ -9,6 +9,7 @@ import Book from "@/pages/Book";
 import Press from "@/pages/Press";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
+import BlogTopic from "@/pages/BlogTopic";
 import Legal from "@/pages/Legal";
 import Links from "@/pages/Links";
 import NotFound from "@/pages/NotFound";
@@ -25,6 +26,7 @@ const AnimatedRoutes = () => {
         <Route path="/podcast" element={<PageTransition><Podcast /></PageTransition>} />
         <Route path="/book" element={<PageTransition><Book /></PageTransition>} />
         <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+        <Route path="/blog/topic/:topic" element={<PageTransition><BlogTopic /></PageTransition>} />
         <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
         <Route path="/press" element={<PageTransition><Press /></PageTransition>} />
         <Route path="/legal" element={<PageTransition><Legal /></PageTransition>} />

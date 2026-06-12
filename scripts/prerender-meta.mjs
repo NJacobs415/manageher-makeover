@@ -312,6 +312,55 @@ function main() {
     }
   }
 
+  // Topic category pages — one per topic with ≥2 posts.
+  const postsFile2 = path.join(BLOG_DIR, 'posts.json');
+  if (fs.existsSync(postsFile2)) {
+    const posts = JSON.parse(fs.readFileSync(postsFile2, 'utf-8')).posts || [];
+    const tally = new Map();
+    for (const p of posts) for (const t of p.topics || []) tally.set(t, (tally.get(t) || 0) + 1);
+    const topicSlug = (s) =>
+      s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
+    for (const [topic, n] of tally) {
+      if (n < 2) continue;
+      const slug = topicSlug(topic);
+      const url = `${SITE_URL}/blog/topic/${slug}/`;
+      const title = `${topic} Episodes | The Manage Her® Podcast`;
+      const description = `${n} podcast episodes on ${topic.toLowerCase()} from The Manage Her® — real conversations with women redefining leadership, hosted by Aimee Rickabus.`;
+      const html = injectMeta(template, {
+        title,
+        description,
+        url,
+        image: DEFAULT_IMAGE,
+        type: 'website',
+        jsonLd: {
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: `${topic} — The Manage Her® Podcast`,
+          url,
+          description,
+          isPartOf: {
+            '@type': 'PodcastSeries',
+            name: 'The Manage Her Podcast',
+            url: `${SITE_URL}/podcast/`,
+          },
+          breadcrumb: {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+              { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog/` },
+              { '@type': 'ListItem', position: 3, name: topic, item: url },
+            ],
+          },
+        },
+      });
+      const dir = path.join(DIST, 'blog', 'topic', slug);
+      fs.mkdirSync(dir, { recursive: true });
+      fs.writeFileSync(path.join(dir, 'index.html'), html);
+      count++;
+    }
+  }
+
   console.log(`Pre-rendered meta tags for ${count} routes`);
 }
 

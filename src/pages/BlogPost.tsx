@@ -135,10 +135,22 @@ function inferLinkType(url: string): string {
   return 'website';
 }
 
+interface RelatedEpisode {
+  slug: string;
+  title: string;
+  episodeNumber: number;
+  guestName: string;
+  thumbnail: string;
+  duration: string;
+  publishedAt: string;
+  topics: string[];
+}
+
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [post, setPost] = useState<BlogPostData | null>(null);
+  const [allPosts, setAllPosts] = useState<RelatedEpisode[]>([]);
   const [loading, setLoading] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [copied, setCopied] = useState(false);
@@ -162,6 +174,14 @@ const BlogPost = () => {
         navigate("/blog", { replace: true });
       });
   }, [slug, navigate]);
+
+  // Fetch the post index once so we can compute related episodes.
+  useEffect(() => {
+    fetch("/blog/posts.json")
+      .then((res) => res.json())
+      .then((data) => setAllPosts(data.posts || []))
+      .catch(() => setAllPosts([]));
+  }, []);
 
   // Reading progress bar — updates on scroll
   useEffect(() => {
@@ -187,6 +207,32 @@ const BlogPost = () => {
       // Clipboard API unavailable — silently ignore
     }
   };
+
+  // Top 3 related episodes by Jaccard similarity on topic sets.
+  // Ties broken by descending publish date so newer episodes win.
+  const relatedEpisodes = useMemo<RelatedEpisode[]>(() => {
+    if (!post || allPosts.length === 0) return [];
+    const currentTopics = new Set(post.topics || []);
+    if (currentTopics.size === 0) return [];
+    const scored = allPosts
+      .filter((p) => p.slug !== post.slug)
+      .map((p) => {
+        const theirs = new Set(p.topics || []);
+        if (theirs.size === 0) return { post: p, score: 0 };
+        let inter = 0;
+        for (const t of currentTopics) if (theirs.has(t)) inter++;
+        const union = currentTopics.size + theirs.size - inter;
+        return { post: p, score: union === 0 ? 0 : inter / union };
+      })
+      .filter((x) => x.score > 0)
+      .sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        return new Date(b.post.publishedAt).getTime() - new Date(a.post.publishedAt).getTime();
+      })
+      .slice(0, 3)
+      .map((x) => x.post);
+    return scored;
+  }, [post, allPosts]);
 
   // Split content at h3 headings so we can sprinkle pull quotes between sections.
   // Positive lookahead (?=<h3) keeps the h3 opener with the following section.
@@ -826,6 +872,74 @@ const BlogPost = () => {
             </div>
           </div>
         </section>
+
+        {/* ═══════ RELATED EPISODES — Warm cream ═══════ */}
+        {relatedEpisodes.length > 0 && (
+          <section className="py-20 px-6" style={{ background: "#f5f0eb" }}>
+            <div className="max-w-[1200px] mx-auto">
+              <TextReveal>
+                <p className="font-sans text-[10px] uppercase tracking-[0.3em] mb-3 text-center" style={{ color: "#c9a96e" }}>
+                  Keep Listening
+                </p>
+              </TextReveal>
+              <TextReveal delay={100}>
+                <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12" style={{ color: "#1a1a1a" }}>
+                  Related <em className="text-brand-pink italic">episodes</em>
+                </h2>
+              </TextReveal>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {relatedEpisodes.map((ep, i) => (
+                  <FadeIn key={ep.slug} delay={i * 80} y={20}>
+                    <Link
+                      to={`/blog/${ep.slug}`}
+                      className="group block transition-all duration-300 hover:-translate-y-1"
+                      style={{
+                        background: "#fff",
+                        borderRadius: "16px",
+                        border: "1px solid rgba(0,0,0,0.06)",
+                        overflow: "hidden",
+                      }}
+                    >
+                      <div className="relative aspect-video overflow-hidden">
+                        <img
+                          src={ep.thumbnail}
+                          alt={ep.title}
+                          width={640}
+                          height={360}
+                          loading="lazy"
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <span className="absolute top-3 left-3 font-sans text-[10px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1" style={{ background: "rgba(0,0,0,0.7)", color: "#fff", borderRadius: "50px" }}>
+                          Ep {ep.episodeNumber}
+                        </span>
+                      </div>
+                      <div className="p-5">
+                        {ep.guestName && (
+                          <p className="font-sans text-[10px] uppercase tracking-[0.15em] mb-2" style={{ color: "#c9a96e" }}>
+                            {ep.guestName}
+                          </p>
+                        )}
+                        <h3 className="font-serif text-lg font-bold mb-3 group-hover:text-brand-pink transition-colors" style={{ color: "#1a1a1a", lineHeight: 1.3 }}>
+                          {ep.title}
+                        </h3>
+                        <div className="flex items-center gap-4 font-sans text-[11px]" style={{ color: "#999" }}>
+                          <span className="flex items-center gap-1">
+                            <Clock size={11} />
+                            {ep.duration}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Calendar size={11} />
+                            {new Date(ep.publishedAt).toLocaleDateString("en-US", { month: "short", year: "numeric" })}
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ═══════ ENJOYED THIS EPISODE — Podcast subscribe (dark) ═══════ */}
         <section
