@@ -20,6 +20,22 @@ const BLOG_DIR = path.join(process.cwd(), 'public/blog');
 const SITE_URL = 'https://themanageher.com';
 const DEFAULT_IMAGE = `${SITE_URL}/M_Logo_Pink.png`;
 
+// ─── Duration parsing ───────────────────────────────────────────
+// Converts the human-readable `duration` field on posts ("44 min",
+// "1h 5m", "1h", "59 min") to ISO 8601 (`PT44M`, `PT1H5M`).
+// Returns `undefined` when nothing parseable is found so the schema
+// field is omitted rather than emitting an invalid duration.
+function toIsoDuration(s) {
+  if (!s || typeof s !== 'string') return undefined;
+  const hours = s.match(/(\d+)\s*h/i);
+  const mins = s.match(/(\d+)\s*(?:m|min)/i);
+  if (!hours && !mins) return undefined;
+  let out = 'PT';
+  if (hours) out += `${hours[1]}H`;
+  if (mins) out += `${mins[1]}M`;
+  return out;
+}
+
 // ─── Static page metadata ───────────────────────────────────────
 // Keep in sync with src/components/SEO.tsx defaults and the <SEO>
 // props in each page component (src/pages/*.tsx).
@@ -237,25 +253,55 @@ function main() {
         type: 'article',
         jsonLd: {
           '@context': 'https://schema.org',
-          '@type': 'Article',
-          headline: post.title,
-          image: post.thumbnail,
-          datePublished: post.publishedAt,
-          author: {
-            '@type': 'Person',
-            name: 'Aimee Rickabus',
-            url: `${SITE_URL}/about/`,
-          },
-          publisher: {
-            '@type': 'Organization',
-            name: 'The Manage Her',
-            logo: {
-              '@type': 'ImageObject',
-              url: `${SITE_URL}/M_Logo_Pink.png`,
+          '@graph': [
+            {
+              '@type': 'Article',
+              headline: post.title,
+              image: post.thumbnail,
+              datePublished: post.publishedAt,
+              author: {
+                '@type': 'Person',
+                name: 'Aimee Rickabus',
+                url: `${SITE_URL}/about/`,
+              },
+              publisher: {
+                '@type': 'Organization',
+                name: 'The Manage Her',
+                logo: {
+                  '@type': 'ImageObject',
+                  url: `${SITE_URL}/M_Logo_Pink.png`,
+                },
+              },
+              description: post.metaDescription || post.excerpt || '',
+              mainEntityOfPage: url,
             },
-          },
-          description: post.metaDescription || post.excerpt || '',
-          mainEntityOfPage: url,
+            {
+              '@type': 'PodcastEpisode',
+              name: post.title,
+              url,
+              datePublished: post.publishedAt,
+              ...(toIsoDuration(post.duration) && { duration: toIsoDuration(post.duration) }),
+              ...(typeof post.episodeNumber === 'number' && { episodeNumber: post.episodeNumber }),
+              image: post.thumbnail,
+              description: post.metaDescription || post.excerpt || '',
+              ...(post.youtubeUrl && {
+                associatedMedia: {
+                  '@type': 'VideoObject',
+                  name: post.title,
+                  description: post.metaDescription || post.excerpt || '',
+                  thumbnailUrl: post.thumbnail,
+                  uploadDate: post.publishedAt,
+                  embedUrl: post.youtubeUrl.replace('watch?v=', 'embed/'),
+                },
+              }),
+              partOfSeries: {
+                '@type': 'PodcastSeries',
+                name: 'The Manage Her Podcast',
+                url: `${SITE_URL}/podcast/`,
+                author: { '@type': 'Person', name: 'Aimee Rickabus' },
+              },
+            },
+          ],
         },
       });
 

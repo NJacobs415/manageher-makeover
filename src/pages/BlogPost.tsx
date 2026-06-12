@@ -111,6 +111,20 @@ const getYouTubeId = (url: string): string => {
   return match ? match[1] : "";
 };
 
+// Converts "44 min", "1h 5m", "1h" to ISO 8601 ("PT44M", "PT1H5M").
+// Returns undefined when the input is unparseable so the schema
+// field is omitted rather than emitting an invalid duration.
+function toIsoDuration(s: string | undefined): string | undefined {
+  if (!s) return undefined;
+  const hours = s.match(/(\d+)\s*h/i);
+  const mins = s.match(/(\d+)\s*(?:m|min)/i);
+  if (!hours && !mins) return undefined;
+  let out = "PT";
+  if (hours) out += `${hours[1]}H`;
+  if (mins) out += `${mins[1]}M`;
+  return out;
+}
+
 function inferLinkType(url: string): string {
   if (url.includes('instagram.com')) return 'instagram';
   if (url.includes('linkedin.com')) return 'linkedin';
@@ -208,25 +222,55 @@ const BlogPost = () => {
         type="article"
         jsonLd={{
           "@context": "https://schema.org",
-          "@type": "Article",
-          headline: post.title,
-          image: post.thumbnail,
-          datePublished: post.publishedAt,
-          author: {
-            "@type": "Person",
-            name: "Aimee Rickabus",
-            url: "https://themanageher.com/about",
-          },
-          publisher: {
-            "@type": "Organization",
-            name: "The Manage Her",
-            logo: {
-              "@type": "ImageObject",
-              url: "https://themanageher.com/M_Logo_Pink.png",
+          "@graph": [
+            {
+              "@type": "Article",
+              headline: post.title,
+              image: post.thumbnail,
+              datePublished: post.publishedAt,
+              author: {
+                "@type": "Person",
+                name: "Aimee Rickabus",
+                url: "https://themanageher.com/about",
+              },
+              publisher: {
+                "@type": "Organization",
+                name: "The Manage Her",
+                logo: {
+                  "@type": "ImageObject",
+                  url: "https://themanageher.com/M_Logo_Pink.png",
+                },
+              },
+              description: post.metaDescription || post.excerpt,
+              mainEntityOfPage: `https://themanageher.com/blog/${post.slug}`,
             },
-          },
-          description: post.metaDescription || post.excerpt,
-          mainEntityOfPage: `https://themanageher.com/blog/${post.slug}`,
+            {
+              "@type": "PodcastEpisode",
+              name: post.title,
+              url: `https://themanageher.com/blog/${post.slug}`,
+              datePublished: post.publishedAt,
+              ...(toIsoDuration(post.duration) && { duration: toIsoDuration(post.duration) }),
+              ...(typeof post.episodeNumber === "number" && { episodeNumber: post.episodeNumber }),
+              image: post.thumbnail,
+              description: post.metaDescription || post.excerpt,
+              ...(post.youtubeUrl && {
+                associatedMedia: {
+                  "@type": "VideoObject",
+                  name: post.title,
+                  description: post.metaDescription || post.excerpt,
+                  thumbnailUrl: post.thumbnail,
+                  uploadDate: post.publishedAt,
+                  embedUrl: post.youtubeUrl.replace("watch?v=", "embed/"),
+                },
+              }),
+              partOfSeries: {
+                "@type": "PodcastSeries",
+                name: "The Manage Her Podcast",
+                url: "https://themanageher.com/podcast/",
+                author: { "@type": "Person", name: "Aimee Rickabus" },
+              },
+            },
+          ],
         }}
       />
       {/* Prose styles for dangerouslySetInnerHTML content */}
