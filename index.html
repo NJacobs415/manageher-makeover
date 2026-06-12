@@ -31,15 +31,40 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=DM+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LJ6XE6JK2L"></script>
+    <!-- Google tag (gtag.js) — deferred load -->
     <script>
+      // Set up dataLayer + gtag stub IMMEDIATELY so trackEvent() calls
+      // anywhere in the app buffer into dataLayer with zero loss.
+      // Then defer the 164 KB gtag.js download until first user
+      // interaction or 3s idle, whichever fires first. When gtag.js
+      // arrives it drains the queue, so no events are dropped.
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-LJ6XE6JK2L', {
-        send_page_view: false
-      });
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', 'G-LJ6XE6JK2L', { send_page_view: false });
+
+      (function () {
+        var loaded = false;
+        function loadGtag() {
+          if (loaded) return;
+          loaded = true;
+          ['scroll', 'keydown', 'mousemove', 'touchstart', 'click'].forEach(function (t) {
+            window.removeEventListener(t, loadGtag, true);
+          });
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-LJ6XE6JK2L';
+          document.head.appendChild(s);
+        }
+        ['scroll', 'keydown', 'mousemove', 'touchstart', 'click'].forEach(function (t) {
+          window.addEventListener(t, loadGtag, { capture: true, passive: true, once: true });
+        });
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(loadGtag, { timeout: 3000 });
+        } else {
+          setTimeout(loadGtag, 3000);
+        }
+      })();
     </script>
   </head>
 
