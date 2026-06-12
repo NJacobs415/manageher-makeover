@@ -105,7 +105,7 @@ function main() {
       <title>${xmlEscape(FEED_TITLE)}</title>
       <link>${SITE_URL}/podcast/</link>
     </image>
-    <managingEditor>${xmlEscape(FEED_AUTHOR)}</managingEditor>
+    <managingEditor>info@themanageher.com (${xmlEscape(FEED_AUTHOR)})</managingEditor>
 ${items.join('\n')}
   </channel>
 </rss>
