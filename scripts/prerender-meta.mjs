@@ -154,7 +154,7 @@ function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-function injectMeta(template, { title, description, url, image, type, jsonLd, noindex, linkRels }) {
+function injectMeta(template, { title, description, url, image, type, jsonLd, noindex, linkRels, preloadImages }) {
   let html = template;
 
   // Title
@@ -208,7 +208,22 @@ function injectMeta(template, { title, description, url, image, type, jsonLd, no
     html = html.replace('</head>', `${linkTags}\n  </head>`);
   }
 
+  // Image preload hints — start fetching above-the-fold thumbnails in
+  // parallel with JS download so they're decoded by the time React mounts.
+  if (preloadImages && preloadImages.length > 0) {
+    const preloadTags = preloadImages
+      .map((href) => `    <link rel="preload" as="image" href="${escapeHtml(href)}" fetchpriority="high" />`)
+      .join('\n');
+    html = html.replace('</head>', `${preloadTags}\n  </head>`);
+  }
+
   return html;
+}
+
+// Convert posts.json maxresdefault.jpg → hqdefault.jpg for grid card use.
+function toHqThumb(url) {
+  if (!url) return '';
+  return url.replace(/(maxresdefault|hqdefault|mqdefault|sddefault)/, 'hqdefault');
 }
 
 // ─── Main ───────────────────────────────────────────────────────
@@ -221,6 +236,16 @@ function main() {
   }
   const template = fs.readFileSync(templatePath, 'utf-8');
 
+  // Load posts once and compute "top 6 by date desc" for /blog/ preload hints.
+  const postsFile = path.join(BLOG_DIR, 'posts.json');
+  const posts = fs.existsSync(postsFile)
+    ? JSON.parse(fs.readFileSync(postsFile, 'utf-8')).posts || []
+    : [];
+  const sortedDesc = [...posts].sort(
+    (a, b) => new Date(b.publishedAt || 0).getTime() - new Date(a.publishedAt || 0).getTime(),
+  );
+  const blogPreload = sortedDesc.slice(0, 6).map((p) => toHqThumb(p.thumbnail)).filter(Boolean);
+
   let count = 0;
 
   // Static routes
@@ -228,7 +253,8 @@ function main() {
     // CF Pages serves all directory routes with a trailing slash and 308s the
     // no-slash form. Canonical/og:url must match the served URL.
     const url = route.path === '/' ? `${SITE_URL}/` : `${SITE_URL}${route.path}/`;
-    const html = injectMeta(template, { ...route, url });
+    const preloadImages = route.path === '/blog' ? blogPreload : undefined;
+    const html = injectMeta(template, { ...route, url, preloadImages });
 
     if (route.path === '/') {
       // Overwrite dist/index.html with homepage-specific meta
@@ -241,11 +267,8 @@ function main() {
     count++;
   }
 
-  // Blog post routes
-  const postsFile = path.join(BLOG_DIR, 'posts.json');
-  if (fs.existsSync(postsFile)) {
-    const posts = JSON.parse(fs.readFileSync(postsFile, 'utf-8')).posts || [];
-
+  // Blog post routes — reuse the posts array loaded above for /blog/ preload.
+  if (posts.length > 0) {
     // Sort ascending by date so we can compute prev/next neighbors.
     const sortedByDate = [...posts].sort(
       (a, b) => new Date(a.publishedAt || 0).getTime() - new Date(b.publishedAt || 0).getTime(),
@@ -348,10 +371,9 @@ function main() {
     }
   }
 
-  // Topic category pages — one per topic with ≥2 posts.
-  const postsFile2 = path.join(BLOG_DIR, 'posts.json');
-  if (fs.existsSync(postsFile2)) {
-    const posts = JSON.parse(fs.readFileSync(postsFile2, 'utf-8')).posts || [];
+  // Topic category pages — one per topic with ≥2 posts. Reuse the
+  // posts array loaded at top of main().
+  if (posts.length > 0) {
     const tally = new Map();
     for (const p of posts) for (const t of p.topics || []) tally.set(t, (tally.get(t) || 0) + 1);
     const topicSlug = (s) =>
@@ -363,12 +385,19 @@ function main() {
       const url = `${SITE_URL}/blog/topic/${slug}/`;
       const title = `${topic} Episodes | The Manage Her® Podcast`;
       const description = `${n} podcast episodes on ${topic.toLowerCase()} from The Manage Her® — real conversations with women redefining leadership, hosted by Aimee Rickabus.`;
+      const topicPreload = posts
+        .filter((p) => (p.topics || []).includes(topic))
+        .sort((a, b) => new Date(b.publishedAt || 0).getTime() - new Date(a.publishedAt || 0).getTime())
+        .slice(0, 6)
+        .map((p) => toHqThumb(p.thumbnail))
+        .filter(Boolean);
       const html = injectMeta(template, {
         title,
         description,
         url,
         image: DEFAULT_IMAGE,
         type: 'website',
+        preloadImages: topicPreload,
         jsonLd: {
           '@context': 'https://schema.org',
           '@type': 'CollectionPage',

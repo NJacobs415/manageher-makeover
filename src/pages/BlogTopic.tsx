@@ -7,6 +7,7 @@ import FadeIn from "@/components/animations/FadeIn";
 import { ArrowRight, Play, Clock, Calendar } from "lucide-react";
 import SEO from "@/components/SEO";
 import { slugToTopic, topicToSlug } from "@/lib/topicSlug";
+import { getYouTubeThumb } from "@/lib/ytThumb";
 
 interface BlogPostMeta {
   slug: string;
@@ -177,11 +178,12 @@ const BlogTopic = () => {
                 >
                   <div className="relative aspect-video overflow-hidden">
                     <img
-                      src={post.thumbnail}
+                      src={getYouTubeThumb(post.thumbnail)}
                       alt={post.title}
-                      width={640}
+                      width={480}
                       height={360}
                       loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: "rgba(0,0,0,0.3)" }}>
