@@ -8,6 +8,7 @@ import { Star, ArrowRight, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEpisodeCount } from "@/hooks/useEpisodeCount";
 import { useEpisodes } from "@/hooks/useEpisodes";
+import { useTopicCounts } from "@/hooks/useTopicCounts";
 import podcastCover from "@/assets/podcast-cover.png";
 import logoSpotify from "@/assets/logo-spotify.png";
 import logoApplePodcasts from "@/assets/logo-apple-podcasts.svg";
@@ -21,6 +22,18 @@ import cardFinancial from "@/assets/card-financial.png";
 import cardConversations from "@/assets/card-conversations.png";
 import SEO from "@/components/SEO";
 import { trackPodcastPlatformClick, toPlatformKey } from "@/lib/analytics";
+
+// Curated "Start Here" picks for cold traffic. Each episode is
+// strong on its own and the set covers the brand's pillars
+// (invisible labor, leadership, financial literacy, motherhood,
+// partnership). Linked to /blog/<slug> for the rich episode page.
+const START_HERE_EPISODES = [
+  { slug: "the-10-trillion-job-you-re-doing-for-free", episodeNumber: 51, title: "The $10 Trillion Job Every Mother Does for Free (And Why It's Time to Name It)", cat: "Invisible Labor" },
+  { slug: "why-smart-women-shatter-instead-of-bounce-wharton-coach-explains", episodeNumber: 62, title: "The Science Behind Why High-Achieving Women Get Stuck in Failure Loops", cat: "Leadership" },
+  { slug: "stephanie-guttman-rewrite-your-money-story", episodeNumber: 43, title: "The Money Story That's Costing Women Millions (And How to Rewrite It)", cat: "Financial Literacy" },
+  { slug: "marriage-masculinity-mental-load-a-conversation-with-bart-morse", episodeNumber: 28, title: "Why Men Need to Step Up Emotionally at Home (Not Just Financially)", cat: "Partnership" },
+  { slug: "option-a-this-mom-saw-what-schools-were-teaching-her-kids-now-she-s-running-for-office", episodeNumber: 53, title: "From Frustrated Mom to Political Candidate: When Parental Rights Meet Leadership", cat: "Identity" },
+];
 
 // Hardcoded fallback for the featured "Latest Episode" card
 const fallbackLatest = {
@@ -36,6 +49,7 @@ const fallbackLatest = {
 const Podcast = () => {
   const episodeCount = useEpisodeCount();
   const { episodes: liveEpisodes, loaded } = useEpisodes(3);
+  const topicCounts = useTopicCounts();
 
   // Adapt the first webhook episode to the featured-card shape; fall back to hardcoded
   const latestEpisode =
@@ -339,15 +353,9 @@ const Podcast = () => {
           </FadeIn>
 
           <div className="space-y-4">
-            {[
-              { num: "01", title: "The Story Behind The Manage Her® — Aimee's Solo Episode", cat: "Origin" },
-              { num: "02", title: "Invisible Labor: Why Women's Work Is Real Leadership", cat: "Leadership" },
-              { num: "03", title: "Your Money Story Was Written Before You Could Read", cat: "Financial Literacy" },
-              { num: "04", title: "Burnout to Balance: Reclaiming Confidence & Purpose", cat: "Wellness" },
-              { num: "05", title: "What Men Need to Hear — Bart Morse on Emotional Leadership", cat: "Relationships" },
-            ].map((ep, i) => (
-              <FadeIn key={ep.num} delay={i * 80} y={15}>
-                <a href="https://www.youtube.com/@TheManageHer" target="_blank" rel="noopener noreferrer"
+            {START_HERE_EPISODES.map((ep, i) => (
+              <FadeIn key={ep.slug} delay={i * 80} y={15}>
+                <Link to={`/blog/${ep.slug}`}
                   className="flex items-center gap-5 p-5 group transition-all duration-300 hover:-translate-y-0.5"
                   style={{ background: "#fff", borderRadius: "16px", border: "1px solid rgba(0,0,0,0.06)" }}>
                   {/* Numbered badge with play icon */}
@@ -355,11 +363,11 @@ const Podcast = () => {
                     <Play size={14} className="text-brand-pink fill-brand-pink" />
                     <div className="w-12 h-12 flex items-center justify-center font-serif font-bold text-sm"
                       style={{ background: "linear-gradient(135deg, #eb1887, #ff4da6)", borderRadius: "12px", color: "#fff" }}>
-                      {ep.num}
+                      {String(i + 1).padStart(2, "0")}
                     </div>
                   </div>
                   <div className="flex-1">
-                    <p className="font-sans text-[10px] uppercase tracking-[0.15em] mb-1" style={{ color: "#c9a96e" }}>{ep.cat}</p>
+                    <p className="font-sans text-[10px] uppercase tracking-[0.15em] mb-1" style={{ color: "#c9a96e" }}>{ep.cat} · Ep {ep.episodeNumber}</p>
                     <h4 className="font-serif text-lg font-bold group-hover:text-brand-pink transition-colors" style={{ color: "#1a1a1a" }}>{ep.title}</h4>
                   </div>
                   {/* Waveform decoration */}
@@ -372,17 +380,17 @@ const Podcast = () => {
                     <span style={{ width: "3px", height: "18px", background: "#eb1887", borderRadius: "2px" }} />
                     <span style={{ width: "3px", height: "12px", background: "#eb1887", borderRadius: "2px" }} />
                   </div>
-                </a>
+                </Link>
               </FadeIn>
             ))}
           </div>
 
           <FadeIn delay={500} y={20}>
             <div className="text-center mt-10">
-              <a href="https://www.youtube.com/@TheManageHer" target="_blank" rel="noopener noreferrer"
+              <Link to="/blog"
                 className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-pink hover:gap-3 transition-all">
                 Explore All Episodes <ArrowRight size={14} />
-              </a>
+              </Link>
             </div>
           </FadeIn>
         </div>
@@ -399,30 +407,18 @@ const Podcast = () => {
           </TextReveal>
           <FadeIn delay={200} y={20}>
             <div className="flex flex-wrap justify-center gap-3">
-              {[
-                { name: "Leadership", count: 12 },
-                { name: "Money & Wealth", count: 8 },
-                { name: "Burnout", count: 6 },
-                { name: "Motherhood", count: 10 },
-                { name: "Marriage", count: 5 },
-                { name: "Entrepreneurship", count: 9 },
-                { name: "Wellness", count: 7 },
-                { name: "Identity", count: 6 },
-                { name: "Community", count: 4 },
-                { name: "Spirituality", count: 3 },
-                { name: "Boundaries", count: 8 },
-                { name: "Invisible Labor", count: 5 },
-              ].map((tag) => (
-                <span
+              {topicCounts.map((tag) => (
+                <Link
                   key={tag.name}
-                  className="font-sans text-[13px] font-medium px-6 py-3 transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
+                  to={`/blog?topic=${encodeURIComponent(tag.name)}`}
+                  className="font-sans text-[13px] font-medium px-6 py-3 transition-all duration-300 hover:-translate-y-0.5"
                   style={{ background: "#111", borderRadius: "50px", border: "1px solid rgba(255,255,255,0.06)", color: "#999" }}
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(235,24,135,0.3)"; e.currentTarget.style.color = "#eb1887"; }}
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)"; e.currentTarget.style.color = "#999"; }}
                 >
                   {tag.name}
                   <span className="ml-2" style={{ color: "rgba(255,255,255,0.3)" }}>({tag.count})</span>
-                </span>
+                </Link>
               ))}
             </div>
           </FadeIn>
