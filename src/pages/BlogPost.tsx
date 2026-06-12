@@ -13,6 +13,7 @@ import Magnetic from "@/components/animations/Magnetic";
 import SEO from "@/components/SEO";
 import EpisodeQuiz from "@/components/blog/EpisodeQuiz";
 import { trackTranscriptExpand, trackEpisodePlay, trackGuestLinkClick } from '@/lib/analytics';
+import { getYouTubeThumb } from "@/lib/ytThumb";
 import {
   ArrowLeft,
   ArrowRight,
@@ -938,11 +939,12 @@ const BlogPost = () => {
                     >
                       <div className="relative aspect-video overflow-hidden">
                         <img
-                          src={ep.thumbnail}
+                          src={getYouTubeThumb(ep.thumbnail)}
                           alt={ep.title}
-                          width={640}
+                          width={480}
                           height={360}
                           loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                         <span className="absolute top-3 left-3 font-sans text-[10px] font-semibold uppercase tracking-[0.15em] px-2.5 py-1" style={{ background: "rgba(0,0,0,0.7)", color: "#fff", borderRadius: "50px" }}>

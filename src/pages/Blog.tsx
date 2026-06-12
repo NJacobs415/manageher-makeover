@@ -11,6 +11,7 @@ import FadeIn from "@/components/animations/FadeIn";
 import { ArrowRight, Play, Clock, Calendar } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
 import { topicToSlug } from "@/lib/topicSlug";
+import { getYouTubeThumb } from "@/lib/ytThumb";
 import { useEpisodeCount } from "@/hooks/useEpisodeCount";
 import SEO from "@/components/SEO";
 import { trackBlogTopicFilter } from "@/lib/analytics";
@@ -166,7 +167,7 @@ const Blog = () => {
                   >
                     {/* Thumbnail */}
                     <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
-                      <img src={post.thumbnail} alt={post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                      <img src={getYouTubeThumb(post.thumbnail)} alt={post.title} width={480} height={360} decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                       <div className="absolute inset-0 bg-background/0 group-hover:bg-background/30 transition-colors duration-500 flex items-center justify-center">
                         <div className="w-12 h-12 bg-brand-pink text-primary-foreground flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-500" style={{ borderRadius: "50%" }}>
                           <Play size={18} className="fill-current ml-0.5" />
