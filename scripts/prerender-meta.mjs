@@ -295,6 +295,12 @@ function main() {
               },
               description: post.metaDescription || post.excerpt || '',
               mainEntityOfPage: url,
+              ...(Array.isArray(post.pullQuotes) && post.pullQuotes.length > 0 && {
+                speakable: {
+                  '@type': 'SpeakableSpecification',
+                  cssSelector: ['.tmh-speakable'],
+                },
+              }),
             },
             {
               '@type': 'PodcastEpisode',
@@ -321,12 +327,6 @@ function main() {
                 url: `${SITE_URL}/podcast/`,
                 author: { '@type': 'Person', name: 'Aimee Rickabus' },
               },
-              ...(Array.isArray(post.pullQuotes) && post.pullQuotes.length > 0 && {
-                speakable: {
-                  '@type': 'SpeakableSpecification',
-                  cssSelector: ['.tmh-speakable'],
-                },
-              }),
             },
             {
               '@type': 'BreadcrumbList',

@@ -307,6 +307,12 @@ const BlogPost = () => {
               },
               description: post.metaDescription || post.excerpt,
               mainEntityOfPage: `https://themanageher.com/blog/${post.slug}`,
+              ...(post.pullQuotes && post.pullQuotes.length > 0 && {
+                speakable: {
+                  "@type": "SpeakableSpecification",
+                  cssSelector: [".tmh-speakable"],
+                },
+              }),
             },
             {
               "@type": "PodcastEpisode",
@@ -333,12 +339,6 @@ const BlogPost = () => {
                 url: "https://themanageher.com/podcast/",
                 author: { "@type": "Person", name: "Aimee Rickabus" },
               },
-              ...(post.pullQuotes && post.pullQuotes.length > 0 && {
-                speakable: {
-                  "@type": "SpeakableSpecification",
-                  cssSelector: [".tmh-speakable"],
-                },
-              }),
             },
             {
               "@type": "BreadcrumbList",
