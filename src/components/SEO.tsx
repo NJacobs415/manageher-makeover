@@ -14,6 +14,7 @@ interface SEOProps {
   type?: string;
   jsonLd?: Record<string, unknown>;
   noindex?: boolean;
+  linkRels?: { rel: string; href: string }[];
 }
 
 const SITE_URL = "https://themanageher.com";
@@ -27,6 +28,7 @@ const SEO = ({
   type = "website",
   jsonLd,
   noindex = false,
+  linkRels,
 }: SEOProps) => (
   <Helmet>
     {/* Primary meta */}
@@ -34,6 +36,9 @@ const SEO = ({
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={url} />
+    {linkRels?.map((l) => (
+      <link key={`${l.rel}-${l.href}`} rel={l.rel} href={l.href} />
+    ))}
 
     {/* Open Graph */}
     <meta property="og:title" content={title} />
