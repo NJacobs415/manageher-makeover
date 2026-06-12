@@ -6,7 +6,7 @@ import FadeIn from "@/components/animations/FadeIn";
 import Magnetic from "@/components/animations/Magnetic";
 import { Star, ArrowRight, BookOpen, Headphones, Smartphone } from "lucide-react";
 import { Link } from "react-router-dom";
-import bookCover from "@/assets/book-cover.png";
+import bookCover from "@/assets/book-cover.webp";
 import SEO from "@/components/SEO";
 import { trackBookClick } from "@/lib/analytics";
 
@@ -125,7 +125,7 @@ const Book = () => {
                   </div>
                   <div className="book-3d">
                     <div className="book-3d-inner overflow-hidden" style={{ borderRadius: "4px 14px 14px 4px" }}>
-                      <img src={bookCover} alt="The Manage Her® Book" className="w-72 md:w-80 lg:w-96" loading="eager" onError={(e) => { (e.target as HTMLImageElement).src = BOOK_COVER_CDN; }} />
+                      <img src={bookCover} alt="The Manage Her® Book" width={749} height={1200} decoding="async" className="w-72 md:w-80 lg:w-96" loading="eager" onError={(e) => { (e.target as HTMLImageElement).src = BOOK_COVER_CDN; }} />
                     </div>
                   </div>
                 </div>

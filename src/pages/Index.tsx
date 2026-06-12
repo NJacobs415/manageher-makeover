@@ -16,18 +16,18 @@ import { trackBookClick, trackPodcastPlatformClick, trackSocialClick, toPlatform
 
 // ─── Assets ───
 import podcastCover from "@/assets/podcast-cover.png";
-import bookCover from "@/assets/book-cover.png";
+import bookCover from "@/assets/book-cover.webp";
 import logoSpotify from "@/assets/logo-spotify.png";
 import logoAmazonMusic from "@/assets/logo-amazon-music.png";
 import logoYouTube from "@/assets/logo-youtube-white.png";
 import logoApplePodcasts from "@/assets/logo-apple-podcasts.svg";
-import cardConversations from "@/assets/card-conversations.png";
-import cardGuests from "@/assets/card-guests.png";
-import cardActionable from "@/assets/card-actionable.png";
-import cardHolistic from "@/assets/card-holistic.png";
-import cardEmpowerment from "@/assets/card-empowerment.png";
-import cardFinancial from "@/assets/card-financial.png";
-import cardEntrepreneurship from "@/assets/card-entrepreneurship.png";
+import cardConversations from "@/assets/card-conversations.webp";
+import cardGuests from "@/assets/card-guests.webp";
+import cardActionable from "@/assets/card-actionable.webp";
+import cardHolistic from "@/assets/card-holistic.webp";
+import cardEmpowerment from "@/assets/card-empowerment.webp";
+import cardFinancial from "@/assets/card-financial.webp";
+import cardEntrepreneurship from "@/assets/card-entrepreneurship.webp";
 
 // ─── CDN Images ───
 const AIMEE_PHOTO = "/aimee-portrait-1.jpg";
@@ -477,6 +477,10 @@ const Index = () => {
                   <img
                     src={f.img}
                     alt={f.title}
+                    width={1024}
+                    height={1024}
+                    loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   <div
@@ -571,6 +575,10 @@ const Index = () => {
                   <img
                     src={p.img}
                     alt={p.title}
+                    width={1024}
+                    height={1024}
+                    loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   <div
@@ -742,6 +750,9 @@ const Index = () => {
                       <img
                         src={bookCover}
                         alt="The Manage Her® Book"
+                        width={749}
+                        height={1200}
+                        decoding="async"
                         className="w-52 md:w-64"
                         loading="lazy"
                         onError={(e) => {

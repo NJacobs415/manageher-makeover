@@ -15,12 +15,12 @@ import logoSpotify from "@/assets/logo-spotify.png";
 import logoApplePodcasts from "@/assets/logo-apple-podcasts.svg";
 import logoYouTube from "@/assets/logo-youtube-white.png";
 import logoAmazonMusic from "@/assets/logo-amazon-music.png";
-import cardEmpowerment from "@/assets/card-empowerment.png";
-import cardHolistic from "@/assets/card-holistic.png";
-import cardGuests from "@/assets/card-guests.png";
-import cardActionable from "@/assets/card-actionable.png";
-import cardFinancial from "@/assets/card-financial.png";
-import cardConversations from "@/assets/card-conversations.png";
+import cardEmpowerment from "@/assets/card-empowerment.webp";
+import cardHolistic from "@/assets/card-holistic.webp";
+import cardGuests from "@/assets/card-guests.webp";
+import cardActionable from "@/assets/card-actionable.webp";
+import cardFinancial from "@/assets/card-financial.webp";
+import cardConversations from "@/assets/card-conversations.webp";
 import SEO from "@/components/SEO";
 import { trackPodcastPlatformClick, toPlatformKey } from "@/lib/analytics";
 
@@ -317,6 +317,9 @@ const Podcast = () => {
                   <img
                     src={item.img}
                     alt={item.title}
+                    width={1024}
+                    height={1024}
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     loading="lazy"
                   />
