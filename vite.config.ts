@@ -19,4 +19,19 @@ export default defineConfig(({ mode }) => ({
     },
     dedupe: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime", "@tanstack/react-query", "@tanstack/query-core"],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // Split heavy/stable vendor groups so they cache across app
+        // deploys instead of busting whenever app code changes.
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (id.includes("framer-motion")) return "framer-motion";
+            if (id.includes("@radix-ui")) return "radix";
+            if (id.includes("react-router")) return "react-router";
+          }
+        },
+      },
+    },
+  },
 }));
