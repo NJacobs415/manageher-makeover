@@ -296,7 +296,7 @@ const BlogPost = () => {
               author: {
                 "@type": "Person",
                 name: "Aimee Rickabus",
-                url: "https://themanageher.com/about",
+                url: "https://themanageher.com/about/",
               },
               publisher: {
                 "@type": "Organization",

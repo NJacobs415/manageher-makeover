@@ -140,12 +140,12 @@ const Index = () => {
       <SEO
         title="The Manage Her® — Redefining Women's Leadership"
         description="Leadership movement for women — redefining how women lead in life, at home, and in business. Founded by Aimee Rickabus."
-        url="https://themanageher.com"
+        url="https://themanageher.com/"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "The Manage Her",
-          url: "https://themanageher.com",
+          url: "https://themanageher.com/",
           logo: "https://themanageher.com/M_Logo_Pink.png",
           founder: { "@type": "Person", name: "Aimee Rickabus" },
           sameAs: [

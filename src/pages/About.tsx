@@ -69,7 +69,7 @@ const About = () => {
             "@type": "Organization",
             name: "The Manage Her",
           },
-          url: "https://themanageher.com/about",
+          url: "https://themanageher.com/about/",
           image: "https://themanageher.com/aimee-portrait-1.jpg",
           sameAs: [
             "https://www.instagram.com/themanageher/",
