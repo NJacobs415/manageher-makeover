@@ -260,7 +260,7 @@ const Footer = () => (
           </p>
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <Link
-              to="/legal#privacy"
+              to="/legal/#privacy"
               className="font-sans text-[10px] tracking-wide transition-colors hover:text-white"
               style={{ color: "#555" }}
             >
@@ -268,7 +268,7 @@ const Footer = () => (
             </Link>
             <span style={{ color: "#333" }} aria-hidden="true">·</span>
             <Link
-              to="/legal#terms"
+              to="/legal/#terms"
               className="font-sans text-[10px] tracking-wide transition-colors hover:text-white"
               style={{ color: "#555" }}
             >

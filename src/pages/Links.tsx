@@ -30,7 +30,7 @@ const Links = () => {
       <SEO
         title="Links | The Manage Her®"
         description="All the links for The Manage Her® — podcast, book, social media, and more."
-        url="https://themanageher.com/links"
+        url="https://themanageher.com/links/"
       />
       <style>{`
         @keyframes tmhPulse {

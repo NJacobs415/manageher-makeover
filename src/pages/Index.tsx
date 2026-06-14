@@ -253,7 +253,7 @@ const Index = () => {
                   </Magnetic>
                   <Magnetic strength={0.2}>
                     <Link
-                      to="/book"
+                      to="/book/"
                       className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground border border-foreground/15 px-8 py-4 hover:border-brand-pink hover:text-brand-pink transition-all"
                       style={{ borderRadius: "50px" }}
                     >
@@ -430,7 +430,7 @@ const Index = () => {
                 </FadeIn>
                 <FadeIn delay={500} y={20}>
                   <Link
-                    to="/about"
+                    to="/about/"
                     className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-pink hover:gap-3 transition-all"
                   >
                     Read Aimee's Full Story <ArrowRight size={14} />
@@ -634,7 +634,7 @@ const Index = () => {
             </div>
             <FadeIn delay={300} y={10}>
               <Link
-                to="/podcast"
+                to="/podcast/"
                 className="link-reveal font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-pink mt-4 md:mt-0"
               >
                 View All Episodes →

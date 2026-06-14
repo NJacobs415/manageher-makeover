@@ -80,12 +80,12 @@ const Podcast = () => {
       <SEO
         title="The Manage Her® Podcast"
         description="Real conversations on leadership, motherhood, financial literacy & purpose. New episodes every Monday."
-        url="https://themanageher.com/podcast"
+        url="https://themanageher.com/podcast/"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "PodcastSeries",
           name: "The Manage Her Podcast",
-          url: "https://themanageher.com/podcast",
+          url: "https://themanageher.com/podcast/",
           author: { "@type": "Person", name: "Aimee Rickabus" },
         }}
       />
@@ -359,7 +359,7 @@ const Podcast = () => {
           <div className="space-y-4">
             {START_HERE_EPISODES.map((ep, i) => (
               <FadeIn key={ep.slug} delay={i * 80} y={15}>
-                <Link to={`/blog/${ep.slug}`}
+                <Link to={`/blog/${ep.slug}/`}
                   className="flex items-center gap-5 p-5 group transition-all duration-300 hover:-translate-y-0.5"
                   style={{ background: "#fff", borderRadius: "16px", border: "1px solid rgba(0,0,0,0.06)" }}>
                   {/* Numbered badge with play icon */}
@@ -391,7 +391,7 @@ const Podcast = () => {
 
           <FadeIn delay={500} y={20}>
             <div className="text-center mt-10">
-              <Link to="/blog"
+              <Link to="/blog/"
                 className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-pink hover:gap-3 transition-all">
                 Explore All Episodes <ArrowRight size={14} />
               </Link>
@@ -573,7 +573,7 @@ const Podcast = () => {
                 </p>
               </FadeIn>
               <FadeIn delay={500} y={20}>
-                <Link to="/about" className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-pink hover:gap-3 transition-all">
+                <Link to="/about/" className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-pink hover:gap-3 transition-all">
                   Read My Full Story <ArrowRight size={14} />
                 </Link>
               </FadeIn>
@@ -689,7 +689,7 @@ const Podcast = () => {
                 </a>
               </Magnetic>
               <Magnetic strength={0.2}>
-                <Link to="/book"
+                <Link to="/book/"
                   className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground border border-foreground/15 px-8 py-4 hover:border-brand-pink hover:text-brand-pink transition-all"
                   style={{ borderRadius: "50px" }}>
                   Get the Book <ArrowRight size={14} />
