@@ -71,7 +71,7 @@ const Blog = () => {
       <SEO
         title="Blog | The Manage Her®"
         description="Key takeaways, quotes, and insights from every episode of The Manage Her® Podcast."
-        url="https://themanageher.com/blog"
+        url="https://themanageher.com/blog/"
       />
       <Navbar />
 
@@ -149,7 +149,7 @@ const Blog = () => {
                 <p className="font-sans text-[14px] text-muted-foreground">
                   Blog posts for each episode are being generated automatically. Check back soon.
                 </p>
-                <Link to="/podcast" className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-pink mt-6 hover:gap-3 transition-all">
+                <Link to="/podcast/" className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-pink mt-6 hover:gap-3 transition-all">
                   Listen to the Podcast <ArrowRight size={14} />
                 </Link>
               </div>
@@ -159,7 +159,7 @@ const Blog = () => {
               {filtered.map((post, i) => (
                 <FadeIn key={post.slug} delay={0} y={20}>
                   <Link
-                    to={`/blog/${post.slug}`}
+                    to={`/blog/${post.slug}/`}
                     className="group block h-full transition-all duration-300 hover:-translate-y-1"
                     style={{ background: "#111", borderRadius: "20px", border: "1px solid rgba(255,255,255,0.05)", overflow: "hidden" }}
                     onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(235,24,135,0.15)"; }}

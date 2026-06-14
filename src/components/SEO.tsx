@@ -17,8 +17,8 @@ interface SEOProps {
   linkRels?: { rel: string; href: string }[];
 }
 
-const SITE_URL = "https://themanageher.com";
-const DEFAULT_IMAGE = `${SITE_URL}/M_Logo_Pink.png`;
+const SITE_URL = "https://themanageher.com/";
+const DEFAULT_IMAGE = `${SITE_URL}M_Logo_Pink.png`;
 
 const SEO = ({
   title,

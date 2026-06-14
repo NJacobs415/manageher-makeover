@@ -283,7 +283,7 @@ const BlogPost = () => {
         title={`${post.title} | The Manage Her® Podcast`}
         description={post.metaDescription || post.excerpt}
         image={post.thumbnail}
-        url={`https://themanageher.com/blog/${post.slug}`}
+        url={`https://themanageher.com/blog/${post.slug}/`}
         type="article"
         jsonLd={{
           "@context": "https://schema.org",
@@ -296,7 +296,7 @@ const BlogPost = () => {
               author: {
                 "@type": "Person",
                 name: "Aimee Rickabus",
-                url: "https://themanageher.com/about",
+                url: "https://themanageher.com/about/",
               },
               publisher: {
                 "@type": "Organization",
@@ -307,7 +307,7 @@ const BlogPost = () => {
                 },
               },
               description: post.metaDescription || post.excerpt,
-              mainEntityOfPage: `https://themanageher.com/blog/${post.slug}`,
+              mainEntityOfPage: `https://themanageher.com/blog/${post.slug}/`,
               ...(post.pullQuotes && post.pullQuotes.length > 0 && {
                 speakable: {
                   "@type": "SpeakableSpecification",
@@ -318,7 +318,7 @@ const BlogPost = () => {
             {
               "@type": "PodcastEpisode",
               name: post.title,
-              url: `https://themanageher.com/blog/${post.slug}`,
+              url: `https://themanageher.com/blog/${post.slug}/`,
               datePublished: post.publishedAt,
               ...(toIsoDuration(post.duration) && { duration: toIsoDuration(post.duration) }),
               ...(typeof post.episodeNumber === "number" && { episodeNumber: post.episodeNumber }),
@@ -393,7 +393,7 @@ const BlogPost = () => {
             {/* Back link */}
             <FadeIn y={10}>
               <Link
-                to="/blog"
+                to="/blog/"
                 className="inline-flex items-center gap-2 font-sans text-[11px] uppercase tracking-[0.15em] text-muted-foreground hover:text-brand-pink transition-colors mb-8"
               >
                 <ArrowLeft size={14} /> All Episodes
@@ -869,7 +869,7 @@ const BlogPost = () => {
                   {/* Book CTA */}
                   <FadeIn delay={500} y={20}>
                     <Link
-                      to="/book"
+                      to="/book/"
                       className="block p-7 group transition-all duration-300 hover:-translate-y-1"
                       style={{
                         background: "#111",
@@ -928,7 +928,7 @@ const BlogPost = () => {
                 {relatedEpisodes.map((ep, i) => (
                   <FadeIn key={ep.slug} delay={i * 80} y={20}>
                     <Link
-                      to={`/blog/${ep.slug}`}
+                      to={`/blog/${ep.slug}/`}
                       className="group block transition-all duration-300 hover:-translate-y-1"
                       style={{
                         background: "#fff",
@@ -1009,7 +1009,7 @@ const BlogPost = () => {
                 </a>
               </Magnetic>
               <Link
-                to="/blog"
+                to="/blog/"
                 className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground border border-foreground/15 px-8 py-4 hover:border-brand-pink hover:text-brand-pink transition-all"
                 style={{ borderRadius: "50px" }}
               >

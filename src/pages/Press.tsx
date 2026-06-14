@@ -113,7 +113,7 @@ const Press = () => {
       <SEO
         title="Press & Speaking | The Manage Her®"
         description="Book Aimee Rickabus to speak. Keynotes on women's leadership, invisible labor, and financial confidence."
-        url="https://themanageher.com/press"
+        url="https://themanageher.com/press/"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Person",
@@ -123,7 +123,7 @@ const Press = () => {
             "@type": "Organization",
             name: "The Manage Her",
           },
-          url: "https://themanageher.com/press",
+          url: "https://themanageher.com/press/",
           image: "https://themanageher.com/aimee-portrait-1.jpg",
           sameAs: [
             "https://www.instagram.com/themanageher/",

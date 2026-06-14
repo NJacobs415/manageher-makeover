@@ -64,7 +64,7 @@ const Book = () => {
       <SEO
         title="The Manage Her® Book"
         description="Unveiling Invisible Labor & Sparking a Leadership Revolution by Aimee Rickabus."
-        url="https://themanageher.com/book"
+        url="https://themanageher.com/book/"
         type="book"
         image="https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png"
         jsonLd={{
@@ -289,7 +289,7 @@ const Book = () => {
                 </p>
               </FadeIn>
               <FadeIn delay={600} y={20}>
-                <Link to="/about" className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-pink hover:gap-3 transition-all">
+                <Link to="/about/" className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-pink hover:gap-3 transition-all">
                   Read My Full Story <ArrowRight size={14} />
                 </Link>
               </FadeIn>

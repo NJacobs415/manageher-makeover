@@ -30,7 +30,7 @@ const Links = () => {
       <SEO
         title="Links | The Manage Her®"
         description="All the links for The Manage Her® — podcast, book, social media, and more."
-        url="https://themanageher.com/links"
+        url="https://themanageher.com/links/"
       />
       <style>{`
         @keyframes tmhPulse {
@@ -446,17 +446,17 @@ const Links = () => {
           <div className="space-y-2.5">
             {[
               {
-                href: "https://themanageher.com",
+                href: "https://themanageher.com/",
                 name: "TheManageHer.com",
                 desc: "The full experience",
               },
               {
-                href: "https://themanageher.com/about",
+                href: "https://themanageher.com/about/",
                 name: "About Aimee",
                 desc: "The story behind the movement",
               },
               {
-                href: "https://themanageher.com/press",
+                href: "https://themanageher.com/press/",
                 name: "Press & Speaking",
                 desc: "Book Aimee for your event",
               },
@@ -576,7 +576,7 @@ const Links = () => {
             Get weekly insights on leadership, invisible labor & building the life you deserve.
           </p>
           <a
-            href="https://themanageher.com"
+            href="https://themanageher.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.15em] px-8 py-3.5 transition-all duration-300 hover:shadow-lg"

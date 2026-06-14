@@ -145,7 +145,7 @@ const BlogTopic = () => {
           <FadeIn delay={400} y={20}>
             <div className="mt-8">
               <Link
-                to="/blog"
+                to="/blog/"
                 className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-pink hover:gap-3 transition-all"
               >
                 ← All episodes
@@ -167,7 +167,7 @@ const BlogTopic = () => {
             {filtered.map((post, i) => (
               <FadeIn key={post.slug} delay={Math.min(i, 6) * 60} y={20}>
                 <Link
-                  to={`/blog/${post.slug}`}
+                  to={`/blog/${post.slug}/`}
                   className="group block transition-all duration-300 hover:-translate-y-1"
                   style={{
                     background: "#fff",
@@ -259,7 +259,7 @@ const BlogTopic = () => {
             </div>
             <div className="mt-10">
               <Link
-                to="/blog"
+                to="/blog/"
                 className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-pink hover:gap-3 transition-all"
               >
                 Browse all episodes <ArrowRight size={14} />
