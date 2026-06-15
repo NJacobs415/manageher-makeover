@@ -18,14 +18,28 @@ const SETTINGS_WHITELIST = [
 
 const wf = JSON.parse(fs.readFileSync(RAW, 'utf8'));
 
-// ─── Remove the 5 nodes being replaced ─────────────────────────
-const TO_REMOVE = new Set([
+// ─── Remove the 5 legacy nodes AND any existing copies of our new ─
+//     atomic-chain nodes so re-running against an already-patched
+//     raw export is idempotent (no duplicates).
+const LEGACY = [
   'Code in JavaScript1',
   'Commit Blog Post to GitHub',
   'Fetch Current posts.json',
   'Update Posts Index',
   'Commit Updated Index',
-]);
+];
+const ATOMIC_CHAIN_NAMES = [
+  'GH: Get HEAD Ref',
+  'GH: Get HEAD Commit',
+  'GH: Get posts.json (or 404)',
+  'Merge Index + Encode Blobs',
+  'GH: Create Post Blob',
+  'GH: Create Index Blob',
+  'GH: Create Tree',
+  'GH: Create Commit',
+  'GH: Update Ref (atomic)',
+];
+const TO_REMOVE = new Set([...LEGACY, ...ATOMIC_CHAIN_NAMES]);
 wf.nodes = wf.nodes.filter((n) => !TO_REMOVE.has(n.name));
 
 // ─── New helper to build an HTTP GitHub node ────────────────────
@@ -229,34 +243,25 @@ const newNodes = [
 wf.nodes.push(...newNodes);
 
 // ─── Rewire connections ─────────────────────────────────────────
-// Remove old connection keys for nodes we deleted.
+// Remove any existing connection keys for nodes we're about to (re)create.
 for (const name of TO_REMOVE) delete wf.connections[name];
 
-const connect = (from, to) => {
-  wf.connections[from] = wf.connections[from] || {};
-  wf.connections[from].main = wf.connections[from].main || [[]];
-  wf.connections[from].main[0].push({ node: to, type: 'main', index: 0 });
+// Set (not append) a single outgoing main edge — idempotent.
+const setEdge = (from, to) => {
+  wf.connections[from] = { main: [[ { node: to, type: 'main', index: 0 } ]] };
 };
 
-// Replace Build Blog JSON → Code in JavaScript1 with → GH: Get HEAD Ref.
-wf.connections['Build Blog JSON'] = { main: [[ { node: 'GH: Get HEAD Ref', type: 'main', index: 0 } ]] };
+const order = ATOMIC_CHAIN_NAMES;
 
-// Chain the 9 new nodes left-to-right.
-const order = [
-  'GH: Get HEAD Ref',
-  'GH: Get HEAD Commit',
-  'GH: Get posts.json (or 404)',
-  'Merge Index + Encode Blobs',
-  'GH: Create Post Blob',
-  'GH: Create Index Blob',
-  'GH: Create Tree',
-  'GH: Create Commit',
-  'GH: Update Ref (atomic)',
-];
-for (let i = 0; i < order.length - 1; i++) connect(order[i], order[i + 1]);
+// Build Blog JSON now feeds the head of the atomic chain. Set (not append)
+// so re-running doesn't accumulate edges.
+setEdge('Build Blog JSON', order[0]);
 
-// Final node connects to the existing downstream (Ping IndexNow).
-connect('GH: Update Ref (atomic)', 'Ping IndexNow');
+// Chain the 9 atomic nodes linearly.
+for (let i = 0; i < order.length - 1; i++) setEdge(order[i], order[i + 1]);
+
+// Final atomic node hands off to the existing downstream.
+setEdge('GH: Update Ref (atomic)', 'Ping IndexNow');
 
 // ─── Strip read-only / public-API-rejected fields ───────────────
 const allowed = ['connections', 'name', 'nodes', 'settings', 'staticData'];
