@@ -273,7 +273,11 @@
         0
       ],
       "id": "indexnow-ping-001",
-      "name": "Ping IndexNow"
+      "name": "Ping IndexNow",
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 5000
     },
     {
       "parameters": {
