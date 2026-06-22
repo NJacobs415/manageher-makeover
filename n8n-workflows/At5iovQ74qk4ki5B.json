@@ -16,7 +16,7 @@
       "typeVersion": 1.2,
       "position": [
         208,
-        112
+        96
       ],
       "id": "4a675d1e-c494-49c5-a7c2-52bef6e3c910",
       "name": "Every 6 Hours"
@@ -38,7 +38,7 @@
       "typeVersion": 4.3,
       "position": [
         880,
-        112
+        0
       ],
       "id": "09f1ab8e-50be-49a6-a5b1-a54a10ab7f98",
       "name": "Check If Blog Exists",
@@ -81,7 +81,7 @@
       "typeVersion": 2.2,
       "position": [
         1104,
-        112
+        0
       ],
       "id": "1361d2bd-6085-4134-8cf4-1a93f93023f7",
       "name": "Is New Episode?"
@@ -111,17 +111,17 @@
       "typeVersion": 4.3,
       "position": [
         1328,
-        112
+        0
       ],
       "id": "88e5aca6-484c-417b-ac29-4806578b4106",
       "name": "Fetch Transcript",
-      "onError": "continueRegularOutput",
       "credentials": {
         "httpHeaderAuth": {
           "id": "fAyHesS0Y4HSlRBu",
           "name": "YouTube Transcript IO"
         }
-      }
+      },
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -131,7 +131,7 @@
       "typeVersion": 2,
       "position": [
         1552,
-        112
+        0
       ],
       "id": "cb44f4db-ffea-4670-9a4d-9c65f6cd94d5",
       "name": "Clean Transcript"
@@ -171,7 +171,7 @@
       "typeVersion": 4.3,
       "position": [
         2000,
-        112
+        0
       ],
       "id": "d287c296-2d66-427f-b164-2a56f5fc6d17",
       "name": "Claude: Generate Blog Post",
@@ -190,7 +190,7 @@
       "typeVersion": 2,
       "position": [
         2224,
-        112
+        0
       ],
       "id": "e1aeff75-6570-4a4f-98c1-c0fcaf81deeb",
       "name": "Build Blog JSON"
@@ -217,7 +217,7 @@
       "typeVersion": 4.4,
       "position": [
         432,
-        112
+        0
       ],
       "id": "5c57dcdf-99d3-4dac-8fee-b3755efc5c25",
       "name": "HTTP Request"
@@ -230,20 +230,20 @@
       "typeVersion": 2,
       "position": [
         656,
-        112
+        0
       ],
       "id": "0688b309-1c14-4e9d-87ae-4c4b8a2a24a9",
       "name": "Code in JavaScript"
     },
     {
       "parameters": {
-        "jsCode": "const episode = $input.first().json;\n\nconst prompt = `You are a blog content writer for The Manage Her® — a women's leadership podcast hosted by Aimee Rickabus, CEO of a nine-figure technology company, bestselling author, and mother of six. Generate an enhanced show notes blog post from this podcast episode.\n\nEPISODE DETAILS:\nTitle: ${episode.title}\nDuration: ${episode.durationFormatted}\nPublished: ${episode.publishedAt}\nYouTube URL: ${episode.youtubeUrl}\n\nEPISODE DESCRIPTION:\n${(episode.description || '').substring(0, 8000)}\n\nTRANSCRIPT:\n${(episode.transcript || '').substring(0, 50000)}\n\nGenerate a JSON response with EXACTLY this structure (no markdown, no backticks, just raw JSON):\n{\n  \"title\": \"A compelling blog title (different from the episode title, more SEO-friendly, under 80 characters)\",\n  \"episodeNumber\": extract the episode number from the title or use 0,\n  \"guestName\": \"Guest full name or empty string if solo episode\",\n  \"guestBio\": \"2-3 sentence bio of the guest based on what is discussed in the episode\",\n  \"excerpt\": \"A compelling 2-3 sentence summary that makes someone want to listen\",\n  \"metaDescription\": \"SEO meta description under 160 characters\",\n  \"topics\": [\"3-5 topic tags from: Leadership, Motherhood, Financial Literacy, Wellness, Entrepreneurship, Boundaries, Identity, Marriage, Community, Spirituality\"],\n  \"keyTakeaways\": [\"5-7 key takeaways as complete sentences\"],\n  \"guestLinks\": Extract any social media or website links for the guest from the episode description. Look for Instagram, LinkedIn, TikTok, YouTube, website URLs, etc. Return as an array of {\"label\": \"Platform Name\", \"url\": \"https://...\"} objects. If no links found, return empty array.,\n  \"pullQuotes\": [{\"text\": \"A memorable quote from the episode\", \"timestamp\": \"MM:SS or empty\"}],\n  \"timestamps\": [{\"time\": \"0:00\", \"label\": \"Introduction\"}, {\"time\": \"5:30\", \"label\": \"Topic discussed\"}],\n  \"content\": \"Full blog post as HTML. Use p tags for paragraphs, strong for emphasis, em for italic, h3 for subheadings. Write 800-1200 words covering the main themes insights and actionable advice. Write in The Manage Her brand voice: bold warm direct permission-giving. Address the reader as you. Do NOT use bullet point lists in the content. Write in flowing prose paragraphs.\",\n  \"quiz\": {\n    \"title\": \"A compelling self-discovery quiz title related to the episode theme (e.g. What is Your Leadership Superpower?)\",\n    \"description\": \"1-2 sentence invitation to take the quiz\",\n    \"types\": {\n      \"A\": {\"name\": \"2-4 word empowering archetype name\", \"description\": \"3-4 sentence personalized result that validates the reader and connects to episode themes. Write in second person. End with why they should listen to this episode.\"},\n      \"B\": {\"name\": \"archetype name\", \"description\": \"...\"},\n      \"C\": {\"name\": \"archetype name\", \"description\": \"...\"},\n      \"D\": {\"name\": \"archetype name\", \"description\": \"...\"}\n    },\n    \"questions\": [\n      {\n        \"question\": \"A relatable scenario or self-reflection question in second person\",\n        \"options\": [\n          {\"text\": \"Realistic behavior or belief - not obviously right or wrong\", \"type\": \"A\"},\n          {\"text\": \"Option text\", \"type\": \"B\"},\n          {\"text\": \"Option text\", \"type\": \"C\"},\n          {\"text\": \"Option text\", \"type\": \"D\"}\n        ]\n      }\n    ]\n  }\n}\n\nQUIZ RULES: Generate exactly 6 questions with 4 options each (types A/B/C/D). This is a SELF-DISCOVERY quiz not a knowledge test. Questions should help listeners learn about themselves. All options should feel valid. Archetype names should be empowering. Results should make every type feel seen and valued. Tie results back to why this episode would help them.\n\nIMPORTANT: Return ONLY valid JSON. No markdown. No backticks. No preamble. No explanation before or after the JSON.`;\n\nconst requestBody = {\n  model: \"claude-sonnet-4-20250514\",\n  max_tokens: 6000,\n  messages: [\n    {\n      role: \"user\",\n      content: prompt\n    }\n  ]\n};\n\nreturn [{\n  json: {\n    ...episode,\n    claudeRequestBody: JSON.stringify(requestBody)\n  }\n}];"
+        "jsCode": "const episode = $input.first().json;\n\nconst prompt = `You are a blog content writer for The Manage Her® — a women's leadership podcast hosted by Aimee Rickabus, CEO of a nine-figure technology company, bestselling author, and mother of six. Generate an enhanced show notes blog post from this podcast episode.\n\nEPISODE DETAILS:\nTitle: ${episode.title}\nDuration: ${episode.durationFormatted}\nPublished: ${episode.publishedAt}\nYouTube URL: ${episode.youtubeUrl}\n\nEPISODE DESCRIPTION:\n${(episode.description || '').substring(0, 8000)}\n\nTRANSCRIPT:\n${(episode.transcript || '').substring(0, 50000)}\n\nGenerate a JSON response with EXACTLY this structure (no markdown, no backticks, just raw JSON):\n{\n  \"title\": \"A compelling blog title (different from the episode title, more SEO-friendly, under 80 characters)\",\n  \"episodeNumber\": extract the episode number from the title or use 0,\n  \"guestName\": \"Guest full name or empty string if solo episode\",\n  \"guestBio\": \"2-3 sentence bio of the guest based on what is discussed in the episode\",\n  \"excerpt\": \"A compelling 2-3 sentence summary that makes someone want to listen\",\n  \"metaDescription\": \"SEO meta description under 160 characters\",\n  \"topics\": [\"3-5 topic tags from: Leadership, Motherhood, Financial Literacy, Wellness, Entrepreneurship, Boundaries, Identity, Marriage, Community, Spirituality\"],\n  \"keyTakeaways\": [\"5-7 key takeaways as complete sentences\"],\n  \"guestLinks\": Extract any social media or website links for the guest from the episode description. Look for Instagram, LinkedIn, TikTok, YouTube, website URLs, etc. Return as an array of {\"label\": \"Platform Name\", \"url\": \"https://...\"} objects. If no links found, return empty array.,\n  \"pullQuotes\": [{\"text\": \"A memorable quote from the episode\", \"timestamp\": \"MM:SS or empty\"}],\n  \"timestamps\": [{\"time\": \"0:00\", \"label\": \"Introduction\"}, {\"time\": \"5:30\", \"label\": \"Topic discussed\"}],\n  \"content\": \"Full blog post as HTML. Use p tags for paragraphs, strong for emphasis, em for italic, h3 for subheadings. Write 800-1200 words covering the main themes insights and actionable advice. Write in The Manage Her brand voice: bold warm direct permission-giving. Address the reader as you. Do NOT use bullet point lists in the content. Write in flowing prose paragraphs.\",\n  \"quiz\": {\n    \"title\": \"A compelling self-discovery quiz title related to the episode theme (e.g. What is Your Leadership Superpower?)\",\n    \"description\": \"1-2 sentence invitation to take the quiz\",\n    \"types\": {\n      \"A\": {\"name\": \"2-4 word empowering archetype name\", \"description\": \"3-4 sentence personalized result that validates the reader and connects to episode themes. Write in second person. End with why they should listen to this episode.\"},\n      \"B\": {\"name\": \"archetype name\", \"description\": \"...\"},\n      \"C\": {\"name\": \"archetype name\", \"description\": \"...\"},\n      \"D\": {\"name\": \"archetype name\", \"description\": \"...\"}\n    },\n    \"questions\": [\n      {\n        \"question\": \"A relatable scenario or self-reflection question in second person\",\n        \"options\": [\n          {\"text\": \"Realistic behavior or belief - not obviously right or wrong\", \"type\": \"A\"},\n          {\"text\": \"Option text\", \"type\": \"B\"},\n          {\"text\": \"Option text\", \"type\": \"C\"},\n          {\"text\": \"Option text\", \"type\": \"D\"}\n        ]\n      }\n    ]\n  }\n}\n\nQUIZ RULES: Generate exactly 6 questions with 4 options each (types A/B/C/D). This is a SELF-DISCOVERY quiz not a knowledge test. Questions should help listeners learn about themselves. All options should feel valid. Archetype names should be empowering. Results should make every type feel seen and valued. Tie results back to why this episode would help them.\n\nIMPORTANT: Return ONLY valid JSON. No markdown. No backticks. No preamble. No explanation before or after the JSON.`;\n\nconst requestBody = {\n  model: \"claude-sonnet-4-6\",\n  max_tokens: 6000,\n  messages: [\n    {\n      role: \"user\",\n      content: prompt\n    }\n  ]\n};\n\nreturn [{\n  json: {\n    ...episode,\n    claudeRequestBody: JSON.stringify(requestBody)\n  }\n}];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
         1776,
-        112
+        0
       ],
       "id": "7b164a58-19eb-4713-bbef-dd673f50095d",
       "name": "Build Claude Request"
@@ -269,15 +269,18 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        3568,
-        112
+        4464,
+        0
       ],
       "id": "indexnow-ping-001",
-      "name": "Ping IndexNow"
+      "name": "Ping IndexNow",
+      "onError": "continueRegularOutput",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 5000
     },
     {
       "parameters": {
-        "method": "GET",
         "url": "=https://services.leadconnectorhq.com/contacts/?locationId=JzYUXEAehZEve2vuOdqM&query={{ encodeURIComponent($('Build Blog JSON').item.json.post.guestName.replace(/^(Dr\\.?|Chef|Coach|Pastor|Rev\\.?|Professor|Prof\\.?)\\s+/i, '')) }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
@@ -295,8 +298,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        3792,
-        112
+        4688,
+        0
       ],
       "id": "ghl-lookup-guest-001",
       "name": "Lookup Guest by Name",
@@ -334,8 +337,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        4016,
-        112
+        4912,
+        0
       ],
       "id": "ghl-is-sent-001",
       "name": "Is Already Sent?"
@@ -366,8 +369,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        4240,
-        112
+        5136,
+        0
       ],
       "id": "ghl-has-existing-001",
       "name": "Has Existing Contact?"
@@ -395,8 +398,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        4464,
-        0
+        5360,
+        -96
       ],
       "id": "ghl-update-existing-001",
       "name": "Update Existing Contact",
@@ -430,8 +433,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        4688,
-        0
+        5584,
+        -96
       ],
       "id": "ghl-add-tags-001",
       "name": "Add Tags to Existing",
@@ -465,8 +468,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        4464,
-        224
+        5360,
+        96
       ],
       "id": "ghl-create-new-001",
       "name": "Create New Contact",
@@ -479,7 +482,6 @@
     },
     {
       "parameters": {
-        "method": "GET",
         "url": "https://api.github.com/repos/NJacobs415/manageher-makeover/git/refs/heads/main",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "githubApi",
@@ -502,7 +504,7 @@
       "typeVersion": 4.3,
       "position": [
         2448,
-        112
+        0
       ],
       "id": "a000aaaa-0001-0001-0001-000000000001",
       "name": "GH: Get HEAD Ref",
@@ -515,7 +517,6 @@
     },
     {
       "parameters": {
-        "method": "GET",
         "url": "=https://api.github.com/repos/NJacobs415/manageher-makeover/git/commits/{{ $json.object.sha }}",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "githubApi",
@@ -538,7 +539,7 @@
       "typeVersion": 4.3,
       "position": [
         2672,
-        112
+        0
       ],
       "id": "a000aaaa-0002-0002-0002-000000000002",
       "name": "GH: Get HEAD Commit",
@@ -551,7 +552,6 @@
     },
     {
       "parameters": {
-        "method": "GET",
         "url": "https://api.github.com/repos/NJacobs415/manageher-makeover/contents/public/blog/posts.json",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "githubApi",
@@ -571,8 +571,8 @@
         "options": {
           "response": {
             "response": {
-              "neverError": true,
               "fullResponse": true,
+              "neverError": true,
               "responseFormat": "json"
             }
           }
@@ -582,7 +582,7 @@
       "typeVersion": 4.3,
       "position": [
         2896,
-        112
+        0
       ],
       "id": "a000aaaa-0003-0003-0003-000000000003",
       "name": "GH: Get posts.json (or 404)",
@@ -601,7 +601,7 @@
       "typeVersion": 2,
       "position": [
         3120,
-        112
+        0
       ],
       "id": "a000aaaa-0004-0004-0004-000000000004",
       "name": "Merge Index + Encode Blobs"
@@ -625,16 +625,16 @@
             }
           ]
         },
-        "options": {},
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $json.postBase64 }}\",\n  \"encoding\": \"base64\"\n}"
+        "jsonBody": "={\n  \"content\": \"{{ $json.postBase64 }}\",\n  \"encoding\": \"base64\"\n}",
+        "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
         3344,
-        112
+        0
       ],
       "id": "a000aaaa-0005-0005-0005-000000000005",
       "name": "GH: Create Post Blob",
@@ -664,16 +664,16 @@
             }
           ]
         },
-        "options": {},
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $node[\"Merge Index + Encode Blobs\"].json.indexBase64 }}\",\n  \"encoding\": \"base64\"\n}"
+        "jsonBody": "={\n  \"content\": \"{{ $node[\"Merge Index + Encode Blobs\"].json.indexBase64 }}\",\n  \"encoding\": \"base64\"\n}",
+        "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
         3568,
-        112
+        0
       ],
       "id": "a000aaaa-0006-0006-0006-000000000006",
       "name": "GH: Create Index Blob",
@@ -703,16 +703,16 @@
             }
           ]
         },
-        "options": {},
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"base_tree\": \"{{ $node[\"Merge Index + Encode Blobs\"].json.treeSha }}\",\n  \"tree\": [\n    {\n      \"path\": \"{{ $node[\"Merge Index + Encode Blobs\"].json.postPath }}\",\n      \"mode\": \"100644\",\n      \"type\": \"blob\",\n      \"sha\": \"{{ $node[\"GH: Create Post Blob\"].json.sha }}\"\n    },\n    {\n      \"path\": \"{{ $node[\"Merge Index + Encode Blobs\"].json.indexPath }}\",\n      \"mode\": \"100644\",\n      \"type\": \"blob\",\n      \"sha\": \"{{ $node[\"GH: Create Index Blob\"].json.sha }}\"\n    }\n  ]\n}"
+        "jsonBody": "={\n  \"base_tree\": \"{{ $node[\"Merge Index + Encode Blobs\"].json.treeSha }}\",\n  \"tree\": [\n    {\n      \"path\": \"{{ $node[\"Merge Index + Encode Blobs\"].json.postPath }}\",\n      \"mode\": \"100644\",\n      \"type\": \"blob\",\n      \"sha\": \"{{ $node[\"GH: Create Post Blob\"].json.sha }}\"\n    },\n    {\n      \"path\": \"{{ $node[\"Merge Index + Encode Blobs\"].json.indexPath }}\",\n      \"mode\": \"100644\",\n      \"type\": \"blob\",\n      \"sha\": \"{{ $node[\"GH: Create Index Blob\"].json.sha }}\"\n    }\n  ]\n}",
+        "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
         3792,
-        112
+        0
       ],
       "id": "a000aaaa-0007-0007-0007-000000000007",
       "name": "GH: Create Tree",
@@ -742,16 +742,16 @@
             }
           ]
         },
-        "options": {},
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"message\": \"Auto-publish blog: {{ $node[\"Merge Index + Encode Blobs\"].json.title }}\",\n  \"tree\": \"{{ $json.sha }}\",\n  \"parents\": [\"{{ $node[\"Merge Index + Encode Blobs\"].json.headSha }}\"]\n}"
+        "jsonBody": "={\n  \"message\": \"Auto-publish blog: {{ $node[\"Merge Index + Encode Blobs\"].json.title }}\",\n  \"tree\": \"{{ $json.sha }}\",\n  \"parents\": [\"{{ $node[\"Merge Index + Encode Blobs\"].json.headSha }}\"]\n}",
+        "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
         4016,
-        112
+        0
       ],
       "id": "a000aaaa-0008-0008-0008-000000000008",
       "name": "GH: Create Commit",
@@ -781,16 +781,16 @@
             }
           ]
         },
-        "options": {},
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"sha\": \"{{ $json.sha }}\"\n}"
+        "jsonBody": "={\n  \"sha\": \"{{ $json.sha }}\"\n}",
+        "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
         4240,
-        112
+        0
       ],
       "id": "a000aaaa-0009-0009-0009-000000000009",
       "name": "GH: Update Ref (atomic)",
