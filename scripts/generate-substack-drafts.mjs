@@ -5,7 +5,7 @@ const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const BLOG_DIR = path.join(process.cwd(), 'public/blog');
 const OUTPUT_DIR = path.join(process.cwd(), 'public/substack-drafts');
 const SITE_URL = 'https://themanageher.com';
-const MODEL = 'claude-sonnet-4-20250514';
+const MODEL = 'claude-sonnet-4-6';
 const DELAY_MS = 3000;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
