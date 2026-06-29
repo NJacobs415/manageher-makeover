@@ -17,11 +17,36 @@ interface QuizResult {
   description: string;
 }
 
+// Quiz data ships in two shapes across the 68 published posts (counted
+// via codex audit 2026-06-29: 56 use `results`, 11 use `types`, 1 has
+// neither). The n8n auto-publish workflow emits `types` going forward.
+// Accept both; the resolver below normalizes to QuizResult.
+interface QuizArchetype {
+  name: string;
+  description: string;
+}
+
 interface QuizData {
   title: string;
   description: string;
   questions: QuizQuestion[];
-  results: QuizResult[];
+  results?: QuizResult[];
+  types?: Record<string, QuizArchetype>;
+}
+
+// Find the QuizResult matching `maxType` regardless of which shape the
+// post uses. Falls through to a safe empty result rather than throwing
+// — earlier behavior was `quiz.results.find(…)` which crashed on the
+// 11 `types` posts and the 1 with neither shape.
+function resolveResult(quiz: QuizData, maxType: string): QuizResult {
+  if (quiz.types && quiz.types[maxType]) {
+    const t = quiz.types[maxType];
+    return { type: maxType, title: t.name, description: t.description };
+  }
+  if (quiz.results && quiz.results.length > 0) {
+    return quiz.results.find((r) => r.type === maxType) || quiz.results[0];
+  }
+  return { type: maxType, title: "", description: "" };
 }
 
 interface EpisodeQuizProps {
@@ -117,9 +142,9 @@ const EpisodeQuiz = ({
           maxType = t;
         }
       }
-      return quiz.results.find((r) => r.type === maxType) || quiz.results[0];
+      return resolveResult(quiz, maxType);
     },
-    [quiz.results]
+    [quiz]
   );
 
   const handleSelect = (optionIdx: number, type: string) => {

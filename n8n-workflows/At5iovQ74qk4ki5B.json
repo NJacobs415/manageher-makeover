@@ -184,7 +184,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Parse Claude's response and build the complete blog post JSON\nconst episode = $('Clean Transcript').item.json;\nconst claudeResponse = $input.first().json;\n\nlet blogData;\ntry {\n  // Extract text content from Claude's response\n  const text = claudeResponse.content[0].text;\n  // Clean any accidental markdown wrapping\n  const clean = text.replace(/```json\\n?/g, '').replace(/```\\n?/g, '').trim();\n  blogData = JSON.parse(clean);\n} catch(e) {\n  throw new Error('Failed to parse Claude response: ' + e.message);\n}\n\n// Build the complete blog post object\nconst post = {\n  slug: episode.slug,\n  title: blogData.title || episode.title,\n  episodeNumber: blogData.episodeNumber || 0,\n  // TODO: If episodeNumber is 0, fetch posts.json from GitHub and set to max + 1\n  // For now, 0 flags it for manual fix\n  guestName: blogData.guestName || '',\n  guestBio: blogData.guestBio || '',\n  publishedAt: episode.publishedAt,\n  duration: episode.durationFormatted,\n  thumbnail: episode.thumbnail,\n  youtubeUrl: episode.youtubeUrl,\n  spotifyUrl: 'https://open.spotify.com/show/03FuFRyzkaWhZkk5yxFePJ',\n  appleUrl: 'https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475',\n  excerpt: blogData.excerpt || '',\n  metaDescription: blogData.metaDescription || '',\n  topics: blogData.topics || [],\n  keyTakeaways: blogData.keyTakeaways || [],\n  guestLinks: blogData.guestLinks || [],\n  pullQuotes: blogData.pullQuotes || [],\n  timestamps: blogData.timestamps || [],\n  quiz: blogData.quiz || null,\n  transcript: $('Clean Transcript').first().json.transcript || '',\n  content: blogData.content || ''\n};\n\n// Also build the posts.json index entry\nconst indexEntry = {\n  slug: post.slug,\n  title: post.title,\n  episodeNumber: post.episodeNumber,\n  guestName: post.guestName,\n  publishedAt: post.publishedAt,\n  duration: post.duration,\n  thumbnail: post.thumbnail,\n  excerpt: post.excerpt,\n  topics: post.topics,\n  youtubeUrl: post.youtubeUrl\n};\n\nreturn [{ json: { post, indexEntry, slug: episode.slug } }];"
+        "jsCode": "// Parse Claude's tool_use response. Anthropic guarantees the input\n// object matches the tool's input_schema, so JSON parse failures from\n// unescaped quotes in free-text JSON (the original bug) are impossible.\nconst episode = $('Clean Transcript').item.json;\nconst claudeResponse = $input.first().json;\n\nif (!Array.isArray(claudeResponse.content)) {\n  throw new Error('Claude response missing content array: ' + JSON.stringify(claudeResponse).slice(0, 400));\n}\nconst toolUse = claudeResponse.content.find(b => b.type === 'tool_use' && b.name === 'generate_blog_post');\nif (!toolUse) {\n  throw new Error('Claude did not return a generate_blog_post tool_use block. stop_reason=' +\n    (claudeResponse.stop_reason || 'unknown') + ' content_types=' +\n    JSON.stringify(claudeResponse.content.map(b => b.type)));\n}\nconst blogData = toolUse.input;\nif (!blogData || typeof blogData !== 'object') {\n  throw new Error('tool_use.input is not an object: ' + JSON.stringify(toolUse).slice(0, 400));\n}\n\n// Build the complete blog post object (same shape as before).\nconst post = {\n  slug: episode.slug,\n  title: blogData.title || episode.title,\n  episodeNumber: blogData.episodeNumber || 0,\n  guestName: blogData.guestName || '',\n  guestBio: blogData.guestBio || '',\n  publishedAt: episode.publishedAt,\n  duration: episode.durationFormatted,\n  thumbnail: episode.thumbnail,\n  youtubeUrl: episode.youtubeUrl,\n  spotifyUrl: 'https://open.spotify.com/show/03FuFRyzkaWhZkk5yxFePJ',\n  appleUrl: 'https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475',\n  excerpt: blogData.excerpt || '',\n  metaDescription: blogData.metaDescription || '',\n  topics: blogData.topics || [],\n  keyTakeaways: blogData.keyTakeaways || [],\n  guestLinks: blogData.guestLinks || [],\n  pullQuotes: blogData.pullQuotes || [],\n  timestamps: blogData.timestamps || [],\n  quiz: blogData.quiz || null,\n  transcript: $('Clean Transcript').first().json.transcript || '',\n  content: blogData.content || ''\n};\n\nconst indexEntry = {\n  slug: post.slug,\n  title: post.title,\n  episodeNumber: post.episodeNumber,\n  guestName: post.guestName,\n  publishedAt: post.publishedAt,\n  duration: post.duration,\n  thumbnail: post.thumbnail,\n  excerpt: post.excerpt,\n  topics: post.topics,\n  youtubeUrl: post.youtubeUrl\n};\n\nreturn [{ json: { post, indexEntry, slug: episode.slug } }];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -237,7 +237,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const episode = $input.first().json;\n\nconst prompt = `You are a blog content writer for The Manage Her® — a women's leadership podcast hosted by Aimee Rickabus, CEO of a nine-figure technology company, bestselling author, and mother of six. Generate an enhanced show notes blog post from this podcast episode.\n\nEPISODE DETAILS:\nTitle: ${episode.title}\nDuration: ${episode.durationFormatted}\nPublished: ${episode.publishedAt}\nYouTube URL: ${episode.youtubeUrl}\n\nEPISODE DESCRIPTION:\n${(episode.description || '').substring(0, 8000)}\n\nTRANSCRIPT:\n${(episode.transcript || '').substring(0, 50000)}\n\nGenerate a JSON response with EXACTLY this structure (no markdown, no backticks, just raw JSON):\n{\n  \"title\": \"A compelling blog title (different from the episode title, more SEO-friendly, under 80 characters)\",\n  \"episodeNumber\": extract the episode number from the title or use 0,\n  \"guestName\": \"Guest full name or empty string if solo episode\",\n  \"guestBio\": \"2-3 sentence bio of the guest based on what is discussed in the episode\",\n  \"excerpt\": \"A compelling 2-3 sentence summary that makes someone want to listen\",\n  \"metaDescription\": \"SEO meta description under 160 characters\",\n  \"topics\": [\"3-5 topic tags from: Leadership, Motherhood, Financial Literacy, Wellness, Entrepreneurship, Boundaries, Identity, Marriage, Community, Spirituality\"],\n  \"keyTakeaways\": [\"5-7 key takeaways as complete sentences\"],\n  \"guestLinks\": Extract any social media or website links for the guest from the episode description. Look for Instagram, LinkedIn, TikTok, YouTube, website URLs, etc. Return as an array of {\"label\": \"Platform Name\", \"url\": \"https://...\"} objects. If no links found, return empty array.,\n  \"pullQuotes\": [{\"text\": \"A memorable quote from the episode\", \"timestamp\": \"MM:SS or empty\"}],\n  \"timestamps\": [{\"time\": \"0:00\", \"label\": \"Introduction\"}, {\"time\": \"5:30\", \"label\": \"Topic discussed\"}],\n  \"content\": \"Full blog post as HTML. Use p tags for paragraphs, strong for emphasis, em for italic, h3 for subheadings. Write 800-1200 words covering the main themes insights and actionable advice. Write in The Manage Her brand voice: bold warm direct permission-giving. Address the reader as you. Do NOT use bullet point lists in the content. Write in flowing prose paragraphs.\",\n  \"quiz\": {\n    \"title\": \"A compelling self-discovery quiz title related to the episode theme (e.g. What is Your Leadership Superpower?)\",\n    \"description\": \"1-2 sentence invitation to take the quiz\",\n    \"types\": {\n      \"A\": {\"name\": \"2-4 word empowering archetype name\", \"description\": \"3-4 sentence personalized result that validates the reader and connects to episode themes. Write in second person. End with why they should listen to this episode.\"},\n      \"B\": {\"name\": \"archetype name\", \"description\": \"...\"},\n      \"C\": {\"name\": \"archetype name\", \"description\": \"...\"},\n      \"D\": {\"name\": \"archetype name\", \"description\": \"...\"}\n    },\n    \"questions\": [\n      {\n        \"question\": \"A relatable scenario or self-reflection question in second person\",\n        \"options\": [\n          {\"text\": \"Realistic behavior or belief - not obviously right or wrong\", \"type\": \"A\"},\n          {\"text\": \"Option text\", \"type\": \"B\"},\n          {\"text\": \"Option text\", \"type\": \"C\"},\n          {\"text\": \"Option text\", \"type\": \"D\"}\n        ]\n      }\n    ]\n  }\n}\n\nQUIZ RULES: Generate exactly 6 questions with 4 options each (types A/B/C/D). This is a SELF-DISCOVERY quiz not a knowledge test. Questions should help listeners learn about themselves. All options should feel valid. Archetype names should be empowering. Results should make every type feel seen and valued. Tie results back to why this episode would help them.\n\nIMPORTANT: Return ONLY valid JSON. No markdown. No backticks. No preamble. No explanation before or after the JSON.`;\n\nconst requestBody = {\n  model: \"claude-sonnet-4-6\",\n  max_tokens: 6000,\n  messages: [\n    {\n      role: \"user\",\n      content: prompt\n    }\n  ]\n};\n\nreturn [{\n  json: {\n    ...episode,\n    claudeRequestBody: JSON.stringify(requestBody)\n  }\n}];"
+        "jsCode": "const episode = $input.first().json;\n\nconst prompt = `You are a blog content writer for The Manage Her® — a women's leadership podcast hosted by Aimee Rickabus, CEO of a nine-figure technology company, bestselling author, and mother of six. Generate an enhanced show notes blog post from this podcast episode by calling the generate_blog_post tool.\n\nEPISODE DETAILS:\nTitle: ${episode.title}\nDuration: ${episode.durationFormatted}\nPublished: ${episode.publishedAt}\nYouTube URL: ${episode.youtubeUrl}\n\nEPISODE DESCRIPTION:\n${(episode.description || '').substring(0, 8000)}\n\nTRANSCRIPT:\n${(episode.transcript || '').substring(0, 50000)}\n\nWRITING GUIDANCE:\n- title: SEO-friendly, under 80 characters, different from the episode title\n- episodeNumber: extract from the title or use 0 if absent\n- guestName: full name or empty string for solo episodes\n- guestBio: 2-3 sentence bio based on what's discussed\n- excerpt: 2-3 sentence summary that makes someone want to listen\n- metaDescription: SEO meta description under 160 characters\n- topics: 3-5 from the enum (Leadership, Motherhood, Financial Literacy, Wellness, Entrepreneurship, Boundaries, Identity, Marriage, Community, Spirituality)\n- keyTakeaways: 5-7 complete-sentence takeaways\n- guestLinks: extract Instagram/LinkedIn/TikTok/YouTube/website URLs from the description\n- pullQuotes: 3-5 memorable quotes; timestamp empty if unknown\n- timestamps: chapter markers from the transcript/description\n- content: 800-1200 words of HTML using p/strong/em/h3 tags. Brand voice: bold, warm, direct, permission-giving. Address reader as \"you\". No bullet lists.\n- quiz: a SELF-DISCOVERY quiz (not knowledge test) with empowering archetype names tied to the episode. types.A/B/C/D each have a name (2-4 word archetype) and a 3-4 sentence personalized description in second person ending with why they should listen. questions: EXACTLY 6 questions, each with EXACTLY 4 options. Each option's type is A/B/C/D. All options should feel valid; this is self-discovery, not right/wrong.`;\n\nconst tool = {\n  name: \"generate_blog_post\",\n  description: \"Generate the structured blog post for this episode.\",\n  input_schema: {\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"title\",\"episodeNumber\",\"guestName\",\"excerpt\",\"metaDescription\",\"topics\",\"keyTakeaways\",\"content\",\"quiz\"],\"properties\":{\"title\":{\"type\":\"string\",\"maxLength\":100},\"episodeNumber\":{\"type\":\"integer\",\"minimum\":0},\"guestName\":{\"type\":\"string\"},\"guestBio\":{\"type\":\"string\"},\"excerpt\":{\"type\":\"string\",\"maxLength\":400},\"metaDescription\":{\"type\":\"string\",\"maxLength\":200},\"topics\":{\"type\":\"array\",\"minItems\":1,\"maxItems\":5,\"items\":{\"type\":\"string\",\"enum\":[\"Leadership\",\"Motherhood\",\"Financial Literacy\",\"Wellness\",\"Entrepreneurship\",\"Boundaries\",\"Identity\",\"Marriage\",\"Community\",\"Spirituality\"]}},\"keyTakeaways\":{\"type\":\"array\",\"minItems\":3,\"maxItems\":8,\"items\":{\"type\":\"string\"}},\"guestLinks\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"label\",\"url\"],\"properties\":{\"label\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"}}}},\"pullQuotes\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"text\"],\"properties\":{\"text\":{\"type\":\"string\"},\"timestamp\":{\"type\":\"string\"}}}},\"timestamps\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"time\",\"label\"],\"properties\":{\"time\":{\"type\":\"string\"},\"label\":{\"type\":\"string\"}}}},\"content\":{\"type\":\"string\"},\"quiz\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"title\",\"description\",\"types\",\"questions\"],\"properties\":{\"title\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"types\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"A\",\"B\",\"C\",\"D\"],\"properties\":{\"A\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"name\",\"description\"],\"properties\":{\"name\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"}}},\"B\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"name\",\"description\"],\"properties\":{\"name\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"}}},\"C\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"name\",\"description\"],\"properties\":{\"name\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"}}},\"D\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"name\",\"description\"],\"properties\":{\"name\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"}}}}},\"questions\":{\"type\":\"array\",\"minItems\":6,\"maxItems\":6,\"items\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"question\",\"options\"],\"properties\":{\"question\":{\"type\":\"string\"},\"options\":{\"type\":\"array\",\"minItems\":4,\"maxItems\":4,\"items\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"text\",\"type\"],\"properties\":{\"text\":{\"type\":\"string\"},\"type\":{\"type\":\"string\",\"enum\":[\"A\",\"B\",\"C\",\"D\"]}}}}}}}}}}}\n};\n\nconst requestBody = {\n  model: \"claude-sonnet-4-6\",\n  max_tokens: 10000,\n  tools: [tool],\n  tool_choice: { type: \"tool\", name: \"generate_blog_post\" },\n  messages: [{ role: \"user\", content: prompt }]\n};\n\nreturn [{ json: { ...episode, claudeRequestBody: JSON.stringify(requestBody) } }];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -800,6 +800,196 @@
           "name": "GitHub PAT - Blog Publisher"
         }
       }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        3500,
+        1500
+      ],
+      "id": "manual0000-ep67-ghl0-0000-000000000067",
+      "name": "Manual Trigger (EP67 GHL)"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://services.leadconnectorhq.com/contacts/?locationId=JzYUXEAehZEve2vuOdqM&query=Rebecca%20Maas",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "fullResponse": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        3724,
+        1500
+      ],
+      "id": "ep67aaaa-0001-0001-0001-000000000001",
+      "name": "EP67: Lookup Rebecca",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "oAJEopy5GkzizkE5",
+          "name": "GHL PIT (TMH)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "check-id",
+              "leftValue": "={{ $json.body.contacts[0].id || \"\" }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3948,
+        1500
+      ],
+      "id": "ep67bbbb-0002-0002-0002-000000000002",
+      "name": "EP67: Has Existing?"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://services.leadconnectorhq.com/contacts/{{ $node[\"EP67: Lookup Rebecca\"].json.body.contacts[0].id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "fullResponse": true,
+              "responseFormat": "json"
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"customFields\": [{\"id\":\"RyA70UVI5yUY83Wu5hYz\",\"field_value\":\"GLP-1s, Fat Loss & Food Freedom: Your Body Isn't Broken\"},{\"id\":\"zRU07yCeCsSBQrkNZwdb\",\"field_value\":\"https://themanageher.com/blog/your-body-isn-t-broken-glp-1s-fat-loss-food-freedom/\"},{\"id\":\"lctcR3WExxz0pULDyokA\",\"field_value\":\"67\"},{\"id\":\"HsP54mVLCSvKjPv2sGyO\",\"field_value\":\"What Is Your Relationship With Your Body Telling You?\"},{\"id\":\"KX3Tvi2pvlrUCtlVhYDI\",\"field_value\":\"2026-06-22\"}]}"
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        4172,
+        1400
+      ],
+      "id": "ep67cccc-0003-0003-0003-000000000003",
+      "name": "EP67: Update Existing",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "oAJEopy5GkzizkE5",
+          "name": "GHL PIT (TMH)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/contacts/upsert",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true,
+              "fullResponse": true,
+              "responseFormat": "json"
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\"locationId\":\"JzYUXEAehZEve2vuOdqM\",\"name\":\"Rebecca Maas\",\"firstName\":\"Rebecca\",\"lastName\":\"Maas\",\"tags\":[\"podcast-guest\",\"guest-outreach-pending\"],\"customFields\":[{\"id\":\"RyA70UVI5yUY83Wu5hYz\",\"field_value\":\"GLP-1s, Fat Loss & Food Freedom: Your Body Isn't Broken\"},{\"id\":\"zRU07yCeCsSBQrkNZwdb\",\"field_value\":\"https://themanageher.com/blog/your-body-isn-t-broken-glp-1s-fat-loss-food-freedom/\"},{\"id\":\"lctcR3WExxz0pULDyokA\",\"field_value\":\"67\"},{\"id\":\"HsP54mVLCSvKjPv2sGyO\",\"field_value\":\"What Is Your Relationship With Your Body Telling You?\"},{\"id\":\"KX3Tvi2pvlrUCtlVhYDI\",\"field_value\":\"2026-06-22\"}]}"
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        4172,
+        1600
+      ],
+      "id": "ep67dddd-0004-0004-0004-000000000004",
+      "name": "EP67: Create New",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "oAJEopy5GkzizkE5",
+          "name": "GHL PIT (TMH)"
+        }
+      }
     }
   ],
   "connections": {
@@ -1069,6 +1259,46 @@
         [
           {
             "node": "Ping IndexNow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Trigger (EP67 GHL)": {
+      "main": [
+        [
+          {
+            "node": "EP67: Lookup Rebecca",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EP67: Lookup Rebecca": {
+      "main": [
+        [
+          {
+            "node": "EP67: Has Existing?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EP67: Has Existing?": {
+      "main": [
+        [
+          {
+            "node": "EP67: Update Existing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "EP67: Create New",
             "type": "main",
             "index": 0
           }
