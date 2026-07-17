@@ -50,11 +50,17 @@ export function useEpisodes(limit = 3) {
       .then((res) => res.json())
       .then((result: EpisodeData) => {
         setData(result);
-        const entry: CachedEpisodes = { data: result, fetchedAt: Date.now() };
-        sessionStorage.setItem(CACHE_KEY, JSON.stringify(entry));
+        // Persist separately so a storage failure (e.g. QuotaExceededError)
+        // can't reach the fetch .catch() and clobber the fresh data.
+        try {
+          const entry: CachedEpisodes = { data: result, fetchedAt: Date.now() };
+          sessionStorage.setItem(CACHE_KEY, JSON.stringify(entry));
+        } catch {
+          /* cache write is best-effort */
+        }
       })
       .catch(() => {
-        // Webhook failed — fall back to stale cache if we have any.
+        // Webhook (or parse) failed — fall back to stale cache if we have any.
         if (cached) setData(cached.data);
       });
   }, []);
