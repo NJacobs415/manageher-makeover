@@ -12,6 +12,7 @@ import FadeIn from "@/components/animations/FadeIn";
 import Magnetic from "@/components/animations/Magnetic";
 import SEO from "@/components/SEO";
 import EpisodeQuiz from "@/components/blog/EpisodeQuiz";
+import GuestQuizCTA, { type GuestQuiz } from "@/components/blog/GuestQuizCTA";
 import { trackTranscriptExpand, trackEpisodePlay, trackGuestLinkClick } from '@/lib/analytics';
 import { getYouTubeThumb } from "@/lib/ytThumb";
 import {
@@ -52,6 +53,9 @@ interface BlogPostData {
     questions: { question: string; options: { text: string; type: string }[] }[];
     results: { type: string; title: string; description: string }[];
   };
+  // Optional per-post override: points at a guest's own external quiz
+  // instead of the TMH self-discovery quiz. Independent of `quiz`.
+  guestQuiz?: GuestQuiz;
 }
 
 // ── Prose styles for the rendered HTML content ──
@@ -670,6 +674,9 @@ const BlogPost = () => {
 
                 {/* Episode Quiz */}
                 {post.quiz && <EpisodeQuiz quiz={post.quiz} slug={post.slug} episodeNumber={post.episodeNumber} resourceUrl={(post as Record<string, unknown>).resourceUrl as string | undefined} />}
+
+                {/* Guest's own external quiz — independent of the TMH quiz above */}
+                {post.guestQuiz && <GuestQuizCTA guestQuiz={post.guestQuiz} guestName={post.guestName} episodeNumber={post.episodeNumber} />}
 
                 {/* Guest Bio — white card with gold border */}
                 {post.guestBio && (

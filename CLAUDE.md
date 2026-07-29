@@ -12,6 +12,24 @@ The Manage Her® is a women's leadership movement and media brand founded by Aim
 ## n8n Workflows
 Workflow JSON snapshots live in `n8n-workflows/`. The live n8n instance (`n8n.srv1075406.hstgr.cloud`) is the source of truth; the committed JSON is a version-controlled mirror. Edit via the n8n REST API using `N8N_API_KEY` from `.env.local` (gitignored). After every workflow change: re-export the patched body, copy to `n8n-workflows/<id>.json`, commit. Secrets must always reference an n8n credential by ID — never inline a bearer token in a node parameter, since the JSON is committed. See `n8n-workflows/README.md` for the full editing flow and the public-API settings whitelist.
 
+## Blog Post Data Shape
+Post data is two-tier: `public/blog/posts.json` holds **index metadata only** (slug, title,
+episodeNumber, guestName, publishedAt, duration, thumbnail, excerpt, topics, youtubeUrl) and drives
+listing pages plus the related-episodes rail. The **full post** — including `quiz`, `guestQuiz`,
+`transcript`, and `content` — lives in `public/blog/<slug>.json`, which is what `BlogPost.tsx`
+fetches. Per-post fields must be edited in `<slug>.json`; adding them to `posts.json` is a no-op.
+
+### `quiz` vs `guestQuiz` (both optional, independent)
+- `quiz` — the interactive TMH self-discovery quiz (`EpisodeQuiz`). Default for most episodes.
+- `guestQuiz` — optional per-post override that **replaces** the TMH quiz with a link out to a
+  guest's own external quiz, rendered by `GuestQuizCTA`. Shape:
+  `{ eyebrow, title, description, url, buttonLabel }`. Use when the guest has their own assessment
+  that serves the episode better than ours. To apply it, delete `quiz` and add `guestQuiz`.
+- The two render conditions are independent siblings — a post may have either, both, or neither.
+- `GuestQuizCTA` is **gold**-accented, not pink: it's a third-party/authority CTA, and per the design
+  rules pink and gold are never both primary in one section. It opens in a new tab and fires a
+  `guest_quiz_click` GA4 event.
+
 ## Brand Design System
 
 ### Colors (update CSS variables to match)
