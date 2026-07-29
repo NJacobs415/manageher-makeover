@@ -13,22 +13,26 @@ interface Props {
 }
 
 interface State {
-  error: Error | null;
+  // Separate from `error` on purpose: a route may throw a falsy value
+  // (`throw null`, `""`), which must still trip the boundary.
+  hasError: boolean;
+  error: unknown;
 }
 
 class RouteErrorBoundary extends Component<Props, State> {
-  state: State = { error: null };
+  state: State = { hasError: false, error: null };
 
-  static getDerivedStateFromError(error: Error): State {
-    return { error };
+  static getDerivedStateFromError(error: unknown): State {
+    return { hasError: true, error };
   }
 
-  componentDidCatch(error: Error, info: ErrorInfo) {
+  componentDidCatch(error: unknown, info: ErrorInfo) {
     // Always surface the real error — this is the diagnostic that was missing.
     console.error("[RouteErrorBoundary] route failed to render:", error, info.componentStack);
     try {
+      const message = error instanceof Error ? error.message : String(error);
       trackEvent("route_error", {
-        error_message: String(error?.message ?? error).slice(0, 300),
+        error_message: message.slice(0, 300),
         route: typeof window !== "undefined" ? window.location.pathname : undefined,
       });
     } catch {
@@ -37,8 +41,7 @@ class RouteErrorBoundary extends Component<Props, State> {
   }
 
   render() {
-    const { error } = this.state;
-    if (!error) return this.props.children;
+    if (!this.state.hasError) return this.props.children;
 
     return (
       <div
