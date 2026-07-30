@@ -1,2 +1,42 @@
+# HTML documents and bare routes: always revalidate, so a new deploy is picked
+# up on the next request instead of a client running last build's shell.
+# Every app route is served as a directory index.html, so the bare-route paths
+# are listed explicitly rather than relying on a broad /* (which would also
+# catch /blog/*.json payloads, images, feed.xml and sitemap.xml).
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/about/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/podcast/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/book/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/press/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/links/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/legal/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/blog/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Blog post + topic route shells. The JSON payloads under /blog/ are matched by
+# this pattern too; max-age=0 + must-revalidate keeps them correct after a
+# publish (they are re-written by the Auto Blog Publisher, not content-hashed).
+/blog/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Content-hashed build output. Declared LAST so it wins for /assets/* — a new
+# build emits new filenames, so these are safe to cache for a year.
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
