@@ -184,5 +184,11 @@
       </div>
     </div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Cloudflare Web Analytics. The zone is in snippet mode (automatic
+         injection off), so without this tag nothing is collected. Plain
+         classic script, deferred — independent of the app bundle, so it still
+         reports on a page where the module graph fails to boot. -->
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "2bc37118b24d42a59111320b573c26be"}'></script>
   </body>
 </html>
