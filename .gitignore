@@ -31,3 +31,9 @@ public/substack-drafts/
 # n8n workflow working files (committed snapshot is the bare ID file)
 n8n-workflows/*.before-patch.json
 n8n-workflows/.*.json
+
+# Generated at build time by prebuild (generate-sitemap.mjs / generate-rss.mjs)
+# from public/blog/posts.json. Committing them guarantees drift, because the
+# Auto Blog Publisher commits only the post JSON — never these.
+public/sitemap.xml
+public/feed.xml
