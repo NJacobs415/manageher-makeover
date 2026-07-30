@@ -30,6 +30,44 @@ fetches. Per-post fields must be edited in `<slug>.json`; adding them to `posts.
   rules pink and gold are never both primary in one section. It opens in a new tab and fires a
   `guest_quiz_click` GA4 event.
 
+## Analytics & Monitoring
+
+GA4 events go through `trackEvent()` in `src/lib/analytics.ts`, which no-ops safely when
+`gtag` is absent (ad blockers, dev). A `dataLayer` + `gtag` stub is installed inline in
+`index.html` before anything else, so events buffer with zero loss until `gtag.js` loads.
+Cloudflare Web Analytics runs in **snippet mode** — the beacon tag lives in `index.html`
+(automatic injection is off, so removing that tag silently stops all collection).
+
+### `boot_failure` — the front-end outage alarm
+**This is the only signal that the site is down for real users. Treat a rise in it as an
+outage, not a metrics blip.**
+
+Emitted from a **classic inline `<script>` in `index.html`** — deliberately not
+`type="module"` and with no dependency on any bundle, because it must fire in the one
+situation nothing else can report: the entry module never executes, so React never runs,
+`#root` stays empty, and the page is a black screen (`#0a0a0a`) with **no console error and
+no failed-chunk request**. Fires when the boot placeholder is still present 8s after load,
+and carries `route`, `failed_count`, `first_failed_url`, and the negotiated `protocol`.
+
+Why it exists: during the July 2026 outage, `curl` returned **HTTP 200 with byte-correct,
+CORS-valid content for the HTML and every asset** through the entire incident — 32
+consecutive server-side samples showed nothing wrong while the site was blank in a browser.
+Server-side monitoring is provably blind to this class of failure. `boot_failure` and the
+`first_failed_url` it reports are the only instrumentation that sees it.
+
+Companion recovery, same script: one cache-busted reload, guarded by a `tmh-boot-reload`
+sessionStorage flag that is written-then-read-back and fails closed, so it can never loop.
+
+### `route_error`
+Fired by `RouteErrorBoundary` when a route throws or a lazy chunk fails **after** React has
+mounted. Narrower than `boot_failure` — it needs a running app, so it cannot report a
+boot failure.
+
+### Other events
+`quiz_start`, `quiz_complete`, `guest_quiz_click`, `newsletter_signup`, `book_click`,
+`booking_click`, `podcast_platform_click`, `episode_play`, `transcript_expand`,
+`social_click`, `guest_link_click`, `blog_topic_filter`.
+
 ## Brand Design System
 
 ### Colors (update CSS variables to match)
