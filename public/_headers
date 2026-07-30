@@ -27,11 +27,10 @@
 /legal/
   Cache-Control: public, max-age=0, must-revalidate
 
-/blog/
-  Cache-Control: public, max-age=0, must-revalidate
-
-# Blog post + topic route shells. The JSON payloads under /blog/ are matched by
-# this pattern too; max-age=0 + must-revalidate keeps them correct after a
+# Blog index, post shells and topic shells. /blog/* also matches the bare
+# /blog/ path, so it is NOT listed separately — two matching rules would emit
+# Cache-Control twice in one response. The JSON payloads under /blog/ are
+# matched here too; max-age=0 + must-revalidate keeps them correct after a
 # publish (they are re-written by the Auto Blog Publisher, not content-hashed).
 /blog/*
   Cache-Control: public, max-age=0, must-revalidate
