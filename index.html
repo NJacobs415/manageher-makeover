@@ -66,10 +66,123 @@
         }
       })();
     </script>
+
+    <!-- Boot watchdog. Deliberately a CLASSIC inline script, not type="module":
+         it must run even when the module graph never executes, which is exactly
+         the failure this exists to surface. Nothing here depends on React or
+         any bundle. -->
+    <script>
+      (function () {
+        var BOOT_ID = 'tmh-boot';
+        var FLAG = 'tmh-boot-reload';
+        var TIMEOUT_MS = 8000; // generous: must not reload out from under slow mobile
+
+        window.__tmhBootErrors = [];
+
+        // Resource/script load failures do NOT bubble — capture phase is required.
+        window.addEventListener(
+          'error',
+          function (e) {
+            var t = e && e.target;
+            var url = t && (t.src || t.href);
+            if (url) {
+              // The datum we could never capture: WHICH resource failed.
+              window.__tmhBootErrors.push({ url: String(url), tag: t.tagName, at: Date.now() });
+              if (window.console && console.error) {
+                console.error('[tmh-boot] resource failed to load:', url, '(' + t.tagName + ')');
+              }
+            } else if (e && e.message && window.console && console.error) {
+              console.error('[tmh-boot] script error:', e.message, e.filename || '', e.lineno || '');
+            }
+          },
+          true
+        );
+
+        window.addEventListener('unhandledrejection', function (e) {
+          var r = e && e.reason;
+          if (window.console && console.error) {
+            console.error('[tmh-boot] unhandled rejection:', (r && r.message) || String(r));
+          }
+        });
+
+        // Arms the one-shot guard. Returns true ONLY on confirmed write-then-read,
+        // so a failed write can never let us reload unguarded (that would loop).
+        function armGuard() {
+          try {
+            sessionStorage.setItem(FLAG, '1');
+            return sessionStorage.getItem(FLAG) === '1';
+          } catch (err) {
+            return false;
+          }
+        }
+        function alreadyReloaded() {
+          try {
+            return sessionStorage.getItem(FLAG) === '1';
+          } catch (err) {
+            return true; // storage unavailable -> fail closed, never reload
+          }
+        }
+
+        setTimeout(function () {
+          // React replaces #root's subtree on mount, so the placeholder's
+          // presence after the timeout means the app never booted.
+          if (!document.getElementById(BOOT_ID)) return;
+
+          var failed = window.__tmhBootErrors.map(function (x) { return x.url; });
+          if (window.console && console.error) {
+            console.error(
+              '[tmh-boot] app did not mount within ' + TIMEOUT_MS + 'ms.',
+              'Failed resources:', failed.length ? failed : '(none captured)'
+            );
+          }
+
+          try {
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', 'boot_failure', {
+                route: location.pathname,
+                failed_count: failed.length,
+                first_failed_url: failed[0] ? String(failed[0]).slice(0, 300) : undefined,
+                protocol: (performance.getEntriesByType('navigation')[0] || {}).nextHopProtocol
+              });
+            }
+          } catch (err) {
+            /* analytics must never block recovery */
+          }
+
+          if (!alreadyReloaded() && armGuard()) {
+            var u = new URL(location.href);
+            u.searchParams.set('tmhb', String(Date.now())); // cache-busting
+            location.replace(u.href);
+          }
+        }, TIMEOUT_MS);
+
+        // Clear the guard once the app is confirmed mounted, so a later
+        // session can recover again.
+        var settle = setInterval(function () {
+          if (!document.getElementById(BOOT_ID)) {
+            clearInterval(settle);
+            try { sessionStorage.removeItem(FLAG); } catch (err) { /* nothing to clear */ }
+          }
+        }, 500);
+        setTimeout(function () { clearInterval(settle); }, 30000);
+      })();
+    </script>
   </head>
 
   <body>
-    <div id="root"></div>
+    <!-- Boot placeholder. Visible immediately from static HTML, so a failure
+         BEFORE the entry module executes shows brand, not a black screen.
+         React replaces the whole subtree on mount. The id is what the
+         boot-watchdog in <head> checks for. -->
+    <div id="root">
+      <div id="tmh-boot" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0a0a0a;padding:24px;text-align:center">
+        <p style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(28px,5vw,40px);font-weight:700;color:#fafafa;margin:0">
+          The Manage<em style="color:#eb1887;font-style:italic">Her</em><span style="font-size:.45em;vertical-align:super;font-style:normal">&#174;</span>
+        </p>
+        <div style="width:120px;height:1px;margin:20px 0 0;background:linear-gradient(90deg,transparent,#eb1887,transparent)"></div>
+        <p style="font-family:'DM Sans',system-ui,sans-serif;font-size:13px;letter-spacing:.02em;color:#888888;margin:16px 0 0">Loading&#8230;</p>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
