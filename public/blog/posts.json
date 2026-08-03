@@ -1,6 +1,24 @@
 {
   "posts": [
     {
+      "slug": "raising-kids-in-the-age-of-ai-what-every-mom-needs-to-know",
+      "title": "Raising Kids in the Age of AI: What Every Mom Must Know",
+      "episodeNumber": 73,
+      "guestName": "Melinda Wittstock",
+      "publishedAt": "2026-08-03T13:00:13Z",
+      "duration": "50 min",
+      "thumbnail": "https://i.ytimg.com/vi/CWf_sy9Jt90/maxresdefault.jpg",
+      "excerpt": "Tech founder Melinda Wittstock joins Aimee to talk about what AI fluency actually looks like for moms who've never written a line of code — and why the women who shape this technology will raise the kids who direct it. This is not a fear episode. It's a fluency episode.",
+      "topics": [
+        "Motherhood",
+        "Leadership",
+        "Entrepreneurship",
+        "Boundaries",
+        "Identity"
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=CWf_sy9Jt90"
+    },
+    {
       "slug": "when-strength-becomes-toxic-the-pattern-draining-high-achievers",
       "title": "Toxic Resilience: What High-Achieving Women Get Wrong About Strength",
       "episodeNumber": 72,
