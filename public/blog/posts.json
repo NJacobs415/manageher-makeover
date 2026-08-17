@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "slug": "will-ai-replace-your-doctor-a-physician-answers-honestly",
+      "title": "AI in Healthcare: What Every Woman Needs to Know Now",
+      "episodeNumber": 75,
+      "guestName": "Dr. Mari Mitrani",
+      "publishedAt": "2026-08-17T13:00:29Z",
+      "duration": "1h 18m",
+      "thumbnail": "https://i.ytimg.com/vi/GM25L_wLfds/maxresdefault.jpg",
+      "excerpt": "Dr. Mari Mitrani just completed her AI in healthcare certification from Harvard Medical School — and she's here to give you the honest, unfiltered answer to the question everyone is asking. AI is already reshaping medicine, fertility research, and longevity science, and the women who get in the room now will help decide who gets included. This conversation will change how you think about your health and your future.",
+      "topics": [
+        "Wellness",
+        "Leadership",
+        "Entrepreneurship",
+        "Identity"
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=GM25L_wLfds"
+    },
+    {
       "slug": "how-to-use-ai-safely-with-your-money-what-never-to-upload",
       "title": "AI Safety & Money: What Never to Share With a Chatbot",
       "episodeNumber": 73,
