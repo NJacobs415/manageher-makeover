@@ -10,7 +10,7 @@ The Manage Her® is a women's leadership movement and media brand founded by Aim
 - `npm run lint` — ESLint check
 
 ## n8n Workflows
-Workflow JSON snapshots live in `n8n-workflows/`. The live n8n instance (`n8n.srv1075406.hstgr.cloud`) is the source of truth; the committed JSON is a version-controlled mirror. Edit via the n8n REST API using `N8N_API_KEY` from `.env.local` (gitignored). After every workflow change: re-export the patched body, copy to `n8n-workflows/<id>.json`, commit. Secrets must always reference an n8n credential by ID — never inline a bearer token in a node parameter, since the JSON is committed. See `n8n-workflows/README.md` for the full editing flow and the public-API settings whitelist.
+Workflow JSON snapshots live in `n8n-workflows/`. The live n8n instance (`n8n.srv1075406.hstgr.cloud`) is the source of truth; the committed JSON is a version-controlled mirror. Edit via the n8n REST API using `N8N_API_KEY` from `.env.local` (gitignored). After every workflow change: re-export the patched body, copy to `n8n-workflows/<id>.json`, commit. Secrets must always reference an n8n credential by ID — never inline a bearer token in a node parameter, since the JSON is committed. See `n8n-workflows/README.md` for the full editing flow and the public-API settings whitelist. Auto Blog Publisher uses strict tool use; `quiz` is validated in Build Blog JSON and a bad payload fails the execution rather than publishing.
 
 ## Blog Post Data Shape
 Post data is two-tier: `public/blog/posts.json` holds **index metadata only** (slug, title,
