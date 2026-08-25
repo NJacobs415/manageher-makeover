@@ -15,6 +15,7 @@ import EpisodeQuiz from "@/components/blog/EpisodeQuiz";
 import GuestQuizCTA, { type GuestQuiz } from "@/components/blog/GuestQuizCTA";
 import { trackTranscriptExpand, trackEpisodePlay, trackGuestLinkClick } from '@/lib/analytics';
 import { getYouTubeThumb } from "@/lib/ytThumb";
+import { normalizeBlogPost } from "@/lib/normalizeBlogPost";
 import {
   ArrowLeft,
   ArrowRight,
@@ -169,7 +170,10 @@ const BlogPost = () => {
         if (!res.ok) throw new Error("Not found");
         return res.json();
       })
-      .then((data) => {
+      .then((raw) => {
+        // Guard against malformed `quiz` / `guestQuiz` in the published JSON
+        // so one bad field can't error the whole episode page.
+        const data = normalizeBlogPost(raw) as BlogPostData;
         setPost(data);
         setLoading(false);
         document.title = `${data.title} | The Manage Her® Podcast`;
