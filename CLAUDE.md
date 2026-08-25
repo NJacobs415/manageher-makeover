@@ -30,6 +30,26 @@ fetches. Per-post fields must be edited in `<slug>.json`; adding them to `posts.
   rules pink and gold are never both primary in one section. It opens in a new tab and fires a
   `guest_quiz_click` GA4 event.
 
+### `quiz` must be a real object — never a JSON string
+`quiz` is an object (`{ title, description, types, questions }`); `guestQuiz` likewise. A
+**double-encoded** `quiz` — the whole object serialized into a JSON *string* — is the known
+failure mode of the n8n Auto Blog Publisher (workflow `At5iovQ74qk4ki5B`). **Check it first when
+an episode page renders the "This page didn't load" error boundary**: episodes 74–76 all shipped
+this way, and the encoded strings were themselves malformed (mismatched `]`/`}`, unclosed `types`
+objects), so they don't even round-trip through `JSON.parse`.
+
+`normalizeBlogPost()` in `src/lib/normalizeBlogPost.ts` runs on every fetched post and contains
+the blast radius: a stringified `quiz`/`guestQuiz` is parsed back into an object where possible,
+and anything unparseable or missing the shape its component needs (`quiz.questions[]`,
+`guestQuiz.url`) is dropped to `undefined`. Both sections render behind `post.quiz && …` guards,
+so a bad field silently omits that one section instead of erroring the whole page. **This is a
+safety net, not a license to ship bad data** — repair the underlying `<slug>.json`, or the quiz
+just stops appearing. To audit every post:
+
+```
+node -e 'const fs=require("fs"),p="public/blog/";for(const f of fs.readdirSync(p)){const j=JSON.parse(fs.readFileSync(p+f,"utf8"));for(const k of ["quiz","guestQuiz"])if(j[k]!==undefined&&typeof j[k]!=="object")console.log("BAD",f,k,typeof j[k])}'
+```
+
 ## Analytics & Monitoring
 
 GA4 events go through `trackEvent()` in `src/lib/analytics.ts`, which no-ops safely when
