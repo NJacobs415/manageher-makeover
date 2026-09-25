@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import PageTransition from "@/components/animations/PageTransition";
 import RouteErrorBoundary from "@/components/RouteErrorBoundary";
+import CultivateHerPopup from "@/components/CultivateHerPopup";
 import lazyWithRecovery from "@/lib/lazyWithRecovery";
 import { usePageTracking } from "@/hooks/usePageTracking";
 import Index from "@/pages/Index";
@@ -34,30 +35,35 @@ const AnimatedRoutes = () => {
   usePageTracking();
 
   return (
-    <AnimatePresence mode="wait">
-      {/* Suspense lives INSIDE AnimatePresence and carries the same
-          location key, so AnimatePresence still sees a keyed child and
-          runs PageTransition exit animations on lazy-route navigation. */}
-      <Suspense key={location.pathname} fallback={<RouteFallback />}>
-        {/* Boundary is keyed to the same path so navigating away from a
-            failed route clears the error instead of latching it. */}
-        <RouteErrorBoundary key={location.pathname}>
-          <Routes location={location}>
-            <Route path="/" element={<PageTransition><Index /></PageTransition>} />
-            <Route path="/about" element={<PageTransition><About /></PageTransition>} />
-            <Route path="/podcast" element={<PageTransition><Podcast /></PageTransition>} />
-            <Route path="/book" element={<PageTransition><Book /></PageTransition>} />
-            <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
-            <Route path="/blog/topic/:topic" element={<PageTransition><BlogTopic /></PageTransition>} />
-            <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
-            <Route path="/press" element={<PageTransition><Press /></PageTransition>} />
-            <Route path="/legal" element={<PageTransition><Legal /></PageTransition>} />
-            <Route path="/links" element={<Links />} />
-            <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
-          </Routes>
-        </RouteErrorBoundary>
-      </Suspense>
-    </AnimatePresence>
+    <>
+      <AnimatePresence mode="wait">
+        {/* Suspense lives INSIDE AnimatePresence and carries the same
+            location key, so AnimatePresence still sees a keyed child and
+            runs PageTransition exit animations on lazy-route navigation. */}
+        <Suspense key={location.pathname} fallback={<RouteFallback />}>
+          {/* Boundary is keyed to the same path so navigating away from a
+              failed route clears the error instead of latching it. */}
+          <RouteErrorBoundary key={location.pathname}>
+            <Routes location={location}>
+              <Route path="/" element={<PageTransition><Index /></PageTransition>} />
+              <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+              <Route path="/podcast" element={<PageTransition><Podcast /></PageTransition>} />
+              <Route path="/book" element={<PageTransition><Book /></PageTransition>} />
+              <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+              <Route path="/blog/topic/:topic" element={<PageTransition><BlogTopic /></PageTransition>} />
+              <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
+              <Route path="/press" element={<PageTransition><Press /></PageTransition>} />
+              <Route path="/legal" element={<PageTransition><Legal /></PageTransition>} />
+              <Route path="/links" element={<Links />} />
+              <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+            </Routes>
+          </RouteErrorBoundary>
+        </Suspense>
+      </AnimatePresence>
+      {/* Sibling of the route AnimatePresence (mode="wait" needs a single keyed
+          child) but still inside BrowserRouter — the popup uses useLocation. */}
+      <CultivateHerPopup />
+    </>
   );
 };
 

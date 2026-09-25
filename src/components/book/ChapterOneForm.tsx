@@ -6,25 +6,35 @@ import { trackNewsletterSignup, trackEvent } from "@/lib/analytics";
  * Posts to the GHL inbound-webhook trigger on workflow
  * "Cultivate Her – Chapter 1 + Waitlist" (b05a6be2…). GHL creates/updates the
  * contact, tags it, and sends the chapter by email. Nothing is stored client-side.
+ *
+ * `variant="dark"` restyles inputs for the dark popup; `source` is passed through
+ * to GHL so we can see which placement converts.
  */
 const WEBHOOK_URL =
   "https://services.leadconnectorhq.com/hooks/JzYUXEAehZEve2vuOdqM/webhook-trigger/tuUn3HS9CxHYRFIKI09h";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-const inputStyle = {
-  background: "#fff",
-  border: "1px solid rgba(0,0,0,0.1)",
-  borderRadius: "50px",
-  color: "#1a1a1a",
-  outline: "none",
-  height: "52px",
-} as const;
+interface Props {
+  source?: string;
+  variant?: "light" | "dark";
+  onSuccess?: () => void;
+}
 
-export default function ChapterOneForm() {
+export default function ChapterOneForm({ source = "book-page-free-chapter", variant = "light", onSuccess }: Props) {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
+  const dark = variant === "dark";
+
+  const inputStyle = {
+    background: dark ? "#161616" : "#fff",
+    border: dark ? "1px solid rgba(255,255,255,0.12)" : "1px solid rgba(0,0,0,0.1)",
+    borderRadius: "50px",
+    color: dark ? "#fafafa" : "#1a1a1a",
+    outline: "none",
+    height: "52px",
+  } as const;
 
   const isValidEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
 
@@ -43,18 +53,19 @@ export default function ChapterOneForm() {
         body: JSON.stringify({
           firstName: firstName.trim(),
           email: email.trim().toLowerCase(),
-          source: "book-page-free-chapter",
-          page: typeof window !== "undefined" ? window.location.pathname : "/book",
+          source,
+          page: typeof window !== "undefined" ? window.location.pathname : "/",
         }),
       });
       if (!res.ok) throw new Error(`Webhook responded ${res.status}`);
       setStatus("success");
       try {
-        trackNewsletterSignup("cultivate_her_chapter1");
-        trackEvent("chapter_download", { book: "the_cultivate_her", chapter: 1 });
+        trackNewsletterSignup(source);
+        trackEvent("chapter_download", { book: "the_cultivate_her", chapter: 1, source });
       } catch {
         /* analytics must never break the page */
       }
+      onSuccess?.();
     } catch {
       setStatus("error");
     }
@@ -66,12 +77,16 @@ export default function ChapterOneForm() {
         role="status"
         aria-live="polite"
         className="max-w-md mx-auto text-center px-8 py-8"
-        style={{ background: "#fff", border: "1px solid rgba(201,169,110,0.35)", borderRadius: "24px" }}
+        style={{
+          background: dark ? "#161616" : "#fff",
+          border: "1px solid rgba(201,169,110,0.35)",
+          borderRadius: "24px",
+        }}
       >
-        <p className="font-serif text-2xl font-bold mb-2" style={{ color: "#1a1a1a" }}>
+        <p className="font-serif text-2xl font-bold mb-2" style={{ color: dark ? "#fafafa" : "#1a1a1a" }}>
           Check your inbox, {firstName.trim()}.
         </p>
-        <p className="font-sans text-[14px] leading-relaxed" style={{ color: "#666" }}>
+        <p className="font-sans text-[14px] leading-relaxed" style={{ color: dark ? "#aaa" : "#666" }}>
           Chapter One is on its way. You're on the launch list too — you'll hear from Aimee first on November 20.
         </p>
       </div>
@@ -79,7 +94,7 @@ export default function ChapterOneForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="max-w-xl mx-auto">
+    <form onSubmit={handleSubmit} noValidate className="max-w-xl mx-auto w-full">
       <div className="flex flex-col sm:flex-row gap-3">
         <input
           type="text"
@@ -90,7 +105,7 @@ export default function ChapterOneForm() {
           onChange={(e) => { setFirstName(e.target.value); if (status === "error") setStatus("idle"); }}
           aria-label="First name"
           required
-          className="sm:w-[38%] px-6 font-sans text-sm"
+          className="sm:w-[38%] px-6 font-sans text-sm placeholder:text-[#777]"
           style={inputStyle}
         />
         <input
@@ -103,7 +118,7 @@ export default function ChapterOneForm() {
           onChange={(e) => { setEmail(e.target.value); if (status === "error") setStatus("idle"); }}
           aria-label="Email address"
           required
-          className="sm:flex-1 px-6 font-sans text-sm"
+          className="sm:flex-1 px-6 font-sans text-sm placeholder:text-[#777]"
           style={inputStyle}
         />
       </div>
@@ -116,8 +131,8 @@ export default function ChapterOneForm() {
         {status === "submitting" ? "Sending…" : "Send Me Chapter 1 →"}
       </button>
       <p
-        className="font-sans text-[12px] mt-4 min-h-[18px]"
-        style={{ color: status === "error" ? "#eb1887" : "#999" }}
+        className="font-sans text-[12px] mt-4 min-h-[18px] text-center"
+        style={{ color: status === "error" ? "#eb1887" : dark ? "#777" : "#999" }}
         aria-live="polite"
       >
         {status === "error"

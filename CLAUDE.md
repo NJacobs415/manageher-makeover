@@ -86,17 +86,37 @@ boot failure.
 ### Other events
 `quiz_start`, `quiz_complete`, `guest_quiz_click`, `newsletter_signup`, `book_click`,
 `booking_click`, `podcast_platform_click`, `episode_play`, `transcript_expand`,
-`social_click`, `guest_link_click`, `blog_topic_filter`, `chapter_download`.
+`social_click`, `guest_link_click`, `blog_topic_filter`, `chapter_download`, `popup_view`,
+`popup_dismiss`.
 
 ### `chapter_download` — Cultivate Her Chapter 1 form
-`ChapterOneForm` (`src/components/book/ChapterOneForm.tsx`, in `/book#free-chapter`) collects
-first name + email and POSTs JSON to the **GHL inbound webhook** for workflow
-**"Cultivate Her – Chapter 1 + Waitlist"**. GHL creates/updates the contact, tags it, and emails
-the chapter — nothing is stored client-side. Only on a 2xx response does it fire
-`chapter_download` (`{ book: "the_cultivate_her", chapter: 1 }`) plus `newsletter_signup`
-(`signup_location: "cultivate_her_chapter1"`). The webhook URL is public by design (it ships in
-the bundle); submitting the live form creates a real GHL contact, so don't smoke-test it with
+`ChapterOneForm` (`src/components/book/ChapterOneForm.tsx`) collects first name + email and
+POSTs JSON to the **GHL inbound webhook** for workflow **"Cultivate Her – Chapter 1 + Waitlist"**.
+GHL creates/updates the contact, tags it, and emails the chapter — nothing is stored
+client-side. It's used in two placements, told apart by the `source` prop (sent to GHL and on
+every event): `book-page-free-chapter` (inline in `/book#free-chapter`, light variant) and
+`popup-cultivate-her` (the sitewide popup, `variant="dark"`). Only on a 2xx response does it
+fire `chapter_download` (`{ book: "the_cultivate_her", chapter: 1, source }`) plus
+`newsletter_signup` (`signup_location: <source>`). The webhook URL is public by design (it ships
+in the bundle); submitting the live form creates a real GHL contact, so don't smoke-test it with
 throwaway data.
+
+### Cultivate Her popup — `popup_view` / `popup_dismiss`
+`src/components/CultivateHerPopup.tsx` is a sitewide modal (cover, launch countdown via the
+shared `src/hooks/useCountdown.ts` + `CULTIVATE_HER_LAUNCH`, dark `ChapterOneForm`). It's mounted
+once in `AnimatedRoutes.tsx` as a sibling of the route `AnimatePresence` — it must stay inside
+`BrowserRouter` because it uses `useLocation`, so never move it up into `App.tsx`.
+- **Triggers** (first one wins, at most once per page load): 7s on page, 45% scroll depth, or
+  exit intent (mouse leaving through the top edge, fine pointers only).
+- **Suppressed routes:** any path starting with `/book` (the inline form lives there) or
+  `/blog/` (posts already gate the quiz behind email; this also covers `/blog/topic/*`). The
+  `/blog` index is *not* suppressed.
+- **Suppression window:** `localStorage["tmh_cultivate_popup"]` holds an epoch-ms "quiet until"
+  timestamp. Dismissing (X, ESC, backdrop click) sets 7 days; a successful signup sets 60 days,
+  and closing the success card afterwards keeps the 60. Storage errors fail open (the popup
+  just shows again). To re-test locally: `localStorage.removeItem("tmh_cultivate_popup")`.
+- **Events:** `popup_view` (`{ popup: "cultivate_her_chapter1", trigger: "timer" | "scroll" |
+  "exit_intent" }`) on open; `popup_dismiss` (`{ popup }`) on a non-signup close.
 
 ## Brand Design System
 
