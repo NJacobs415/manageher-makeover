@@ -21,7 +21,7 @@ const BuyButtons = ({ location = "book_page" }: { location?: string }) => (
   <div className="flex flex-wrap gap-3 items-center">
     <Magnetic strength={0.2}>
       <a href="https://a.co/d/by5X0fV" target="_blank" rel="noopener noreferrer"
-        onClick={() => { try { trackBookClick(location); } catch {} }}
+        onClick={() => { try { trackBookClick(location); } catch { /* analytics must never break the page */ } }}
         className="btn-glow inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-8 py-4 transition-all"
         style={{ background: "linear-gradient(135deg, #c9a96e, #dfc08a)", color: "#0a0a0a", borderRadius: "50px", boxShadow: "0 4px 24px rgba(201,169,110,0.3)" }}>
         Order on Amazon

@@ -20,7 +20,7 @@ const DISMISS_DAYS = 7;
 const SIGNUP_DAYS = 60;
 const DELAY_MS = 7000;
 const SCROLL_PCT = 0.45;
-const SUPPRESSED_PREFIXES = ["/book", "/blog/"];
+const SUPPRESSED_PREFIXES = ["/book", "/blog/", "/links"];
 
 function readSuppressedUntil(): number {
   try {
@@ -144,7 +144,7 @@ export default function CultivateHerPopup() {
 
             {/* ── Cover panel ── */}
             <div
-              className="relative flex items-center justify-center p-8 md:p-10 overflow-hidden"
+              className="hidden md:flex relative items-center justify-center p-8 md:p-10 overflow-hidden"
               style={{ background: "#111", borderRadius: "24px 24px 0 0" }}
             >
               <div
@@ -164,8 +164,13 @@ export default function CultivateHerPopup() {
             </div>
 
             {/* ── Content panel ── */}
-            <div className="p-7 sm:p-9 md:p-10">
-              <p className="font-sans text-[10px] uppercase tracking-[0.3em] mb-3" style={{ color: "#c9a96e" }}>
+            <div className="p-6 sm:p-9 md:p-10">
+              {/* mobile-only: small cover + eyebrow replace the side cover panel */}
+              <div className="flex items-center gap-4 mb-4 md:hidden">
+                <img src={cultivateCover} alt="" width={800} height={1200} className="w-14 h-[84px] object-cover flex-shrink-0" style={{ borderRadius: 4, boxShadow: "0 10px 30px rgba(0,0,0,0.6)" }} />
+                <p className="font-sans text-[10px] uppercase tracking-[0.3em]" style={{ color: "#c9a96e" }}>Book Two · November 20, 2026</p>
+              </div>
+              <p className="hidden md:block font-sans text-[10px] uppercase tracking-[0.3em] mb-3" style={{ color: "#c9a96e" }}>
                 Book Two · November 20, 2026
               </p>
               <h2
@@ -189,10 +194,10 @@ export default function CultivateHerPopup() {
                 ].map((u) => (
                   <div
                     key={u.label}
-                    className="text-center py-3"
+                    className="text-center py-2 md:py-3"
                     style={{ background: "#161616", borderRadius: 12, border: "1px solid rgba(201,169,110,0.12)" }}
                   >
-                    <div className="font-serif text-xl sm:text-2xl font-bold tabular-nums" style={{ color: "#c9a96e" }}>
+                    <div className="font-serif text-lg sm:text-2xl font-bold tabular-nums" style={{ color: "#c9a96e" }}>
                       {u.val}
                     </div>
                     <div className="font-sans text-[9px] uppercase tracking-[0.15em]" style={{ color: "#777" }}>
