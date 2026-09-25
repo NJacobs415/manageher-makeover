@@ -144,6 +144,10 @@ boot failure.
 - **About** (`src/pages/About.tsx`) — Story, mission, credentials, beliefs, fun facts
 - **Podcast** (`src/pages/Podcast.tsx`) — Listen CTAs, episode cards, topics, reviews, host bio
 - **Book** (`src/pages/Book.tsx`) — 3D book mockup, what you'll discover, reviews, free chapter, Book #2
+  - Book Two is **The Cultivate Her** ("Reclaiming Women's Seasons and Cultivating a New Way to
+    Grow"), launching **2026-11-20** — the `useCountdown("2026-11-20T00:00:00")` target. Cover
+    asset: `src/assets/the-cultivate-her-cover.webp`. Section anchor: `#the-cultivate-her`.
+    Gold-accented (book/premium); pink only on the eyebrow and waitlist CTA.
 - **Press & Speaking** (`src/pages/Press.tsx`) — Speaker hero, keynote topics, bios, media kit, booking CTA
 
 ## Shared Components
