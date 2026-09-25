@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import bookCover from "@/assets/book-cover.webp";
 import cultivateCover from "@/assets/the-cultivate-her-cover.webp";
 import SEO from "@/components/SEO";
+import ChapterOneForm from "@/components/book/ChapterOneForm";
 import { trackBookClick } from "@/lib/analytics";
 
 const BOOK_COVER_CDN =
@@ -341,29 +342,29 @@ const Book = () => {
         </div>
       </section>
 
-      {/* ═══════ FREE CHAPTER ═══════ */}
+      {/* ═══════ FREE CHAPTER — THE CULTIVATE HER ═══════ */}
       <section id="free-chapter" className="py-24 md:py-32 px-6" style={{ background: "#faf8f5" }}>
         <div className="max-w-[700px] mx-auto text-center">
           <TextReveal>
+            <p className="font-sans text-[10px] uppercase tracking-[0.3em] mb-4" style={{ color: "#c9a96e" }}>The Cultivate Her · Book Two</p>
+          </TextReveal>
+          <TextReveal delay={100}>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4" style={{ color: "#1a1a1a" }}>
-              Read Chapter 1 <em className="text-brand-pink italic">free</em>.
+              Read Chapter 1 <em className="text-brand-pink italic">before anyone</em>.
             </h2>
           </TextReveal>
           <FadeIn delay={200} y={20}>
             <p className="font-sans text-[15px] mb-4" style={{ color: "#888" }}>
-              The chapter that names everything you've been feeling. Enter your email and we'll send it straight to your inbox.
+              The Fall Garden — the opening chapter of The Cultivate Her, two months before it publishes. Enter your details and we'll send it straight to your inbox, and hold your place on the launch list.
             </p>
           </FadeIn>
           <FadeIn delay={300} y={20}>
-            <p className="font-serif text-lg italic mb-8" style={{ color: "#666" }}>"By page 3, I knew this book was written for me."</p>
+            <p className="text-lg italic mb-8" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: "#666" }}>
+              "There is a season when the gardener stops planting. Not because the work is over. Because the work has changed."
+            </p>
           </FadeIn>
           <FadeIn delay={400} y={20}>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input type="email" placeholder="Your email address" className="flex-1 px-6 font-sans text-sm"
-                style={{ background: "#fff", border: "1px solid rgba(0,0,0,0.1)", borderRadius: "50px", color: "#1a1a1a", outline: "none", height: "52px" }} />
-              <button className="btn-glow px-8 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] bg-brand-pink text-primary-foreground hover:bg-brand-pink/90 transition-colors whitespace-nowrap"
-                style={{ borderRadius: "50px", height: "52px" }}>Send Chapter 1 →</button>
-            </div>
+            <ChapterOneForm />
           </FadeIn>
         </div>
       </section>
