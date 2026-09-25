@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TextReveal from "@/components/animations/TextReveal";
@@ -10,32 +9,13 @@ import bookCover from "@/assets/book-cover.webp";
 import cultivateCover from "@/assets/the-cultivate-her-cover.webp";
 import SEO from "@/components/SEO";
 import ChapterOneForm from "@/components/book/ChapterOneForm";
+import useCountdown, { CULTIVATE_HER_LAUNCH } from "@/hooks/useCountdown";
 import { trackBookClick } from "@/lib/analytics";
 
 const BOOK_COVER_CDN =
   "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png";
 const AIMEE_PHOTO =
   "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a0c0f9fd70df73543f31f1.jpg";
-
-function useCountdown(targetDate: string) {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
-  useEffect(() => {
-    const update = () => {
-      const diff = new Date(targetDate).getTime() - Date.now();
-      if (diff <= 0) return setTimeLeft({ days: 0, hours: 0, mins: 0, secs: 0 });
-      setTimeLeft({
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        mins: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
-        secs: Math.floor((diff % (1000 * 60)) / 1000),
-      });
-    };
-    update();
-    const id = setInterval(update, 1000);
-    return () => clearInterval(id);
-  }, [targetDate]);
-  return timeLeft;
-}
 
 const BuyButtons = ({ location = "book_page" }: { location?: string }) => (
   <div className="flex flex-wrap gap-3 items-center">
@@ -59,7 +39,7 @@ const BuyButtons = ({ location = "book_page" }: { location?: string }) => (
 );
 
 const Book = () => {
-  const countdown = useCountdown("2026-11-20T00:00:00");
+  const countdown = useCountdown(CULTIVATE_HER_LAUNCH);
 
   return (
     <div className="overflow-x-hidden page-enter">
