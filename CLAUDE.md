@@ -86,7 +86,17 @@ boot failure.
 ### Other events
 `quiz_start`, `quiz_complete`, `guest_quiz_click`, `newsletter_signup`, `book_click`,
 `booking_click`, `podcast_platform_click`, `episode_play`, `transcript_expand`,
-`social_click`, `guest_link_click`, `blog_topic_filter`.
+`social_click`, `guest_link_click`, `blog_topic_filter`, `chapter_download`.
+
+### `chapter_download` — Cultivate Her Chapter 1 form
+`ChapterOneForm` (`src/components/book/ChapterOneForm.tsx`, in `/book#free-chapter`) collects
+first name + email and POSTs JSON to the **GHL inbound webhook** for workflow
+**"Cultivate Her – Chapter 1 + Waitlist"**. GHL creates/updates the contact, tags it, and emails
+the chapter — nothing is stored client-side. Only on a 2xx response does it fire
+`chapter_download` (`{ book: "the_cultivate_her", chapter: 1 }`) plus `newsletter_signup`
+(`signup_location: "cultivate_her_chapter1"`). The webhook URL is public by design (it ships in
+the bundle); submitting the live form creates a real GHL contact, so don't smoke-test it with
+throwaway data.
 
 ## Brand Design System
 
