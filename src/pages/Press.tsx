@@ -847,7 +847,7 @@ const Press = () => {
                   href="https://tmh.themanageher.com/widget/bookings/book-aimee-as-a-podcast-guest"
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => { try { trackBookingClick('podcast_guest', 'press_page_booking'); } catch {} }}
+                  onClick={() => { try { trackBookingClick('podcast_guest', 'press_page_booking'); } catch { /* analytics must never break the page */ } }}
                   className="btn-glow inline-flex items-center gap-2 bg-brand-pink text-primary-foreground font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-8 py-4 hover:bg-brand-pink/90 transition-colors"
                   style={{ borderRadius: "50px" }}
                 >
@@ -859,7 +859,7 @@ const Press = () => {
                   href="https://tmh.themanageher.com/widget/bookings/book-with-aimee"
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => { try { trackBookingClick('1on1', 'press_page_booking'); } catch {} }}
+                  onClick={() => { try { trackBookingClick('1on1', 'press_page_booking'); } catch { /* analytics must never break the page */ } }}
                   className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground border border-foreground/15 px-8 py-4 hover:border-brand-pink hover:text-brand-pink transition-all"
                   style={{ borderRadius: "50px" }}
                 >

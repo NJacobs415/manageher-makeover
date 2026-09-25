@@ -720,7 +720,7 @@ const BlogPost = () => {
                               href={link.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              onClick={() => { try { trackGuestLinkClick(post.guestName, inferLinkType(link.url)); } catch {} }}
+                              onClick={() => { try { trackGuestLinkClick(post.guestName, inferLinkType(link.url)); } catch { /* analytics must never break the page */ } }}
                               className="flex items-center gap-1.5 font-sans text-[12px] px-4 py-2 transition-all hover:-translate-y-0.5"
                               style={{
                                 background: "rgba(235,24,135,0.06)",
@@ -743,7 +743,7 @@ const BlogPost = () => {
                     className="mt-8 border-t border-white/5 pt-6"
                     onToggle={(e) => {
                       if ((e.target as HTMLDetailsElement).open) {
-                        try { trackTranscriptExpand(post.episodeNumber); } catch {}
+                        try { trackTranscriptExpand(post.episodeNumber); } catch { /* analytics must never break the page */ }
                       }
                     }}
                   >

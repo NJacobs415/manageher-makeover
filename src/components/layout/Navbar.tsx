@@ -302,7 +302,7 @@ const Navbar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                onClick={() => { try { trackSocialClick(label.toLowerCase() as 'instagram'|'tiktok'|'linkedin'|'youtube', 'navbar'); } catch {} }}
+                onClick={() => { try { trackSocialClick(label.toLowerCase() as 'instagram'|'tiktok'|'linkedin'|'youtube', 'navbar'); } catch { /* analytics must never break the page */ } }}
                 className="flex items-center justify-center transition-all duration-300 hover:border-brand-pink hover:text-brand-pink"
                 style={{
                   width: "44px",

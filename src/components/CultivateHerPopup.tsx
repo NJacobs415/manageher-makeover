@@ -168,7 +168,7 @@ export default function CultivateHerPopup() {
               {/* mobile-only: small cover + eyebrow replace the side cover panel */}
               <div className="flex items-center gap-4 mb-4 md:hidden">
                 <img src={cultivateCover} alt="" width={800} height={1200} className="w-14 h-[84px] object-cover flex-shrink-0" style={{ borderRadius: 4, boxShadow: "0 10px 30px rgba(0,0,0,0.6)" }} />
-                <p className="font-sans text-[10px] uppercase tracking-[0.3em]" style={{ color: "#c9a96e" }}>Book Two · November 20, 2026</p>
+                <p className="font-sans text-[10px] uppercase tracking-[0.3em]" style={{ color: "#c9a96e" }}>Book Two · Nov 20, 2026</p>
               </div>
               <p className="hidden md:block font-sans text-[10px] uppercase tracking-[0.3em] mb-3" style={{ color: "#c9a96e" }}>
                 Book Two · November 20, 2026

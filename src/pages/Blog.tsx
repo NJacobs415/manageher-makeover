@@ -108,7 +108,7 @@ const Blog = () => {
         <section className="py-8 px-6" style={{ background: "#111", borderTop: "1px solid rgba(255,255,255,0.04)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
           <div className="max-w-[1200px] mx-auto flex flex-wrap justify-center gap-2">
             <button
-              onClick={() => { setFilter(null); try { trackBlogTopicFilter('all'); } catch {} }}
+              onClick={() => { setFilter(null); try { trackBlogTopicFilter('all'); } catch { /* analytics must never break the page */ } }}
               className="font-sans text-[11px] font-medium px-5 py-2 transition-all duration-300 cursor-pointer"
               style={{
                 background: !filter ? "hsl(var(--brand-pink))" : "#0a0a0a",

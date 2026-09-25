@@ -824,7 +824,7 @@ const Index = () => {
                     href="https://a.co/d/by5X0fV"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => { try { trackBookClick('homepage_book_section'); } catch {} }}
+                    onClick={() => { try { trackBookClick('homepage_book_section'); } catch { /* analytics must never break the page */ } }}
                     className="btn-glow inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-8 py-4 transition-colors"
                     style={{
                       background:
@@ -908,7 +908,7 @@ const Index = () => {
                   href={platform.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => { try { trackPodcastPlatformClick(toPlatformKey(platform.name), 'homepage_listen_section'); } catch {} }}
+                  onClick={() => { try { trackPodcastPlatformClick(toPlatformKey(platform.name), 'homepage_listen_section'); } catch { /* analytics must never break the page */ } }}
                   className="group block p-6 text-center transition-all duration-300 hover:-translate-y-1"
                   style={{
                     background: "#111",
@@ -1076,7 +1076,7 @@ const Index = () => {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => { try { trackSocialClick(social.name.toLowerCase() as 'instagram'|'tiktok'|'linkedin'|'youtube', 'homepage_social_strip'); } catch {} }}
+              onClick={() => { try { trackSocialClick(social.name.toLowerCase() as 'instagram'|'tiktok'|'linkedin'|'youtube', 'homepage_social_strip'); } catch { /* analytics must never break the page */ } }}
               className="flex items-center gap-2 text-muted-foreground hover:text-brand-pink transition-colors font-sans text-[13px] font-medium"
             >
               <span>{social.icon}</span>
