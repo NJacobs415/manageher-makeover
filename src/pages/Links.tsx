@@ -3,6 +3,9 @@
 // Mobile-first social link hub — no Navbar/Footer, standalone experience
 
 import { useEpisodeCount } from "@/hooks/useEpisodeCount";
+import ChapterOneForm from "@/components/book/ChapterOneForm";
+import useCountdown, { CULTIVATE_HER_LAUNCH } from "@/hooks/useCountdown";
+import cultivateCover from "@/assets/the-cultivate-her-cover.webp";
 import SEO from "@/components/SEO";
 import { trackBookClick, trackPodcastPlatformClick, trackSocialClick, toPlatformKey } from "@/lib/analytics";
 import SPOTIFY_LOGO from "@/assets/logo-spotify.png";
@@ -18,6 +21,7 @@ const PODCAST_COVER =
 
 const Links = () => {
   const episodeCount = useEpisodeCount();
+  const countdown = useCountdown(CULTIVATE_HER_LAUNCH);
 
   return (
     <div
@@ -224,14 +228,54 @@ const Links = () => {
           }}
         />
 
-        {/* ── Featured: Book ── */}
+        {/* ── Featured: The Cultivate Her — Chapter 1 + waitlist ── */}
         <div className="mb-4 tmh-link-fade tmh-link-d4">
           <p
             className="text-[9px] uppercase tracking-[0.35em] text-center mb-3 font-semibold"
-            style={{ color: "#eb1887" }}
+            style={{ color: "#c9a96e" }}
           >
-            ✦ Featured ✦
+            ✦ New · Book Two ✦
           </p>
+          <div
+            className="p-4"
+            style={{
+              background: "linear-gradient(135deg, rgba(201,169,110,0.10), rgba(201,169,110,0.03))",
+              borderRadius: "16px",
+              border: "1px solid rgba(201,169,110,0.22)",
+              boxShadow: "0 0 40px rgba(201,169,110,0.08)",
+            }}
+          >
+            <div className="flex items-center gap-4 mb-4">
+              <img
+                src={cultivateCover}
+                alt="The Cultivate Her — Book Two by Aimee Rickabus"
+                width={800}
+                height={1200}
+                className="w-16 h-24 object-cover flex-shrink-0"
+                style={{ borderRadius: "6px", boxShadow: "0 10px 30px rgba(0,0,0,0.5)" }}
+              />
+              <div className="flex-1 min-w-0">
+                <p className="text-[9px] uppercase tracking-[0.15em] mb-1" style={{ color: "#c9a96e" }}>
+                  Launches Nov 20 ·{" "}
+                  <span className="tabular-nums" style={{ color: "#dfc08a" }}>{countdown.days} days</span>
+                </p>
+                <p
+                  className="text-sm font-bold mb-1"
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#fafafa" }}
+                >
+                  The Cultivate Her
+                </p>
+                <p className="text-[11px] leading-snug" style={{ color: "#888" }}>
+                  Read Chapter 1 free, before anyone. You'll be first on launch day.
+                </p>
+              </div>
+            </div>
+            <ChapterOneForm variant="dark" source="linkinbio-cultivate-her" />
+          </div>
+        </div>
+
+        {/* ── Featured: Book ── */}
+        <div className="mb-4 tmh-link-fade tmh-link-d4">
           <a
             href="https://a.co/d/by5X0fV"
             target="_blank"
@@ -255,7 +299,7 @@ const Links = () => {
                 className="text-[9px] uppercase tracking-[0.15em] mb-1"
                 style={{ color: "#c9a96e" }}
               >
-                Bestselling Book
+                Book One
               </p>
               <p
                 className="text-sm font-bold mb-1"
