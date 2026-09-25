@@ -145,7 +145,7 @@ const Footer = () => (
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                onClick={() => { try { trackSocialClick(label.toLowerCase() as 'instagram'|'tiktok'|'linkedin'|'youtube', 'footer'); } catch {} }}
+                onClick={() => { try { trackSocialClick(label.toLowerCase() as 'instagram'|'tiktok'|'linkedin'|'youtube', 'footer'); } catch { /* analytics must never break the page */ } }}
                 className="transition-colors hover:text-brand-pink"
                 style={{ color: "#888" }}
               >
@@ -208,7 +208,7 @@ const Footer = () => (
               href={l.href}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => { try { trackPodcastPlatformClick(toPlatformKey(l.label), 'footer'); } catch {} }}
+              onClick={() => { try { trackPodcastPlatformClick(toPlatformKey(l.label), 'footer'); } catch { /* analytics must never break the page */ } }}
               className="block font-sans text-sm mb-2.5 transition-colors hover:text-white"
               style={{ color: "#888" }}
             >
