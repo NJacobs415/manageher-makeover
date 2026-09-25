@@ -189,7 +189,7 @@ const Links = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={social.label}
-              onClick={() => { try { trackSocialClick(social.label.toLowerCase() as 'instagram'|'tiktok'|'linkedin'|'youtube', 'links_page'); } catch {} }}
+              onClick={() => { try { trackSocialClick(social.label.toLowerCase() as 'instagram'|'tiktok'|'linkedin'|'youtube', 'links_page'); } catch { /* analytics must never break the page */ } }}
               className="w-10 h-10 flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5"
               style={{
                 borderRadius: "50%",
@@ -280,7 +280,7 @@ const Links = () => {
             href="https://a.co/d/by5X0fV"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => { try { trackBookClick('linkinbio'); } catch {} }}
+            onClick={() => { try { trackBookClick('linkinbio'); } catch { /* analytics must never break the page */ } }}
             className="flex items-center gap-4 p-4 transition-all duration-300 hover:-translate-y-0.5"
             style={{
               background: "linear-gradient(135deg, rgba(201,169,110,0.08), rgba(235,24,135,0.04))",
@@ -423,7 +423,7 @@ const Links = () => {
                 href={platform.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => { try { trackPodcastPlatformClick(toPlatformKey(platform.name), 'links_page'); } catch {} }}
+                onClick={() => { try { trackPodcastPlatformClick(toPlatformKey(platform.name), 'links_page'); } catch { /* analytics must never break the page */ } }}
                 className="flex items-center gap-3.5 p-3.5 transition-all duration-300 hover:-translate-y-0.5"
                 style={{
                   background: "#111",

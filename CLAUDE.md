@@ -108,9 +108,13 @@ once in `AnimatedRoutes.tsx` as a sibling of the route `AnimatePresence` — it 
 `BrowserRouter` because it uses `useLocation`, so never move it up into `App.tsx`.
 - **Triggers** (first one wins, at most once per page load): 7s on page, 45% scroll depth, or
   exit intent (mouse leaving through the top edge, fine pointers only).
-- **Suppressed routes:** any path starting with `/book` (the inline form lives there) or
-  `/blog/` (posts already gate the quiz behind email; this also covers `/blog/topic/*`). The
-  `/blog` index is *not* suppressed.
+- **Suppressed routes:** any path starting with `/book` (the inline form lives there),
+  `/blog/` (posts already gate the quiz behind email; this also covers `/blog/topic/*`), or
+  `/links` (link-in-bio has its own inline Chapter 1 card). The `/blog` index is *not*
+  suppressed.
+- **Layout:** desktop (`md+`) shows the side cover panel; below `md` it's hidden and a small
+  inline cover sits beside the eyebrow so the whole form fits a 375×740 screen without
+  scrolling inside the dialog.
 - **Suppression window:** `localStorage["tmh_cultivate_popup"]` holds an epoch-ms "quiet until"
   timestamp. Dismissing (X, ESC, backdrop click) sets 7 days; a successful signup sets 60 days,
   and closing the success card afterwards keeps the 60. Storage errors fail open (the popup
