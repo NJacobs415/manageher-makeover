@@ -48,6 +48,7 @@ interface BlogPostData {
   content: string; // HTML or markdown body
   metaDescription: string;
   transcript?: string;
+  resourceUrl?: string; // optional per-episode resource link shown on the quiz result (n8n may emit this)
   quiz?: {
     title: string;
     description: string;
@@ -677,7 +678,7 @@ const BlogPost = () => {
                 </div>
 
                 {/* Episode Quiz */}
-                {post.quiz && <EpisodeQuiz quiz={post.quiz} slug={post.slug} episodeNumber={post.episodeNumber} resourceUrl={(post as Record<string, unknown>).resourceUrl as string | undefined} />}
+                {post.quiz && <EpisodeQuiz quiz={post.quiz} slug={post.slug} episodeNumber={post.episodeNumber} resourceUrl={post.resourceUrl} />}
 
                 {/* Guest's own external quiz — independent of the TMH quiz above */}
                 {post.guestQuiz && <GuestQuizCTA guestQuiz={post.guestQuiz} guestName={post.guestName} episodeNumber={post.episodeNumber} />}
