@@ -7,6 +7,7 @@ import Magnetic from "@/components/animations/Magnetic";
 import { Star, ArrowRight, BookOpen, Headphones, Smartphone } from "lucide-react";
 import { Link } from "react-router-dom";
 import bookCover from "@/assets/book-cover.webp";
+import cultivateCover from "@/assets/the-cultivate-her-cover.webp";
 import SEO from "@/components/SEO";
 import { trackBookClick } from "@/lib/analytics";
 
@@ -57,7 +58,7 @@ const BuyButtons = ({ location = "book_page" }: { location?: string }) => (
 );
 
 const Book = () => {
-  const countdown = useCountdown("2026-08-01T00:00:00");
+  const countdown = useCountdown("2026-11-20T00:00:00");
 
   return (
     <div className="overflow-x-hidden page-enter">
@@ -367,32 +368,47 @@ const Book = () => {
         </div>
       </section>
 
-      {/* ═══════ BOOK #2 COUNTDOWN ═══════ */}
-      <section className="py-24 md:py-36 px-6" style={{ background: "#0a0a0a", borderTop: "1px solid rgba(201,169,110,0.1)" }}>
-        <div className="max-w-[1100px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <TextReveal><p className="font-sans text-[10px] uppercase tracking-[0.3em] text-brand-pink mb-4">Coming August 1, 2026</p></TextReveal>
+      {/* ═══════ BOOK #2 — THE CULTIVATE HER ═══════ */}
+      <section id="the-cultivate-her" className="py-24 md:py-36 px-6 relative overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid rgba(201,169,110,0.1)" }}>
+        {/* low-opacity gold glow, matches hero treatment */}
+        <div className="absolute inset-0 -z-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 75% 40%, rgba(201,169,110,0.08) 0%, transparent 60%)" }} />
+        <div className="max-w-[1100px] mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-center">
+
+            {/* ── Copy ── */}
+            <div className="lg:col-span-7">
+              <TextReveal>
+                <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-brand-pink mb-4">Book Two · Coming November 20, 2026</p>
+              </TextReveal>
               <TextReveal delay={100}>
                 <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4">
-                  Book Two:<br />Unlocking Human <em style={{ color: "#c9a96e", fontStyle: "italic" }}>Potential</em>
+                  The Cultivate <em style={{ color: "#c9a96e", fontStyle: "italic" }}>Her</em>
                 </h2>
               </TextReveal>
               <FadeIn delay={200} y={20}>
-                <p className="text-lg mb-6" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: "italic", color: "#888" }}>
-                  More Than Success. More Than Happiness. More <em style={{ color: "#c9a96e" }}>You</em>.
+                <p className="text-lg mb-2" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: "italic", color: "#dfc08a" }}>
+                  Reclaiming Women's Seasons and Cultivating a New Way to Grow
+                </p>
+                <p className="text-[17px] mb-6" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: "italic", color: "#888" }}>
+                  "There is a season when the gardener stops planting. Not because the work is over. Because the work has changed."
                 </p>
               </FadeIn>
               <FadeIn delay={300} y={20}>
                 <p className="font-sans text-[15px] text-muted-foreground leading-[1.9] mb-8">
-                  If The Manage Her® helps women claim leadership in the everyday, Book #2 explores how to live your fullest potential in every dimension. Rooted in Aimee's personal journey — from yoga and breathwork to entrepreneurship and motherhood — this is a map back to your highest self.
+                  We were taught to climb. The Manage Her® showed you the invisible labor holding the ladder up. The Cultivate Her puts the ladder down. Part personal story, part practical guide, it reframes a woman's life as a garden with four seasons — and makes the case that the years after building are when your most important work begins.
                 </p>
               </FadeIn>
               <FadeIn delay={400} y={20}>
                 <div className="space-y-2 mb-8">
-                  {["Embodied intelligence", "Purpose you can feel", "Success that doesn't sacrifice joy", "The courage to live fully awake", "Human potential as a garden — not a ladder"].map((t) => (
-                    <div key={t} className="flex items-center gap-3">
-                      <span style={{ color: "#c9a96e" }}>→</span>
+                  {[
+                    "The four seasons of a woman's life — and how to honor the one you're in",
+                    "Why perimenopause is a promotion, not a decline",
+                    "The wound is the soil: turning old patterns into new growth",
+                    "Toxic resilience, and the strength that was quietly breaking you",
+                    "Emotional intelligence as a daily spiritual practice",
+                  ].map((t) => (
+                    <div key={t} className="flex items-start gap-3">
+                      <span className="mt-[2px]" style={{ color: "#c9a96e" }}>→</span>
                       <span className="font-sans text-[14px] text-muted-foreground">{t}</span>
                     </div>
                   ))}
@@ -406,16 +422,34 @@ const Book = () => {
                 </Magnetic>
               </FadeIn>
             </div>
-            <FadeIn delay={300} y={30}>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-                {[{ val: countdown.days, label: "Days" }, { val: countdown.hours, label: "Hours" }, { val: countdown.mins, label: "Minutes" }, { val: countdown.secs, label: "Seconds" }].map((u) => (
-                  <div key={u.label} className="text-center p-4 sm:p-6" style={{ background: "#111", borderRadius: "20px", border: "1px solid rgba(201,169,110,0.1)" }}>
-                    <div className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-1" style={{ color: "#c9a96e" }}>{u.val}</div>
-                    <div className="font-sans text-[9px] uppercase tracking-[0.15em] text-muted-foreground">{u.label}</div>
+
+            {/* ── Cover + countdown ── */}
+            <div className="lg:col-span-5">
+              <FadeIn delay={300} scale={0.9}>
+                <div className="relative flex justify-center mb-10">
+                  <div className="absolute inset-0 -z-10" style={{ background: "radial-gradient(ellipse, rgba(201,169,110,0.14) 0%, transparent 70%)", transform: "scale(1.8)", filter: "blur(60px)" }} />
+                  <div className="absolute -top-5 -right-2 w-20 h-20 flex items-center justify-center text-center z-20" style={{ background: "linear-gradient(135deg, #c9a96e, #dfc08a)", borderRadius: "50%", boxShadow: "0 10px 40px rgba(201,169,110,0.4)" }}>
+                    <span className="font-sans text-[9px] font-bold uppercase leading-tight" style={{ color: "#0a0a0a" }}>Pre-order<br />Soon</span>
                   </div>
-                ))}
-              </div>
-            </FadeIn>
+                  <div className="book-3d">
+                    <div className="book-3d-inner overflow-hidden" style={{ borderRadius: "4px 14px 14px 4px" }}>
+                      <img src={cultivateCover} alt="The Cultivate Her — Book Two by Aimee Rickabus" width={800} height={1200} decoding="async" loading="lazy" className="w-64 md:w-72 lg:w-80" />
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
+              <FadeIn delay={450} y={30}>
+                <div className="grid grid-cols-4 gap-2 sm:gap-3">
+                  {[{ val: countdown.days, label: "Days" }, { val: countdown.hours, label: "Hours" }, { val: countdown.mins, label: "Min" }, { val: countdown.secs, label: "Sec" }].map((u) => (
+                    <div key={u.label} className="text-center py-4 px-2 sm:py-5" style={{ background: "#111", borderRadius: "16px", border: "1px solid rgba(201,169,110,0.12)" }}>
+                      <div className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold mb-1" style={{ color: "#c9a96e" }}>{u.val}</div>
+                      <div className="font-sans text-[9px] uppercase tracking-[0.15em] text-muted-foreground">{u.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+            </div>
+
           </div>
         </div>
       </section>
