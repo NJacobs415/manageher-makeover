@@ -16,6 +16,7 @@ import GuestQuizCTA, { type GuestQuiz } from "@/components/blog/GuestQuizCTA";
 import { trackTranscriptExpand, trackEpisodePlay, trackGuestLinkClick } from '@/lib/analytics';
 import { getYouTubeThumb } from "@/lib/ytThumb";
 import { normalizeBlogPost } from "@/lib/normalizeBlogPost";
+import { sanitizePostContent } from "@/lib/sanitizePostContent";
 import {
   ArrowLeft,
   ArrowRight,
@@ -266,7 +267,8 @@ const BlogPost = () => {
   // Positive lookahead (?=<h3) keeps the h3 opener with the following section.
   const contentSections = useMemo(() => {
     if (!post?.content) return [];
-    return post.content.split(/(?=<h3)/);
+    // LLM-generated HTML may arrive wrapped in CDATA — see sanitizePostContent.
+    return sanitizePostContent(post.content).split(/(?=<h3)/);
   }, [post?.content]);
 
   if (loading) {
@@ -752,7 +754,8 @@ const BlogPost = () => {
                       📝 Full Episode Transcript (click to expand)
                     </summary>
                     <div className="mt-4 font-sans text-[13px] leading-[1.8] text-muted-foreground whitespace-pre-wrap max-h-[600px] overflow-y-auto">
-                      {post.transcript}
+                      {/* Also LLM-generated; rendered as text, but a CDATA wrapper would still show. */}
+                      {sanitizePostContent(post.transcript)}
                     </div>
                   </details>
                 )}

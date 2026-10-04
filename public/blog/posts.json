@@ -1,42 +1,6 @@
 {
   "posts": [
     {
-      "slug": "why-this-mom-built-a-school-for-kids-with-dyslexia",
-      "title": "How One Mom Built a Dyslexia School After Schools Failed Her Daughter",
-      "episodeNumber": 0,
-      "guestName": "Cathy Johnson",
-      "publishedAt": "2026-09-07T13:00:19Z",
-      "duration": "1h 22m",
-      "thumbnail": "https://i.ytimg.com/vi/i83vx2D8F2Q/maxresdefault.jpg",
-      "excerpt": "Speech-language pathologist Cathy Johnson built a school for kids with dyslexia after the system failed her own daughter — and she has spent 20 years proving there is no such thing as too late. In this episode, she and host Aimee Rickabus break down the third-grade window, what multisensory instruction actually looks like, and why \"they'll catch up\" is not a plan.",
-      "topics": [
-        "Motherhood",
-        "Entrepreneurship",
-        "Leadership",
-        "Identity",
-        "Community"
-      ],
-      "youtubeUrl": "https://www.youtube.com/watch?v=i83vx2D8F2Q"
-    },
-    {
-      "slug": "the-accidental-ceo-building-a-business-in-a-male-dominated-industry",
-      "title": "How Que Alicea Built an Environmental Firm in a Male-Dominated Industry",
-      "episodeNumber": 0,
-      "guestName": "Que Alicea",
-      "publishedAt": "2026-09-14T13:00:36Z",
-      "duration": "1h 1m",
-      "thumbnail": "https://i.ytimg.com/vi/AmzrjxlMT7c/maxresdefault.jpg",
-      "excerpt": "Que Alicea never set out to run an environmental consulting firm — but a disaster recovery job she took to fund her spa turned into a company she never planned. In this episode, she gets radically honest about self-funding, job-site bias, and why relationships win contracts that certifications can't. This is the permission slip you didn't know you needed.",
-      "topics": [
-        "Entrepreneurship",
-        "Leadership",
-        "Identity",
-        "Financial Literacy",
-        "Community"
-      ],
-      "youtubeUrl": "https://www.youtube.com/watch?v=AmzrjxlMT7c"
-    },
-    {
       "slug": "how-to-become-a-thought-leader-agents-stages-getting-seen",
       "title": "How to Become a Thought Leader: Agents, Stages & Getting Seen",
       "episodeNumber": 81,
@@ -181,7 +145,7 @@
     {
       "slug": "raising-kids-in-the-age-of-ai-what-every-mom-needs-to-know",
       "title": "Raising Kids in the Age of AI: What Every Mom Must Know",
-      "episodeNumber": 73,
+      "episodeNumber": 74,
       "guestName": "Melinda Wittstock",
       "publishedAt": "2026-08-03T13:00:13Z",
       "duration": "50 min",
