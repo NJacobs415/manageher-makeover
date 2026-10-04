@@ -184,7 +184,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Parse Claude's tool_use response. The tool is declared with strict: true\n// in \"Build Claude Request\", so the input object is schema-conformant — but\n// we verify the quiz anyway rather than trust it, because eps 74-76 shipped\n// a malformed quiz string back when the schema was advisory only.\nconst episode = $('Clean Transcript').item.json;\nconst claudeResponse = $input.first().json;\n\nif (!Array.isArray(claudeResponse.content)) {\n  throw new Error('Claude response missing content array: ' + JSON.stringify(claudeResponse).slice(0, 400));\n}\nconst toolUse = claudeResponse.content.find(b => b.type === 'tool_use' && b.name === 'generate_blog_post');\nif (!toolUse) {\n  throw new Error('Claude did not return a generate_blog_post tool_use block. stop_reason=' +\n    (claudeResponse.stop_reason || 'unknown') + ' content_types=' +\n    JSON.stringify(claudeResponse.content.map(b => b.type)));\n}\nconst blogData = toolUse.input;\nif (!blogData || typeof blogData !== 'object') {\n  throw new Error('tool_use.input is not an object: ' + JSON.stringify(toolUse).slice(0, 400));\n}\n\n// A truncated response yields a structurally valid but incomplete input.\nif (claudeResponse.stop_reason === 'max_tokens') {\n  throw new Error('Claude hit max_tokens — tool_use.input may be truncated. Raise max_tokens in ' +\n    '\"Build Claude Request\" and re-run. usage=' + JSON.stringify(claudeResponse.usage || {}));\n}\n\n// Validate the quiz Claude returned. Strict tool use should make a malformed\n// quiz impossible, but episodes 74-76 shipped a JSON-encoded *string* here and\n// the front end rendered \"This page didn't load\" for every reader. A failed\n// execution is visible in n8n; a silently quiz-less post is not — so throw.\nfunction validateQuiz(q) {\n  const fail = (why) => {\n    throw new Error('Invalid quiz from Claude (' + why + '). typeof=' + typeof q +\n      ' value=' + (typeof q === 'string' ? q : JSON.stringify(q)).slice(0, 300));\n  };\n  if (!q || typeof q !== 'object' || Array.isArray(q)) fail('not a plain object');\n  if (typeof q.title !== 'string' || !q.title) fail('missing title');\n  if (typeof q.description !== 'string' || !q.description) fail('missing description');\n  if (!q.types || typeof q.types !== 'object' || Array.isArray(q.types)) fail('missing types');\n  for (const t of ['A', 'B', 'C', 'D']) {\n    const type = q.types[t];\n    if (!type || typeof type !== 'object') fail('missing type ' + t);\n    if (typeof type.name !== 'string' || !type.name) fail('type ' + t + ' missing name');\n    if (typeof type.description !== 'string' || !type.description) fail('type ' + t + ' missing description');\n  }\n  if (!Array.isArray(q.questions)) fail('questions is not an array');\n  if (q.questions.length !== 6) fail('expected 6 questions, got ' + q.questions.length);\n  q.questions.forEach((question, i) => {\n    if (!question || typeof question !== 'object') fail('question ' + i + ' is not an object');\n    if (typeof question.question !== 'string' || !question.question) fail('question ' + i + ' missing text');\n    if (!Array.isArray(question.options)) fail('question ' + i + ' options is not an array');\n    if (question.options.length !== 4) fail('question ' + i + ' has ' + question.options.length + ' options, expected 4');\n    question.options.forEach((opt, j) => {\n      if (!opt || typeof opt !== 'object') fail('question ' + i + ' option ' + j + ' is not an object');\n      if (typeof opt.text !== 'string' || !opt.text) fail('question ' + i + ' option ' + j + ' missing text');\n      if (['A', 'B', 'C', 'D'].indexOf(opt.type) === -1) fail('question ' + i + ' option ' + j + ' has type ' + JSON.stringify(opt.type));\n    });\n  });\n}\n\nvalidateQuiz(blogData.quiz);\n\n// Build the complete blog post object (same shape as before).\nconst post = {\n  slug: episode.slug,\n  title: blogData.title || episode.title,\n  episodeNumber: blogData.episodeNumber || 0,\n  guestName: blogData.guestName || '',\n  guestBio: blogData.guestBio || '',\n  publishedAt: episode.publishedAt,\n  duration: episode.durationFormatted,\n  thumbnail: episode.thumbnail,\n  youtubeUrl: episode.youtubeUrl,\n  spotifyUrl: 'https://open.spotify.com/show/03FuFRyzkaWhZkk5yxFePJ',\n  appleUrl: 'https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475',\n  excerpt: blogData.excerpt || '',\n  metaDescription: blogData.metaDescription || '',\n  topics: blogData.topics || [],\n  keyTakeaways: blogData.keyTakeaways || [],\n  guestLinks: blogData.guestLinks || [],\n  pullQuotes: blogData.pullQuotes || [],\n  timestamps: blogData.timestamps || [],\n  quiz: blogData.quiz,\n  transcript: $('Clean Transcript').first().json.transcript || '',\n  content: blogData.content || ''\n};\n\nconst indexEntry = {\n  slug: post.slug,\n  title: post.title,\n  episodeNumber: post.episodeNumber,\n  guestName: post.guestName,\n  publishedAt: post.publishedAt,\n  duration: post.duration,\n  thumbnail: post.thumbnail,\n  excerpt: post.excerpt,\n  topics: post.topics,\n  youtubeUrl: post.youtubeUrl\n};\n\nreturn [{ json: { post, indexEntry, slug: episode.slug } }];\n"
+        "jsCode": "// Parse Claude's tool_use response. The tool is declared with strict: true\n// in \"Build Claude Request\", so the input object is schema-conformant — but\n// we verify the quiz anyway rather than trust it, because eps 74-76 shipped\n// a malformed quiz string back when the schema was advisory only.\nconst episode = $('Clean Transcript').item.json;\nconst claudeResponse = $input.first().json;\n\nif (!Array.isArray(claudeResponse.content)) {\n  throw new Error('Claude response missing content array: ' + JSON.stringify(claudeResponse).slice(0, 400));\n}\nconst toolUse = claudeResponse.content.find(b => b.type === 'tool_use' && b.name === 'generate_blog_post');\nif (!toolUse) {\n  throw new Error('Claude did not return a generate_blog_post tool_use block. stop_reason=' +\n    (claudeResponse.stop_reason || 'unknown') + ' content_types=' +\n    JSON.stringify(claudeResponse.content.map(b => b.type)));\n}\nconst blogData = toolUse.input;\nif (!blogData || typeof blogData !== 'object') {\n  throw new Error('tool_use.input is not an object: ' + JSON.stringify(toolUse).slice(0, 400));\n}\n\n// A truncated response yields a structurally valid but incomplete input.\nif (claudeResponse.stop_reason === 'max_tokens') {\n  throw new Error('Claude hit max_tokens — tool_use.input may be truncated. Raise max_tokens in ' +\n    '\"Build Claude Request\" and re-run. usage=' + JSON.stringify(claudeResponse.usage || {}));\n}\n\n// Validate the quiz Claude returned. Strict tool use should make a malformed\n// quiz impossible, but episodes 74-76 shipped a JSON-encoded *string* here and\n// the front end rendered \"This page didn't load\" for every reader. A failed\n// execution is visible in n8n; a silently quiz-less post is not — so throw.\nfunction validateQuiz(q) {\n  const fail = (why) => {\n    throw new Error('Invalid quiz from Claude (' + why + '). typeof=' + typeof q +\n      ' value=' + (typeof q === 'string' ? q : JSON.stringify(q)).slice(0, 300));\n  };\n  if (!q || typeof q !== 'object' || Array.isArray(q)) fail('not a plain object');\n  if (typeof q.title !== 'string' || !q.title) fail('missing title');\n  if (typeof q.description !== 'string' || !q.description) fail('missing description');\n  if (!q.types || typeof q.types !== 'object' || Array.isArray(q.types)) fail('missing types');\n  for (const t of ['A', 'B', 'C', 'D']) {\n    const type = q.types[t];\n    if (!type || typeof type !== 'object') fail('missing type ' + t);\n    if (typeof type.name !== 'string' || !type.name) fail('type ' + t + ' missing name');\n    if (typeof type.description !== 'string' || !type.description) fail('type ' + t + ' missing description');\n  }\n  if (!Array.isArray(q.questions)) fail('questions is not an array');\n  if (q.questions.length !== 6) fail('expected 6 questions, got ' + q.questions.length);\n  q.questions.forEach((question, i) => {\n    if (!question || typeof question !== 'object') fail('question ' + i + ' is not an object');\n    if (typeof question.question !== 'string' || !question.question) fail('question ' + i + ' missing text');\n    if (!Array.isArray(question.options)) fail('question ' + i + ' options is not an array');\n    if (question.options.length !== 4) fail('question ' + i + ' has ' + question.options.length + ' options, expected 4');\n    question.options.forEach((opt, j) => {\n      if (!opt || typeof opt !== 'object') fail('question ' + i + ' option ' + j + ' is not an object');\n      if (typeof opt.text !== 'string' || !opt.text) fail('question ' + i + ' option ' + j + ' missing text');\n      if (['A', 'B', 'C', 'D'].indexOf(opt.type) === -1) fail('question ' + i + ' option ' + j + ' has type ' + JSON.stringify(opt.type));\n    });\n  });\n}\n\nvalidateQuiz(blogData.quiz);\n\n// Claude sometimes wraps the HTML in <![CDATA[ … ]]> on its own. In the\n// browser the opener eats the first <p> and the \"]]>\" renders as text, so\n// strip a wrapper at the very start/end before it's committed.\nlet content = typeof blogData.content === 'string' ? blogData.content.trim() : '';\nif (content.startsWith('<![CDATA[')) content = content.slice(9);\nif (content.endsWith(']]>')) content = content.slice(0, -3);\ncontent = content.trim();\nif (!content) throw new Error('Claude returned empty content');\n\n// An episode number of 0 published two duplicate posts (the prompt allowed\n// \"use 0 if absent\"). Fail visibly instead of publishing an unnumbered post.\nif (!Number.isInteger(blogData.episodeNumber) || blogData.episodeNumber < 1) {\n  throw new Error('Claude returned no usable episodeNumber (' + JSON.stringify(blogData.episodeNumber) + ')');\n}\n\n// Build the complete blog post object (same shape as before).\nconst post = {\n  slug: episode.slug,\n  title: blogData.title || episode.title,\n  episodeNumber: blogData.episodeNumber,\n  guestName: blogData.guestName || '',\n  guestBio: blogData.guestBio || '',\n  publishedAt: episode.publishedAt,\n  duration: episode.durationFormatted,\n  thumbnail: episode.thumbnail,\n  youtubeUrl: episode.youtubeUrl,\n  spotifyUrl: 'https://open.spotify.com/show/03FuFRyzkaWhZkk5yxFePJ',\n  appleUrl: 'https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475',\n  excerpt: blogData.excerpt || '',\n  metaDescription: blogData.metaDescription || '',\n  topics: blogData.topics || [],\n  keyTakeaways: blogData.keyTakeaways || [],\n  guestLinks: blogData.guestLinks || [],\n  pullQuotes: blogData.pullQuotes || [],\n  timestamps: blogData.timestamps || [],\n  quiz: blogData.quiz,\n  transcript: $('Clean Transcript').first().json.transcript || '',\n  content: content\n};\n\nconst indexEntry = {\n  slug: post.slug,\n  title: post.title,\n  episodeNumber: post.episodeNumber,\n  guestName: post.guestName,\n  publishedAt: post.publishedAt,\n  duration: post.duration,\n  thumbnail: post.thumbnail,\n  excerpt: post.excerpt,\n  topics: post.topics,\n  youtubeUrl: post.youtubeUrl\n};\n\nreturn [{ json: { post, indexEntry, slug: episode.slug } }];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -224,7 +224,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Process episodes from the webhook response\nconst episodes = $input.first().json.episodes || [];\n\nfunction makeSlug(title) {\n  return title\n    .toLowerCase()\n    .replace(/^ep\\.?\\s*\\d+\\s*:?\\s*/i, '')\n    .replace(/\\|.*$/g, '')\n    .replace(/the manage her:?\\s*/gi, '')\n    .replace(/[^a-z0-9]+/g, '-')\n    .replace(/^-+|-+$/g, '')\n    .substring(0, 120);\n}\n\nfunction formatDuration(iso) {\n  const match = (iso || '').match(/PT(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+)S)?/);\n  if (!match) return '30 min';\n  const h = parseInt(match[1]||0);\n  const m = parseInt(match[2]||0);\n  if (h > 0) return `${h}h ${m}m`;\n  return `${m} min`;\n}\n\n// Filter out YouTube Shorts (under 120 seconds)\nconst filtered = episodes.filter(ep => {\n  const match = (ep.duration || '').match(/PT(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+)S)?/);\n  if (!match) return true;\n  const totalSeconds = (parseInt(match[1]||0) * 3600) + (parseInt(match[2]||0) * 60) + parseInt(match[3]||0);\n  return totalSeconds >= 120;\n});\n\n// Return each episode as a separate item\nreturn filtered.slice(0, 5).map(ep => ({\n  json: {\n    id: ep.id,\n    title: ep.title,\n    slug: makeSlug(ep.title),\n    description: ep.description,\n    thumbnail: ep.thumbnailMax || ep.thumbnail,\n    publishedAt: ep.publishedAt,\n    duration: ep.duration,\n    durationFormatted: formatDuration(ep.duration),\n    youtubeUrl: `https://www.youtube.com/watch?v=${ep.id}`\n  }\n}));\n"
+        "jsCode": "// Process episodes from the webhook response\nconst episodes = $('HTTP Request').first().json.episodes || [];\n\n// Skip any video already published, matched by YouTube ID. The slug check\n// downstream (\"Check If Blog Exists\") misses a retitled video: the slug comes\n// from the title, so a renamed upload got a new slug and was published twice\n// as a duplicate. Strict 200/404 split like \"Merge Index + Encode Blobs\" —\n// any other status throws rather than treating the index as empty.\nconst YT_ID = /(?:[?&]v=|youtu\\.be\\/|\\/vi\\/|\\/embed\\/|\\/shorts\\/)([A-Za-z0-9_-]{11})/;\nconst ytId = (s) => (typeof s === 'string' && s.match(YT_ID)?.[1]) || null;\nconst index = $input.first().json;\nconst publishedIds = new Set();\nif (index?.statusCode === 200) {\n  if (typeof index.body?.content !== 'string') {\n    throw new Error('200 from posts.json fetch but body.content missing or not a string.');\n  }\n  const parsed = JSON.parse(Buffer.from(index.body.content, 'base64').toString('utf-8'));\n  const posts = Array.isArray(parsed) ? parsed : parsed.posts;\n  if (!Array.isArray(posts)) throw new Error('posts.json has no posts array');\n  for (const p of posts) {\n    const id = ytId(p.youtubeUrl) || ytId(p.thumbnail);\n    if (id) publishedIds.add(id);\n  }\n} else if (index?.statusCode !== 404) {\n  throw new Error('posts.json fetch failed: status=' + index?.statusCode);\n}\n\nfunction makeSlug(title) {\n  return title\n    .toLowerCase()\n    .replace(/^ep\\.?\\s*\\d+\\s*:?\\s*/i, '')\n    .replace(/\\|.*$/g, '')\n    .replace(/the manage her:?\\s*/gi, '')\n    .replace(/[^a-z0-9]+/g, '-')\n    .replace(/^-+|-+$/g, '')\n    .substring(0, 120);\n}\n\nfunction formatDuration(iso) {\n  const match = (iso || '').match(/PT(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+)S)?/);\n  if (!match) return '30 min';\n  const h = parseInt(match[1]||0);\n  const m = parseInt(match[2]||0);\n  if (h > 0) return `${h}h ${m}m`;\n  return `${m} min`;\n}\n\n// Filter out YouTube Shorts (under 120 seconds)\nconst filtered = episodes.filter(ep => {\n  const match = (ep.duration || '').match(/PT(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+)S)?/);\n  if (!match) return true;\n  const totalSeconds = (parseInt(match[1]||0) * 3600) + (parseInt(match[2]||0) * 60) + parseInt(match[3]||0);\n  return totalSeconds >= 120;\n});\n\n// Return the 5 newest unpublished episodes, each as a separate item\nreturn filtered.filter(ep => !publishedIds.has(ep.id)).slice(0, 5).map(ep => ({\n  json: {\n    id: ep.id,\n    title: ep.title,\n    slug: makeSlug(ep.title),\n    description: ep.description,\n    thumbnail: ep.thumbnailMax || ep.thumbnail,\n    publishedAt: ep.publishedAt,\n    duration: ep.duration,\n    durationFormatted: formatDuration(ep.duration),\n    youtubeUrl: `https://www.youtube.com/watch?v=${ep.id}`\n  }\n}));\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -800,6 +800,49 @@
           "name": "GitHub PAT - Blog Publisher"
         }
       }
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/NJacobs415/manageher-makeover/contents/public/blog/posts.json",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2022-11-28"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "b7d3f0a2-5e1c-4a8b-9f6d-2c4e8a1b3d70",
+      "name": "GH: Get posts.json (dedup)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        544,
+        200
+      ],
+      "credentials": {
+        "githubApi": {
+          "id": "Z8iraOqUHXjTIxm3",
+          "name": "GitHub PAT - Blog Publisher"
+        }
+      }
     }
   ],
   "connections": {
@@ -873,7 +916,7 @@
       "main": [
         [
           {
-            "node": "Code in JavaScript",
+            "node": "GH: Get posts.json (dedup)",
             "type": "main",
             "index": 0
           }
@@ -1074,6 +1117,17 @@
           }
         ]
       ]
+    },
+    "GH: Get posts.json (dedup)": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "settings": {
@@ -1083,7 +1137,7 @@
   "staticData": {
     "node:Every 6 Hours": {
       "recurrenceRules": [
-        18
+        12
       ]
     }
   }
