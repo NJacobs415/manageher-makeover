@@ -6,6 +6,8 @@ interface AnimatedCounterProps {
   prefix?: string;
   duration?: number;
   className?: string;
+  // Show the final value with no count-up (prerendered first load).
+  instant?: boolean;
 }
 
 const AnimatedCounter = ({
@@ -14,12 +16,14 @@ const AnimatedCounter = ({
   prefix = "",
   duration = 2000,
   className,
+  instant = false,
 }: AnimatedCounterProps) => {
-  const [count, setCount] = useState(0);
-  const [hasStarted, setHasStarted] = useState(false);
+  const [count, setCount] = useState(instant ? target : 0);
+  const [hasStarted, setHasStarted] = useState(instant);
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    if (instant) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasStarted) {
@@ -32,10 +36,10 @@ const AnimatedCounter = ({
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, [hasStarted]);
+  }, [hasStarted, instant]);
 
   useEffect(() => {
-    if (!hasStarted) return;
+    if (!hasStarted || instant) return;
 
     let start = 0;
     const increment = target / (duration / 16);
@@ -50,7 +54,7 @@ const AnimatedCounter = ({
     }, 16);
 
     return () => clearInterval(timer);
-  }, [hasStarted, target, duration]);
+  }, [hasStarted, target, duration, instant]);
 
   return (
     <span ref={ref} className={className}>

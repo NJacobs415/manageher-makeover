@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+import { isPrerenderedBoot } from "@/lib/prerenderBoot";
 
 // Shown only on the first page load of a session — after that it would just
 // cover an already-painted page. Storage errors fail open (loader shows).
+// Also skipped when the HTML was prerendered: the real content is already
+// on screen, and covering it would be a step backwards.
 const SEEN_KEY = "tmh_loader_seen";
 
 function alreadySeen(): boolean {
@@ -15,7 +18,7 @@ function alreadySeen(): boolean {
 const PageLoader = () => {
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
-  const [hidden, setHidden] = useState(alreadySeen);
+  const [hidden, setHidden] = useState(() => isPrerenderedBoot() || alreadySeen());
 
   useEffect(() => {
     if (hidden) return;

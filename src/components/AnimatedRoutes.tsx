@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useRef } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import PageTransition from "@/components/animations/PageTransition";
@@ -7,6 +7,7 @@ import CultivateHerPopup from "@/components/CultivateHerPopup";
 import lazyWithRecovery from "@/lib/lazyWithRecovery";
 import { usePageTracking } from "@/hooks/usePageTracking";
 import Index from "@/pages/Index";
+import { endPrerenderedBoot } from "@/lib/prerenderBoot";
 
 // Index page ships in the main bundle so the homepage is interactive
 // without a chunk fetch. Every other page lazy-loads its chunk on first
@@ -33,6 +34,12 @@ const RouteFallback = () => (
 const AnimatedRoutes = () => {
   const location = useLocation();
   usePageTracking();
+
+  // Leaving the first route ends the prerendered-boot window, so the next
+  // page gets its normal entrance animation. Done during render (idempotent)
+  // because the new route renders before any effect would run.
+  const firstPath = useRef(location.pathname);
+  if (location.pathname !== firstPath.current) endPrerenderedBoot();
 
   return (
     <>

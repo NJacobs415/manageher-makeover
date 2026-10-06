@@ -16,6 +16,7 @@ import GuestQuizCTA, { type GuestQuiz } from "@/components/blog/GuestQuizCTA";
 import { trackTranscriptExpand, trackEpisodePlay, trackGuestLinkClick } from '@/lib/analytics';
 import { getYouTubeThumb } from "@/lib/ytThumb";
 import { normalizeBlogPost } from "@/lib/normalizeBlogPost";
+import { isPrerenderedBoot } from "@/lib/prerenderBoot";
 import { sanitizePostContent } from "@/lib/sanitizePostContent";
 import {
   ArrowLeft,
@@ -173,6 +174,9 @@ const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [embedded] = useState(() => readEmbeddedPost(slug));
+  // Direct load from the prerendered file: skip the page/hero entrance
+  // animations on this first render so the swap isn't a fade-out-and-back.
+  const [staticFirst] = useState(isPrerenderedBoot);
   const [post, setPost] = useState<BlogPostData | null>(embedded);
   const [allPosts, setAllPosts] = useState<RelatedEpisode[]>([]);
   const [loading, setLoading] = useState(embedded === null);
@@ -404,7 +408,7 @@ const BlogPost = () => {
         />
       </div>
 
-      <div className="overflow-x-hidden page-enter">
+      <div className={staticFirst ? "overflow-x-hidden" : "overflow-x-hidden page-enter"}>
         <Navbar />
 
         {/* ═══════ HERO — Episode header (dark) ═══════ */}
@@ -421,7 +425,7 @@ const BlogPost = () => {
           />
           <div className="max-w-[900px] mx-auto relative z-10">
             {/* Back link */}
-            <FadeIn y={10}>
+            <FadeIn y={10} instant={staticFirst}>
               <Link
                 to="/blog/"
                 className="inline-flex items-center gap-2 font-sans text-[11px] uppercase tracking-[0.15em] text-muted-foreground hover:text-brand-pink transition-colors mb-8"
@@ -431,7 +435,7 @@ const BlogPost = () => {
             </FadeIn>
 
             {/* Episode meta */}
-            <FadeIn delay={100} y={20}>
+            <FadeIn delay={100} y={20} instant={staticFirst}>
               <div className="flex flex-wrap items-center gap-4 mb-4">
                 <span
                   className="font-sans text-[10px] font-bold uppercase tracking-[0.1em] px-3 py-1 bg-brand-pink text-primary-foreground"
@@ -455,14 +459,14 @@ const BlogPost = () => {
             </FadeIn>
 
             {/* Title */}
-            <TextReveal delay={200}>
+            <TextReveal delay={200} instant={staticFirst}>
               <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] mb-4">
                 {post.title}
               </h1>
             </TextReveal>
 
             {/* Guest + Share row */}
-            <FadeIn delay={300} y={15}>
+            <FadeIn delay={300} y={15} instant={staticFirst}>
               <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
                 {post.guestName && (
                   <p className="font-sans text-[13px]">
@@ -492,7 +496,7 @@ const BlogPost = () => {
             </FadeIn>
 
             {/* Listen buttons */}
-            <FadeIn delay={400} y={20}>
+            <FadeIn delay={400} y={20} instant={staticFirst}>
               <div className="flex flex-wrap gap-3">
                 <a
                   href={post.youtubeUrl}
@@ -521,7 +525,7 @@ const BlogPost = () => {
 
         {/* ═══════ YOUTUBE EMBED ═══════ */}
         <section className="px-6 pb-4" style={{ background: "#0a0a0a" }}>
-          <FadeIn delay={500} y={30}>
+          <FadeIn delay={500} y={30} instant={staticFirst}>
             <div className="max-w-[900px] mx-auto">
               {videoId ? (
                 <div

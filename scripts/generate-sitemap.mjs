@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { TOPIC_INDEX_MIN_POSTS, topicSlug } from './lib/topics.mjs';
 
 const SITE_URL = 'https://themanageher.com';
 const POSTS_JSON = path.join(process.cwd(), 'public/blog/posts.json');
@@ -42,15 +43,14 @@ function main() {
     urls.push(`  <url>\n    <loc>${SITE_URL}/blog/${xmlEscape(post.slug)}/</loc>\n    <lastmod>${toDate(post.publishedAt)}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`);
   }
 
-  // Topic category pages: only emit for topics with ≥2 posts so we don't
-  // burn crawl budget on long-tail singletons.
+  // Topic category pages: only emit indexable topics (≥ TOPIC_INDEX_MIN_POSTS
+  // posts) so we don't burn crawl budget on long-tail singletons. Smaller
+  // topics are prerendered with noindex — see scripts/lib/topics.mjs.
   const topicTally = new Map();
   for (const p of posts) for (const t of p.topics || []) topicTally.set(t, (topicTally.get(t) || 0) + 1);
-  const topicSlug = (s) =>
-    s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
   let topicCount = 0;
   for (const [topic, count] of topicTally) {
-    if (count < 2) continue;
+    if (count < TOPIC_INDEX_MIN_POSTS) continue;
     urls.push(`  <url>\n    <loc>${SITE_URL}/blog/topic/${topicSlug(topic)}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>`);
     topicCount++;
   }

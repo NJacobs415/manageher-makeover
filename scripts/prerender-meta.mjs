@@ -14,6 +14,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { TOPIC_INDEX_MIN_POSTS, topicSlug } from './lib/topics.mjs';
 
 const DIST = path.join(process.cwd(), 'dist');
 const BLOG_DIR = path.join(process.cwd(), 'public/blog');
@@ -217,7 +218,7 @@ const PRERENDER_CSS = `
 `;
 
 function wrapPrerender(inner) {
-  return `<article id="tmh-boot" class="tmh-pre"><style>${PRERENDER_CSS}</style><div class="tmh-pre-inner">${inner}</div></article>`;
+  return `<article id="tmh-boot" data-prerendered class="tmh-pre"><style>${PRERENDER_CSS}</style><div class="tmh-pre-inner">${inner}</div></article>`;
 }
 
 // Fields: title, publishedAt, guestName, keyTakeaways, content, pullQuotes,
@@ -285,6 +286,73 @@ function renderPostList(heading, intro, posts) {
   return wrapPrerender(`<h1>${escapeHtml(heading)}</h1><p>${escapeHtml(intro)}</p><ul class="tmh-pre-list">${items}</ul>`);
 }
 
+// ─── Home hero prerender ────────────────────────────────────────
+// Static copy of the announcement bar, nav and hero from
+// src/components/layout/Navbar.tsx + src/pages/Index.tsx + HeroVideo.tsx,
+// in their FINAL rendered state (no animation start states), so the first
+// paint comes from HTML and React's mount is a silent swap. On that first
+// render React skips the entrance animations (src/lib/prerenderBoot.ts).
+//
+// ⚠️ Keep in sync: if hero/nav copy, classes or wrapper divs change in those
+//    files, change them here too. Wrapper divs (TextReveal/FadeIn/Magnetic)
+//    are mirrored on purpose — they affect line boxes, so dropping them
+//    would shift the hero when React mounts (CLS).
+
+// Same formula as src/hooks/useEpisodeCount.ts. The build-time value can lag
+// the runtime one by at most a week between deploys.
+function episodeCountAt(now) {
+  const baseCount = 60;
+  const baseDate = new Date('2026-05-04T00:00:00');
+  const weeks = Math.floor((now.getTime() - baseDate.getTime()) / (7 * 24 * 60 * 60 * 1000));
+  return baseCount + Math.max(0, weeks);
+}
+
+const APPLE_URL = 'https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475';
+const GRAIN = `url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)`;
+const SVG_PLAY = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play fill-current"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>';
+const SVG_ARROW_RIGHT = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>';
+const SVG_ARROW_DOWN = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down animate-bounce"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>';
+const MAGNETIC = 'transition-transform duration-300 ease-out';
+// TextReveal (immediate) and FadeIn wrappers, at rest.
+const reveal = (inner) => `<div><div style="transform:translateY(0);will-change:transform">${inner}</div></div>`;
+const fadeIn = (inner) => `<div style="opacity:1;transform:translate3d(0,0,0) scale(1);will-change:opacity, transform">${inner}</div>`;
+
+function renderHomeShell(episodeCount) {
+  const navLinks = [['About', '/about'], ['Podcast', '/podcast'], ['Book', '/book'], ['Blog', '/blog'], ['Press', '/press']]
+    .map(([label, href]) => `<div class="${MAGNETIC} shrink-0 inline-flex" data-magnetic><a href="${href}" class="link-reveal font-sans text-[12px] font-medium uppercase tracking-[0.15em] transition-colors whitespace-nowrap text-foreground/60 hover:text-foreground">${label}</a></div>`)
+    .join('');
+  const line = (top) => `<span class="absolute left-0 block transition-all duration-300 ease-out" style="width:24px;height:2px;background-color:#fafafa;top:${top};transform:rotate(0deg)"></span>`;
+  const stats = [[episodeCount, '+', 'Episodes'], [50, 'K+', 'Downloads'], [5, '★', 'Rated']]
+    .map(([v, suffix, label]) => `<div><p class="font-serif text-2xl md:text-3xl font-bold text-brand-pink"><span>${v}${suffix}</span></p><p class="font-sans text-[9px] uppercase tracking-[0.2em] text-muted-foreground mt-1">${label}</p></div>`)
+    .join('');
+
+  return `<div id="tmh-boot" data-prerendered class="overflow-x-hidden">` +
+    // Announcement bar + sticky nav (in normal flow — omitting them would push the hero down on mount).
+    `<div class="bg-foreground text-background text-center py-2.5 px-4 font-sans text-[11px] tracking-[0.15em] uppercase z-[60] relative">New episodes weekly — <a href="${APPLE_URL}" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-brand-pink transition-colors">Listen now</a></div>` +
+    `<nav class="sticky top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent"><div class="max-w-[1400px] mx-auto flex items-center justify-between px-6 lg:px-12 h-20">` +
+      `<a class="shrink-0 flex items-center gap-2" href="/"><img src="/M_Logo_Pink-256.png" alt="" aria-hidden="true" width="256" height="256" style="height:24px;width:auto;mix-blend-mode:screen"><span class="font-serif text-xl md:text-2xl font-bold text-foreground tracking-tight">The Manage<em class="text-brand-pink">Her</em><span class="text-brand-pink text-[8px] align-super">®</span></span></a>` +
+      `<div class="hidden lg:flex items-center"><div class="flex items-center gap-12">${navLinks}</div><div class="${MAGNETIC} shrink-0 inline-flex ml-10" data-magnetic><a href="${APPLE_URL}" target="_blank" rel="noopener noreferrer" class="btn-glow inline-flex items-center bg-brand-pink text-primary-foreground font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-6 py-3 hover:bg-brand-pink/90 transition-colors whitespace-nowrap">Listen Now</a></div></div>` +
+    `</div></nav>` +
+    // Inert until React mounts and replaces it with the real toggle.
+    `<button type="button" aria-label="Open menu" aria-expanded="false" class="lg:hidden fixed flex items-center justify-center transition-all duration-300" style="top:60px;right:20px;width:44px;height:44px;z-index:10000;background:transparent;border:none;cursor:pointer"><div class="relative" style="width:24px;height:18px">${line('0')}${line('8px')}${line('16px')}</div></button>` +
+    // Hero
+    `<section class="relative min-h-screen min-h-[100svh] flex items-center overflow-hidden bg-background">` +
+      `<div class="absolute inset-0 z-0"><picture><source srcset="/hero-poster.webp" type="image/webp"><img src="/hero-poster.jpg" alt="" aria-hidden="true" width="1280" height="720" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover" style="filter:brightness(0.35)"></picture>` +
+        `<div class="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-transparent"></div><div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40"></div></div>` +
+      `<div class="absolute inset-0 z-[1] opacity-[0.03] pointer-events-none" style="background-image:${GRAIN};background-size:200px"></div>` +
+      `<img src="/M_Logo_Pink.png" alt="" aria-hidden="true" width="1080" height="1080" class="absolute z-[2] pointer-events-none select-none" style="bottom:20px;right:20px;height:200px;width:auto;opacity:0.08;transform:rotate(10deg);mix-blend-mode:screen">` +
+      `<div class="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 w-full"><div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-20 lg:py-0"><div class="lg:col-span-8">` +
+        reveal(`<p class="font-sans text-[11px] uppercase tracking-[0.3em] text-brand-pink mb-6">The Podcast Redefining Leadership</p>`) +
+        reveal(`<h1 class="font-serif text-[3rem] md:text-[4.5rem] lg:text-[5.5rem] font-bold leading-[1.15] text-foreground mb-8">Where Motherhood<br>Meets <em class="text-brand-pink italic">Leadership</em></h1>`) +
+        fadeIn(`<p class="text-[15px] leading-relaxed max-w-lg mb-10" style="font-family:'Cormorant Garamond', 'Cormorant Garamond Fallback', Georgia, serif;font-style:italic;color:var(--foreground-muted, #999);font-size:1.15rem;line-height:1.9">Invisible work gets the spotlight it deserves. Empowering women to reclaim their roles as CEOs of both home and business.</p>`) +
+        fadeIn(`<div class="flex flex-wrap gap-4 mb-12"><div class="${MAGNETIC}" data-magnetic><a href="#listen" class="btn-glow inline-flex items-center gap-2.5 bg-brand-pink text-primary-foreground font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-8 py-4 hover:bg-brand-pink/90 transition-colors" style="border-radius:50px">${SVG_PLAY} Listen Now</a></div><div class="${MAGNETIC}" data-magnetic><a href="/book/" class="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground border border-foreground/15 px-8 py-4 hover:border-brand-pink hover:text-brand-pink transition-all" style="border-radius:50px">Get the Book ${SVG_ARROW_RIGHT}</a></div></div>`) +
+        fadeIn(`<div class="flex gap-10">${stats}</div>`) +
+      `</div></div></div>` +
+      `<div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">${fadeIn(`<a href="#about" class="flex flex-col items-center gap-2 text-muted-foreground/40 hover:text-brand-pink transition-colors"><span class="font-sans text-[9px] uppercase tracking-[0.3em]">Scroll</span>${SVG_ARROW_DOWN}</a>`)}</div>` +
+    `</section>` +
+  `</div>`;
+}
+
 // Replace the contents of <div id="root"> (the boot placeholder) by walking
 // nested <div> depth — the placeholder contains its own divs.
 function replaceRoot(html, inner) {
@@ -312,7 +380,7 @@ function embedJson(html, id, data) {
   return html.replace('</body>', `<script type="application/json" id="${id}">${json}</script>\n  </body>`);
 }
 
-function injectMeta(template, { title, description, url, image, type, jsonLd, noindex, linkRels, preloadImages }) {
+function injectMeta(template, { title, description, url, image, type, jsonLd, noindex, robots, linkRels, preloadImages }) {
   let html = template;
 
   // Title
@@ -344,10 +412,11 @@ function injectMeta(template, { title, description, url, image, type, jsonLd, no
 
   // Robots — replace the default rich-SERP meta with noindex when set.
   // Otherwise leave the template default in place.
-  if (noindex) {
+  // `robots` sets an explicit value (e.g. "noindex, follow").
+  if (noindex || robots) {
     html = html.replace(
       /<meta name="robots" content="[^"]*"\s*\/?>/,
-      '<meta name="robots" content="noindex, nofollow" />'
+      `<meta name="robots" content="${escapeHtml(robots || 'noindex, nofollow')}" />`
     );
   }
 
@@ -384,6 +453,42 @@ function toHqThumb(url) {
   return url.replace(/(maxresdefault|hqdefault|mqdefault|sddefault)/, 'hqdefault');
 }
 
+// ─── Route coverage check ───────────────────────────────────────
+// The SPA fallback is dist/404.html, so a route React can render but that has
+// no prerendered file returns a 404 status. Warn (don't fail the build) when a
+// path in AnimatedRoutes.tsx — or any post/topic for the dynamic routes — has
+// no file in dist/.
+function checkRoutesPrerendered(posts) {
+  const routesFile = path.join(process.cwd(), 'src/components/AnimatedRoutes.tsx');
+  const src = fs.readFileSync(routesFile, 'utf-8');
+  const paths = [...src.matchAll(/<Route\s+path="([^"]+)"/g)].map((m) => m[1]);
+  const fileFor = (p) => path.join(DIST, p === '/' ? 'index.html' : path.join(p, 'index.html'));
+
+  const missing = [];
+  for (const p of paths) {
+    if (p === '*') continue;
+    if (p === '/blog/:slug') {
+      for (const post of posts) if (!fs.existsSync(fileFor(`/blog/${post.slug}`))) missing.push(`/blog/${post.slug}/`);
+    } else if (p === '/blog/topic/:topic') {
+      const topics = new Set(posts.flatMap((x) => x.topics || []));
+      for (const t of topics) if (!fs.existsSync(fileFor(`/blog/topic/${topicSlug(t)}`))) missing.push(`/blog/topic/${topicSlug(t)}/`);
+    } else if (p.includes(':')) {
+      missing.push(`${p} (dynamic route — add its pages to prerender-meta.mjs and to this check)`);
+    } else if (!fs.existsSync(fileFor(p))) {
+      missing.push(p);
+    }
+  }
+  if (missing.length > 0) {
+    console.warn(
+      `\n⚠️  prerender-meta: ${missing.length} route(s) in AnimatedRoutes.tsx have no prerendered file and will return 404 status:\n` +
+        missing.map((m) => `   - ${m}`).join('\n') +
+        '\n   Add them to STATIC_ROUTES (or the post/topic loops) in scripts/prerender-meta.mjs.\n',
+    );
+  } else {
+    console.log(`Route check: all ${paths.length - 1} AnimatedRoutes paths have prerendered files`);
+  }
+}
+
 // ─── Main ───────────────────────────────────────────────────────
 
 function main() {
@@ -393,6 +498,21 @@ function main() {
     process.exit(1);
   }
   const template = fs.readFileSync(templatePath, 'utf-8');
+  // The template must be Vite's untouched shell. A second run would read the
+  // already-prerendered homepage and copy it into 404.html.
+  if (template.includes('data-prerendered')) {
+    console.error('dist/index.html is already prerendered — run `vite build` first (npm run build)');
+    process.exit(1);
+  }
+
+  // Untouched SPA shell as dist/404.html. dist/index.html becomes the
+  // prerendered homepage, so it can't double as the fallback — 404s would
+  // flash the home hero before React mounts. With a top-level 404.html,
+  // Cloudflare Pages serves it (status 404) for any path with no file; React
+  // then renders the NotFound route. Every route the app links to has its
+  // own prerendered file. (A `/* /x 200` splat in _redirects can't do this:
+  // Pages applies a valid rewrite even when a static file exists.)
+  fs.writeFileSync(path.join(DIST, '404.html'), template);
 
   // Load posts once and compute "top 6 by date desc" for /blog/ preload hints.
   const postsFile = path.join(BLOG_DIR, 'posts.json');
@@ -421,8 +541,8 @@ function main() {
     }
 
     if (route.path === '/') {
-      // Overwrite dist/index.html with homepage-specific meta
-      fs.writeFileSync(templatePath, html);
+      // Overwrite dist/index.html with homepage-specific meta + prerendered hero
+      fs.writeFileSync(templatePath, replaceRoot(html, renderHomeShell(episodeCountAt(new Date()))));
     } else {
       const dir = path.join(DIST, route.path);
       fs.mkdirSync(dir, { recursive: true });
@@ -540,20 +660,19 @@ function main() {
     }
   }
 
-  // Topic category pages — one per topic with ≥2 posts. Reuse the
-  // posts array loaded at top of main().
+  // Topic category pages — one per topic, including small ones: the SPA
+  // fallback is 404.html, so any topic URL without a file would return a 404
+  // status. Topics below TOPIC_INDEX_MIN_POSTS get `noindex, follow` and are
+  // left out of the sitemap (scripts/lib/topics.mjs).
   if (posts.length > 0) {
     const tally = new Map();
     for (const p of posts) for (const t of p.topics || []) tally.set(t, (tally.get(t) || 0) + 1);
-    const topicSlug = (s) =>
-      s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
     for (const [topic, n] of tally) {
-      if (n < 2) continue;
       const slug = topicSlug(topic);
       const url = `${SITE_URL}/blog/topic/${slug}/`;
       const title = `${topic} Episodes | The Manage Her® Podcast`;
-      const description = `${n} podcast episodes on ${topic.toLowerCase()} from The Manage Her® — real conversations with women redefining leadership, hosted by Aimee Rickabus.`;
+      const description = `${n} podcast episode${n === 1 ? '' : 's'} on ${topic.toLowerCase()} from The Manage Her® — real conversations with women redefining leadership, hosted by Aimee Rickabus.`;
       const topicPreload = posts
         .filter((p) => (p.topics || []).includes(topic))
         .sort((a, b) => new Date(b.publishedAt || 0).getTime() - new Date(a.publishedAt || 0).getTime())
@@ -567,6 +686,7 @@ function main() {
         image: DEFAULT_IMAGE,
         type: 'website',
         preloadImages: topicPreload,
+        ...(n < TOPIC_INDEX_MIN_POSTS && { robots: 'noindex, follow' }),
         jsonLd: {
           '@context': 'https://schema.org',
           '@type': 'CollectionPage',
@@ -598,6 +718,8 @@ function main() {
   }
 
   console.log(`Pre-rendered meta tags for ${count} routes`);
+
+  checkRoutesPrerendered(posts);
 }
 
 main();

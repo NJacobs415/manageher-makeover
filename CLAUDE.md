@@ -36,6 +36,8 @@ Besides per-route `<head>` meta/JSON-LD, the prerender step writes real page con
   list of posts (title, guest, date, excerpt) from `posts.json`.
 - The prerendered wrapper **must keep `id="tmh-boot"`** — that's the element the boot watchdog
   checks for (see `boot_failure` below). React replaces it on mount, same as the placeholder.
+  It also carries `data-prerendered`, which drives the boot flag (see Performance → Prerendered
+  boot).
 - Only reuse classes Tailwind already emits from `src/` (`prose-tmh`, `tmh-speakable`); everything
   else is in the script's inline `PRERENDER_CSS`. Pull quotes carry `tmh-speakable` so the JSON-LD
   `speakable` selector resolves in both the static HTML and the React page.
@@ -180,6 +182,55 @@ once in `AnimatedRoutes.tsx` as a sibling of the route `AnimatePresence` — it 
 `src/components/animations/PageLoader.tsx` shows only on the first page load of a session
 (`sessionStorage["tmh_loader_seen"]`, fails open if storage throws), fills in ~250ms, then the
 0.8s wipe. It overlays — the page renders underneath; never gate route rendering on it.
+
+### Home hero + nav prerender
+`prerender-meta.mjs` writes a static copy of the announcement bar, sticky nav and home hero
+(`renderHomeShell()`) into `dist/index.html`'s `#root`, in their **final rendered state** —
+poster `<picture>`, eyebrow, h1, subhead, both CTAs, stats (episode count from the same formula
+as `useEpisodeCount`, computed at build), scroll cue. FCP comes from HTML instead of waiting
+for the bundle. **If hero/nav copy, classes or wrapper divs change in `Index.tsx`, `Navbar.tsx`
+or `HeroVideo.tsx`, update `renderHomeShell()` too** — the TextReveal/FadeIn/Magnetic wrapper
+divs are mirrored on purpose, since dropping them changes line boxes and shifts the hero (CLS)
+when React mounts. The nav's menu button is inert until React replaces it.
+
+### Prerendered boot (`src/lib/prerenderBoot.ts`)
+`isPrerenderedBoot()` is true when the HTML had `#tmh-boot[data-prerendered]` (home, blog posts,
+blog list, topic pages) and stays true until the first pathname change (`AnimatedRoutes`). On
+that first render: `PageTransition` uses `initial={false}`, `Index`/`BlogPost` drop
+`.page-enter`, above-the-fold `TextReveal`/`FadeIn`/`AnimatedCounter` get `instant`, and
+`PageLoader` doesn't show. Mount is a silent swap, not a fade-out-and-back. SPA navigation
+animates as before. Read it in a `useState` initializer, never on every render.
+
+### SPA fallback: `dist/404.html`
+`dist/index.html` is now the prerendered homepage, so it can't be the SPA fallback (404s would
+flash the home hero). `prerender-meta.mjs` writes the untouched Vite shell to `dist/404.html`;
+Cloudflare Pages serves it, **with a 404 status**, for any path that has no file, and React
+renders the NotFound route. Every route is prerendered (static routes, all posts, all topics
+including single-post ones), so none depend on the fallback. Topics below `TOPIC_INDEX_MIN_POSTS` (currently 2,
+in `scripts/lib/topics.mjs`, shared by the sitemap and prerender scripts) are prerendered with
+`<meta name="robots" content="noindex, follow">` and left out of the sitemap. **Don't add a `/* … 200` splat to `_redirects`:** Pages applies a valid rewrite even
+when a static file exists, so it would replace every prerendered page with the target. (The old
+`/* /index.html 200` only worked because Pages ignores it as a self-loop.)
+
+### Routing
+Every route in AnimatedRoutes.tsx must have a matching entry in prerender-meta.mjs — the SPA
+fallback is 404.html, so an unprerendered route returns a 404 status even though React renders
+it. `prerender-meta.mjs` checks this at the end of every build (`checkRoutesPrerendered()`): it
+reads the `<Route path>`s from `AnimatedRoutes.tsx` and warns for any static path, post or topic
+with no file in `dist/`. A new dynamic (`:param`) route always warns until it's added to both
+the prerender loops and that check.
+
+### Fonts
+Google Fonts CSS loads non-blocking (`media="print"` + `onload`, `<noscript>` fallback,
+preconnects kept), so prerendered text first paints in metric-matched local fallbacks from
+`src/index.css` (`"Playfair Display Fallback"`, `"DM Sans Fallback"`, `"DM Sans Caps Fallback"`
+for `.font-sans.uppercase` labels, `"Cormorant Garamond Fallback"`, each with an Android
+variant), wired into the Tailwind `fontFamily` stacks. The request loads only what `src/` uses:
+Playfair 400/600/700 + italic 400/700, DM Sans 400/500/600/700, Cormorant italic 400/600.
+**Never add a weight or style in `src/` without adding it to the fonts request in
+`index.html`** (otherwise the browser synthesizes it), and if it renders above the fold, add a
+tuned fallback `@font-face` for it too. Inline `font-family` strings above the fold must include
+the fallback family name (see the hero subhead).
 
 ## Brand Design System
 

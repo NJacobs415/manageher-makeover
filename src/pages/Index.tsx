@@ -10,6 +10,7 @@ import AnimatedCounter from "@/components/animations/AnimatedCounter";
 import { Play, Star, ArrowDown, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEpisodeCount } from "@/hooks/useEpisodeCount";
+import { isPrerenderedBoot } from "@/lib/prerenderBoot";
 import { useEpisodes } from "@/hooks/useEpisodes";
 import SEO from "@/components/SEO";
 import HeroVideo from "@/components/HeroVideo";
@@ -128,6 +129,11 @@ const Index = () => {
         }))
       : episodes;
 
+  // Direct load of "/" ships the hero prerendered (scripts/prerender-meta.mjs).
+  // On that first render, show the hero in its final state so React's mount
+  // is a silent swap. SPA navigations back to "/" animate as usual.
+  const [staticHero] = useState(isPrerenderedBoot);
+
   useEffect(() => {
     const t = setInterval(
       () => setCurrentTest((p) => (p + 1) % testimonials.length),
@@ -137,7 +143,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="overflow-x-hidden page-enter">
+    <div className={staticHero ? "overflow-x-hidden" : "overflow-x-hidden page-enter"}>
       <SEO
         title="The Manage Her® — Redefining Women's Leadership"
         description="Leadership movement for women — redefining how women lead in life, at home, and in business. Founded by Aimee Rickabus."
@@ -204,13 +210,13 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-20 lg:py-0">
             {/* Text — 8 cols */}
             <div className="lg:col-span-8">
-              <TextReveal delay={400} immediate>
+              <TextReveal delay={400} immediate instant={staticHero}>
                 <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-brand-pink mb-6">
                   The Podcast Redefining Leadership
                 </p>
               </TextReveal>
 
-              <TextReveal delay={600} immediate>
+              <TextReveal delay={600} immediate instant={staticHero}>
                 <h1 className="font-serif text-[3rem] md:text-[4.5rem] lg:text-[5.5rem] font-bold leading-[1.15] text-foreground mb-8">
                   Where Motherhood
                   <br />
@@ -218,11 +224,11 @@ const Index = () => {
                 </h1>
               </TextReveal>
 
-              <FadeIn delay={900} y={30}>
+              <FadeIn delay={900} y={30} instant={staticHero}>
                 <p
                   className="text-[15px] leading-relaxed max-w-lg mb-10"
                   style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontFamily: "'Cormorant Garamond', 'Cormorant Garamond Fallback', Georgia, serif",
                     fontStyle: "italic",
                     color: "var(--foreground-muted, #999)",
                     fontSize: "1.15rem",
@@ -235,7 +241,7 @@ const Index = () => {
                 </p>
               </FadeIn>
 
-              <FadeIn delay={1100} y={20}>
+              <FadeIn delay={1100} y={20} instant={staticHero}>
                 <div className="flex flex-wrap gap-4 mb-12">
                   <Magnetic strength={0.2}>
                     <a
@@ -259,7 +265,7 @@ const Index = () => {
               </FadeIn>
 
               {/* Stats row */}
-              <FadeIn delay={1300} y={20}>
+              <FadeIn delay={1300} y={20} instant={staticHero}>
                 <div className="flex gap-10">
                   {[
                     { val: episodeCount, suffix: "+", label: "Episodes" },
@@ -268,7 +274,7 @@ const Index = () => {
                   ].map((s) => (
                     <div key={s.label}>
                       <p className="font-serif text-2xl md:text-3xl font-bold text-brand-pink">
-                        <AnimatedCounter target={s.val} suffix={s.suffix} />
+                        <AnimatedCounter target={s.val} suffix={s.suffix} instant={staticHero} />
                       </p>
                       <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-muted-foreground mt-1">
                         {s.label}
@@ -284,7 +290,7 @@ const Index = () => {
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-          <FadeIn delay={1800} y={-10}>
+          <FadeIn delay={1800} y={-10} instant={staticHero}>
             <a
               href="#about"
               className="flex flex-col items-center gap-2 text-muted-foreground/40 hover:text-brand-pink transition-colors"
