@@ -461,7 +461,7 @@ function main() {
   }
   const template = fs.readFileSync(templatePath, 'utf-8');
 
-  // Untouched SPA shell for the `/* /_shell/index.html 200` fallback in
+  // Untouched SPA shell for the `/* /_shell/ 200` fallback in
   // public/_redirects. dist/index.html becomes the prerendered homepage, so
   // it can't double as the fallback — 404s and unprerendered routes would
   // flash the home hero before React mounts.

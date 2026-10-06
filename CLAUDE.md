@@ -204,7 +204,7 @@ animates as before. Read it in a `useState` initializer, never on every render.
 ### SPA fallback: `/_shell/`
 `dist/index.html` is now the prerendered homepage, so it can't be the SPA fallback (404s would
 flash the home hero). `prerender-meta.mjs` writes the untouched Vite shell to
-`dist/_shell/index.html`, and `public/_redirects` ends with `/* /_shell/index.html 200`.
+`dist/_shell/index.html`, and `public/_redirects` ends with `/* /_shell/ 200`.
 
 ### Fonts
 Google Fonts CSS loads non-blocking (`media="print"` + `onload`, `<noscript>` fallback,
