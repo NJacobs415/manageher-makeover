@@ -143,6 +143,21 @@ function inferLinkType(url: string): string {
   return 'website';
 }
 
+// On a direct load, scripts/prerender-meta.mjs embeds the post (minus
+// transcript and quiz) as #tmh-post-data so the page renders without the
+// Loading screen. Only used when its slug matches the route; any parse
+// problem falls back to the normal fetch.
+function readEmbeddedPost(slug: string | undefined): BlogPostData | null {
+  if (!slug) return null;
+  try {
+    const raw = JSON.parse(document.getElementById("tmh-post-data")?.textContent || "null");
+    if (!raw || raw.slug !== slug) return null;
+    return normalizeBlogPost(raw) as BlogPostData;
+  } catch {
+    return null;
+  }
+}
+
 interface RelatedEpisode {
   slug: string;
   title: string;
@@ -157,14 +172,16 @@ interface RelatedEpisode {
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
-  const [post, setPost] = useState<BlogPostData | null>(null);
+  const [embedded] = useState(() => readEmbeddedPost(slug));
+  const [post, setPost] = useState<BlogPostData | null>(embedded);
   const [allPosts, setAllPosts] = useState<RelatedEpisode[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(embedded === null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [copied, setCopied] = useState(false);
   const episodePlayTracked = useRef(false);
 
-  // Fetch the blog post JSON
+  // Fetch the blog post JSON. With an embedded post this runs in the
+  // background to fill in the quiz and transcript.
   useEffect(() => {
     if (!slug) return;
     fetch(`/blog/${slug}.json`)
@@ -182,9 +199,11 @@ const BlogPost = () => {
       })
       .catch(() => {
         setLoading(false);
+        // Already showing the embedded post — keep it rather than bouncing.
+        if (embedded?.slug === slug) return;
         navigate("/blog", { replace: true });
       });
-  }, [slug, navigate]);
+  }, [slug, navigate, embedded]);
 
   // Fetch the post index once so we can compute related episodes.
   useEffect(() => {

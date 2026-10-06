@@ -22,6 +22,29 @@ listing pages plus the related-episodes rail. The **full post** — including `q
 `transcript`, and `content` — lives in `public/blog/<slug>.json`, which is what `BlogPost.tsx`
 fetches. Per-post fields must be edited in `<slug>.json`; adding them to `posts.json` is a no-op.
 
+### Prerendered body (`scripts/prerender-meta.mjs`, runs as `postbuild`)
+Besides per-route `<head>` meta/JSON-LD, the prerender step writes real page content into
+`<div id="root">` so non-JS crawlers see more than an empty shell (44 posts sat in GSC as
+"Crawled – currently not indexed" before this):
+- **`dist/blog/<slug>/index.html`** — an `<article>` with `<h1>` title, byline (Aimee Rickabus ·
+  date · guest), key takeaways `<ol>`, the body, pull quotes, "About the guest", and a YouTube link.
+  Depends on these `<slug>.json` fields: `title`, `publishedAt`, `guestName`, `keyTakeaways`,
+  `content` (HTML; CDATA wrapper stripped like `sanitizePostContent`), `pullQuotes`, `guestBio`,
+  `guestLinks` (label trimmed, trailing `(` dropped), `youtubeUrl`. Quiz, transcript and the
+  thumbnail image are deliberately not rendered (thumbnail stays JSON-LD only).
+- **`dist/blog/index.html`** and **`dist/blog/topic/<topic>/index.html`** — `<h1>` plus a linked
+  list of posts (title, guest, date, excerpt) from `posts.json`.
+- The prerendered wrapper **must keep `id="tmh-boot"`** — that's the element the boot watchdog
+  checks for (see `boot_failure` below). React replaces it on mount, same as the placeholder.
+- Only reuse classes Tailwind already emits from `src/` (`prose-tmh`, `tmh-speakable`); everything
+  else is in the script's inline `PRERENDER_CSS`. Pull quotes carry `tmh-speakable` so the JSON-LD
+  `speakable` selector resolves in both the static HTML and the React page.
+- Post pages also embed the post minus `transcript`/`quiz` as
+  `<script type="application/json" id="tmh-post-data">` (outside `#root`). On a direct load
+  `BlogPost.tsx` uses it as initial state when its slug matches the route — no Loading screen —
+  and still fetches `<slug>.json` in the background to fill in quiz and transcript. A bad embed
+  falls back to the normal fetch; SPA navigation is unchanged.
+
 ### `quiz` vs `guestQuiz` (both optional, independent)
 - `quiz` — the interactive TMH self-discovery quiz (`EpisodeQuiz`). Default for most episodes.
 - `guestQuiz` — optional per-post override that **replaces** the TMH quiz with a link out to a
