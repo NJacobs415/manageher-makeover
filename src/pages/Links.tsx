@@ -13,7 +13,7 @@ import APPLE_LOGO from "@/assets/logo-apple-podcasts.svg";
 import AMAZON_LOGO from "@/assets/logo-amazon-music.png";
 import YOUTUBE_LOGO from "@/assets/logo-youtube.png";
 
-const M_LOGO = "/M_Logo_Pink.png";
+const M_LOGO = "/M_Logo_Pink-256.png";
 const BOOK_COVER =
   "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png";
 const PODCAST_COVER =
@@ -78,6 +78,8 @@ const Links = () => {
               <img
                 src={M_LOGO}
                 alt="The Manage Her"
+                width={256}
+                height={256}
                 className="w-10 h-10 object-contain"
               />
             </div>

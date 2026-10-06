@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { useEpisodeCount } from "@/hooks/useEpisodeCount";
 import { useEpisodes } from "@/hooks/useEpisodes";
 import SEO from "@/components/SEO";
+import HeroVideo from "@/components/HeroVideo";
 import { trackBookClick, trackPodcastPlatformClick, trackSocialClick, toPlatformKey } from "@/lib/analytics";
 
 // ─── Assets ───
@@ -21,16 +22,16 @@ import logoSpotify from "@/assets/logo-spotify.png";
 import logoAmazonMusic from "@/assets/logo-amazon-music.png";
 import logoYouTube from "@/assets/logo-youtube-white.png";
 import logoApplePodcasts from "@/assets/logo-apple-podcasts.svg";
-import cardConversations from "@/assets/card-conversations.webp";
-import cardGuests from "@/assets/card-guests.webp";
-import cardActionable from "@/assets/card-actionable.webp";
-import cardHolistic from "@/assets/card-holistic.webp";
-import cardEmpowerment from "@/assets/card-empowerment.webp";
-import cardFinancial from "@/assets/card-financial.webp";
-import cardEntrepreneurship from "@/assets/card-entrepreneurship.webp";
+import cardConversations from "@/assets/card-conversations-672.webp";
+import cardGuests from "@/assets/card-guests-672.webp";
+import cardActionable from "@/assets/card-actionable-672.webp";
+import cardHolistic from "@/assets/card-holistic-672.webp";
+import cardEmpowerment from "@/assets/card-empowerment-900.webp";
+import cardFinancial from "@/assets/card-financial-900.webp";
+import cardEntrepreneurship from "@/assets/card-entrepreneurship-900.webp";
 
 // ─── CDN Images ───
-const AIMEE_PHOTO = "/aimee-portrait-1.jpg";
+const AIMEE_PHOTO = "/aimee-portrait-1-800.webp";
 const BOOK_COVER_CDN =
   "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png";
 
@@ -165,16 +166,7 @@ const Index = () => {
       <section className="relative min-h-screen min-h-[100svh] flex items-center overflow-hidden bg-background">
         {/* Video background */}
         <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-            style={{ filter: "brightness(0.35)" }}
-          >
-            <source src="/hero-video.mp4" type="video/mp4" />
-          </video>
+          <HeroVideo />
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
@@ -194,11 +186,14 @@ const Index = () => {
           src="/M_Logo_Pink.png"
           alt=""
           aria-hidden="true"
+          width={1080}
+          height={1080}
           className="absolute z-[2] pointer-events-none select-none"
           style={{
             bottom: "20px",
             right: "20px",
             height: "200px",
+            width: "auto",
             opacity: 0.08,
             transform: "rotate(10deg)",
             mixBlendMode: "screen",
@@ -209,13 +204,13 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-20 lg:py-0">
             {/* Text — 8 cols */}
             <div className="lg:col-span-8">
-              <TextReveal delay={400}>
+              <TextReveal delay={400} immediate>
                 <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-brand-pink mb-6">
                   The Podcast Redefining Leadership
                 </p>
               </TextReveal>
 
-              <TextReveal delay={600}>
+              <TextReveal delay={600} immediate>
                 <h1 className="font-serif text-[3rem] md:text-[4.5rem] lg:text-[5.5rem] font-bold leading-[1.15] text-foreground mb-8">
                   Where Motherhood
                   <br />
@@ -367,7 +362,12 @@ const Index = () => {
                 <div className="editorial-img overflow-hidden" style={{ borderRadius: "20px" }}>
                   <img
                     src={AIMEE_PHOTO}
+                    srcSet="/aimee-portrait-1-400.webp 400w, /aimee-portrait-1-800.webp 800w"
+                    sizes="(min-width: 1024px) 40vw, 100vw"
                     alt="Aimee Rickabus"
+                    width={800}
+                    height={1000}
+                    decoding="async"
                     className="w-full aspect-[4/5] object-cover"
                     loading="lazy"
                   />
@@ -477,8 +477,8 @@ const Index = () => {
                   <img
                     src={f.img}
                     alt={f.title}
-                    width={1024}
-                    height={1024}
+                    width={672}
+                    height={560}
                     loading="lazy"
                     decoding="async"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -491,9 +491,9 @@ const Index = () => {
                     }}
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                    <h4 className="font-serif text-lg font-bold text-white mb-2">
+                    <h3 className="font-serif text-lg font-bold text-white mb-2">
                       {f.title}
-                    </h4>
+                    </h3>
                     <p className="font-sans text-[13px] leading-relaxed text-white/80">
                       {f.desc}
                     </p>
@@ -575,8 +575,8 @@ const Index = () => {
                   <img
                     src={p.img}
                     alt={p.title}
-                    width={1024}
-                    height={1024}
+                    width={900}
+                    height={800}
                     loading="lazy"
                     decoding="async"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -658,6 +658,9 @@ const Index = () => {
                     <img
                       src={ep.thumbnail}
                       alt={ep.title}
+                      width={1280}
+                      height={720}
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
                     />
@@ -881,24 +884,32 @@ const Index = () => {
               {
                 name: "Apple Podcasts",
                 logo: logoApplePodcasts,
+                w: 129,
+                h: 41,
                 href: "https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475",
                 sub: "Subscribe Free",
               },
               {
                 name: "Spotify",
                 logo: logoSpotify,
+                w: 3432,
+                h: 940,
                 href: "https://open.spotify.com/show/03FuFRyzkaWhZkk5yxFePJ",
                 sub: "Stream Free",
               },
               {
                 name: "YouTube",
                 logo: logoYouTube,
+                w: 1705,
+                h: 573,
                 href: "https://www.youtube.com/@TheManageHer",
                 sub: "Watch & Subscribe",
               },
               {
                 name: "Amazon Music",
                 logo: logoAmazonMusic,
+                w: 1374,
+                h: 334,
                 href: "https://music.amazon.com/podcasts/91c217a5-4245-4b83-8d15-8edfdde06884/the-manage-her",
                 sub: "Listen Free",
               },
@@ -925,7 +936,9 @@ const Index = () => {
                   <img
                     src={platform.logo}
                     alt={platform.name}
-                    className="h-8 mx-auto mb-4 object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                    width={platform.w}
+                    height={platform.h}
+                    className="h-8 w-auto max-w-full mx-auto mb-4 object-contain opacity-70 group-hover:opacity-100 transition-opacity"
                     loading="lazy"
                   />
                   <p className="font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
@@ -947,7 +960,7 @@ const Index = () => {
           <FadeIn>
             <p
               className="font-sans text-[10px] uppercase tracking-[0.3em] mb-10"
-              style={{ color: "#bbb" }}
+              style={{ color: "#707070" }}
             >
               What Listeners Say
             </p>
@@ -983,7 +996,7 @@ const Index = () => {
                   </blockquote>
                   <p
                     className="font-sans text-[10px] uppercase tracking-[0.2em]"
-                    style={{ color: "#bbb" }}
+                    style={{ color: "#707070" }}
                   >
                     {t.author} — {t.source}
                   </p>
@@ -997,6 +1010,8 @@ const Index = () => {
                 <button
                   key={i}
                   onClick={() => setCurrentTest(i)}
+                  aria-label={`Show testimonial ${i + 1} of ${testimonials.length}`}
+                  aria-current={currentTest === i ? "true" : undefined}
                   className="h-2 transition-all duration-300"
                   style={{
                     width: currentTest === i ? "24px" : "8px",

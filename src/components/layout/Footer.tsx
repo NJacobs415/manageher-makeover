@@ -29,14 +29,16 @@ const Footer = () => (
       className="relative py-24 md:py-32 px-6 overflow-hidden"
       style={{ background: "#0a0a0a" }}
     >
-      {/* Oversized background wordmark */}
+      {/* Oversized background wordmark. Generated content rather than a text
+          node: it's decorative at 2% opacity, and as real text it fails the
+          contrast audit even with aria-hidden. */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
         <span
-          className="font-serif text-[20vw] font-bold italic whitespace-nowrap"
+          aria-hidden="true"
+          data-wordmark="ManageHer"
+          className="font-serif text-[20vw] font-bold italic whitespace-nowrap before:content-[attr(data-wordmark)]"
           style={{ color: "rgba(255,255,255,0.02)" }}
-        >
-          ManageHer
-        </span>
+        />
       </div>
 
       <FadeIn className="relative z-10 max-w-lg mx-auto text-center">
@@ -90,9 +92,11 @@ const Footer = () => (
         <div className="col-span-2 md:col-span-1">
           <div className="flex items-center gap-2">
             <img
-              src="/M_Logo_White.png"
+              src="/M_Logo_White-256.png"
               alt=""
               aria-hidden="true"
+              width={256}
+              height={256}
               style={{
                 height: "28px",
                 width: "auto",
@@ -107,7 +111,7 @@ const Footer = () => (
           </div>
           <p
             className="font-sans text-xs mt-3 leading-relaxed max-w-xs"
-            style={{ color: "#666" }}
+            style={{ color: "#888" }}
           >
             The leadership revolution starts here.
           </p>
@@ -252,7 +256,7 @@ const Footer = () => (
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
           <p
             className="font-sans text-[10px] tracking-wide"
-            style={{ color: "#555" }}
+            style={{ color: "#888" }}
           >
             © {new Date().getFullYear()} The Manage Her
             <span className="text-[8px] align-super">®</span> — Be Bold, Take
@@ -262,7 +266,7 @@ const Footer = () => (
             <Link
               to="/legal/#privacy"
               className="font-sans text-[10px] tracking-wide transition-colors hover:text-white"
-              style={{ color: "#555" }}
+              style={{ color: "#888" }}
             >
               Privacy Policy
             </Link>
@@ -270,7 +274,7 @@ const Footer = () => (
             <Link
               to="/legal/#terms"
               className="font-sans text-[10px] tracking-wide transition-colors hover:text-white"
-              style={{ color: "#555" }}
+              style={{ color: "#888" }}
             >
               Terms of Service
             </Link>
@@ -280,7 +284,7 @@ const Footer = () => (
               target="_blank"
               rel="noopener noreferrer"
               className="font-sans text-[10px] tracking-wide transition-colors hover:text-white"
-              style={{ color: "#555" }}
+              style={{ color: "#888" }}
             >
               Site Credit
             </a>
