@@ -14,6 +14,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { TOPIC_INDEX_MIN_POSTS, topicSlug } from './lib/topics.mjs';
 
 const DIST = path.join(process.cwd(), 'dist');
 const BLOG_DIR = path.join(process.cwd(), 'public/blog');
@@ -379,7 +380,7 @@ function embedJson(html, id, data) {
   return html.replace('</body>', `<script type="application/json" id="${id}">${json}</script>\n  </body>`);
 }
 
-function injectMeta(template, { title, description, url, image, type, jsonLd, noindex, linkRels, preloadImages }) {
+function injectMeta(template, { title, description, url, image, type, jsonLd, noindex, robots, linkRels, preloadImages }) {
   let html = template;
 
   // Title
@@ -411,10 +412,11 @@ function injectMeta(template, { title, description, url, image, type, jsonLd, no
 
   // Robots — replace the default rich-SERP meta with noindex when set.
   // Otherwise leave the template default in place.
-  if (noindex) {
+  // `robots` sets an explicit value (e.g. "noindex, follow").
+  if (noindex || robots) {
     html = html.replace(
       /<meta name="robots" content="[^"]*"\s*\/?>/,
-      '<meta name="robots" content="noindex, nofollow" />'
+      `<meta name="robots" content="${escapeHtml(robots || 'noindex, nofollow')}" />`
     );
   }
 
@@ -461,8 +463,6 @@ function checkRoutesPrerendered(posts) {
   const src = fs.readFileSync(routesFile, 'utf-8');
   const paths = [...src.matchAll(/<Route\s+path="([^"]+)"/g)].map((m) => m[1]);
   const fileFor = (p) => path.join(DIST, p === '/' ? 'index.html' : path.join(p, 'index.html'));
-  const topicSlug = (s) =>
-    s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
   const missing = [];
   for (const p of paths) {
@@ -660,14 +660,13 @@ function main() {
     }
   }
 
-  // Topic category pages — one per topic, including single-post topics: the
-  // SPA fallback is 404.html, so any topic URL without a file would return a
-  // 404 status. (The sitemap still lists only topics with ≥2 posts.)
+  // Topic category pages — one per topic, including small ones: the SPA
+  // fallback is 404.html, so any topic URL without a file would return a 404
+  // status. Topics below TOPIC_INDEX_MIN_POSTS get `noindex, follow` and are
+  // left out of the sitemap (scripts/lib/topics.mjs).
   if (posts.length > 0) {
     const tally = new Map();
     for (const p of posts) for (const t of p.topics || []) tally.set(t, (tally.get(t) || 0) + 1);
-    const topicSlug = (s) =>
-      s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
     for (const [topic, n] of tally) {
       const slug = topicSlug(topic);
@@ -687,6 +686,7 @@ function main() {
         image: DEFAULT_IMAGE,
         type: 'website',
         preloadImages: topicPreload,
+        ...(n < TOPIC_INDEX_MIN_POSTS && { robots: 'noindex, follow' }),
         jsonLd: {
           '@context': 'https://schema.org',
           '@type': 'CollectionPage',

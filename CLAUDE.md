@@ -206,7 +206,9 @@ animates as before. Read it in a `useState` initializer, never on every render.
 flash the home hero). `prerender-meta.mjs` writes the untouched Vite shell to `dist/404.html`;
 Cloudflare Pages serves it, **with a 404 status**, for any path that has no file, and React
 renders the NotFound route. Every route is prerendered (static routes, all posts, all topics
-including single-post ones), so none depend on the fallback. **Don't add a `/* … 200` splat to `_redirects`:** Pages applies a valid rewrite even
+including single-post ones), so none depend on the fallback. Topics below `TOPIC_INDEX_MIN_POSTS` (currently 2,
+in `scripts/lib/topics.mjs`, shared by the sitemap and prerender scripts) are prerendered with
+`<meta name="robots" content="noindex, follow">` and left out of the sitemap. **Don't add a `/* … 200` splat to `_redirects`:** Pages applies a valid rewrite even
 when a static file exists, so it would replace every prerendered page with the target. (The old
 `/* /index.html 200` only worked because Pages ignores it as a self-loop.)
 
