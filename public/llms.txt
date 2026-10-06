@@ -1,0 +1,47 @@
+# The Manage Her®
+
+> The Manage Her® is a women's leadership movement and media brand founded by Aimee Rickabus. It redefines how women lead in life, at home, and in business, at the intersection of women's empowerment, financial literacy, and entrepreneurship. The brand includes The Manage Her® Podcast, the Her Series of books, and keynote speaking.
+
+The site is a single-page React application; the pages below are the canonical, crawlable entry points. The brand name always carries the registered trademark symbol (The Manage Her®), never ™.
+
+Founder: Aimee Rickabus — CEO of a nine-figure technology company, host of The Manage Her® Podcast, mother of six, author of the Her Series, and recipient of the NAWBO Orange County Remarkable Woman Award for Innovation.
+
+The Her Series (books):
+- The Manage Her: Unveiling Invisible Labor & Sparking a Leadership Revolution (published)
+- The Cultivate Her (launching November 20, 2026 — pre-order waitlist open)
+
+Audience: ambitious women, working mothers, female entrepreneurs, and women stepping into leadership.
+
+## Core pages
+
+- [Home](https://themanageher.com/): Overview of the movement, the podcast, the books, and ways to listen and subscribe
+- [About Aimee Rickabus](https://themanageher.com/about/): Founder story, credentials, and why The Manage Her® exists
+- [The Manage Her® Podcast](https://themanageher.com/podcast/): Weekly conversations on leadership, invisible labor, money, and entrepreneurship for women; signature episodes and a start-here playlist
+- [Books — The Her Series](https://themanageher.com/book/): The Manage Her (available now) and The Cultivate Her (launching November 20, 2026) with waitlist and Chapter 1 teaser
+- [Press & Speaking](https://themanageher.com/press/): Speaker bios, speaking themes, media appearances, and booking information
+- [Blog](https://themanageher.com/blog/): Episode companion posts with key takeaways, self-discovery quizzes, guest links, and full transcripts
+
+## Listen
+
+- [Apple Podcasts](https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475): The Manage Her® Podcast on Apple Podcasts
+- [Spotify](https://open.spotify.com/show/03FuFRyzkaWhZkk5yxFePJ): The Manage Her® Podcast on Spotify
+- [YouTube](https://www.youtube.com/@TheManageHer): Full video episodes and clips
+- [Amazon Music](https://music.amazon.com/podcasts/91c217a5-4245-4b83-8d15-8edfdde06884/the-manage-her): The Manage Her® Podcast on Amazon Music
+
+## Books
+
+- [The Manage Her on Amazon](https://a.co/d/by5X0fV): Buy The Manage Her: Unveiling Invisible Labor & Sparking a Leadership Revolution
+
+## Booking and contact
+
+- [Book Aimee as a Podcast Guest](https://tmh.themanageher.com/widget/bookings/book-aimee-as-a-podcast-guest): Invite Aimee Rickabus onto your show
+- [Book a 30-minute call with Aimee](https://tmh.themanageher.com/widget/bookings/book-with-aimee): One-on-one conversation with Aimee
+- Email: info@themanageher.com
+- Phone: 949-868-0444
+
+## Optional
+
+- [Sitemap](https://themanageher.com/sitemap.xml): Full list of indexable URLs, including every blog post
+- [Instagram](https://www.instagram.com/themanageher/): @themanageher
+- [TikTok](https://www.tiktok.com/@themanageher): @themanageher
+- [LinkedIn](https://www.linkedin.com/company/themanageher): The Manage Her® company page

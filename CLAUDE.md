@@ -61,6 +61,8 @@ GA4 events go through `trackEvent()` in `src/lib/analytics.ts`, which no-ops saf
 Cloudflare Web Analytics runs in **snippet mode** — the beacon tag lives in `index.html`
 (automatic injection is off, so removing that tag silently stops all collection).
 
+`public/llms.txt` — AI-crawler site summary (llmstxt.org spec); update when pages or key links change.
+
 ### `boot_failure` — the front-end outage alarm
 **This is the only signal that the site is down for real users. Treat a rise in it as an
 outage, not a metrics blip.**
