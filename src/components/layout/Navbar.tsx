@@ -107,9 +107,11 @@ const Navbar = () => {
         <div className="max-w-[1400px] mx-auto flex items-center justify-between px-6 lg:px-12 h-20">
           <Link to="/" className="shrink-0 flex items-center gap-2">
             <img
-              src="/M_Logo_Pink.png"
+              src="/M_Logo_Pink-256.png"
               alt=""
               aria-hidden="true"
+              width={256}
+              height={256}
               style={{
                 height: "24px",
                 width: "auto",
@@ -232,9 +234,11 @@ const Navbar = () => {
         <div className="flex flex-col items-center justify-center min-h-screen min-h-[100svh] px-6 py-20 overflow-y-auto">
           {/* M logo at top */}
           <img
-            src="/M_Logo_Pink.png"
+            src="/M_Logo_Pink-256.png"
             alt=""
             aria-hidden="true"
+            width={256}
+            height={256}
             className="mb-10"
             style={{
               height: "48px",

@@ -1,23 +1,43 @@
 import { useState, useEffect } from "react";
 
+// Shown only on the first page load of a session — after that it would just
+// cover an already-painted page. Storage errors fail open (loader shows).
+const SEEN_KEY = "tmh_loader_seen";
+
+function alreadySeen(): boolean {
+  try {
+    return sessionStorage.getItem(SEEN_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
 const PageLoader = () => {
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
-  const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(alreadySeen);
 
   useEffect(() => {
+    if (hidden) return;
+    try {
+      sessionStorage.setItem(SEEN_KEY, "1");
+    } catch {
+      /* nothing to remember — it shows again next load */
+    }
+    // ~250ms to fill (4 ticks), then straight into the 0.8s wipe.
     const timer = setInterval(() => {
       setProgress((p) => {
         if (p >= 100) {
           clearInterval(timer);
-          setTimeout(() => setDone(true), 300);
-          setTimeout(() => setHidden(true), 1200);
+          setDone(true);
+          setTimeout(() => setHidden(true), 850);
           return 100;
         }
-        return p + Math.random() * 15 + 5;
+        return p + Math.random() * 10 + 25;
       });
     }, 60);
     return () => clearInterval(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- run once on mount
   }, []);
 
   if (hidden) return null;
@@ -38,8 +58,10 @@ const PageLoader = () => {
       }}
     >
       <img
-        src="/M_Logo_Pink.png"
+        src="/M_Logo_Pink-256.png"
         alt=""
+        width={256}
+        height={256}
         style={{
           height: "50px",
           width: "auto",

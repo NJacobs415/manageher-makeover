@@ -44,6 +44,8 @@ const STATIC_ROUTES = [
   {
     path: '/',
     title: 'The Manage Her® — Redefining Women\'s Leadership',
+    // Hero poster is the homepage LCP element (src/components/HeroVideo.tsx).
+    preloadImages: ['/hero-poster.webp'],
     description: 'Leadership movement for women — redefining how women lead in life, at home, and in business. Founded by Aimee Rickabus.',
     jsonLd: {
       '@context': 'https://schema.org',
@@ -409,7 +411,7 @@ function main() {
     // CF Pages serves all directory routes with a trailing slash and 308s the
     // no-slash form. Canonical/og:url must match the served URL.
     const url = route.path === '/' ? `${SITE_URL}/` : `${SITE_URL}${route.path}/`;
-    const preloadImages = route.path === '/blog' ? blogPreload : undefined;
+    const preloadImages = route.path === '/blog' ? blogPreload : route.preloadImages;
     let html = injectMeta(template, { ...route, url, preloadImages });
     if (route.path === '/blog') {
       html = replaceRoot(

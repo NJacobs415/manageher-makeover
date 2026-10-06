@@ -150,6 +150,37 @@ once in `AnimatedRoutes.tsx` as a sibling of the route `AnimatePresence` — it 
 - **Events:** `popup_view` (`{ popup: "cultivate_her_chapter1", trigger: "timer" | "scroll" |
   "exit_intent" }`) on open; `popup_dismiss` (`{ popup }`) on a non-signup close.
 
+## Performance
+
+### Hero video (`src/components/HeroVideo.tsx`)
+- **Always a poster.** `public/hero-poster.webp` (+ `.jpg` fallback) renders as an `<img>`
+  under the video and is the homepage LCP element; `prerender-meta.mjs` preloads it with
+  `fetchpriority="high"` on `/` only.
+- **Video loads lazily, on every viewport.** `preload="none"`, no `src` until the window
+  `load` event, then `play()`; it fades in over the poster on `playing`. Source is chosen at
+  mount with `matchMedia('(max-width: 767px)')` — `hero-video-640.*` on mobile, `hero-video-1280.*`
+  on desktop — not `<source media>` (Safari ignores it for video). webm (VP9) when
+  `canPlayType` allows, else mp4. The `muted` attribute is set via ref so iOS autoplays.
+- **Budgets:** 1280 mp4 < 1.2 MB, 640 mp4 < 600 KB, each webm no bigger than its mp4.
+  Re-encoding: trim to a loop that ends on a hard cut before raising CRF past 30; no audio,
+  `-movflags +faststart`. Current files are a 12.8s trim, 24fps, x264 CRF 29 / 28.
+- Hero eyebrow + h1 use `<TextReveal immediate>` (transform-only, no clip-path or
+  IntersectionObserver wait) so they paint on first frame. Don't use the default clip-path
+  reveal above the fold.
+
+### Images
+- Serve at ≤ 2× the largest displayed size and **always set `width`/`height`** (with CSS
+  `width: auto` / `h-* w-auto` when only the height is fixed, or the attribute stretches it).
+  Unsized lazy images below the fold report `src=""` in Lighthouse because they never load.
+- Sized variants live beside the originals (`card-*-672.webp`, `card-*-900.webp`,
+  `aimee-portrait-1-{400,800}.webp`, `M_Logo_*-256.png`); originals stay for other pages,
+  JSON-LD and OG images. Use the 1080 logos only where displayed large (hero watermark).
+
+### PageLoader
+`src/components/animations/PageLoader.tsx` shows only on the first page load of a session
+(`sessionStorage["tmh_loader_seen"]`, fails open if storage throws), fills in ~250ms, then the
+0.8s wipe. It overlays — the page renders underneath; never gate route rendering on it.
+
 ## Brand Design System
 
 ### Colors (update CSS variables to match)
