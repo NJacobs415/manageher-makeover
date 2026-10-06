@@ -32,7 +32,13 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=DM+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+    <!-- Google Fonts, non-blocking: media="print" loads without blocking first
+         paint, onload flips it on. Text paints first in the metric-matched
+         "* Fallback" faces from src/index.css, so the swap doesn't shift layout.
+         Only the weights/styles actually used — never add one in src/ without
+         adding it here (and a fallback face if it's above the fold). -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Cormorant+Garamond:ital,wght@1,400;1,600&amp;display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Cormorant+Garamond:ital,wght@1,400;1,600&amp;display=swap" /></noscript>
 
     <!-- Google tag (gtag.js) — deferred load -->
     <script>

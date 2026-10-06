@@ -2,6 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Metric-matched font fallbacks ───
+   Google Fonts load non-blocking (index.html), so prerendered text first
+   paints in these local faces. size-adjust/ascent/descent are tuned so the
+   swap to the web font doesn't reflow — measured against the actual Google
+   font files (variable axes instanced at the listed weight) over English
+   text. Tuned weights: Playfair 700, DM Sans 400/500, Cormorant italic 400;
+   the other weights in each family reuse the nearest tuning.
+   Georgia/Arial cover macOS, iOS and Windows; the "Android" families cover
+   Noto Serif/Roboto. */
+@font-face { font-family: "Playfair Display Fallback"; src: local("Georgia"); font-weight: 400; font-style: normal; size-adjust: 89.59%; ascent-override: 120.77%; descent-override: 28.02%; line-gap-override: 0%; }
+@font-face { font-family: "Playfair Display Fallback"; src: local("Georgia Italic"), local("Georgia-Italic"); font-weight: 400; font-style: italic; size-adjust: 89.59%; ascent-override: 120.77%; descent-override: 28.02%; line-gap-override: 0%; }
+@font-face { font-family: "Playfair Display Fallback"; src: local("Georgia Bold"), local("Georgia-Bold"); font-weight: 600 700; font-style: normal; size-adjust: 89.59%; ascent-override: 120.77%; descent-override: 28.02%; line-gap-override: 0%; }
+@font-face { font-family: "Playfair Display Fallback"; src: local("Georgia Bold Italic"), local("Georgia-BoldItalic"); font-weight: 600 700; font-style: italic; size-adjust: 89.59%; ascent-override: 120.77%; descent-override: 28.02%; line-gap-override: 0%; }
+@font-face { font-family: "Playfair Display Fallback Android"; src: local("Noto Serif"), local("NotoSerif-Regular"); font-weight: 400; size-adjust: 90.85%; ascent-override: 119.10%; descent-override: 27.63%; line-gap-override: 0%; }
+@font-face { font-family: "Playfair Display Fallback Android"; src: local("Noto Serif Bold"), local("NotoSerif-Bold"); font-weight: 600 700; size-adjust: 90.85%; ascent-override: 119.10%; descent-override: 27.63%; line-gap-override: 0%; }
+
+@font-face { font-family: "DM Sans Fallback"; src: local("Arial"), local("ArialMT"); font-weight: 400; size-adjust: 104.21%; ascent-override: 95.19%; descent-override: 29.75%; line-gap-override: 0%; }
+@font-face { font-family: "DM Sans Fallback"; src: local("Arial"), local("ArialMT"); font-weight: 500; size-adjust: 106.03%; ascent-override: 93.56%; descent-override: 29.24%; line-gap-override: 0%; }
+@font-face { font-family: "DM Sans Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"); font-weight: 600 700; size-adjust: 106.03%; ascent-override: 93.56%; descent-override: 29.24%; line-gap-override: 0%; }
+@font-face { font-family: "DM Sans Fallback Android"; src: local("Roboto"), local("Roboto-Regular"); font-weight: 400; size-adjust: 104.53%; ascent-override: 94.90%; descent-override: 29.66%; line-gap-override: 0%; }
+@font-face { font-family: "DM Sans Fallback Android"; src: local("Roboto Medium"), local("Roboto-Medium"); font-weight: 500; size-adjust: 105.50%; ascent-override: 94.03%; descent-override: 29.38%; line-gap-override: 0%; }
+@font-face { font-family: "DM Sans Fallback Android"; src: local("Roboto Bold"), local("Roboto-Bold"); font-weight: 600 700; size-adjust: 105.50%; ascent-override: 94.03%; descent-override: 29.38%; line-gap-override: 0%; }
+
+/* DM Sans capitals are much narrower relative to Arial than its lowercase
+   (size-adjust 92% vs 104%), so uppercase labels get their own tuning. Keyed
+   to the site's label pattern: font-sans + uppercase on the same element. */
+@font-face { font-family: "DM Sans Caps Fallback"; src: local("Arial"), local("ArialMT"); font-weight: 400 500; size-adjust: 92.02%; ascent-override: 107.80%; descent-override: 33.69%; line-gap-override: 0%; }
+@font-face { font-family: "DM Sans Caps Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"); font-weight: 600 700; size-adjust: 93.15%; ascent-override: 106.49%; descent-override: 33.28%; line-gap-override: 0%; }
+@font-face { font-family: "DM Sans Caps Fallback Android"; src: local("Roboto"), local("Roboto-Regular"); font-weight: 400 500; size-adjust: 101.15%; ascent-override: 98.07%; descent-override: 30.65%; line-gap-override: 0%; }
+@font-face { font-family: "DM Sans Caps Fallback Android"; src: local("Roboto Bold"), local("Roboto-Bold"); font-weight: 600 700; size-adjust: 102.62%; ascent-override: 96.67%; descent-override: 30.21%; line-gap-override: 0%; }
+.font-sans.uppercase { font-family: "DM Sans", "DM Sans Caps Fallback", "DM Sans Caps Fallback Android", system-ui, sans-serif; }
+
+@font-face { font-family: "Cormorant Garamond Fallback"; src: local("Georgia Italic"), local("Georgia-Italic"); font-weight: 400; font-style: italic; size-adjust: 78.38%; ascent-override: 117.89%; descent-override: 36.62%; line-gap-override: 0%; }
+@font-face { font-family: "Cormorant Garamond Fallback"; src: local("Georgia Bold Italic"), local("Georgia-BoldItalic"); font-weight: 600; font-style: italic; size-adjust: 78.38%; ascent-override: 117.89%; descent-override: 36.62%; line-gap-override: 0%; }
+@font-face { font-family: "Cormorant Garamond Fallback Android"; src: local("Noto Serif Italic"), local("NotoSerif-Italic"), local("Noto Serif"); font-weight: 400 600; font-style: italic; size-adjust: 73.50%; ascent-override: 125.72%; descent-override: 39.05%; line-gap-override: 0%; }
+
 @layer base {
   :root {
     /* Dark editorial base — #0a0a0a background, #e0e0e0 body text */
@@ -71,7 +107,7 @@
     @apply bg-background text-foreground font-sans antialiased;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: theme("fontFamily.serif");
   }
   /* Fix for clipped descenders (p, g, y, q, j) on large serif headlines.
      padding-bottom adds internal room below the baseline so the tails
@@ -186,7 +222,7 @@ body {
 
 /* ─── Large editorial number ─── */
 .editorial-number {
-  font-family: 'Playfair Display', serif;
+  font-family: theme("fontFamily.serif");
   font-style: italic;
   line-height: 0.85;
   color: hsl(var(--brand-pink) / 0.06);

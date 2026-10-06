@@ -10,13 +10,16 @@ interface TextRevealProps {
   // no IntersectionObserver wait and no clip-path, which would keep the text
   // unpainted (and out of the running for LCP) until the reveal finishes.
   immediate?: boolean;
+  // Render the final state with no animation (prerendered first load).
+  instant?: boolean;
 }
 
-const TextReveal = ({ children, className, delay = 0, direction = "up", immediate = false }: TextRevealProps) => {
+const TextReveal = ({ children, className, delay = 0, direction = "up", immediate = false, instant = false }: TextRevealProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(instant);
 
   useEffect(() => {
+    if (instant) return;
     if (immediate) {
       // Two frames so the start transform is committed before transitioning.
       let id = requestAnimationFrame(() => {
@@ -35,7 +38,7 @@ const TextReveal = ({ children, className, delay = 0, direction = "up", immediat
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, [immediate]);
+  }, [immediate, instant]);
 
   const clipFrom = direction === "up" ? "inset(100% 0 0 0)" : direction === "left" ? "inset(0 100% 0 0)" : "inset(0 0 0 100%)";
 

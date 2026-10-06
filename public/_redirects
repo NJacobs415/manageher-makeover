@@ -1,2 +1,4 @@
 /blog/peptide-therapy-for-women-what-no-one-tells-you  /blog/peptides-for-tired-moms-what-no-one-tells-you  301
-/*    /index.html   200
+# SPA fallback: an untouched shell written by scripts/prerender-meta.mjs.
+# Not /index.html — that's the prerendered homepage and would flash its hero.
+/*    /_shell/index.html   200

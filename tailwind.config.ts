@@ -13,9 +13,11 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ["Playfair Display", "Georgia", "serif"],
-        sans: ["DM Sans", "system-ui", "sans-serif"],
-        accent: ["Cormorant Garamond", "Georgia", "serif"],
+        // "* Fallback" faces are metric-matched local fonts (src/index.css) so
+        // text painted before the web font arrives doesn't shift on swap.
+        serif: ["Playfair Display", "Playfair Display Fallback", "Playfair Display Fallback Android", "Georgia", "serif"],
+        sans: ["DM Sans", "DM Sans Fallback", "DM Sans Fallback Android", "system-ui", "sans-serif"],
+        accent: ["Cormorant Garamond", "Cormorant Garamond Fallback", "Cormorant Garamond Fallback Android", "Georgia", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",

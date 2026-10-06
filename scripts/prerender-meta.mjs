@@ -217,7 +217,7 @@ const PRERENDER_CSS = `
 `;
 
 function wrapPrerender(inner) {
-  return `<article id="tmh-boot" class="tmh-pre"><style>${PRERENDER_CSS}</style><div class="tmh-pre-inner">${inner}</div></article>`;
+  return `<article id="tmh-boot" data-prerendered class="tmh-pre"><style>${PRERENDER_CSS}</style><div class="tmh-pre-inner">${inner}</div></article>`;
 }
 
 // Fields: title, publishedAt, guestName, keyTakeaways, content, pullQuotes,
@@ -283,6 +283,73 @@ function renderPostList(heading, intro, posts) {
     })
     .join('\n');
   return wrapPrerender(`<h1>${escapeHtml(heading)}</h1><p>${escapeHtml(intro)}</p><ul class="tmh-pre-list">${items}</ul>`);
+}
+
+// ─── Home hero prerender ────────────────────────────────────────
+// Static copy of the announcement bar, nav and hero from
+// src/components/layout/Navbar.tsx + src/pages/Index.tsx + HeroVideo.tsx,
+// in their FINAL rendered state (no animation start states), so the first
+// paint comes from HTML and React's mount is a silent swap. On that first
+// render React skips the entrance animations (src/lib/prerenderBoot.ts).
+//
+// ⚠️ Keep in sync: if hero/nav copy, classes or wrapper divs change in those
+//    files, change them here too. Wrapper divs (TextReveal/FadeIn/Magnetic)
+//    are mirrored on purpose — they affect line boxes, so dropping them
+//    would shift the hero when React mounts (CLS).
+
+// Same formula as src/hooks/useEpisodeCount.ts. The build-time value can lag
+// the runtime one by at most a week between deploys.
+function episodeCountAt(now) {
+  const baseCount = 60;
+  const baseDate = new Date('2026-05-04T00:00:00');
+  const weeks = Math.floor((now.getTime() - baseDate.getTime()) / (7 * 24 * 60 * 60 * 1000));
+  return baseCount + Math.max(0, weeks);
+}
+
+const APPLE_URL = 'https://podcasts.apple.com/us/podcast/the-manage-her/id1809208475';
+const GRAIN = `url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)`;
+const SVG_PLAY = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play fill-current"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>';
+const SVG_ARROW_RIGHT = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>';
+const SVG_ARROW_DOWN = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down animate-bounce"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>';
+const MAGNETIC = 'transition-transform duration-300 ease-out';
+// TextReveal (immediate) and FadeIn wrappers, at rest.
+const reveal = (inner) => `<div><div style="transform:translateY(0);will-change:transform">${inner}</div></div>`;
+const fadeIn = (inner) => `<div style="opacity:1;transform:translate3d(0,0,0) scale(1);will-change:opacity, transform">${inner}</div>`;
+
+function renderHomeShell(episodeCount) {
+  const navLinks = [['About', '/about'], ['Podcast', '/podcast'], ['Book', '/book'], ['Blog', '/blog'], ['Press', '/press']]
+    .map(([label, href]) => `<div class="${MAGNETIC} shrink-0 inline-flex" data-magnetic><a href="${href}" class="link-reveal font-sans text-[12px] font-medium uppercase tracking-[0.15em] transition-colors whitespace-nowrap text-foreground/60 hover:text-foreground">${label}</a></div>`)
+    .join('');
+  const line = (top) => `<span class="absolute left-0 block transition-all duration-300 ease-out" style="width:24px;height:2px;background-color:#fafafa;top:${top};transform:rotate(0deg)"></span>`;
+  const stats = [[episodeCount, '+', 'Episodes'], [50, 'K+', 'Downloads'], [5, '★', 'Rated']]
+    .map(([v, suffix, label]) => `<div><p class="font-serif text-2xl md:text-3xl font-bold text-brand-pink"><span>${v}${suffix}</span></p><p class="font-sans text-[9px] uppercase tracking-[0.2em] text-muted-foreground mt-1">${label}</p></div>`)
+    .join('');
+
+  return `<div id="tmh-boot" data-prerendered class="overflow-x-hidden">` +
+    // Announcement bar + sticky nav (in normal flow — omitting them would push the hero down on mount).
+    `<div class="bg-foreground text-background text-center py-2.5 px-4 font-sans text-[11px] tracking-[0.15em] uppercase z-[60] relative">New episodes weekly — <a href="${APPLE_URL}" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-brand-pink transition-colors">Listen now</a></div>` +
+    `<nav class="sticky top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent"><div class="max-w-[1400px] mx-auto flex items-center justify-between px-6 lg:px-12 h-20">` +
+      `<a class="shrink-0 flex items-center gap-2" href="/"><img src="/M_Logo_Pink-256.png" alt="" aria-hidden="true" width="256" height="256" style="height:24px;width:auto;mix-blend-mode:screen"><span class="font-serif text-xl md:text-2xl font-bold text-foreground tracking-tight">The Manage<em class="text-brand-pink">Her</em><span class="text-brand-pink text-[8px] align-super">®</span></span></a>` +
+      `<div class="hidden lg:flex items-center"><div class="flex items-center gap-12">${navLinks}</div><div class="${MAGNETIC} shrink-0 inline-flex ml-10" data-magnetic><a href="${APPLE_URL}" target="_blank" rel="noopener noreferrer" class="btn-glow inline-flex items-center bg-brand-pink text-primary-foreground font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-6 py-3 hover:bg-brand-pink/90 transition-colors whitespace-nowrap">Listen Now</a></div></div>` +
+    `</div></nav>` +
+    // Inert until React mounts and replaces it with the real toggle.
+    `<button type="button" aria-label="Open menu" aria-expanded="false" class="lg:hidden fixed flex items-center justify-center transition-all duration-300" style="top:60px;right:20px;width:44px;height:44px;z-index:10000;background:transparent;border:none;cursor:pointer"><div class="relative" style="width:24px;height:18px">${line('0')}${line('8px')}${line('16px')}</div></button>` +
+    // Hero
+    `<section class="relative min-h-screen min-h-[100svh] flex items-center overflow-hidden bg-background">` +
+      `<div class="absolute inset-0 z-0"><picture><source srcset="/hero-poster.webp" type="image/webp"><img src="/hero-poster.jpg" alt="" aria-hidden="true" width="1280" height="720" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover" style="filter:brightness(0.35)"></picture>` +
+        `<div class="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-transparent"></div><div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40"></div></div>` +
+      `<div class="absolute inset-0 z-[1] opacity-[0.03] pointer-events-none" style="background-image:${GRAIN};background-size:200px"></div>` +
+      `<img src="/M_Logo_Pink.png" alt="" aria-hidden="true" width="1080" height="1080" class="absolute z-[2] pointer-events-none select-none" style="bottom:20px;right:20px;height:200px;width:auto;opacity:0.08;transform:rotate(10deg);mix-blend-mode:screen">` +
+      `<div class="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 w-full"><div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-20 lg:py-0"><div class="lg:col-span-8">` +
+        reveal(`<p class="font-sans text-[11px] uppercase tracking-[0.3em] text-brand-pink mb-6">The Podcast Redefining Leadership</p>`) +
+        reveal(`<h1 class="font-serif text-[3rem] md:text-[4.5rem] lg:text-[5.5rem] font-bold leading-[1.15] text-foreground mb-8">Where Motherhood<br>Meets <em class="text-brand-pink italic">Leadership</em></h1>`) +
+        fadeIn(`<p class="text-[15px] leading-relaxed max-w-lg mb-10" style="font-family:'Cormorant Garamond', 'Cormorant Garamond Fallback', Georgia, serif;font-style:italic;color:var(--foreground-muted, #999);font-size:1.15rem;line-height:1.9">Invisible work gets the spotlight it deserves. Empowering women to reclaim their roles as CEOs of both home and business.</p>`) +
+        fadeIn(`<div class="flex flex-wrap gap-4 mb-12"><div class="${MAGNETIC}" data-magnetic><a href="#listen" class="btn-glow inline-flex items-center gap-2.5 bg-brand-pink text-primary-foreground font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-8 py-4 hover:bg-brand-pink/90 transition-colors" style="border-radius:50px">${SVG_PLAY} Listen Now</a></div><div class="${MAGNETIC}" data-magnetic><a href="/book/" class="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground border border-foreground/15 px-8 py-4 hover:border-brand-pink hover:text-brand-pink transition-all" style="border-radius:50px">Get the Book ${SVG_ARROW_RIGHT}</a></div></div>`) +
+        fadeIn(`<div class="flex gap-10">${stats}</div>`) +
+      `</div></div></div>` +
+      `<div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">${fadeIn(`<a href="#about" class="flex flex-col items-center gap-2 text-muted-foreground/40 hover:text-brand-pink transition-colors"><span class="font-sans text-[9px] uppercase tracking-[0.3em]">Scroll</span>${SVG_ARROW_DOWN}</a>`)}</div>` +
+    `</section>` +
+  `</div>`;
 }
 
 // Replace the contents of <div id="root"> (the boot placeholder) by walking
@@ -394,6 +461,13 @@ function main() {
   }
   const template = fs.readFileSync(templatePath, 'utf-8');
 
+  // Untouched SPA shell for the `/* /_shell/index.html 200` fallback in
+  // public/_redirects. dist/index.html becomes the prerendered homepage, so
+  // it can't double as the fallback — 404s and unprerendered routes would
+  // flash the home hero before React mounts.
+  fs.mkdirSync(path.join(DIST, '_shell'), { recursive: true });
+  fs.writeFileSync(path.join(DIST, '_shell', 'index.html'), template);
+
   // Load posts once and compute "top 6 by date desc" for /blog/ preload hints.
   const postsFile = path.join(BLOG_DIR, 'posts.json');
   const posts = fs.existsSync(postsFile)
@@ -421,8 +495,8 @@ function main() {
     }
 
     if (route.path === '/') {
-      // Overwrite dist/index.html with homepage-specific meta
-      fs.writeFileSync(templatePath, html);
+      // Overwrite dist/index.html with homepage-specific meta + prerendered hero
+      fs.writeFileSync(templatePath, replaceRoot(html, renderHomeShell(episodeCountAt(new Date()))));
     } else {
       const dir = path.join(DIST, route.path);
       fs.mkdirSync(dir, { recursive: true });

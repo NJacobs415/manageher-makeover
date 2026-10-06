@@ -10,6 +10,8 @@ interface FadeInProps {
   scale?: number;
   duration?: number;
   threshold?: number;
+  // Render the final state with no animation (prerendered first load).
+  instant?: boolean;
 }
 
 const FadeIn = ({
@@ -21,11 +23,13 @@ const FadeIn = ({
   scale = 1,
   duration = 900,
   threshold = 0.15,
+  instant = false,
 }: FadeInProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(instant);
 
   useEffect(() => {
+    if (instant) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -37,7 +41,7 @@ const FadeIn = ({
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, [threshold]);
+  }, [threshold, instant]);
 
   return (
     <div
