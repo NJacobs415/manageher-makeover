@@ -201,10 +201,16 @@ that first render: `PageTransition` uses `initial={false}`, `Index`/`BlogPost` d
 `PageLoader` doesn't show. Mount is a silent swap, not a fade-out-and-back. SPA navigation
 animates as before. Read it in a `useState` initializer, never on every render.
 
-### SPA fallback: `/_shell/`
+### SPA fallback: `dist/404.html`
 `dist/index.html` is now the prerendered homepage, so it can't be the SPA fallback (404s would
-flash the home hero). `prerender-meta.mjs` writes the untouched Vite shell to
-`dist/_shell/index.html`, and `public/_redirects` ends with `/* /_shell/ 200`.
+flash the home hero). `prerender-meta.mjs` writes the untouched Vite shell to `dist/404.html`;
+Cloudflare Pages serves it, **with a 404 status**, for any path that has no file, and React
+renders the NotFound route. Every route the app links to is prerendered (static routes, all
+posts, topics with ≥2 posts — the same threshold the topic links use), so none depend on the
+fallback. **Don't add a `/* … 200` splat to `_redirects`:** Pages applies a valid rewrite even
+when a static file exists, so it would replace every prerendered page with the target. (The old
+`/* /index.html 200` only worked because Pages ignores it as a self-loop.) If you add a new
+route, prerender it or it will return 404 status.
 
 ### Fonts
 Google Fonts CSS loads non-blocking (`media="print"` + `onload`, `<noscript>` fallback,

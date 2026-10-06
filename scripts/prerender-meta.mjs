@@ -461,12 +461,14 @@ function main() {
   }
   const template = fs.readFileSync(templatePath, 'utf-8');
 
-  // Untouched SPA shell for the `/* /_shell/ 200` fallback in
-  // public/_redirects. dist/index.html becomes the prerendered homepage, so
-  // it can't double as the fallback — 404s and unprerendered routes would
-  // flash the home hero before React mounts.
-  fs.mkdirSync(path.join(DIST, '_shell'), { recursive: true });
-  fs.writeFileSync(path.join(DIST, '_shell', 'index.html'), template);
+  // Untouched SPA shell as dist/404.html. dist/index.html becomes the
+  // prerendered homepage, so it can't double as the fallback — 404s would
+  // flash the home hero before React mounts. With a top-level 404.html,
+  // Cloudflare Pages serves it (status 404) for any path with no file; React
+  // then renders the NotFound route. Every route the app links to has its
+  // own prerendered file. (A `/* /x 200` splat in _redirects can't do this:
+  // Pages applies a valid rewrite even when a static file exists.)
+  fs.writeFileSync(path.join(DIST, '404.html'), template);
 
   // Load posts once and compute "top 6 by date desc" for /blog/ preload hints.
   const postsFile = path.join(BLOG_DIR, 'posts.json');

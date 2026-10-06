@@ -1,4 +1,4 @@
 /blog/peptide-therapy-for-women-what-no-one-tells-you  /blog/peptides-for-tired-moms-what-no-one-tells-you  301
-# SPA fallback: an untouched shell written by scripts/prerender-meta.mjs.
-# Not /index.html — that's the prerendered homepage and would flash its hero.
-/*    /_shell/   200
+# No SPA splat rule: unmatched paths get dist/404.html (the untouched shell,
+# written by scripts/prerender-meta.mjs) with a 404 status. A `/* … 200`
+# rewrite here would override the prerendered files — see CLAUDE.md.
