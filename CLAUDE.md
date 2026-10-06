@@ -205,12 +205,18 @@ animates as before. Read it in a `useState` initializer, never on every render.
 `dist/index.html` is now the prerendered homepage, so it can't be the SPA fallback (404s would
 flash the home hero). `prerender-meta.mjs` writes the untouched Vite shell to `dist/404.html`;
 Cloudflare Pages serves it, **with a 404 status**, for any path that has no file, and React
-renders the NotFound route. Every route the app links to is prerendered (static routes, all
-posts, topics with ≥2 posts — the same threshold the topic links use), so none depend on the
-fallback. **Don't add a `/* … 200` splat to `_redirects`:** Pages applies a valid rewrite even
+renders the NotFound route. Every route is prerendered (static routes, all posts, all topics
+including single-post ones), so none depend on the fallback. **Don't add a `/* … 200` splat to `_redirects`:** Pages applies a valid rewrite even
 when a static file exists, so it would replace every prerendered page with the target. (The old
-`/* /index.html 200` only worked because Pages ignores it as a self-loop.) If you add a new
-route, prerender it or it will return 404 status.
+`/* /index.html 200` only worked because Pages ignores it as a self-loop.)
+
+### Routing
+Every route in AnimatedRoutes.tsx must have a matching entry in prerender-meta.mjs — the SPA
+fallback is 404.html, so an unprerendered route returns a 404 status even though React renders
+it. `prerender-meta.mjs` checks this at the end of every build (`checkRoutesPrerendered()`): it
+reads the `<Route path>`s from `AnimatedRoutes.tsx` and warns for any static path, post or topic
+with no file in `dist/`. A new dynamic (`:param`) route always warns until it's added to both
+the prerender loops and that check.
 
 ### Fonts
 Google Fonts CSS loads non-blocking (`media="print"` + `onload`, `<noscript>` fallback,

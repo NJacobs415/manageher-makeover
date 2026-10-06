@@ -451,6 +451,44 @@ function toHqThumb(url) {
   return url.replace(/(maxresdefault|hqdefault|mqdefault|sddefault)/, 'hqdefault');
 }
 
+// ─── Route coverage check ───────────────────────────────────────
+// The SPA fallback is dist/404.html, so a route React can render but that has
+// no prerendered file returns a 404 status. Warn (don't fail the build) when a
+// path in AnimatedRoutes.tsx — or any post/topic for the dynamic routes — has
+// no file in dist/.
+function checkRoutesPrerendered(posts) {
+  const routesFile = path.join(process.cwd(), 'src/components/AnimatedRoutes.tsx');
+  const src = fs.readFileSync(routesFile, 'utf-8');
+  const paths = [...src.matchAll(/<Route\s+path="([^"]+)"/g)].map((m) => m[1]);
+  const fileFor = (p) => path.join(DIST, p === '/' ? 'index.html' : path.join(p, 'index.html'));
+  const topicSlug = (s) =>
+    s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
+  const missing = [];
+  for (const p of paths) {
+    if (p === '*') continue;
+    if (p === '/blog/:slug') {
+      for (const post of posts) if (!fs.existsSync(fileFor(`/blog/${post.slug}`))) missing.push(`/blog/${post.slug}/`);
+    } else if (p === '/blog/topic/:topic') {
+      const topics = new Set(posts.flatMap((x) => x.topics || []));
+      for (const t of topics) if (!fs.existsSync(fileFor(`/blog/topic/${topicSlug(t)}`))) missing.push(`/blog/topic/${topicSlug(t)}/`);
+    } else if (p.includes(':')) {
+      missing.push(`${p} (dynamic route — add its pages to prerender-meta.mjs and to this check)`);
+    } else if (!fs.existsSync(fileFor(p))) {
+      missing.push(p);
+    }
+  }
+  if (missing.length > 0) {
+    console.warn(
+      `\n⚠️  prerender-meta: ${missing.length} route(s) in AnimatedRoutes.tsx have no prerendered file and will return 404 status:\n` +
+        missing.map((m) => `   - ${m}`).join('\n') +
+        '\n   Add them to STATIC_ROUTES (or the post/topic loops) in scripts/prerender-meta.mjs.\n',
+    );
+  } else {
+    console.log(`Route check: all ${paths.length - 1} AnimatedRoutes paths have prerendered files`);
+  }
+}
+
 // ─── Main ───────────────────────────────────────────────────────
 
 function main() {
@@ -460,6 +498,12 @@ function main() {
     process.exit(1);
   }
   const template = fs.readFileSync(templatePath, 'utf-8');
+  // The template must be Vite's untouched shell. A second run would read the
+  // already-prerendered homepage and copy it into 404.html.
+  if (template.includes('data-prerendered')) {
+    console.error('dist/index.html is already prerendered — run `vite build` first (npm run build)');
+    process.exit(1);
+  }
 
   // Untouched SPA shell as dist/404.html. dist/index.html becomes the
   // prerendered homepage, so it can't double as the fallback — 404s would
@@ -616,8 +660,9 @@ function main() {
     }
   }
 
-  // Topic category pages — one per topic with ≥2 posts. Reuse the
-  // posts array loaded at top of main().
+  // Topic category pages — one per topic, including single-post topics: the
+  // SPA fallback is 404.html, so any topic URL without a file would return a
+  // 404 status. (The sitemap still lists only topics with ≥2 posts.)
   if (posts.length > 0) {
     const tally = new Map();
     for (const p of posts) for (const t of p.topics || []) tally.set(t, (tally.get(t) || 0) + 1);
@@ -625,11 +670,10 @@ function main() {
       s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
     for (const [topic, n] of tally) {
-      if (n < 2) continue;
       const slug = topicSlug(topic);
       const url = `${SITE_URL}/blog/topic/${slug}/`;
       const title = `${topic} Episodes | The Manage Her® Podcast`;
-      const description = `${n} podcast episodes on ${topic.toLowerCase()} from The Manage Her® — real conversations with women redefining leadership, hosted by Aimee Rickabus.`;
+      const description = `${n} podcast episode${n === 1 ? '' : 's'} on ${topic.toLowerCase()} from The Manage Her® — real conversations with women redefining leadership, hosted by Aimee Rickabus.`;
       const topicPreload = posts
         .filter((p) => (p.topics || []).includes(topic))
         .sort((a, b) => new Date(b.publishedAt || 0).getTime() - new Date(a.publishedAt || 0).getTime())
@@ -674,6 +718,8 @@ function main() {
   }
 
   console.log(`Pre-rendered meta tags for ${count} routes`);
+
+  checkRoutesPrerendered(posts);
 }
 
 main();
