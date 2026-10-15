@@ -72,10 +72,11 @@ and anything unparseable or missing the shape its component needs (`quiz.questio
 `guestQuiz.url`) is dropped to `undefined`. Both sections render behind `post.quiz && …` guards,
 so a bad field silently omits that one section instead of erroring the whole page. **This is a
 safety net, not a license to ship bad data** — repair the underlying `<slug>.json`, or the quiz
-just stops appearing. To audit every post:
+just stops appearing. `timestamps` hit the same bug on ep 73 (Oct 2026, surfaced as a GSC Soft 404), so
+`normalizeBlogPost()` now also coerces `timestamps`, `keyTakeaways`, `pullQuotes`, and `guestLinks`. To audit every post:
 
 ```
-node -e 'const fs=require("fs"),p="public/blog/";for(const f of fs.readdirSync(p)){const j=JSON.parse(fs.readFileSync(p+f,"utf8"));for(const k of ["quiz","guestQuiz"])if(j[k]!==undefined&&typeof j[k]!=="object")console.log("BAD",f,k,typeof j[k])}'
+node -e 'const fs=require("fs"),p="public/blog/";for(const f of fs.readdirSync(p)){const j=JSON.parse(fs.readFileSync(p+f,"utf8"));for(const k of ["quiz","guestQuiz"])if(j[k]!==undefined&&typeof j[k]!=="object")console.log("BAD",f,k,typeof j[k]);for(const k of ["timestamps","keyTakeaways","pullQuotes","guestLinks"])if(j[k]!==undefined&&!Array.isArray(j[k]))console.log("BAD",f,k,typeof j[k])}'
 ```
 
 ## Analytics & Monitoring
