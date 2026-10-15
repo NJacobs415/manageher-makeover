@@ -72,7 +72,68 @@
       "timestamp": "46:06"
     }
   ],
-  "timestamps": "[{\"time\": \"0:00\", \"label\": \"Introduction: AI, Motherhood, and What's Coming for Our Kids\"}, {\"time\": \"2:28\", \"label\": \"Melinda Wittstock on Why Women Have to Shape AI\"}, {\"time\": \"5:38\", \"label\": \"Why AI Fluency Is Non-Negotiable for Moms\"}, {\"time\": \"7:17\", \"label\": \"Will Your Kids Work for AI, or Will AI Work for Them?\"}, {\"time\": \"8:49\", \"label\": \"Critical Thinking and the Problem With Agreeable AI\"}, {\"time\": \"13:37\", \"label\": \"What AI Can Never Replace\"}, {\"time\": \"19:57\", \"label\": \"The \"Mother Instinct\" Argument for Safer AI\"}, {\"time\": \"24:37\", \"label\": \"The Loneliness Epidemic and Real-Life Community\"}, {\"time\": \"28:33\", \"label\": \"How Motherhood Made Her a Better Entrepreneur\"}, {\"time\": \"30:07\", \"label\": \"Raising Kids for a World That Won't Stop Changing\"}, {\"time\": \"32:32\", \"label\": \"How Her 19-Year-Old Son Built a Business With AI\"}, {\"time\": \"36:36\", \"label\": \"What Parents Should Teach That Schools Don't\"}, {\"time\": \"38:10\", \"label\": \"Screen Rules, Sleep Hygiene, and Toddlers With iPads\"}, {\"time\": \"40:33\", \"label\": \"Tails & Trails: Tech That Connects People in Real Life\"}, {\"time\": \"46:06\", \"label\": \"Advice for Parents Raising Tech-Curious Kids\"}]",
+  "timestamps": [
+    {
+      "time": "0:00",
+      "label": "Introduction: AI, Motherhood, and What's Coming for Our Kids"
+    },
+    {
+      "time": "2:28",
+      "label": "Melinda Wittstock on Why Women Have to Shape AI"
+    },
+    {
+      "time": "5:38",
+      "label": "Why AI Fluency Is Non-Negotiable for Moms"
+    },
+    {
+      "time": "7:17",
+      "label": "Will Your Kids Work for AI, or Will AI Work for Them?"
+    },
+    {
+      "time": "8:49",
+      "label": "Critical Thinking and the Problem With Agreeable AI"
+    },
+    {
+      "time": "13:37",
+      "label": "What AI Can Never Replace"
+    },
+    {
+      "time": "19:57",
+      "label": "The \"Mother Instinct\" Argument for Safer AI"
+    },
+    {
+      "time": "24:37",
+      "label": "The Loneliness Epidemic and Real-Life Community"
+    },
+    {
+      "time": "28:33",
+      "label": "How Motherhood Made Her a Better Entrepreneur"
+    },
+    {
+      "time": "30:07",
+      "label": "Raising Kids for a World That Won't Stop Changing"
+    },
+    {
+      "time": "32:32",
+      "label": "How Her 19-Year-Old Son Built a Business With AI"
+    },
+    {
+      "time": "36:36",
+      "label": "What Parents Should Teach That Schools Don't"
+    },
+    {
+      "time": "38:10",
+      "label": "Screen Rules, Sleep Hygiene, and Toddlers With iPads"
+    },
+    {
+      "time": "40:33",
+      "label": "Tails & Trails: Tech That Connects People in Real Life"
+    },
+    {
+      "time": "46:06",
+      "label": "Advice for Parents Raising Tech-Curious Kids"
+    }
+  ],
   "quiz": {
     "title": "What Kind of Digital Mom Are You?",
     "description": "AI is reshaping how we parent, work, and connect — but not every mom approaches it the same way. This quick self-discovery quiz will reveal your natural instinct when it comes to technology, your kids, and the future being built right now. There are no wrong answers. Every archetype has a superpower — and a blind spot worth knowing.",
