@@ -4,13 +4,14 @@
 // Renders enhanced show notes with key takeaways, timestamps, quotes, and CTAs
 
 import { useState, useEffect, useMemo, useRef, Fragment } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TextReveal from "@/components/animations/TextReveal";
 import FadeIn from "@/components/animations/FadeIn";
 import Magnetic from "@/components/animations/Magnetic";
 import SEO from "@/components/SEO";
+import NotFound from "./NotFound";
 import EpisodeQuiz from "@/components/blog/EpisodeQuiz";
 import GuestQuizCTA, { type GuestQuiz } from "@/components/blog/GuestQuizCTA";
 import { trackTranscriptExpand, trackEpisodePlay, trackGuestLinkClick } from '@/lib/analytics';
@@ -172,7 +173,6 @@ interface RelatedEpisode {
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
   const [embedded] = useState(() => readEmbeddedPost(slug));
   // Direct load from the prerendered file: skip the page/hero entrance
   // animations on this first render so the swap isn't a fade-out-and-back.
@@ -180,6 +180,7 @@ const BlogPost = () => {
   const [post, setPost] = useState<BlogPostData | null>(embedded);
   const [allPosts, setAllPosts] = useState<RelatedEpisode[]>([]);
   const [loading, setLoading] = useState(embedded === null);
+  const [notFound, setNotFound] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [copied, setCopied] = useState(false);
   const episodePlayTracked = useRef(false);
@@ -205,9 +206,11 @@ const BlogPost = () => {
         setLoading(false);
         // Already showing the embedded post — keep it rather than bouncing.
         if (embedded?.slug === slug) return;
-        navigate("/blog", { replace: true });
+        // Render NotFound in place: a redirect gets a live post filed in
+        // Search Console as "Page with redirect".
+        setNotFound(true);
       });
-  }, [slug, navigate, embedded]);
+  }, [slug, embedded]);
 
   // Fetch the post index once so we can compute related episodes.
   useEffect(() => {
@@ -307,7 +310,7 @@ const BlogPost = () => {
     );
   }
 
-  if (!post) return null;
+  if (!post) return notFound ? <NotFound /> : null;
 
   const videoId = getYouTubeId(post.youtubeUrl);
 
