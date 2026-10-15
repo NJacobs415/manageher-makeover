@@ -212,6 +212,8 @@ in `scripts/lib/topics.mjs`, shared by the sitemap and prerender scripts) are pr
 when a static file exists, so it would replace every prerendered page with the target. (The old
 `/* /index.html 200` only worked because Pages ignores it as a self-loop.)
 
+BlogPost must never `navigate()` away on a failed post fetch; it renders NotFound in place, because a JS redirect gets a live post filed in Google Search Console as "Page with redirect" (12 posts hit this in Oct 2026 via the n8n-commit → Cloudflare-deploy race).
+
 ### Routing
 Every route in AnimatedRoutes.tsx must have a matching entry in prerender-meta.mjs — the SPA
 fallback is 404.html, so an unprerendered route returns a 404 status even though React renders
