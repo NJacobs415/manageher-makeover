@@ -75,31 +75,35 @@ const marqueeTopics = [
 
 const episodes = [
   {
-    num: "56",
-    date: "April 2026",
+    num: "85",
+    date: "October 2026",
     title:
-      "Holistic Motherhood: Pregnancy, Self-Care & Nervous System Health with Dr. Laura Brayton",
-    desc: "Dr. Laura Brayton joins Aimee to talk pregnancy, self-care, and how to regulate your nervous system as a mother.",
-    thumbnail: "https://i.ytimg.com/vi/h6kSEVbmTnY/maxresdefault.jpg",
-    link: "https://www.youtube.com/watch?v=h6kSEVbmTnY",
+      "Burnout, Grief & Building a Business That Holds You Too",
+    desc:
+      "Anabelle Elya invested her last $700 in doula training, built a business she loved, and then watched burnout and a terrifying pregnancy diagnosis force her to rebuild from scratch — twice. In Episode 85, she and Aimee unpack what it really costs to be the person holding everything together, and what becomes possible when you stop. This is the conversation every entrepreneur who has confused capacity with worth needs to hear.",
+    thumbnail: "https://i.ytimg.com/vi/vGRtJahgpIA/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=vGRtJahgpIA",
     tag: "Latest",
   },
   {
-    num: "55",
-    date: "March 2026",
-    title: "Parenting as Leadership: Kristina Campos on Playing the Long Game",
-    desc: "Kristina Campos shares how she approaches parenting the same way she approaches leadership — with patience, strategy, and the long game in mind.",
-    thumbnail: "https://i.ytimg.com/vi/Z-ty9_lpuAQ/maxresdefault.jpg",
-    link: "https://www.youtube.com/watch?v=Z-ty9_lpuAQ",
+    num: "84",
+    date: "October 2026",
+    title:
+      "Why Your Growing Business Still Feels Like It's All on You",
+    desc:
+      "Your business is growing — so why does it still feel like everything lands on you? Amanda Carlson of Muse Multimedia joins Aimee to unpack the founder friction hiding inside success. This conversation will change the way you listen to what your business is asking for.",
+    thumbnail: "https://i.ytimg.com/vi/PO_Ajnsx8mE/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=PO_Ajnsx8mE",
   },
   {
-    num: "35",
-    date: "March 2026",
+    num: "83",
+    date: "October 2026",
     title:
-      "Reset Your Mitochondria for Energy, Longevity & Health | Kristina Kristen on 10,000 Suns",
-    desc: "Kristina Kristen unpacks how to reset your mitochondria for energy, longevity, and whole-body health — and why 10,000 Suns changes everything.",
-    thumbnail: "https://i.ytimg.com/vi/QO8OAMlZwK8/maxresdefault.jpg",
-    link: "https://www.youtube.com/watch?v=QO8OAMlZwK8",
+      "Building a Business While Working Full-Time with Nami Prakash",
+    desc:
+      "Nami Prakash didn't quit her corporate job the moment she had a good idea — she built The Mind Quotient deliberately, tested it inside her teams, and learned the hard way what readiness actually looks like. In this conversation, she and Aimee unpack what it means to carry an idea alongside a full life — and when you'll know it's time to leap.",
+    thumbnail: "https://i.ytimg.com/vi/an03Nz9NG4k/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=an03Nz9NG4k",
   },
 ];
 

@@ -38,13 +38,14 @@ const START_HERE_EPISODES = [
 
 // Hardcoded fallback for the featured "Latest Episode" card
 const fallbackLatest = {
-  num: "56",
-  date: "April 2026",
+  num: "85",
+  date: "October 2026",
   title:
-    "Holistic Motherhood: Pregnancy, Self-Care & Nervous System Health with Dr. Laura Brayton",
-  desc: "Dr. Laura Brayton joins Aimee to talk pregnancy, self-care, and how to regulate your nervous system as a mother.",
-  thumbnail: "https://i.ytimg.com/vi/h6kSEVbmTnY/maxresdefault.jpg",
-  link: "https://www.youtube.com/watch?v=h6kSEVbmTnY",
+    "Burnout, Grief & Building a Business That Holds You Too",
+  desc:
+    "Anabelle Elya invested her last $700 in doula training, built a business she loved, and then watched burnout and a terrifying pregnancy diagnosis force her to rebuild from scratch — twice. In Episode 85, she and Aimee unpack what it really costs to be the person holding everything together, and what becomes possible when you stop. This is the conversation every entrepreneur who has confused capacity with worth needs to hear.",
+  thumbnail: "https://i.ytimg.com/vi/vGRtJahgpIA/maxresdefault.jpg",
+  link: "https://www.youtube.com/watch?v=vGRtJahgpIA",
 };
 
 const Podcast = () => {
