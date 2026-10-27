@@ -80,7 +80,7 @@ const episodes = [
     title:
       "Burnout, Grief & Building a Business That Holds You Too",
     desc:
-      "Anabelle Elya invested her last $700 in doula training, built a business she loved, and then watched burnout and a terrifying pregnancy diagnosis force her to rebuild from scratch — twice. In Episode 85, she and Aimee unpack what it really costs to be the person holding everything together, and what becomes possible when you stop. This is the conversation every entrepreneur who has confused capacity with worth needs to hear.",
+      "Anabelle Elya invested her last $700 in doula training, built a business she loved, and then watched burnout and a terrifying pregnancy diagnosis force her to...",
     thumbnail: "https://i.ytimg.com/vi/vGRtJahgpIA/maxresdefault.jpg",
     link: "https://www.youtube.com/watch?v=vGRtJahgpIA",
     tag: "Latest",
@@ -91,7 +91,7 @@ const episodes = [
     title:
       "Why Your Growing Business Still Feels Like It's All on You",
     desc:
-      "Your business is growing — so why does it still feel like everything lands on you? Amanda Carlson of Muse Multimedia joins Aimee to unpack the founder friction hiding inside success. This conversation will change the way you listen to what your business is asking for.",
+      "Your business is growing — so why does it still feel like everything lands on you...",
     thumbnail: "https://i.ytimg.com/vi/PO_Ajnsx8mE/maxresdefault.jpg",
     link: "https://www.youtube.com/watch?v=PO_Ajnsx8mE",
   },
@@ -101,7 +101,7 @@ const episodes = [
     title:
       "Building a Business While Working Full-Time with Nami Prakash",
     desc:
-      "Nami Prakash didn't quit her corporate job the moment she had a good idea — she built The Mind Quotient deliberately, tested it inside her teams, and learned the hard way what readiness actually looks like. In this conversation, she and Aimee unpack what it means to carry an idea alongside a full life — and when you'll know it's time to leap.",
+      "Nami Prakash didn't quit her corporate job the moment she had a good idea — she built The Mind Quotient deliberately, tested it inside her teams, and learned...",
     thumbnail: "https://i.ytimg.com/vi/an03Nz9NG4k/maxresdefault.jpg",
     link: "https://www.youtube.com/watch?v=an03Nz9NG4k",
   },
