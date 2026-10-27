@@ -58,7 +58,7 @@ const Podcast = () => {
       ? (() => {
           const ep = liveEpisodes[0];
           return {
-            num: ep.title.match(/Ep\.?\s*(\d+)/i)?.[1] || "56",
+            num: ep.episodeNumber != null ? String(ep.episodeNumber) : undefined,
             date: new Date(ep.publishedAt).toLocaleDateString("en-US", {
               month: "long",
               year: "numeric",
@@ -633,7 +633,7 @@ const Podcast = () => {
                     className="font-sans text-[10px] uppercase tracking-[0.2em] mb-3"
                     style={{ color: "#c9a96e" }}
                   >
-                    Episode {latestEpisode.num} · {latestEpisode.date}
+                    {latestEpisode.num !== undefined && `Episode ${latestEpisode.num} · `}{latestEpisode.date}
                   </p>
                   <h3 className="font-serif text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-[1.3] mb-4 group-hover:text-brand-pink transition-colors">
                     {latestEpisode.title}
