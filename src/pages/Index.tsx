@@ -112,7 +112,7 @@ const Index = () => {
   const displayEpisodes =
     loaded && liveEpisodes.length > 0
       ? liveEpisodes.map((ep, i) => ({
-          num: ep.title.match(/Ep\.?\s*(\d+)/i)?.[1] || String(56 - i),
+          num: ep.episodeNumber != null ? String(ep.episodeNumber) : undefined,
           date: new Date(ep.publishedAt).toLocaleDateString("en-US", {
             month: "long",
             year: "numeric",
@@ -650,7 +650,7 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {displayEpisodes.map((ep, i) => (
-              <FadeIn key={ep.num} delay={i * 150} y={40}>
+              <FadeIn key={ep.link} delay={i * 150} y={40}>
                 <a
                   href={ep.link}
                   target="_blank"
@@ -689,7 +689,7 @@ const Index = () => {
                     )}
                   </div>
                   <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
-                    Episode {ep.num} · {ep.date}
+                    {ep.num !== undefined && `Episode ${ep.num} · `}{ep.date}
                   </p>
                   <h3 className="font-serif text-lg font-bold text-foreground leading-snug group-hover:text-brand-pink transition-colors mb-2">
                     {ep.title}
