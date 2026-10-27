@@ -442,6 +442,24 @@ const Index = () => {
                     Read Aimee's Full Story <ArrowRight size={14} />
                   </Link>
                 </FadeIn>
+                <FadeIn delay={600} y={20}>
+                  <Link
+                    to="/press/#in-the-press"
+                    className="mt-6 inline-flex items-center gap-3 font-sans text-[11px] uppercase tracking-[0.15em] transition-colors hover:text-[#1a1a1a]"
+                    style={{ color: "#8a7347" }}
+                  >
+                    <img
+                      src="/press/leadher-cover-oct-2026-240.webp"
+                      alt=""
+                      width={240}
+                      height={311}
+                      loading="lazy"
+                      className="h-8 w-auto object-cover"
+                      style={{ borderRadius: "2px" }}
+                    />
+                    As featured in LeadHer Magazine
+                  </Link>
+                </FadeIn>
               </div>
             </div>
           </div>
