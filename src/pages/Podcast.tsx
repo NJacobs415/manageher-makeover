@@ -43,7 +43,7 @@ const fallbackLatest = {
   title:
     "Burnout, Grief & Building a Business That Holds You Too",
   desc:
-    "Anabelle Elya invested her last $700 in doula training, built a business she loved, and then watched burnout and a terrifying pregnancy diagnosis force her to rebuild from scratch — twice. In Episode 85, she and Aimee unpack what it really costs to be the person holding everything together, and what becomes possible when you stop. This is the conversation every entrepreneur who has confused capacity with worth needs to hear.",
+    "Anabelle Elya invested her last $700 in doula training, built a business she loved, and then watched burnout and a terrifying pregnancy diagnosis force her to...",
   thumbnail: "https://i.ytimg.com/vi/vGRtJahgpIA/maxresdefault.jpg",
   link: "https://www.youtube.com/watch?v=vGRtJahgpIA",
 };
