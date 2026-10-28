@@ -3,9 +3,8 @@
 // Mobile-first social link hub — no Navbar/Footer, standalone experience
 
 import { useEpisodeCount } from "@/hooks/useEpisodeCount";
-import ChapterOneForm from "@/components/book/ChapterOneForm";
 import useCountdown, { CULTIVATE_HER_LAUNCH } from "@/hooks/useCountdown";
-import cultivateCover from "@/assets/the-cultivate-her-cover.webp";
+import cultivateCover from "@/assets/the-cultivate-her-cover-preorder.webp";
 import SEO from "@/components/SEO";
 import { trackBookClick, trackPodcastPlatformClick, trackSocialClick, toPlatformKey } from "@/lib/analytics";
 import SPOTIFY_LOGO from "@/assets/logo-spotify.png";
@@ -230,7 +229,7 @@ const Links = () => {
           }}
         />
 
-        {/* ── Featured: The Cultivate Her — Chapter 1 + waitlist ── */}
+        {/* ── Featured: The Cultivate Her — Kindle pre-order (Oct 28 – Nov 20, 2026) ── */}
         <div className="mb-4 tmh-link-fade tmh-link-d4">
           <p
             className="text-[9px] uppercase tracking-[0.35em] text-center mb-3 font-semibold"
@@ -250,13 +249,14 @@ const Links = () => {
             <div className="flex items-center gap-4 mb-4">
               <img
                 src={cultivateCover}
-                alt="The Cultivate Her — Book Two by Aimee Rickabus"
-                width={800}
-                height={1200}
+                alt="The Cultivate Her by Aimee Rickabus — When Women Stop Climbing and Start Cultivating"
+                width={360}
+                height={576}
                 className="w-16 h-24 object-cover flex-shrink-0"
                 style={{ borderRadius: "6px", boxShadow: "0 10px 30px rgba(0,0,0,0.5)" }}
               />
               <div className="flex-1 min-w-0">
+                {/* On Nov 20 flip the primary label to 'GET IT ON KINDLE →' and the description to 'Available now.' */}
                 <p className="text-[9px] uppercase tracking-[0.15em] mb-1" style={{ color: "#c9a96e" }}>
                   Launches Nov 20 ·{" "}
                   <span className="tabular-nums" style={{ color: "#dfc08a" }}>{countdown.days} days</span>
@@ -268,11 +268,47 @@ const Links = () => {
                   The Cultivate Her
                 </p>
                 <p className="text-[11px] leading-snug" style={{ color: "#888" }}>
-                  Read Chapter 1 free, before anyone. You'll be first on launch day.
+                  You've built a full life. Is there room for you in it? Book two of the Her Series — Kindle edition arrives November 20.
                 </p>
               </div>
             </div>
-            <ChapterOneForm variant="dark" source="linkinbio-cultivate-her" />
+            <div className="flex flex-col gap-2.5">
+              <a
+                href="https://www.amazon.com/dp/B0HMZB6YSR"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => { try { trackBookClick('linkinbio_cultivate_her_preorder'); } catch { /* analytics must never break the page */ } }}
+                className="btn-glow w-full flex items-center justify-center px-8 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] bg-brand-pink text-primary-foreground hover:bg-brand-pink/90 transition-colors whitespace-nowrap"
+                style={{ borderRadius: "50px", height: "52px" }}
+              >
+                Pre-order on Amazon →
+              </a>
+              <a
+                href="https://thecultivateher.com/#workbook"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center px-8 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors duration-300 whitespace-nowrap"
+                style={{
+                  borderRadius: "50px",
+                  height: "48px",
+                  border: "1px solid rgba(255,255,255,0.2)",
+                  color: "#fafafa",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "#eb1887";
+                  e.currentTarget.style.color = "#eb1887";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
+                  e.currentTarget.style.color = "#fafafa";
+                }}
+              >
+                Get the free Companion Workbook
+              </a>
+            </div>
+            <p className="font-sans text-[12px] mt-4 text-center" style={{ color: "#777" }}>
+              Kindle edition · Print details coming soon.
+            </p>
           </div>
         </div>
 
