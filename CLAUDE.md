@@ -141,7 +141,8 @@ once in `AnimatedRoutes.tsx` as a sibling of the route `AnimatePresence` — it 
   exit intent (mouse leaving through the top edge, fine pointers only).
 - **Suppressed routes:** any path starting with `/book` (the inline form lives there),
   `/blog/` (posts already gate the quiz behind email; this also covers `/blog/topic/*`), or
-  `/links` (link-in-bio has its own inline Chapter 1 card). The `/blog` index is *not*
+  `/links` (link-in-bio has its own Cultivate Her card — Kindle pre-order + workbook links since
+  Oct 28, 2026; the Chapter 1 form is no longer rendered there). The `/blog` index is *not*
   suppressed.
 - **Layout:** desktop (`md+`) shows the side cover panel; below `md` it's hidden and a small
   inline cover sits beside the eyebrow so the whole form fits a 375×740 screen without
