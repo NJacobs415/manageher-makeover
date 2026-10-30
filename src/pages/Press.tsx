@@ -2,15 +2,15 @@
 // src/pages/Press.tsx
 // Premium editorial design with real speaking photos and full press copy
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import TextReveal from "@/components/animations/TextReveal";
 import FadeIn from "@/components/animations/FadeIn";
 import Magnetic from "@/components/animations/Magnetic";
 import SEO from "@/components/SEO";
-import { trackBookingClick } from "@/lib/analytics";
-import { Link } from "react-router-dom";
+import { trackBookingClick, trackEvent } from "@/lib/analytics";
+import { Link, useLocation } from "react-router-dom";
 import {
   ArrowRight,
   Copy,
@@ -33,13 +33,46 @@ const SPEAKING_CLOSE = "/aimee-speaking-close.png";
 const BOOK_COVER =
   "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png";
 
+// ——— In the Press ———
+// One entry per outlet feature. Images live in public/press/ (sized ≤ 2× display).
+// We link out to the publication — never host or republish their pages.
+interface PressFeature {
+  outlet: string;
+  issue: string;
+  pages?: string;
+  title: string;
+  dek: string;
+  quote: string;
+  url: string;
+  cover: string;
+  image: string;
+  imageAlt: string;
+}
+
+const PRESS_FEATURES: PressFeature[] = [
+  {
+    outlet: "LeadHer Magazine",
+    issue: "October 2026 · Feature Story",
+    pages: "Pages 68 – 71",
+    title: "What Strength Asked of Her",
+    dek: "For years, strength meant building more, carrying more, and holding everything together. Aimee Rickabus eventually learned it could also mean knowing when to let go.",
+    quote:
+      "I had to learn how to stop climbing, and how to start cultivating myself.",
+    // TODO: swap for the digital-issue link once Aimee forwards it
+    url: "https://leadhermagazine.com",
+    cover: "/press/leadher-cover-oct-2026-240.webp",
+    image: "/press/leadher-feature-portrait-800.webp",
+    imageAlt: "Aimee Rickabus, LeadHer Magazine feature portrait",
+  },
+];
+
 const SHORT_BIO = `Aimee Rickabus is the CEO of a nine-figure technology company serving Fortune 500 brands, and the founder of The Manage Her® — a leadership movement redefining how women lead in life, at home, and in business. She is an award-winning entrepreneur, bestselling author of The Manage Her, and host of The Manage Her® Podcast. Aimee is passionate about helping women recognize and leverage the executive-level skills they already practice daily. She brings strategic clarity, humor, and heart to every stage she steps onto.`;
 
 const LONG_BIO = `Aimee Rickabus is a dynamic entrepreneur, mother of six, and CEO of a nine-figure IT and cybersecurity firm. Through The Manage Her® movement, she is revolutionizing the narrative around women's leadership by spotlighting the intelligence, strategy, and emotional labor women have historically performed without recognition.
 
 She is the author of The Manage Her: Unveiling Invisible Labor & Sparking a Leadership Revolution and host of The Manage Her® Podcast, where she shares real conversations with women navigating purpose, motherhood, ambition, and wellbeing. Aimee brings a grounded yet electrifying presence to every stage, helping audiences shift from overwhelmed to unstoppable.
 
-Aimee has been honored with the NAWBO Orange County "Remarkable Woman Award for Innovation" and speaks regularly at leadership conferences, women's summits, and corporate events nationwide.`;
+Aimee has been honored with the NAWBO Orange County "Remarkable Woman Award for Innovation," was profiled in LeadHer Magazine's October 2026 issue, and speaks regularly at leadership conferences, women's summits, and corporate events nationwide.`;
 
 const THEMES = [
   {
@@ -100,6 +133,19 @@ const IMPACT_AUDIENCES = [
 ];
 
 const Press = () => {
+  const location = useLocation();
+
+  // Smooth-scroll to a hash target (e.g. /press/#in-the-press) after mount —
+  // Router doesn't do this automatically. Mirrors Legal.tsx.
+  useEffect(() => {
+    if (!location.hash) return;
+    const id = location.hash.slice(1);
+    const t = setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 150);
+    return () => clearTimeout(t);
+  }, [location]);
+
   const [copiedBio, setCopiedBio] = useState<"short" | "long" | null>(null);
 
   const copyBio = (text: string, type: "short" | "long") => {
@@ -694,6 +740,178 @@ const Press = () => {
                     {item.desc}
                   </p>
                 </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════ IN THE PRESS — Dark, gold accent ═══════ */}
+      <section
+        id="in-the-press"
+        className="py-20 md:py-28 px-6 relative overflow-hidden"
+        style={{ background: "#0a0a0a" }}
+      >
+        {/* Low-opacity gold glow */}
+        <div
+          className="absolute pointer-events-none"
+          style={{
+            top: "-20%",
+            right: "-10%",
+            width: "50%",
+            height: "70%",
+            background:
+              "radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 65%)",
+          }}
+        />
+        <div className="max-w-[1100px] mx-auto relative">
+          <TextReveal>
+            <p
+              className="font-sans text-[10px] uppercase tracking-[0.3em] mb-4 text-center"
+              style={{ color: "#c9a96e" }}
+            >
+              In the Press
+            </p>
+          </TextReveal>
+          <TextReveal delay={100}>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4 text-center">
+              The story behind the strength,{" "}
+              <em style={{ color: "#c9a96e", fontStyle: "italic" }}>
+                in print.
+              </em>
+            </h2>
+          </TextReveal>
+          <FadeIn delay={200} y={20}>
+            <p className="font-sans text-[14px] md:text-[15px] text-muted-foreground leading-[1.9] text-center max-w-[620px] mx-auto mb-12 md:mb-16">
+              Aimee's four-page feature in LeadHer Magazine's October issue
+              traces the year that asked everything of her — and the garden
+              she chose to grow instead of the ladder she was told to climb.
+            </p>
+          </FadeIn>
+
+          <div className="space-y-8">
+            {PRESS_FEATURES.map((feature, i) => (
+              <FadeIn key={feature.title} delay={300 + i * 100} y={30}>
+                <article
+                  className="grid grid-cols-1 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] overflow-hidden transition-all duration-500 hover:-translate-y-1"
+                  style={{
+                    background: "#111",
+                    borderRadius: "24px",
+                    border: "1px solid rgba(201,169,110,0.18)",
+                  }}
+                >
+                  {/* Portrait + outlet badge */}
+                  <div className="relative min-h-[360px] md:min-h-[520px]">
+                    <img
+                      src={feature.image}
+                      alt={feature.imageAlt}
+                      width={800}
+                      height={1035}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover object-top"
+                    />
+                    <div
+                      className="absolute top-5 left-5 flex items-center gap-3 px-3 py-2"
+                      style={{
+                        background: "rgba(10,10,10,0.85)",
+                        backdropFilter: "blur(6px)",
+                        border: "1px solid rgba(201,169,110,0.4)",
+                        borderRadius: "10px",
+                      }}
+                    >
+                      <img
+                        src={feature.cover}
+                        alt={`${feature.outlet} cover`}
+                        width={240}
+                        height={311}
+                        loading="lazy"
+                        className="h-11 w-auto object-cover"
+                        style={{ borderRadius: "3px" }}
+                      />
+                      <div className="flex flex-col">
+                        <span className="font-sans text-[12px] font-semibold tracking-[0.05em] text-foreground">
+                          {feature.outlet}
+                        </span>
+                        <span
+                          className="font-sans text-[10px] uppercase tracking-[0.15em]"
+                          style={{ color: "#c9a96e" }}
+                        >
+                          {feature.issue}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Copy */}
+                  <div className="p-8 md:p-12 flex flex-col justify-between gap-8">
+                    <div>
+                      {feature.pages && (
+                        <p
+                          className="font-sans text-[10px] uppercase tracking-[0.25em] mb-4"
+                          style={{ color: "#c9a96e" }}
+                        >
+                          {feature.pages}
+                        </p>
+                      )}
+                      <h3 className="font-serif text-2xl md:text-[34px] font-bold text-foreground leading-tight mb-6">
+                        {feature.title}
+                      </h3>
+                      <blockquote
+                        className="pl-5 mb-6 text-[22px] md:text-[26px] leading-[1.4] italic"
+                        style={{
+                          fontFamily: "'Cormorant Garamond', Georgia, serif",
+                          color: "#e0e0e0",
+                          borderLeft: "2px solid #c9a96e",
+                        }}
+                      >
+                        "{feature.quote}"
+                      </blockquote>
+                      <p className="font-sans text-[14px] text-muted-foreground leading-[1.9]">
+                        {feature.dek}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-5">
+                      <Magnetic>
+                        <a
+                          href={feature.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => {
+                            try {
+                              trackEvent("press_feature_click", {
+                                outlet: feature.outlet,
+                                feature_title: feature.title,
+                              });
+                            } catch {
+                              /* analytics must never break the page */
+                            }
+                          }}
+                          className="inline-flex items-center gap-2 font-sans text-[12px] font-semibold uppercase tracking-[0.15em] px-7 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, #dfc08a 0%, #c9a96e 100%)",
+                            color: "#0a0a0a",
+                            boxShadow: "0 10px 30px rgba(201,169,110,0.3)",
+                          }}
+                        >
+                          Read the Feature <ArrowRight size={14} />
+                        </a>
+                      </Magnetic>
+                      <Link
+                        to="/book/#the-cultivate-her"
+                        className="font-sans text-[13px] font-medium transition-colors"
+                        style={{
+                          color: "#c9a96e",
+                          borderBottom: "1px solid rgba(201,169,110,0.4)",
+                          paddingBottom: "2px",
+                        }}
+                      >
+                        Join the waitlist for The Cultivate Her →
+                      </Link>
+                    </div>
+                  </div>
+                </article>
               </FadeIn>
             ))}
           </div>
