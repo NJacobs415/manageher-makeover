@@ -98,17 +98,37 @@ const STATIC_ROUTES = [
   },
   {
     path: '/book',
-    title: 'The Manage Her® Book',
-    description: 'Unveiling Invisible Labor & Sparking a Leadership Revolution by Aimee Rickabus.',
+    title: 'Books — The Her Series by Aimee Rickabus',
+    description: 'The Manage Her® and The Cultivate Her by Aimee Rickabus — two books on invisible labor, leadership, and the seasons of a woman\'s life. Both available now.',
     image: 'https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png',
     type: 'book',
     jsonLd: {
       '@context': 'https://schema.org',
-      '@type': 'Book',
-      name: 'The Manage Her: Unveiling Invisible Labor & Sparking a Leadership Revolution',
-      author: { '@type': 'Person', name: 'Aimee Rickabus' },
-      url: 'https://a.co/d/by5X0fV',
-      image: 'https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png',
+      '@type': 'ItemList',
+      name: 'The Her Series by Aimee Rickabus',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          item: {
+            '@type': 'Book',
+            name: 'The Manage Her: Unveiling Invisible Labor & Sparking a Leadership Revolution',
+            author: { '@type': 'Person', name: 'Aimee Rickabus' },
+            url: 'https://a.co/d/by5X0fV',
+            image: 'https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png',
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          item: {
+            '@type': 'Book',
+            name: 'The Cultivate Her: When Women Stop Climbing and Start Cultivating',
+            author: { '@type': 'Person', name: 'Aimee Rickabus' },
+            url: 'https://www.amazon.com/dp/B0HMZB6YSR',
+          },
+        },
+      ],
     },
   },
   {
@@ -318,8 +338,12 @@ const reveal = (inner) => `<div><div style="transform:translateY(0);will-change:
 const fadeIn = (inner) => `<div style="opacity:1;transform:translate3d(0,0,0) scale(1);will-change:opacity, transform">${inner}</div>`;
 
 function renderHomeShell(episodeCount) {
-  const navLinks = [['About', '/about'], ['Podcast', '/podcast'], ['Book', '/book'], ['Blog', '/blog'], ['Press', '/press']]
-    .map(([label, href]) => `<div class="${MAGNETIC} shrink-0 inline-flex" data-magnetic><a href="${href}" class="link-reveal font-sans text-[12px] font-medium uppercase tracking-[0.15em] transition-colors whitespace-nowrap text-foreground/60 hover:text-foreground">${label}</a></div>`)
+  const navLinks = [['About', '/about'], ['Podcast', '/podcast'], ['Books', '/book'], ['Blog', '/blog'], ['Press', '/press']]
+    // Books sits in an extra relative wrapper in Navbar.tsx (its dropdown anchor); mirrored here.
+    .map(([label, href]) => {
+      const item = `<div class="${MAGNETIC} shrink-0 inline-flex" data-magnetic><a href="${href}" class="link-reveal font-sans text-[12px] font-medium uppercase tracking-[0.15em] transition-colors whitespace-nowrap text-foreground/60 hover:text-foreground">${label}</a></div>`;
+      return href === '/book' ? `<div class="relative">${item}</div>` : item;
+    })
     .join('');
   const line = (top) => `<span class="absolute left-0 block transition-all duration-300 ease-out" style="width:24px;height:2px;background-color:#fafafa;top:${top};transform:rotate(0deg)"></span>`;
   const stats = [[episodeCount, '+', 'Episodes'], [50, 'K+', 'Downloads'], [5, '★', 'Rated']]
