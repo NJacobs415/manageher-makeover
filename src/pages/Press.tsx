@@ -899,7 +899,7 @@ const Press = () => {
                         </a>
                       </Magnetic>
                       <Link
-                        to="/book/#the-cultivate-her"
+                        to="/book#the-cultivate-her"
                         className="font-sans text-[13px] font-medium transition-colors"
                         style={{
                           color: "#c9a96e",
@@ -907,7 +907,7 @@ const Press = () => {
                           paddingBottom: "2px",
                         }}
                       >
-                        Join the waitlist for The Cultivate Her →
+                        The Cultivate Her is out now →
                       </Link>
                     </div>
                   </div>
