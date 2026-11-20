@@ -120,13 +120,16 @@ boot failure.
 `social_click`, `guest_link_click`, `blog_topic_filter`, `chapter_download`, `popup_view`,
 `popup_dismiss`.
 
-### `chapter_download` — Cultivate Her Chapter 1 form
+### `chapter_download` — Cultivate Her Chapter 1 form (currently unused)
+**Not rendered anywhere since the Nov 20, 2026 launch** — `/book` swapped its `#free-chapter`
+section for the Companion Workbook CTA and the popup became a launch announcement. The
+component stays in the repo for reuse; the notes below describe how it behaves if remounted.
 `ChapterOneForm` (`src/components/book/ChapterOneForm.tsx`) collects first name + email and
 POSTs JSON to the **GHL inbound webhook** for workflow **"Cultivate Her – Chapter 1 + Waitlist"**.
 GHL creates/updates the contact, tags it, and emails the chapter — nothing is stored
 client-side. It's used in two placements, told apart by the `source` prop (sent to GHL and on
-every event): `book-page-free-chapter` (inline in `/book#free-chapter`, light variant) and
-`popup-cultivate-her` (the sitewide popup, `variant="dark"`). Only on a 2xx response does it
+every event): it was used as `book-page-free-chapter` (inline in the old `/book#free-chapter`,
+light variant) and `popup-cultivate-her` (the pre-launch popup, `variant="dark"`). Only on a 2xx response does it
 fire `chapter_download` (`{ book: "the_cultivate_her", chapter: 1, source }`) plus
 `newsletter_signup` (`signup_location: <source>`). The webhook URL is public by design (it ships
 in the bundle); submitting the live form creates a real GHL contact, so don't smoke-test it with
@@ -142,7 +145,7 @@ once in `AnimatedRoutes.tsx` as a sibling of the route `AnimatePresence` — it 
 `BrowserRouter` because it uses `useLocation`, so never move it up into `App.tsx`.
 - **Triggers** (first one wins, at most once per page load): 7s on page, 45% scroll depth, or
   exit intent (mouse leaving through the top edge, fine pointers only).
-- **Suppressed routes:** any path starting with `/book` (the inline form lives there),
+- **Suppressed routes:** any path starting with `/book` (the page has its own Cultivate Her CTAs),
   `/blog/` (posts already gate the quiz behind email; this also covers `/blog/topic/*`), or
   `/links` (link-in-bio has its own Cultivate Her card — Amazon buy link + workbook links;
   launched Nov 20, 2026; the Chapter 1 form is no longer rendered there). The `/blog` index is
@@ -296,15 +299,28 @@ the fallback family name (see the hero subhead).
 - **Homepage** (`src/pages/Index.tsx`) — Hero, stats, about, pillars, episodes, book, testimonials, newsletter
 - **About** (`src/pages/About.tsx`) — Story, mission, credentials, beliefs, fun facts
 - **Podcast** (`src/pages/Podcast.tsx`) — Listen CTAs, episode cards, topics, reviews, host bio
-- **Book** (`src/pages/Book.tsx`) — 3D book mockup, what you'll discover, reviews, free chapter, Book #2
-  - Book Two is **The Cultivate Her** ("Reclaiming Women's Seasons and Cultivating a New Way to
-    Grow"), launching **2026-11-20** — the `useCountdown("2026-11-20T00:00:00")` target. Cover
-    asset: `src/assets/the-cultivate-her-cover.webp`. Section anchor: `#the-cultivate-her`.
-    Gold-accented (book/premium); pink only on the eyebrow and waitlist CTA.
+- **Books** (`src/pages/Book.tsx`, route `/book`; `/books` and `/books/` 301 to `/book/`) — the
+  Her Series hub. Section order: Her Series hero (the page's only `<h1>`, two cover cards linking
+  to each book) → The Cultivate Her (`#the-cultivate-her`) → Companion Workbook (cream, pink CTA
+  to `thecultivateher.com/#workbook`) → The Manage Her (`#the-manage-her`, the former hero, now
+  an `<h2>` section) → The Question → This Book Is For You If → What's Inside → The Thesis →
+  Reviews → Meet the Author → Explore More. Adjacent dark sections are separated by the 1px
+  gold gradient hairline (`GoldDivider`). Hash links scroll via `src/hooks/useHashScroll.ts`
+  (fresh load and in-app); targets carry `scroll-mt-24` to clear the sticky nav.
+  - Book Two is **The Cultivate Her: When Women Stop Climbing and Start Cultivating**, launched
+    **2026-11-20** and available now — gold "Get it on Amazon →" (`amazon.com/dp/B0HMZB6YSR`,
+    `trackBookClick("book_page_cultivate_her_buy")`), "Out Now" badge. Cover asset:
+    `src/assets/the-cultivate-her-cover-preorder.webp` (360×576, the final cover despite the
+    filename). Gold is the only accent in that section. No countdown, waitlist or Chapter 1 form
+    on the page any more.
 - **Press & Speaking** (`src/pages/Press.tsx`) — Speaker hero, keynote topics, bios, media kit, booking CTA
 
 ## Shared Components
-- `src/components/layout/Navbar.tsx` — Sticky nav with scroll state
+- `src/components/layout/Navbar.tsx` — Sticky nav with scroll state. The "Books" item (→ `/book`)
+  has a desktop hover/focus dropdown (Framer Motion; Escape closes, `aria-expanded`) with
+  "The Cultivate Her" (gold "New" tag) → `/book#the-cultivate-her` and "The Manage Her®" →
+  `/book#the-manage-her`; the mobile overlay shows both as indented sub-links under Books.
+  `renderHomeShell()` mirrors the Books item's extra `relative` wrapper div.
 - `src/components/layout/Footer.tsx` — Newsletter CTA + 4-column footer
 - `src/components/animations/` — FadeIn, TextReveal, Parallax, Magnetic, ScrollReveal, etc.
 

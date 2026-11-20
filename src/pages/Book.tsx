@@ -6,14 +6,15 @@ import Magnetic from "@/components/animations/Magnetic";
 import { Star, ArrowRight, BookOpen, Headphones, Smartphone } from "lucide-react";
 import { Link } from "react-router-dom";
 import bookCover from "@/assets/book-cover.webp";
-import cultivateCover from "@/assets/the-cultivate-her-cover.webp";
+import cultivateCover from "@/assets/the-cultivate-her-cover-preorder.webp";
 import SEO from "@/components/SEO";
-import ChapterOneForm from "@/components/book/ChapterOneForm";
-import useCountdown, { CULTIVATE_HER_LAUNCH } from "@/hooks/useCountdown";
+import useHashScroll from "@/hooks/useHashScroll";
 import { trackBookClick } from "@/lib/analytics";
 
 const BOOK_COVER_CDN =
   "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png";
+const CULTIVATE_AMAZON = "https://www.amazon.com/dp/B0HMZB6YSR";
+const CULTIVATE_SUBTITLE = "When Women Stop Climbing and Start Cultivating";
 const AIMEE_PHOTO =
   "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a0c0f9fd70df73543f31f1.jpg";
 
@@ -38,45 +39,252 @@ const BuyButtons = ({ location = "book_page" }: { location?: string }) => (
   </div>
 );
 
+// Standard 1px gradient hairline between two adjacent dark sections (same as Index.tsx).
+const GoldDivider = () => (
+  <div aria-hidden="true" className="h-px" style={{ background: "#0a0a0a" }}>
+    <div className="h-full" style={{ background: "linear-gradient(90deg, transparent, rgba(201,169,110,0.2), transparent)" }} />
+  </div>
+);
+
+const TM = () => <span style={{ fontSize: ".45em", verticalAlign: "super", fontStyle: "normal" }}>®</span>;
+
 const Book = () => {
-  const countdown = useCountdown(CULTIVATE_HER_LAUNCH);
+  useHashScroll();
 
   return (
     <div className="overflow-x-hidden page-enter">
       <SEO
-        title="The Manage Her® Book"
-        description="Unveiling Invisible Labor & Sparking a Leadership Revolution by Aimee Rickabus."
+        title="Books — The Her Series by Aimee Rickabus"
+        description="The Manage Her® and The Cultivate Her by Aimee Rickabus — two books on invisible labor, leadership, and the seasons of a woman's life. Both available now."
         url="https://themanageher.com/book/"
         type="book"
         image="https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png"
         jsonLd={{
           "@context": "https://schema.org",
-          "@type": "Book",
-          name: "The Manage Her: Unveiling Invisible Labor & Sparking a Leadership Revolution",
-          author: { "@type": "Person", name: "Aimee Rickabus" },
-          url: "https://a.co/d/by5X0fV",
-          image: "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png",
+          "@type": "ItemList",
+          name: "The Her Series by Aimee Rickabus",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              item: {
+                "@type": "Book",
+                name: "The Manage Her: Unveiling Invisible Labor & Sparking a Leadership Revolution",
+                author: { "@type": "Person", name: "Aimee Rickabus" },
+                url: "https://a.co/d/by5X0fV",
+                image: "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png",
+              },
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              item: {
+                "@type": "Book",
+                name: "The Cultivate Her: When Women Stop Climbing and Start Cultivating",
+                author: { "@type": "Person", name: "Aimee Rickabus" },
+                url: "https://www.amazon.com/dp/B0HMZB6YSR",
+              },
+            },
+          ],
         }}
       />
       <Navbar />
 
-      {/* ═══════ HERO — Real emotional hook from the book ═══════ */}
-      <section className="relative min-h-screen min-h-[100svh] flex items-center overflow-hidden px-6" style={{ background: "#0a0a0a" }}>
+      {/* ═══════ HERO — The Her Series ═══════ */}
+      <section className="relative overflow-hidden px-6 py-16 md:py-24 lg:py-28" style={{ background: "#0a0a0a" }}>
+        {/* Grain texture (same as homepage hero) */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.035]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          }}
+        />
+        {/* low-opacity gold glow */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 70%, rgba(201,169,110,0.09) 0%, transparent 60%)" }} />
+
+        <div className="max-w-[1100px] mx-auto relative z-10 text-center">
+          <TextReveal immediate>
+            <p className="font-sans text-[10px] uppercase tracking-[0.3em] mb-6 md:mb-8 inline-flex items-center gap-3" style={{ color: "#c9a96e" }}>
+              <span className="hidden sm:inline-block" style={{ width: "30px", height: "1px", background: "#c9a96e" }} />
+              The Her Series · Aimee Rickabus
+              <span className="hidden sm:inline-block" style={{ width: "30px", height: "1px", background: "#c9a96e" }} />
+            </p>
+          </TextReveal>
+          <TextReveal immediate delay={100}>
+            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.12] mb-6 max-w-[950px] mx-auto">
+              First, name the work. Then <em className="text-brand-pink italic">cultivate</em> the life.
+            </h1>
+          </TextReveal>
+          <FadeIn delay={250} y={20}>
+            <p className="text-lg md:text-xl max-w-[720px] mx-auto mb-12 md:mb-16" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: "italic", color: "#999", lineHeight: "1.8" }}>
+              Two books for the woman who holds it all together. One names the invisible labor you've been leading with all along. The other gives you permission to put the ladder down.
+            </p>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6 max-w-[860px] mx-auto text-left">
+            {/* TODO(cover): cultivateCover is a 360px-wide stand-in; swap for the high-resolution
+                export when it's added (the card shows it at w-20/md:w-24, so no cap needed here). */}
+            {[
+              { hash: "#the-cultivate-her", label: "New · Book Two", title: <>The Cultivate Her</>, sub: CULTIVATE_SUBTITLE, img: cultivateCover, w: 360, h: 576, alt: `The Cultivate Her: ${CULTIVATE_SUBTITLE} — cover` },
+              { hash: "#the-manage-her", label: "Book One", title: <>The Manage Her<TM /></>, sub: "Unveiling Invisible Labor & Sparking a Leadership Revolution", img: bookCover, w: 749, h: 1200, alt: "The Manage Her® — cover" },
+            ].map((b, i) => (
+              <FadeIn key={b.hash} delay={350 + i * 120} y={24}>
+                <Link
+                  to={b.hash}
+                  className="group flex items-center gap-5 p-5 md:p-6 h-full transition-all duration-300 hover:-translate-y-1.5 focus-visible:-translate-y-1.5 border border-white/5 hover:border-[rgba(201,169,110,0.3)] focus-visible:border-[rgba(201,169,110,0.3)] focus-visible:ring-1 focus-visible:ring-[rgba(201,169,110,0.5)] hover:shadow-[0_20px_50px_rgba(201,169,110,0.08)] outline-none"
+                  style={{ background: "#111", borderRadius: "20px" }}
+                >
+                  <img
+                    src={b.img}
+                    alt={b.alt}
+                    width={b.w}
+                    height={b.h}
+                    decoding="async"
+                    className="w-20 md:w-24 h-auto flex-shrink-0"
+                    style={{ borderRadius: "3px 8px 8px 3px", boxShadow: "0 16px 40px rgba(0,0,0,0.55)" }}
+                  />
+                  <div className="min-w-0">
+                    <p className="font-sans text-[9px] uppercase tracking-[0.25em] mb-2" style={{ color: "#c9a96e" }}>{b.label}</p>
+                    <p className="font-serif text-xl md:text-2xl font-bold text-foreground leading-tight mb-2">{b.title}</p>
+                    <p className="font-sans text-[12px] text-muted-foreground leading-snug mb-3">{b.sub}</p>
+                    <span className="inline-flex items-center gap-2 font-sans text-[10px] font-semibold uppercase tracking-[0.15em] transition-all group-hover:gap-3" style={{ color: "#c9a96e" }}>
+                      Explore <ArrowRight size={12} />
+                    </span>
+                  </div>
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <GoldDivider />
+
+      {/* ═══════ BOOK TWO — THE CULTIVATE HER (gold is the only accent) ═══════ */}
+      <section id="the-cultivate-her" className="scroll-mt-24 py-24 md:py-36 px-6 relative overflow-hidden" style={{ background: "#0a0a0a" }}>
+        {/* low-opacity gold glow, matches hero treatment */}
+        <div className="absolute inset-0 -z-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 75% 40%, rgba(201,169,110,0.08) 0%, transparent 60%)" }} />
+        <div className="max-w-[1100px] mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-center">
+
+            {/* ── Copy ── */}
+            <div className="lg:col-span-7">
+              <TextReveal>
+                <p className="font-sans text-[10px] uppercase tracking-[0.3em] mb-4" style={{ color: "#c9a96e" }}>Book Two · Out Now</p>
+              </TextReveal>
+              <TextReveal delay={100}>
+                <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4">
+                  The Cultivate <em style={{ color: "#c9a96e", fontStyle: "italic" }}>Her</em>
+                </h2>
+              </TextReveal>
+              <FadeIn delay={200} y={20}>
+                <p className="text-lg mb-2" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: "italic", color: "#dfc08a" }}>
+                  {CULTIVATE_SUBTITLE}
+                </p>
+                <p className="text-[17px] mb-6" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: "italic", color: "#888" }}>
+                  "There is a season when the gardener stops planting. Not because the work is over. Because the work has changed."
+                </p>
+              </FadeIn>
+              <FadeIn delay={300} y={20}>
+                <p className="font-sans text-[15px] text-muted-foreground leading-[1.9] mb-8">
+                  We were taught to climb. The Manage Her® showed you the invisible labor holding the ladder up. The Cultivate Her puts the ladder down. Part personal story, part practical guide, it reframes a woman's life as a garden with four seasons — and makes the case that the years after building are when your most important work begins.
+                </p>
+              </FadeIn>
+              <FadeIn delay={400} y={20}>
+                <div className="space-y-2 mb-8">
+                  {[
+                    "The four seasons of a woman's life — and how to honor the one you're in",
+                    "Why perimenopause is a promotion, not a decline",
+                    "The wound is the soil: turning old patterns into new growth",
+                    "Toxic resilience, and the strength that was quietly breaking you",
+                    "Emotional intelligence as a daily spiritual practice",
+                  ].map((t) => (
+                    <div key={t} className="flex items-start gap-3">
+                      <span className="mt-[2px]" style={{ color: "#c9a96e" }}>→</span>
+                      <span className="font-sans text-[14px] text-muted-foreground">{t}</span>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+              <FadeIn delay={500} y={20}>
+                <Magnetic strength={0.2}>
+                  <a href={CULTIVATE_AMAZON} target="_blank" rel="noopener noreferrer"
+                    onClick={() => { try { trackBookClick("book_page_cultivate_her_buy"); } catch { /* analytics must never break the page */ } }}
+                    className="btn-glow inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-8 py-4 transition-all"
+                    style={{ background: "linear-gradient(135deg, #c9a96e, #dfc08a)", color: "#0a0a0a", borderRadius: "50px", boxShadow: "0 4px 24px rgba(201,169,110,0.3)" }}>
+                    Get it on Amazon →
+                  </a>
+                </Magnetic>
+                <p className="font-sans text-[12px] text-muted-foreground mt-4">Available now on Amazon.</p>
+              </FadeIn>
+            </div>
+
+            {/* ── Cover ── */}
+            <div className="lg:col-span-5">
+              <FadeIn delay={300} scale={0.9}>
+                <div className="relative flex justify-center">
+                  <div className="absolute inset-0 -z-10" style={{ background: "radial-gradient(ellipse, rgba(201,169,110,0.14) 0%, transparent 70%)", transform: "scale(1.8)", filter: "blur(60px)" }} />
+                  <div className="absolute -top-5 -right-2 w-20 h-20 flex items-center justify-center text-center z-20" style={{ background: "linear-gradient(135deg, #c9a96e, #dfc08a)", borderRadius: "50%", boxShadow: "0 10px 40px rgba(201,169,110,0.4)" }}>
+                    <span className="font-sans text-[9px] font-bold uppercase leading-tight" style={{ color: "#0a0a0a" }}>Out<br />Now</span>
+                  </div>
+                  {/* TODO(cover): source is only 360px wide, so the display is capped at w-56/md:w-64.
+                      Replace with a high-resolution export (≥640px wide) and restore w-64 md:w-72 lg:w-80. */}
+                  <div className="book-3d">
+                    <div className="book-3d-inner overflow-hidden" style={{ borderRadius: "4px 14px 14px 4px" }}>
+                      <img src={cultivateCover} alt={`The Cultivate Her: ${CULTIVATE_SUBTITLE} — Book Two by Aimee Rickabus`} width={360} height={576} decoding="async" loading="lazy" className="w-56 md:w-64" />
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════ COMPANION WORKBOOK (pink is the only accent) ═══════ */}
+      <section id="companion-workbook" className="scroll-mt-24 py-24 md:py-32 px-6" style={{ background: "#faf8f5" }}>
+        <div className="max-w-[700px] mx-auto text-center">
+          <TextReveal>
+            <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-brand-pink mb-4">Free · Companion Workbook</p>
+          </TextReveal>
+          <TextReveal delay={100}>
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-5" style={{ color: "#1a1a1a" }}>
+              Bring the book into your <em className="text-brand-pink italic">own</em> season.
+            </h2>
+          </TextReveal>
+          <FadeIn delay={200} y={20}>
+            <p className="font-sans text-[15px] leading-relaxed mb-9" style={{ color: "#666" }}>
+              The free Companion Workbook gives you space to reflect as you read — and to name the season you're in.
+            </p>
+          </FadeIn>
+          <FadeIn delay={300} y={20}>
+            <Magnetic strength={0.2}>
+              <a href="https://thecultivateher.com/#workbook" target="_blank" rel="noopener noreferrer" className="btn-glow inline-flex items-center gap-2 bg-brand-pink text-primary-foreground font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-8 py-4 hover:bg-brand-pink/90 transition-colors" style={{ borderRadius: "50px" }}>
+                Get the free workbook →
+              </a>
+            </Magnetic>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ═══════ BOOK ONE — THE MANAGE HER (was the page hero) ═══════ */}
+      <section id="the-manage-her" className="scroll-mt-24 relative flex items-center overflow-hidden px-6 py-24 md:py-36" style={{ background: "#0a0a0a" }}>
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 20% 50%, rgba(201,169,110,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 30%, rgba(235,24,135,0.04) 0%, transparent 50%)" }} />
 
         <div className="max-w-[1300px] mx-auto relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center py-16 lg:py-0">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             <div className="lg:col-span-7">
               <TextReveal>
                 <p className="font-sans text-[10px] uppercase tracking-[0.3em] mb-8 flex items-center gap-3" style={{ color: "#c9a96e" }}>
                   <span style={{ width: "30px", height: "1px", background: "#c9a96e", display: "inline-block" }} />
-                  The Bestselling Book
+                  Book One · The Bestselling Book
                 </p>
               </TextReveal>
               <TextReveal delay={200}>
-                <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.15] mb-6">
+                <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.15] mb-6">
                   It's only in your <em className="text-brand-pink italic">failure</em> that anyone notices.
-                </h1>
+                </h2>
               </TextReveal>
               <FadeIn delay={500} y={20}>
                 <p className="text-lg md:text-xl mb-4 max-w-xl" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: "italic", color: "#999", lineHeight: "1.8" }}>
@@ -107,7 +315,7 @@ const Book = () => {
                   </div>
                   <div className="book-3d">
                     <div className="book-3d-inner overflow-hidden" style={{ borderRadius: "4px 14px 14px 4px" }}>
-                      <img src={bookCover} alt="The Manage Her® Book" width={749} height={1200} decoding="async" className="w-72 md:w-80 lg:w-96" loading="eager" onError={(e) => { (e.target as HTMLImageElement).src = BOOK_COVER_CDN; }} />
+                      <img src={bookCover} alt="The Manage Her® Book" width={749} height={1200} decoding="async" className="w-72 md:w-80 lg:w-96" loading="lazy" onError={(e) => { (e.target as HTMLImageElement).src = BOOK_COVER_CDN; }} />
                     </div>
                   </div>
                 </div>
@@ -171,8 +379,10 @@ const Book = () => {
         </div>
       </section>
 
+      <GoldDivider />
+
       {/* ═══════ WHAT'S INSIDE — Real book content ═══════ */}
-      <section className="py-24 md:py-36 px-6" style={{ background: "#111", borderTop: "1px solid rgba(201,169,110,0.1)" }}>
+      <section className="py-24 md:py-36 px-6" style={{ background: "#111" }}>
         <div className="max-w-[1000px] mx-auto">
           <TextReveal><p className="font-sans text-[10px] uppercase tracking-[0.3em] text-center mb-4" style={{ color: "#c9a96e" }}>Inside The Book</p></TextReveal>
           <TextReveal delay={100}>
@@ -237,49 +447,6 @@ const Book = () => {
         </div>
       </section>
 
-      {/* ═══════ MEET THE AUTHOR ═══════ */}
-      <section className="py-24 md:py-36 px-6" style={{ background: "#0a0a0a", borderTop: "1px solid rgba(235,24,135,0.08)" }}>
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5">
-              <FadeIn x={-40} y={0} duration={1200}>
-                <div className="editorial-img overflow-hidden" style={{ borderRadius: "20px" }}>
-                  <img src={AIMEE_PHOTO} alt="Aimee Rickabus" className="w-full aspect-[4/5] object-cover" loading="lazy" />
-                </div>
-              </FadeIn>
-            </div>
-            <div className="lg:col-span-7">
-              <TextReveal><p className="font-sans text-[10px] uppercase tracking-[0.3em] mb-4" style={{ color: "#c9a96e" }}>Meet The Author</p></TextReveal>
-              <TextReveal delay={100}>
-                <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground leading-[1.15] mb-6">
-                  I'm the woman who closes the multi-million-dollar deal — then heads straight to the ballfield to coach confidence from the sidelines.
-                </h2>
-              </TextReveal>
-              <FadeIn delay={300} y={20}>
-                <p className="font-sans text-[15px] text-muted-foreground leading-[1.9] mb-5">
-                  I'm Aimee Rickabus. I've been a serial entrepreneur since I was 22, when I bought my first property and started flipping 1920s houses. I've run a film production company, a prenatal nutrition brand, and now a nine-figure technology company serving PepsiCo, Ford, and the Fortune 500.
-                </p>
-              </FadeIn>
-              <FadeIn delay={400} y={20}>
-                <p className="font-sans text-[15px] text-muted-foreground leading-[1.9] mb-5">
-                  I've given birth to five of my six children at home. I converted my bonus room into a school during COVID and ran a homeschool pod for 10 kids. I sold my car to fund my husband's company because I believed in his talent. I walked into PepsiCo's headquarters five months pregnant and won the contract.
-                </p>
-              </FadeIn>
-              <FadeIn delay={500} y={20}>
-                <p className="font-sans text-[15px] text-muted-foreground leading-[1.9] mb-8">
-                  I wrote this book because I realized the skills I used to run my home — planning, coaching, strategy, crisis management — weren't optional. They were assets. And <strong className="text-foreground">I got tired of watching brilliant women shrink.</strong>
-                </p>
-              </FadeIn>
-              <FadeIn delay={600} y={20}>
-                <Link to="/about/" className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-pink hover:gap-3 transition-all">
-                  Read My Full Story <ArrowRight size={14} />
-                </Link>
-              </FadeIn>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ═══════ REVIEWS ═══════ */}
       <section className="py-24 md:py-36 px-6 relative overflow-hidden" style={{ background: "#111", borderTop: "1px solid rgba(201,169,110,0.1)" }}>
         <div className="absolute top-8 left-8 pointer-events-none select-none">
@@ -322,121 +489,55 @@ const Book = () => {
         </div>
       </section>
 
-      {/* ═══════ FREE CHAPTER — THE CULTIVATE HER ═══════ */}
-      <section id="free-chapter" className="py-24 md:py-32 px-6" style={{ background: "#faf8f5" }}>
-        <div className="max-w-[700px] mx-auto text-center">
-          <TextReveal>
-            <p className="font-sans text-[10px] uppercase tracking-[0.3em] mb-4" style={{ color: "#c9a96e" }}>The Cultivate Her · Book Two</p>
-          </TextReveal>
-          <TextReveal delay={100}>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4" style={{ color: "#1a1a1a" }}>
-              Read Chapter 1 <em className="text-brand-pink italic">before anyone</em>.
-            </h2>
-          </TextReveal>
-          <FadeIn delay={200} y={20}>
-            <p className="font-sans text-[15px] mb-4" style={{ color: "#888" }}>
-              The Fall Garden — the opening chapter of The Cultivate Her, two months before it publishes. Enter your details and we'll send it straight to your inbox, and hold your place on the launch list.
-            </p>
-          </FadeIn>
-          <FadeIn delay={300} y={20}>
-            <p className="text-lg italic mb-8" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: "#666" }}>
-              "There is a season when the gardener stops planting. Not because the work is over. Because the work has changed."
-            </p>
-          </FadeIn>
-          <FadeIn delay={400} y={20}>
-            <ChapterOneForm />
-          </FadeIn>
-        </div>
-      </section>
+      <GoldDivider />
 
-      {/* ═══════ BOOK #2 — THE CULTIVATE HER ═══════ */}
-      <section id="the-cultivate-her" className="py-24 md:py-36 px-6 relative overflow-hidden" style={{ background: "#0a0a0a", borderTop: "1px solid rgba(201,169,110,0.1)" }}>
-        {/* low-opacity gold glow, matches hero treatment */}
-        <div className="absolute inset-0 -z-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 75% 40%, rgba(201,169,110,0.08) 0%, transparent 60%)" }} />
-        <div className="max-w-[1100px] mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-center">
-
-            {/* ── Copy ── */}
+      {/* ═══════ MEET THE AUTHOR ═══════ */}
+      <section className="py-24 md:py-36 px-6" style={{ background: "#0a0a0a" }}>
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-5">
+              <FadeIn x={-40} y={0} duration={1200}>
+                <div className="editorial-img overflow-hidden" style={{ borderRadius: "20px" }}>
+                  <img src={AIMEE_PHOTO} alt="Aimee Rickabus" className="w-full aspect-[4/5] object-cover" loading="lazy" />
+                </div>
+              </FadeIn>
+            </div>
             <div className="lg:col-span-7">
-              <TextReveal>
-                <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-brand-pink mb-4">Book Two · Coming November 20, 2026</p>
-              </TextReveal>
+              <TextReveal><p className="font-sans text-[10px] uppercase tracking-[0.3em] mb-4" style={{ color: "#c9a96e" }}>Meet The Author</p></TextReveal>
               <TextReveal delay={100}>
-                <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4">
-                  The Cultivate <em style={{ color: "#c9a96e", fontStyle: "italic" }}>Her</em>
+                <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground leading-[1.15] mb-6">
+                  I'm the woman who closes the multi-million-dollar deal — then heads straight to the ballfield to coach confidence from the sidelines.
                 </h2>
               </TextReveal>
-              <FadeIn delay={200} y={20}>
-                <p className="text-lg mb-2" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: "italic", color: "#dfc08a" }}>
-                  Reclaiming Women's Seasons and Cultivating a New Way to Grow
-                </p>
-                <p className="text-[17px] mb-6" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: "italic", color: "#888" }}>
-                  "There is a season when the gardener stops planting. Not because the work is over. Because the work has changed."
-                </p>
-              </FadeIn>
               <FadeIn delay={300} y={20}>
-                <p className="font-sans text-[15px] text-muted-foreground leading-[1.9] mb-8">
-                  We were taught to climb. The Manage Her® showed you the invisible labor holding the ladder up. The Cultivate Her puts the ladder down. Part personal story, part practical guide, it reframes a woman's life as a garden with four seasons — and makes the case that the years after building are when your most important work begins.
+                <p className="font-sans text-[15px] text-muted-foreground leading-[1.9] mb-5">
+                  I'm Aimee Rickabus. I've been a serial entrepreneur since I was 22, when I bought my first property and started flipping 1920s houses. I've run a film production company, a prenatal nutrition brand, and now a nine-figure technology company serving PepsiCo, Ford, and the Fortune 500.
                 </p>
               </FadeIn>
               <FadeIn delay={400} y={20}>
-                <div className="space-y-2 mb-8">
-                  {[
-                    "The four seasons of a woman's life — and how to honor the one you're in",
-                    "Why perimenopause is a promotion, not a decline",
-                    "The wound is the soil: turning old patterns into new growth",
-                    "Toxic resilience, and the strength that was quietly breaking you",
-                    "Emotional intelligence as a daily spiritual practice",
-                  ].map((t) => (
-                    <div key={t} className="flex items-start gap-3">
-                      <span className="mt-[2px]" style={{ color: "#c9a96e" }}>→</span>
-                      <span className="font-sans text-[14px] text-muted-foreground">{t}</span>
-                    </div>
-                  ))}
-                </div>
+                <p className="font-sans text-[15px] text-muted-foreground leading-[1.9] mb-5">
+                  I've given birth to five of my six children at home. I converted my bonus room into a school during COVID and ran a homeschool pod for 10 kids. I sold my car to fund my husband's company because I believed in his talent. I walked into PepsiCo's headquarters five months pregnant and won the contract.
+                </p>
               </FadeIn>
               <FadeIn delay={500} y={20}>
-                <Magnetic strength={0.2}>
-                  <a href="#free-chapter" className="btn-glow inline-flex items-center gap-2 bg-brand-pink text-primary-foreground font-sans text-[11px] font-semibold uppercase tracking-[0.15em] px-8 py-4 hover:bg-brand-pink/90 transition-colors" style={{ borderRadius: "50px" }}>
-                    Join the Waitlist →
-                  </a>
-                </Magnetic>
+                <p className="font-sans text-[15px] text-muted-foreground leading-[1.9] mb-8">
+                  I wrote this book because I realized the skills I used to run my home — planning, coaching, strategy, crisis management — weren't optional. They were assets. And <strong className="text-foreground">I got tired of watching brilliant women shrink.</strong>
+                </p>
+              </FadeIn>
+              <FadeIn delay={600} y={20}>
+                <Link to="/about/" className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-pink hover:gap-3 transition-all">
+                  Read My Full Story <ArrowRight size={14} />
+                </Link>
               </FadeIn>
             </div>
-
-            {/* ── Cover + countdown ── */}
-            <div className="lg:col-span-5">
-              <FadeIn delay={300} scale={0.9}>
-                <div className="relative flex justify-center mb-10">
-                  <div className="absolute inset-0 -z-10" style={{ background: "radial-gradient(ellipse, rgba(201,169,110,0.14) 0%, transparent 70%)", transform: "scale(1.8)", filter: "blur(60px)" }} />
-                  <div className="absolute -top-5 -right-2 w-20 h-20 flex items-center justify-center text-center z-20" style={{ background: "linear-gradient(135deg, #c9a96e, #dfc08a)", borderRadius: "50%", boxShadow: "0 10px 40px rgba(201,169,110,0.4)" }}>
-                    <span className="font-sans text-[9px] font-bold uppercase leading-tight" style={{ color: "#0a0a0a" }}>Pre-order<br />Soon</span>
-                  </div>
-                  <div className="book-3d">
-                    <div className="book-3d-inner overflow-hidden" style={{ borderRadius: "4px 14px 14px 4px" }}>
-                      <img src={cultivateCover} alt="The Cultivate Her — Book Two by Aimee Rickabus" width={800} height={1200} decoding="async" loading="lazy" className="w-64 md:w-72 lg:w-80" />
-                    </div>
-                  </div>
-                </div>
-              </FadeIn>
-              <FadeIn delay={450} y={30}>
-                <div className="grid grid-cols-4 gap-2 sm:gap-3">
-                  {[{ val: countdown.days, label: "Days" }, { val: countdown.hours, label: "Hours" }, { val: countdown.mins, label: "Min" }, { val: countdown.secs, label: "Sec" }].map((u) => (
-                    <div key={u.label} className="text-center py-4 px-2 sm:py-5" style={{ background: "#111", borderRadius: "16px", border: "1px solid rgba(201,169,110,0.12)" }}>
-                      <div className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold mb-1" style={{ color: "#c9a96e" }}>{u.val}</div>
-                      <div className="font-sans text-[9px] uppercase tracking-[0.15em] text-muted-foreground">{u.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </FadeIn>
-            </div>
-
           </div>
         </div>
       </section>
 
+      <GoldDivider />
+
       {/* ═══════ EXPLORE MORE ═══════ */}
-      <section className="py-20 px-6" style={{ background: "#111", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+      <section className="py-20 px-6" style={{ background: "#111" }}>
         <div className="max-w-[1200px] mx-auto">
           <TextReveal>
             <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground text-center mb-12">

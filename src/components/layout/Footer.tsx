@@ -170,7 +170,7 @@ const Footer = () => (
           {[
             { label: "About", path: "/about" },
             { label: "Podcast", path: "/podcast" },
-            { label: "Book", path: "/book" },
+            { label: "Books", path: "/book" },
             { label: "Press & Speaking", path: "/press" },
           ].map((l) => (
             <Link
