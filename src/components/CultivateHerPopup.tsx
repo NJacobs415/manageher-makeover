@@ -2,20 +2,23 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
-import ChapterOneForm from "@/components/book/ChapterOneForm";
-import useCountdown, { CULTIVATE_HER_LAUNCH } from "@/hooks/useCountdown";
-import { trackEvent } from "@/lib/analytics";
-import cultivateCover from "@/assets/the-cultivate-her-cover.webp";
+import { trackBookClick, trackEvent } from "@/lib/analytics";
+import cultivateCover from "@/assets/the-cultivate-her-cover-preorder.webp";
 
 /**
- * Sitewide launch popup for The Cultivate Her.
+ * Sitewide launch announcement for The Cultivate Her (out Nov 20, 2026).
  *
- * Opens once per visitor on the first of: 7s on page, 45% scroll, or exit intent
- * (desktop mouse leaving via the top edge). Suppressed on /book (inline form lives
- * there) and on blog posts (quiz gate already asks for email). Dismiss = quiet for
- * 7 days; signup = quiet for 60 days. Storage failures never break the page.
+ * Cover, "out now" copy, and two CTAs: buy on Amazon (gold primary) and the free
+ * Companion Workbook (outline). Opens once per visitor on the first of: 7s on page,
+ * 45% scroll, or exit intent (desktop mouse leaving via the top edge). Suppressed on
+ * /book, blog posts and /links, which carry their own Cultivate Her CTAs.
+ * Dismiss = quiet for 7 days; clicking either CTA counts as a conversion = quiet for
+ * 60 days (the popup stays open). Storage failures never break the page.
  */
-const STORAGE_KEY = "tmh_cultivate_popup";
+// New key (was "tmh_cultivate_popup" pre-launch) so visitors who dismissed the
+// pre-launch popup still see the launch announcement once.
+const STORAGE_KEY = "tmh_cultivate_popup_launch";
+const POPUP_ID = "cultivate_her_launch";
 const DISMISS_DAYS = 7;
 const SIGNUP_DAYS = 60;
 const DELAY_MS = 7000;
@@ -43,7 +46,6 @@ export default function CultivateHerPopup() {
   const [open, setOpen] = useState(false);
   const firedRef = useRef(false);
   const signedUpRef = useRef(false);
-  const countdown = useCountdown(CULTIVATE_HER_LAUNCH);
 
   const suppressedRoute = SUPPRESSED_PREFIXES.some((p) => pathname.startsWith(p));
 
@@ -51,18 +53,24 @@ export default function CultivateHerPopup() {
     if (firedRef.current) return;
     firedRef.current = true;
     setOpen(true);
-    try { trackEvent("popup_view", { popup: "cultivate_her_chapter1", trigger }); } catch { /* noop */ }
+    try { trackEvent("popup_view", { popup: POPUP_ID, trigger }); } catch { /* noop */ }
   }, []);
 
-  // Closing after a successful signup (X / ESC / backdrop on the success card)
-  // must keep the 60-day window, not downgrade it to a 7-day dismiss.
+  // Closing after a CTA click (X / ESC / backdrop) must keep the 60-day window,
+  // not downgrade it to a 7-day dismiss.
   const close = useCallback((reason: "dismiss" | "signup") => {
     setOpen(false);
     const signedUp = reason === "signup" || signedUpRef.current;
     suppressFor(signedUp ? SIGNUP_DAYS : DISMISS_DAYS);
     if (!signedUp) {
-      try { trackEvent("popup_dismiss", { popup: "cultivate_her_chapter1" }); } catch { /* noop */ }
+      try { trackEvent("popup_dismiss", { popup: POPUP_ID }); } catch { /* noop */ }
     }
+  }, []);
+
+  // A click on either CTA is a conversion; the popup stays open (links open in a new tab).
+  const convert = useCallback(() => {
+    signedUpRef.current = true;
+    suppressFor(SIGNUP_DAYS);
   }, []);
 
   // Arm triggers
@@ -155,8 +163,8 @@ export default function CultivateHerPopup() {
                 <img
                   src={cultivateCover}
                   alt="The Cultivate Her — Book Two by Aimee Rickabus"
-                  width={800}
-                  height={1200}
+                  width={360}
+                  height={576}
                   className="w-36 md:w-52 block"
                   style={{ borderRadius: "3px 8px 8px 3px", boxShadow: "0 30px 70px rgba(0,0,0,0.65)" }}
                 />
@@ -167,47 +175,56 @@ export default function CultivateHerPopup() {
             <div className="p-6 sm:p-9 md:p-10">
               {/* mobile-only: small cover + eyebrow replace the side cover panel */}
               <div className="flex items-center gap-4 mb-4 md:hidden">
-                <img src={cultivateCover} alt="" width={800} height={1200} className="w-14 h-[84px] object-cover flex-shrink-0" style={{ borderRadius: 4, boxShadow: "0 10px 30px rgba(0,0,0,0.6)" }} />
-                <p className="font-sans text-[10px] uppercase tracking-[0.3em]" style={{ color: "#c9a96e" }}>Book Two · Nov 20, 2026</p>
+                <img src={cultivateCover} alt="" width={360} height={576} className="w-14 h-[84px] object-cover flex-shrink-0" style={{ borderRadius: 4, boxShadow: "0 10px 30px rgba(0,0,0,0.6)" }} />
+                <p className="font-sans text-[10px] uppercase tracking-[0.3em]" style={{ color: "#c9a96e" }}>Book Two · Out Now</p>
               </div>
               <p className="hidden md:block font-sans text-[10px] uppercase tracking-[0.3em] mb-3" style={{ color: "#c9a96e" }}>
-                Book Two · November 20, 2026
+                Book Two · Out Now
               </p>
               <h2
                 id="tmh-popup-title"
                 className="font-serif text-2xl sm:text-3xl md:text-[34px] font-bold leading-tight mb-3"
                 style={{ color: "#fafafa" }}
               >
-                Read Chapter 1 of The Cultivate Her <em style={{ color: "#c9a96e", fontStyle: "italic" }}>before anyone</em>.
+                The Cultivate Her is <em style={{ color: "#c9a96e", fontStyle: "italic" }}>here</em>.
               </h2>
               <p className="font-sans text-[14px] leading-relaxed mb-5" style={{ color: "#888" }}>
-                Aimee's second book puts the ladder down. Get the opening chapter now and hold your place for launch day.
+                You've built a full life. Is there room for you in it? Aimee's second book puts the ladder down — and it's available now.
               </p>
 
-              {/* countdown */}
-              <div className="grid grid-cols-4 gap-2 mb-6 max-w-[360px]">
-                {[
-                  { val: countdown.days, label: "Days" },
-                  { val: countdown.hours, label: "Hrs" },
-                  { val: countdown.mins, label: "Min" },
-                  { val: countdown.secs, label: "Sec" },
-                ].map((u) => (
-                  <div
-                    key={u.label}
-                    className="text-center py-2 md:py-3"
-                    style={{ background: "#161616", borderRadius: 12, border: "1px solid rgba(201,169,110,0.12)" }}
-                  >
-                    <div className="font-serif text-lg sm:text-2xl font-bold tabular-nums" style={{ color: "#c9a96e" }}>
-                      {u.val}
-                    </div>
-                    <div className="font-sans text-[9px] uppercase tracking-[0.15em]" style={{ color: "#777" }}>
-                      {u.label}
-                    </div>
-                  </div>
-                ))}
+              <div className="flex flex-col gap-2.5 max-w-[420px]">
+                <a
+                  href="https://www.amazon.com/dp/B0HMZB6YSR"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    convert();
+                    try { trackBookClick("popup_cultivate_her_buy"); } catch { /* analytics must never break the page */ }
+                  }}
+                  className="btn-glow w-full flex items-center justify-center px-4 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] transition-all whitespace-nowrap"
+                  style={{ height: "52px", background: "linear-gradient(135deg, #c9a96e, #dfc08a)", color: "#0a0a0a", borderRadius: "50px", boxShadow: "0 4px 24px rgba(201,169,110,0.3)" }}
+                >
+                  Get it on Amazon →
+                </a>
+                <a
+                  href="https://thecultivateher.com/#workbook"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={convert}
+                  className="w-full flex items-center justify-center px-4 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors duration-300 whitespace-nowrap"
+                  style={{ height: "48px", borderRadius: "50px", border: "1px solid rgba(255,255,255,0.2)", color: "#fafafa" }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = "#eb1887";
+                    e.currentTarget.style.color = "#eb1887";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
+                    e.currentTarget.style.color = "#fafafa";
+                  }}
+                >
+                  Get the free Companion Workbook
+                </a>
               </div>
-
-              <ChapterOneForm variant="dark" source="popup-cultivate-her" onSuccess={() => { signedUpRef.current = true; suppressFor(SIGNUP_DAYS); }} />
             </div>
           </motion.div>
         </motion.div>

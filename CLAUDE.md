@@ -133,8 +133,11 @@ in the bundle); submitting the live form creates a real GHL contact, so don't sm
 throwaway data.
 
 ### Cultivate Her popup — `popup_view` / `popup_dismiss`
-`src/components/CultivateHerPopup.tsx` is a sitewide modal (cover, launch countdown via the
-shared `src/hooks/useCountdown.ts` + `CULTIVATE_HER_LAUNCH`, dark `ChapterOneForm`). It's mounted
+`src/components/CultivateHerPopup.tsx` is a sitewide **launch announcement** modal (since
+Nov 20, 2026): cover (`src/assets/the-cultivate-her-cover-preorder.webp`, 360×576 — the final
+cover, same as `/links`), "Book Two · Out Now" copy, and two stacked full-width CTAs — gold
+"Get it on Amazon →" (`trackBookClick("popup_cultivate_her_buy")`) and an outline "Get the free
+Companion Workbook". No countdown and no `ChapterOneForm` any more. It's mounted
 once in `AnimatedRoutes.tsx` as a sibling of the route `AnimatePresence` — it must stay inside
 `BrowserRouter` because it uses `useLocation`, so never move it up into `App.tsx`.
 - **Triggers** (first one wins, at most once per page load): 7s on page, 45% scroll depth, or
@@ -145,14 +148,16 @@ once in `AnimatedRoutes.tsx` as a sibling of the route `AnimatePresence` — it 
   launched Nov 20, 2026; the Chapter 1 form is no longer rendered there). The `/blog` index is
   *not* suppressed.
 - **Layout:** desktop (`md+`) shows the side cover panel; below `md` it's hidden and a small
-  inline cover sits beside the eyebrow so the whole form fits a 375×740 screen without
+  inline cover sits beside the eyebrow so the whole popup fits a 375×740 screen without
   scrolling inside the dialog.
-- **Suppression window:** `localStorage["tmh_cultivate_popup"]` holds an epoch-ms "quiet until"
-  timestamp. Dismissing (X, ESC, backdrop click) sets 7 days; a successful signup sets 60 days,
-  and closing the success card afterwards keeps the 60. Storage errors fail open (the popup
-  just shows again). To re-test locally: `localStorage.removeItem("tmh_cultivate_popup")`.
-- **Events:** `popup_view` (`{ popup: "cultivate_her_chapter1", trigger: "timer" | "scroll" |
-  "exit_intent" }`) on open; `popup_dismiss` (`{ popup }`) on a non-signup close.
+- **Suppression window:** `localStorage["tmh_cultivate_popup_launch"]` holds an epoch-ms "quiet
+  until" timestamp (new key at launch, so visitors who dismissed the pre-launch popup under
+  `tmh_cultivate_popup` see the announcement once). Dismissing (X, ESC, backdrop click) sets
+  7 days; clicking either CTA counts as a conversion and sets 60 days without closing the popup,
+  and a later close keeps the 60. Storage errors fail open (the popup just shows again). To
+  re-test locally: `localStorage.removeItem("tmh_cultivate_popup_launch")`.
+- **Events:** `popup_view` (`{ popup: "cultivate_her_launch", trigger: "timer" | "scroll" |
+  "exit_intent" }`) on open; `popup_dismiss` (`{ popup }`) on a close with no CTA click.
 
 ## Performance
 
