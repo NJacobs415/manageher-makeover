@@ -3,7 +3,6 @@
 // Mobile-first social link hub — no Navbar/Footer, standalone experience
 
 import { useEpisodeCount } from "@/hooks/useEpisodeCount";
-import useCountdown, { CULTIVATE_HER_LAUNCH } from "@/hooks/useCountdown";
 import cultivateCover from "@/assets/the-cultivate-her-cover-preorder.webp";
 import SEO from "@/components/SEO";
 import { trackBookClick, trackPodcastPlatformClick, trackSocialClick, toPlatformKey } from "@/lib/analytics";
@@ -20,7 +19,6 @@ const PODCAST_COVER =
 
 const Links = () => {
   const episodeCount = useEpisodeCount();
-  const countdown = useCountdown(CULTIVATE_HER_LAUNCH);
 
   return (
     <div
@@ -229,13 +227,13 @@ const Links = () => {
           }}
         />
 
-        {/* ── Featured: The Cultivate Her — Kindle pre-order (Oct 28 – Nov 20, 2026) ── */}
+        {/* ── Featured: The Cultivate Her — launched Nov 20, 2026 ── */}
         <div className="mb-4 tmh-link-fade tmh-link-d4">
           <p
             className="text-[9px] uppercase tracking-[0.35em] text-center mb-3 font-semibold"
             style={{ color: "#c9a96e" }}
           >
-            ✦ New · Book Two ✦
+            ✦ Out Now · Book Two ✦
           </p>
           <div
             className="p-4"
@@ -256,10 +254,8 @@ const Links = () => {
                 style={{ borderRadius: "6px", boxShadow: "0 10px 30px rgba(0,0,0,0.5)" }}
               />
               <div className="flex-1 min-w-0">
-                {/* On Nov 20 flip the primary label to 'GET IT ON KINDLE →' and the description to 'Available now.' */}
                 <p className="text-[9px] uppercase tracking-[0.15em] mb-1" style={{ color: "#c9a96e" }}>
-                  Launches Nov 20 ·{" "}
-                  <span className="tabular-nums" style={{ color: "#dfc08a" }}>{countdown.days} days</span>
+                  Now available
                 </p>
                 <p
                   className="text-sm font-bold mb-1"
@@ -268,7 +264,7 @@ const Links = () => {
                   The Cultivate Her
                 </p>
                 <p className="text-[11px] leading-snug" style={{ color: "#888" }}>
-                  You've built a full life. Is there room for you in it? Book two of the Her Series — Kindle edition arrives November 20.
+                  You've built a full life. Is there room for you in it? Book two of the Her Series — available now.
                 </p>
               </div>
             </div>
@@ -277,11 +273,11 @@ const Links = () => {
                 href="https://www.amazon.com/dp/B0HMZB6YSR"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => { try { trackBookClick('linkinbio_cultivate_her_preorder'); } catch { /* analytics must never break the page */ } }}
+                onClick={() => { try { trackBookClick('linkinbio_cultivate_her_buy'); } catch { /* analytics must never break the page */ } }}
                 className="btn-glow w-full flex items-center justify-center px-8 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] bg-brand-pink text-primary-foreground hover:bg-brand-pink/90 transition-colors whitespace-nowrap"
                 style={{ borderRadius: "50px", height: "52px" }}
               >
-                Pre-order on Amazon →
+                Get it on Amazon →
               </a>
               <a
                 href="https://thecultivateher.com/#workbook"
