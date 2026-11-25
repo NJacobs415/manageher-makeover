@@ -10,11 +10,14 @@ import cultivateCover from "@/assets/the-cultivate-her-cover-preorder.webp";
 import SEO from "@/components/SEO";
 import useHashScroll from "@/hooks/useHashScroll";
 import { trackBookClick } from "@/lib/analytics";
+import PressCard from "@/components/press/PressCard";
+import { pressNewestFirst } from "@/data/press";
 
 const BOOK_COVER_CDN =
   "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a714ae8e39698a8fbfa2bb.png";
 const CULTIVATE_AMAZON = "https://www.amazon.com/dp/B0HMZB6YSR";
 const CULTIVATE_SUBTITLE = "When Women Stop Climbing and Start Cultivating";
+const CULTIVATE_PRESS = pressNewestFirst().filter((item) => item.book === "cultivate-her");
 const AIMEE_PHOTO =
   "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a0c0f9fd70df73543f31f1.jpg";
 
@@ -217,6 +220,18 @@ const Book = () => {
                 </Magnetic>
                 <p className="font-sans text-[12px] text-muted-foreground mt-4">Available now on Amazon.</p>
               </FadeIn>
+              {CULTIVATE_PRESS.length > 0 && (
+                <FadeIn delay={600} y={20}>
+                  <div className="mt-10">
+                    <p className="font-sans text-[10px] uppercase tracking-[0.3em] mb-4" style={{ color: "#c9a96e" }}>As featured in</p>
+                    <div className={`grid grid-cols-1 gap-4 ${CULTIVATE_PRESS.length > 1 ? "md:grid-cols-2" : "md:max-w-[420px]"}`}>
+                      {CULTIVATE_PRESS.map((item) => (
+                        <PressCard key={item.id} item={item} placement="book_page_cultivate_her" variant="compact" />
+                      ))}
+                    </div>
+                  </div>
+                </FadeIn>
+              )}
             </div>
 
             {/* ── Cover ── */}

@@ -37,6 +37,19 @@ function toIsoDuration(s) {
   return out;
 }
 
+// Press articles for Aimee's Person JSON-LD `subjectOf` on /about and /press.
+// Mirror of pressSubjectOf() in src/data/press.ts (this script can't import TS):
+// every PRESS_ITEMS entry without `urlPending`, newest first.
+const PRESS_SUBJECT_OF = [
+  {
+    '@type': 'Article',
+    headline: 'Life Is a Garden, Not a Ladder: Aimee Rickabus on What Women Are Really Growing',
+    url: 'https://womenmag.com/life-is-a-garden-not-a-ladder-aimee-rickabus-on-what-women-are-really-growing/',
+    datePublished: '2026-11-26',
+    publisher: { '@type': 'Organization', name: "Women's Mag" },
+  },
+];
+
 // ─── Static page metadata ───────────────────────────────────────
 // Keep in sync with src/components/SEO.tsx defaults and the <SEO>
 // props in each page component (src/pages/*.tsx).
@@ -82,6 +95,7 @@ const STATIC_ROUTES = [
         'https://www.linkedin.com/company/themanageher',
       ],
       description: 'CEO of a nine-figure technology company, bestselling author, podcast host, and mother of six. Founder of The Manage Her — a leadership movement redefining how women lead.',
+      subjectOf: PRESS_SUBJECT_OF,
     },
   },
   {
@@ -151,6 +165,7 @@ const STATIC_ROUTES = [
       ],
       knowsAbout: ['Women\'s Leadership', 'Invisible Labor', 'Financial Literacy', 'Entrepreneurship', 'Motherhood'],
       description: 'CEO of a nine-figure technology company, bestselling author, podcast host, and mother of six. Founder of The Manage Her — a leadership movement redefining how women lead.',
+      subjectOf: PRESS_SUBJECT_OF,
     },
   },
   {
