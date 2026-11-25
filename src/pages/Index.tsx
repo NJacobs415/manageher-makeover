@@ -30,6 +30,7 @@ import cardHolistic from "@/assets/card-holistic-672.webp";
 import cardEmpowerment from "@/assets/card-empowerment-900.webp";
 import cardFinancial from "@/assets/card-financial-900.webp";
 import cardEntrepreneurship from "@/assets/card-entrepreneurship-900.webp";
+import { pressNewestFirst } from "@/data/press";
 
 // ─── CDN Images ───
 const AIMEE_PHOTO = "/aimee-portrait-1-800.webp";
@@ -106,6 +107,13 @@ const episodes = [
     link: "https://www.youtube.com/watch?v=an03Nz9NG4k",
   },
 ];
+
+// Homepage "As featured in" line — featured press, oldest first ("LeadHer Magazine & Women's Mag").
+const FEATURED_IN = pressNewestFirst()
+  .filter((item) => item.featured)
+  .reverse()
+  .map((item) => item.publication)
+  .join(" & ");
 
 const Index = () => {
   const [currentTest, setCurrentTest] = useState(0);
@@ -461,7 +469,7 @@ const Index = () => {
                       className="h-8 w-auto object-cover"
                       style={{ borderRadius: "2px" }}
                     />
-                    As featured in LeadHer Magazine
+                    As featured in {FEATURED_IN}
                   </Link>
                 </FadeIn>
               </div>

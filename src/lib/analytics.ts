@@ -104,6 +104,17 @@ export function trackSocialClick(
   trackEvent('social_click', { platform, click_location: location });
 }
 
+export type PressPlacement = 'press_page' | 'book_page_cultivate_her';
+
+/** Outbound click on a press card (links to the publication). */
+export function trackPressClick(publication: string, placement: PressPlacement) {
+  try {
+    trackEvent('press_click', { publication, placement });
+  } catch {
+    /* analytics must never break the page */
+  }
+}
+
 export function trackBlogTopicFilter(topic: string) {
   trackEvent('blog_topic_filter', { topic });
 }

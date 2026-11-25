@@ -37,6 +37,25 @@ function toIsoDuration(s) {
   return out;
 }
 
+// Press articles for Aimee's Person JSON-LD `subjectOf` on /about and /press.
+// Reads src/data/press.json — the same file the React app uses — so press is
+// added in one place. Same mapping as pressSubjectOf() in src/data/press.ts:
+// every item without `urlPending`, newest first.
+function pressSubjectOf() {
+  const items = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/press.json'), 'utf8'));
+  return items
+    .filter((item) => !item.urlPending)
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .map((item) => ({
+      '@type': 'Article',
+      headline: item.title,
+      url: item.url,
+      datePublished: item.date,
+      publisher: { '@type': 'Organization', name: item.publication },
+    }));
+}
+const PRESS_SUBJECT_OF = pressSubjectOf();
+
 // ─── Static page metadata ───────────────────────────────────────
 // Keep in sync with src/components/SEO.tsx defaults and the <SEO>
 // props in each page component (src/pages/*.tsx).
@@ -82,6 +101,7 @@ const STATIC_ROUTES = [
         'https://www.linkedin.com/company/themanageher',
       ],
       description: 'CEO of a nine-figure technology company, bestselling author, podcast host, and mother of six. Founder of The Manage Her — a leadership movement redefining how women lead.',
+      subjectOf: PRESS_SUBJECT_OF,
     },
   },
   {
@@ -151,6 +171,7 @@ const STATIC_ROUTES = [
       ],
       knowsAbout: ['Women\'s Leadership', 'Invisible Labor', 'Financial Literacy', 'Entrepreneurship', 'Motherhood'],
       description: 'CEO of a nine-figure technology company, bestselling author, podcast host, and mother of six. Founder of The Manage Her — a leadership movement redefining how women lead.',
+      subjectOf: PRESS_SUBJECT_OF,
     },
   },
   {

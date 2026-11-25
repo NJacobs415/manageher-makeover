@@ -117,7 +117,7 @@ boot failure.
 ### Other events
 `quiz_start`, `quiz_complete`, `guest_quiz_click`, `newsletter_signup`, `book_click`,
 `booking_click`, `podcast_platform_click`, `episode_play`, `transcript_expand`,
-`social_click`, `guest_link_click`, `blog_topic_filter`, `chapter_download`, `popup_view`,
+`social_click`, `guest_link_click`, `press_click`, `blog_topic_filter`, `chapter_download`, `popup_view`,
 `popup_dismiss`.
 
 ### `chapter_download` — Cultivate Her Chapter 1 form (currently unused)
@@ -314,6 +314,33 @@ the fallback family name (see the hero subhead).
     filename). Gold is the only accent in that section. No countdown, waitlist or Chapter 1 form
     on the page any more.
 - **Press & Speaking** (`src/pages/Press.tsx`) — Speaker hero, keynote topics, bios, media kit, booking CTA
+  plus `#in-the-press` (see Press coverage below).
+
+## Press coverage (`src/data/press.json`)
+**`src/data/press.json` is the one place to add a press item** — no page edits, no copies.
+Each entry is a `PressItem`: `{ id, publication, title, url, date (ISO), summary,
+book?: 'manage-her' | 'cultivate-her', featured? }`, plus optional rich fields (`issue`, `pages`,
+`quote`, `cover`, `image`, `imageAlt`) for print features with art, and `urlPending: true` when
+`url` is a placeholder (LeadHer's is the outlet homepage until the digital-issue link arrives).
+`src/data/press.ts` is the typed wrapper (imports the JSON; exports `PRESS_ITEMS`, the
+`PressItem` type and helpers). The JSON flows to:
+- **/press `#in-the-press`** — all items, newest first (`pressNewestFirst()`), via
+  `src/components/press/PressCard.tsx`. `featured` items get the large card (with `image` → the
+  portrait + cover-badge layout, e.g. LeadHer; without → text-only); others get `compact`.
+- **/book Cultivate Her section** — "As featured in" strip of compact cards for
+  `book === 'cultivate-her'`, under the Amazon CTA.
+- **Home mission section** — "As featured in …" line joins the `featured` publications
+  (the cover thumbnail beside it is still the LeadHer cover, hardcoded).
+- **Person JSON-LD `subjectOf`** on /about and /press, skipping `urlPending` items. React uses
+  `pressSubjectOf()` in `press.ts`; `scripts/prerender-meta.mjs` reads the same `press.json`
+  with its own `pressSubjectOf()` (it can't import TS). Only the item→Article mapping is
+  duplicated — change both if you change it.
+- `public/llms.txt` lists press features on the Press line — update it too.
+
+Cards are gold-only (authority element), always link out to the publication
+(`target="_blank" rel="noopener noreferrer"`) and fire `press_click`
+(`{ publication, placement: 'press_page' | 'book_page_cultivate_her' }`) via `trackPressClick()`.
+This replaced the old untyped `press_feature_click` event.
 
 ## Shared Components
 - `src/components/layout/Navbar.tsx` — Sticky nav with scroll state. The "Books" item (→ `/book`)

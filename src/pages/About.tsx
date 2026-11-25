@@ -7,6 +7,7 @@ import Magnetic from "@/components/animations/Magnetic";
 import { ArrowRight, Heart, Star, BookOpen, Mic, Briefcase, Baby, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
+import { pressSubjectOf } from "@/data/press";
 
 const AIMEE_PHOTO =
   "https://assets.cdn.filesafe.space/JzYUXEAehZEve2vuOdqM/media/69a0c0f9fd70df73543f31f1.jpg";
@@ -79,6 +80,7 @@ const About = () => {
           ],
           description:
             "CEO of a nine-figure technology company, bestselling author, podcast host, and mother of six. Founder of The Manage Her — a leadership movement redefining how women lead.",
+          subjectOf: pressSubjectOf(),
         }}
       />
       <Navbar />
