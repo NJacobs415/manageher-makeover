@@ -316,11 +316,14 @@ the fallback family name (see the hero subhead).
 - **Press & Speaking** (`src/pages/Press.tsx`) — Speaker hero, keynote topics, bios, media kit, booking CTA
   plus `#in-the-press` (see Press coverage below).
 
-## Press coverage (`src/data/press.ts`)
-Every press mention is one typed `PressItem` in `PRESS_ITEMS`: `{ id, publication, title, url,
-date (ISO), summary, book?: 'manage-her' | 'cultivate-her', featured? }`, plus optional rich
-fields (`issue`, `pages`, `quote`, `cover`, `image`, `imageAlt`) for print features with art.
-**To add press, add an item — no page edits needed.** It flows to:
+## Press coverage (`src/data/press.json`)
+**`src/data/press.json` is the one place to add a press item** — no page edits, no copies.
+Each entry is a `PressItem`: `{ id, publication, title, url, date (ISO), summary,
+book?: 'manage-her' | 'cultivate-her', featured? }`, plus optional rich fields (`issue`, `pages`,
+`quote`, `cover`, `image`, `imageAlt`) for print features with art, and `urlPending: true` when
+`url` is a placeholder (LeadHer's is the outlet homepage until the digital-issue link arrives).
+`src/data/press.ts` is the typed wrapper (imports the JSON; exports `PRESS_ITEMS`, the
+`PressItem` type and helpers). The JSON flows to:
 - **/press `#in-the-press`** — all items, newest first (`pressNewestFirst()`), via
   `src/components/press/PressCard.tsx`. `featured` items get the large card (with `image` → the
   portrait + cover-badge layout, e.g. LeadHer; without → text-only); others get `compact`.
@@ -328,9 +331,10 @@ fields (`issue`, `pages`, `quote`, `cover`, `image`, `imageAlt`) for print featu
   `book === 'cultivate-her'`, under the Amazon CTA.
 - **Home mission section** — "As featured in …" line joins the `featured` publications
   (the cover thumbnail beside it is still the LeadHer cover, hardcoded).
-- **Person JSON-LD `subjectOf`** on /about and /press (`pressSubjectOf()`), skipping items with
-  `urlPending: true` (placeholder URL, e.g. LeadHer's outlet homepage). `prerender-meta.mjs`
-  can't import TS, so **mirror new real-URL items into its `PRESS_SUBJECT_OF`** by hand.
+- **Person JSON-LD `subjectOf`** on /about and /press, skipping `urlPending` items. React uses
+  `pressSubjectOf()` in `press.ts`; `scripts/prerender-meta.mjs` reads the same `press.json`
+  with its own `pressSubjectOf()` (it can't import TS). Only the item→Article mapping is
+  duplicated — change both if you change it.
 - `public/llms.txt` lists press features on the Press line — update it too.
 
 Cards are gold-only (authority element), always link out to the publication

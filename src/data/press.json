@@ -1,0 +1,29 @@
+[
+  {
+    "id": "leadher-2026-10",
+    "publication": "LeadHer Magazine",
+    "title": "What Strength Asked of Her",
+    "url": "https://leadhermagazine.com",
+    "urlPending": true,
+    "date": "2026-10-01",
+    "summary": "For years, strength meant building more, carrying more, and holding everything together. Aimee Rickabus eventually learned it could also mean knowing when to let go.",
+    "book": "cultivate-her",
+    "featured": true,
+    "issue": "October 2026 · Feature Story",
+    "pages": "Pages 68 – 71",
+    "quote": "I had to learn how to stop climbing, and how to start cultivating myself.",
+    "cover": "/press/leadher-cover-oct-2026-240.webp",
+    "image": "/press/leadher-feature-portrait-800.webp",
+    "imageAlt": "Aimee Rickabus, LeadHer Magazine feature portrait"
+  },
+  {
+    "id": "womens-mag-2026-11",
+    "publication": "Women's Mag",
+    "title": "Life Is a Garden, Not a Ladder: Aimee Rickabus on What Women Are Really Growing",
+    "url": "https://womenmag.com/life-is-a-garden-not-a-ladder-aimee-rickabus-on-what-women-are-really-growing/",
+    "date": "2026-11-26",
+    "summary": "Why Aimee stopped climbing — and what she's teaching women to grow instead.",
+    "book": "cultivate-her",
+    "featured": true
+  }
+]

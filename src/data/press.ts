@@ -1,13 +1,14 @@
 // ——— Press coverage ———
-// Single source for every press mention. Rendered by PressCard on /press
-// (#in-the-press, newest first), the /book Cultivate Her press strip
-// (book === "cultivate-her"), and the homepage "As featured in" link
-// (featured items). We always link out to the publication — never host or
+// Typed wrapper around src/data/press.json — the ONE place press items live.
+// That JSON drives PressCard on /press (#in-the-press, newest first), the
+// /book Cultivate Her press strip (book === "cultivate-her"), the homepage
+// "As featured in" line (featured items), and Aimee's Person JSON-LD
+// `subjectOf` — here for React, and in scripts/prerender-meta.mjs, which reads
+// the same JSON. We always link out to the publication — never host or
 // republish their pages. Images (optional, rich feature cards only) live in
 // public/press/, sized ≤ 2× display.
-//
-// scripts/prerender-meta.mjs can't import this file: when an item with a real
-// article URL is added, mirror it into PRESS_SUBJECT_OF there too.
+
+import pressData from "./press.json";
 
 export type PressBook = "manage-her" | "cultivate-her";
 
@@ -37,40 +38,7 @@ export interface PressItem {
   imageAlt?: string;
 }
 
-export const PRESS_ITEMS: PressItem[] = [
-  {
-    id: "leadher-2026-10",
-    publication: "LeadHer Magazine",
-    title: "What Strength Asked of Her",
-    // TODO: swap for the digital-issue link once Aimee forwards it
-    url: "https://leadhermagazine.com",
-    urlPending: true,
-    date: "2026-10-01",
-    summary:
-      "For years, strength meant building more, carrying more, and holding everything together. Aimee Rickabus eventually learned it could also mean knowing when to let go.",
-    book: "cultivate-her",
-    featured: true,
-    issue: "October 2026 · Feature Story",
-    pages: "Pages 68 – 71",
-    quote:
-      "I had to learn how to stop climbing, and how to start cultivating myself.",
-    cover: "/press/leadher-cover-oct-2026-240.webp",
-    image: "/press/leadher-feature-portrait-800.webp",
-    imageAlt: "Aimee Rickabus, LeadHer Magazine feature portrait",
-  },
-  {
-    id: "womens-mag-2026-11",
-    publication: "Women's Mag",
-    title:
-      "Life Is a Garden, Not a Ladder: Aimee Rickabus on What Women Are Really Growing",
-    url: "https://womenmag.com/life-is-a-garden-not-a-ladder-aimee-rickabus-on-what-women-are-really-growing/",
-    date: "2026-11-26",
-    summary:
-      "Why Aimee stopped climbing — and what she's teaching women to grow instead.",
-    book: "cultivate-her",
-    featured: true,
-  },
-];
+export const PRESS_ITEMS: PressItem[] = pressData as PressItem[];
 
 /** All press items, newest first. */
 export const pressNewestFirst = (items: PressItem[] = PRESS_ITEMS): PressItem[] =>
@@ -84,7 +52,10 @@ export const formatPressDate = (iso: string): string =>
     timeZone: "UTC",
   });
 
-/** schema.org `subjectOf` entries for Aimee's Person JSON-LD. */
+/**
+ * schema.org `subjectOf` entries for Aimee's Person JSON-LD. Same mapping as
+ * pressSubjectOf() in scripts/prerender-meta.mjs — keep the two in step.
+ */
 export const pressSubjectOf = () =>
   pressNewestFirst()
     .filter((item) => !item.urlPending)

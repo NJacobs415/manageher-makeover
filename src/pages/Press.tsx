@@ -747,7 +747,7 @@ const Press = () => {
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4 text-center">
               The story behind the strength,{" "}
               <em style={{ color: "#c9a96e", fontStyle: "italic" }}>
-                in print.
+                in the press.
               </em>
             </h2>
           </TextReveal>

@@ -38,17 +38,23 @@ function toIsoDuration(s) {
 }
 
 // Press articles for Aimee's Person JSON-LD `subjectOf` on /about and /press.
-// Mirror of pressSubjectOf() in src/data/press.ts (this script can't import TS):
-// every PRESS_ITEMS entry without `urlPending`, newest first.
-const PRESS_SUBJECT_OF = [
-  {
-    '@type': 'Article',
-    headline: 'Life Is a Garden, Not a Ladder: Aimee Rickabus on What Women Are Really Growing',
-    url: 'https://womenmag.com/life-is-a-garden-not-a-ladder-aimee-rickabus-on-what-women-are-really-growing/',
-    datePublished: '2026-11-26',
-    publisher: { '@type': 'Organization', name: "Women's Mag" },
-  },
-];
+// Reads src/data/press.json — the same file the React app uses — so press is
+// added in one place. Same mapping as pressSubjectOf() in src/data/press.ts:
+// every item without `urlPending`, newest first.
+function pressSubjectOf() {
+  const items = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/press.json'), 'utf8'));
+  return items
+    .filter((item) => !item.urlPending)
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .map((item) => ({
+      '@type': 'Article',
+      headline: item.title,
+      url: item.url,
+      datePublished: item.date,
+      publisher: { '@type': 'Organization', name: item.publication },
+    }));
+}
+const PRESS_SUBJECT_OF = pressSubjectOf();
 
 // ─── Static page metadata ───────────────────────────────────────
 // Keep in sync with src/components/SEO.tsx defaults and the <SEO>
